@@ -53,10 +53,6 @@
                 [
                     'label'=>'Lợi ích',
                     'route'=>'loiich.index'
-                ],
-                [
-                    'label'=>'Tình trạng',
-                    'route'=>'tinhtrang.index'
                 ]
                
             ]
