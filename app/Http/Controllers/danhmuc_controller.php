@@ -6,6 +6,7 @@ use App\Models\danhmuc;
 use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests\Danhmuc\addRequest;
+use File;
 use Toastr;
 
 class danhmuc_controller extends Controller
@@ -41,13 +42,28 @@ class danhmuc_controller extends Controller
      */
     public function store(Request $request)
     {
-        $data=new danhmuc;
-        $data->tendanhmuc=$request->tendanhmuc;
-        $data->slug=str_slug($request->tendanhmuc);
-        if($data->save()){
-            $data=danhmuc::all();
+        if($request->has('file_uploads')){
+            
+            $file=$request->file_uploads;
+            $ex=$request->file_uploads->extension();
+            $file_name=time().'-daidien'.'.'.$ex;
+            $file->move(public_path('uploads/linhvuc'),$file_name);
+
+            $file1=$request->file_uploads1;
+            $ex=$request->file_uploads1->extension();
+            $file_name1=time().'-anhbia'.'.'.$ex;
+            $file1->move(public_path('uploads/linhvuc'),$file_name1);
+
+            $slug=str_slug($request->tendanhmuc);
+          
+        }
+        $request->merge(['avatar'=>$file_name]);
+        $request->merge(['anhbia'=>$file_name1]);
+        $request->merge(['slug'=>$slug]);
+
+        if(danhmuc::create($request->all())){
             Toastr::success('Thêm danh mục thành công','Thêm danh mục');
-            return view('admin.danhmuc.index',compact('data'));
+            return redirect('admin/danhmuc');
         }
        
     }   
@@ -86,15 +102,31 @@ class danhmuc_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = danhmuc::find($id);
-        $data->tendanhmuc=$request->tendanhmuc;
-        $data->slug=str_slug($request->tendanhmuc);
-        if($data->save()){
+        if($request->has('file_uploads')){
+            $file=$request->file_uploads;
+            $ex=$request->file_uploads->extension();
+            $file_name=time().'-daidien'.'.'.$ex;
+            $file->move(public_path('uploads/linhvuc'),$file_name);
+
+            $data=danhmuc::find($id);
+            File::delete('public/puloads/linhvuc/'.$data->avatar);
+            $request->merge(['avatar'=>$file_name]); 
+        } 
+        if($request->has('file_uploads1')){
+            $file1=$request->file_uploads1;
+            $ex=$request->file_uploads1->extension();
+            $file_name1=time().'-anhbia'.'.'.$ex;
+            $file1->move(public_path('uploads/linhvuc'),$file_name1);
+
+            $data=danhmuc::find($id);
+            File::delete('public/uploads/linhvuc/'.$data->anhbia);
+            $request->merge(['anhbia'=>$file_name1]);  
+        }
+    
+        if(danhmuc::find($id)->update($request->all())){
             Toastr::success('Cập nhật danh mục thành công','Cập nhật danh mục');
             return redirect('admin/danhmuc');
         }
-        
-        
     }
 
     /**

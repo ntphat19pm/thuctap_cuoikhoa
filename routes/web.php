@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\home_controller; 
 use App\Http\Controllers\danhmuc_controller;
 
 /*
@@ -18,6 +19,8 @@ Route::get('/clear-cache',function(){
     $exitCode= Artisan::call('cache:clear');
 });
 
+Route::get('/showlinhvuc/{id}', [home_controller::class, 'showlinhvuc'])->name('home.showlinhvuc');
+
 
 Route::get('/','home_controller@index')->name('home.index');
 Route::get('/home','home_controller@home')->name('home.home');
@@ -28,7 +31,7 @@ Route::get('/dangnhap','home_controller@get_dangnhap')->name('home.getdangnhap')
 Route::get('/dangxuat','home_controller@dangxuat')->name('home.dangxuat');
 Route::post('/dangnhap','home_controller@post_dangnhap')->name('home.postdangnhap');
 Route::get('/dangky','home_controller@get_dangky')->name('home.getdangky');
-Route::post('/dangky','home_controller@post_dangky')->name('home.postdangky');
+Route::post('/thongtin','home_controller@post_thongtin')->name('home.postthongtin');
 Route::get('/chitiet/{id}','home_controller@chitiet')->name('home.chitiet');
 
 Route::get('/lienhe','home_controller@lienhe')->name('home.lienhe');
@@ -67,14 +70,14 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     
     Route::resources([
         'danhmuc'=>'danhmuc_controller',
-        'khachhang'=>'khachhang_controller',
+        'doanhnghiep'=>'doanhnghiep_controller',
         'loiich'=>'loiich_controller',
         'dacdiem'=>'dacdiem_controller',
         'tinhnang'=>'tinhnang_controller',
         'sanpham'=>'sanpham_controller',
-        'phanloai'=>'phanloai_controller',
+        'slider'=>'slider_controller',
         'chucvu'=>'chucvu_controller',
-        'dathang'=>'dathangad_controller',
+        'thongtin'=>'thongtin_controller',
         'lienhe'=>'lienhe_controller',
         'video'=>'video_controller',
         'menu'=>'menu_controller',

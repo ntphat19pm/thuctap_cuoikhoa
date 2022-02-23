@@ -43,10 +43,10 @@
                       </div>
                       @if(Auth::user()->chucvu_id==1)
                       <div class="form-group">
-                        <label for="status">Status<span class="text-danger font-weight-bold">*</span></label>
-                        <select id="status" class="form-control custom-select @error('status') is-invalid @enderror" name="status" required autofocus>
-                            <option value="0" {{($data->status== 0)?'selected':'' }}>Đã duyệt</option>
-                            <option value="1" {{($data->status== 1)?'selected':'' }}>Chưa duyệt</option>
+                        <label for="trangthai">Status<span class="text-danger font-weight-bold">*</span></label>
+                        <select id="trangthai" class="form-control custom-select @error('status') is-invalid @enderror" name="trangthai" required autofocus>
+                            <option value="0" {{($data->trangthai== 0)?'selected':'' }}>Đã duyệt</option>
+                            <option value="1" {{($data->trangthai== 1)?'selected':'' }}>Chưa duyệt</option>
                         </select>
                         @error('phanloai_id')
                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
@@ -58,6 +58,13 @@
                       <div class="form-group invalid">
                         <label for="nguoidang" class="form-label">Người viết</label>
                         <input type="text" value="{{$data->nguoidang}}" class="form-control" name="nguoidang" id="nguoidang" required readonly >
+                      </div>
+                      <div class="form-group">
+                        <label for="phanloai_id">Lĩnh vực<span class="text-danger font-weight-bold">*</span></label>
+                        <select id="phanloai_id" class="form-control custom-select @error('phanloai_id') is-invalid @enderror" name="phanloai_id" required autofocus>
+                          <option value="0" {{($data->phanloai_id== 0)?'selected':'' }}>Tin sự kiện</option>
+                          <option value="1" {{($data->phanloai_id== 1)?'selected':'' }}>Tin công nghệ</option>
+                        </select>
                       </div>
                     </div>
                   </div>

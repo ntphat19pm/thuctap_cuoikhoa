@@ -446,6 +446,7 @@ All rights reserved.
 <script>
   CKEDITOR.replace('chitiet');
   CKEDITOR.replace('noidung');
+  CKEDITOR.replace('mota');
 </script>
 
 {{-- <script>

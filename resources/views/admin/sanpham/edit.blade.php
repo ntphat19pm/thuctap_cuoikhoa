@@ -66,7 +66,7 @@
                         <div class="col-lg-4">
                             <div class="form-group invalid">
                                 <label for="link" class="form-label">Đường dẫn</label>
-                                <input type="text" value="{{$data->link}}" class="form-control" name="link" id="link" required>
+                                <input type="text" value="https://youtu.be/{{$data->link}}" class="form-control" name="link" id="link" required>
                             </div>
                         </div>
                         <div class="col-lg-8">

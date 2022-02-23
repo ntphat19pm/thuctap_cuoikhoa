@@ -1,109 +1,178 @@
 @extends('layouts.site')
 @section('main')
-<div class="ajax_quick_view">
+ 
 
-   
-        
-  
-	<div class="row">
-        <div class="col-lg-6 col-md-6 mb-4 mb-5">
-          <div class="product-image ml-3 mt-5">
-                
-                   <img width="45%" class="" src="{{url('public/uploads/sanpham/avatar')}}/{{$data->anh}}">
-                   <img width="45%" class="ml-1" src="{{url('public/uploads/sanpham/chitiet')}}/{{$data->anh1}}">
-               
+<section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads/sanpham/chitiet')}}/{{$data->anh1}}'); background-size:1600px; height: 300px">
+
+  <div class="container">
+    <h1 class="text-center">{{$data->tensp}}</h1>
+  </div>
+
+</section><!-- End Hero -->
+
+<main id="main">
+  <section id="cliens" class="cliens section-bg">
+    <div class="container">
+        {!!$data->chitiet!!}
+
+        <div class="row" data-aos="zoom-in">
+            <div class="col-lg-2 d-flex align-items-center justify-content-center">
+              <a href="mailto:phatag852@gmail.com"><img src="{{url('public/uploads')}}/mail.png" class="img-fluid mr-5" alt="" style="width:150px"></a>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-6 mb-5">
-            <div class="pr_detail mt-4">
-                <div class="product_description">
-                    <h4 class=""><a href="">{{$data->tensp}}</a></h4>
-                    
-                    <div class="product_price">
-                        <span class="price">{{number_format($data->giaxuat)}}.VND</span>
-                        {{-- <del>$55.25</del>
-                        <div class="on_sale">
-                            <span>35% Off</span>
-                        </div> --}}
-                    </div>
-                    
-                    <div class="product_sort_info">
-                        <ul>
-                            <br><br><li>Phân loại sản phẩm: <i class="linearicons-shield-check"></i>{{$data->phanloai->phanloai}}</li>
-                            {{-- <li><i class="linearicons-sync"></i> 30 Day Return Policy</li>
-                            <li><i class="linearicons-bag-dollar"></i> Cash on Delivery available</li> --}}
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-11">
-                        <div class="form-group">
-                            <label for="chitiet" class="form-label">Chi tiết</label>
-                            {!!$data->chitiet!!}
-                        </div>
-                    </div>
-                    
-                   
-                </div>
-                <hr />
-                <div class="cart_extra">
-                    @if($data->size->id==0)
-                        <h4><span class="badge rounded-pill bg-danger mr-5 pull-left">{{$data->size->size}} </span></h4>
-                    @elseif($data->size->id==1)
-                        <h4><span class="badge rounded-pill bg-dark mr-5 pull-left">{{$data->size->size}} </span></h4>
-                    @elseif($data->size->id==2)
-                        <h4><span class="badge rounded-pill bg-secondary mr-5 pull-left">{{$data->size->size}} </span></h4>
-                    @elseif($data->size->id==3)
-                        <h4><span class="badge rounded-pill bg-success mr-5 pull-left">{{$data->size->size}} </span></h4>
-                    @endif
-                    {{-- <h3><span class="badge rounded-pill bg-danger mr-4 ml-3">Size áo: {{$data->size->size}} </span></h3> --}}
-
-
-
-                    <div class="cart_btn">
-                        <button type="button" class="btn btn-outline-danger"><a href="{{route('home.themgiohang',$data->id)}}"><i class="icon-basket-loaded"></i> Thêm vào giỏ hàng</button>
-                        <a class="add_compare" href="#"><i class="icon-shuffle"></i></a>
-                        <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
-                    </div>
-                </div>
-                <hr />
-                <ul class="product-meta">
-                   
-                    <li>Danh mục: <a href="#">{{$data->danhmuc->tendanhmuc}}</a></li>
-                    
-                </ul>
-                
-                <div class="product_share">
-                    <span>Share:</span>
-                    <ul class="social_icons">
-                        <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                        <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                        <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                        <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                        <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+            <div class="col-lg-2 d-flex align-items-center justify-content-center">
+                <a href="tel:0917663865"><img src="{{url('public/uploads')}}/phone.png" class="img-fluid" alt="" style="width:150px"></a>
+              </div>
         </div>
     </div>
-    
-</div>
-<div style="text-align: center" class="mb-3">
-    <h3>MÔ TẢ SẢN PHẨM VIDEO</h3>
-    <div class="row">
-        <div class="col-lg-2">
-            
-        </div>
-        <div class="col-lg-8">
-            <iframe width="100%" height="552" src="https://www.youtube.com/embed/{{$data->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="col-lg-2">
-            
-        </div>
+  </section>
+
+  <section id="portfolio" class="portfolio mt-5 mb-5">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>CHI TIẾT GIẢI PHÁP</h2>
+      </div>
+
+      <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <li data-filter="*" class="filter-active">All</li>
+        <li data-filter=".filter-app">Đặc điểm</li>
+        <li data-filter=".filter-card">Tính năng</li>
+        <li data-filter=".filter-web">Lợi ích</li>
+      </ul>
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
         
+        @foreach($dacdiem as $item)
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel.jpg" class="img-fluid" alt=""></div>
+          <div class="portfolio-info">
+            <h4>{{$item->tendacdiem}}</h4>
+            <p>Đặc điểm</p>
+            <a href="{{url('public/uploads')}}/viettel.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="ĐẶC ĐIỂM <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+          </div>
+        </div>
+        @endforeach
+        @foreach($loiich as $item)
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel.jpg" class="img-fluid" alt=""></div>
+          <div class="portfolio-info">
+            <h4>{{$item->tenloiich}}</h4>
+            <p>Lợi ích</p>
+            <a href="{{url('public/uploads')}}/viettel.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="LỢI ÍCH <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+          </div>
+        </div>
+        @endforeach
+        @foreach($tinhnang as $item)
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel.jpg" class="img-fluid" alt=""></div>
+          <div class="portfolio-info">
+            <h4>{{$item->tentinhnang}}</h4>
+            <p>Tính năng</p>
+            <a href="{{url('public/uploads')}}/viettel.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="TÍNH NĂNG <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+          </div>
+        </div>
+        @endforeach
+
+      </div>
+
     </div>
-</div>
+  </section>
+
+  <section id="team" class="team section-bg">
+
+    <div class="container mt-5 mb-5" data-aos="fade-up">
+      <div class="member">
+        <div class=" text-center">
+          <h4 style="font-size: 40px">GIÁ DỊCH VỤ</h4>
+          <p style="font-size: 15px"><i>Quý khách vui lòng liên hệ qua đầu số bán hàng, tư vấn dịch vụ trực tiếp: 18008000 (miễn phí).</i></p>
+          <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            ĐĂNG KÝ NGAY
+          </button>
+          
+          <!-- Modal -->
+
+        </div>
+      </div>
+    </div>
+
+    <form action="{{route('home.postthongtin')}}" method="post">
+      @csrf
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">THÔNG TIN ĐĂNG KÝ</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group invalid">
+                <label for="hoten" class="form-label">Nhập họ và tên</label>
+                <input type="text" class="form-control" name="hoten" id="hoten" required >
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group invalid mt-3">
+                    <label for="sdt" class="form-label">Nhập số điện thoại</label>
+                    <input type="text" class="form-control" name="sdt" id="sdt" required >
+                  </div>
+                  <div class="form-group invalid mt-2">
+                    <label for="diachi" class="form-label">Nhập địa chỉ</label>
+                    <input type="text" class="form-control" name="diachi" id="diachi" required >
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="sanpham_id">Sản phẩm tư vấn<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="sanpham_id" class="form-control custom-select @error('sanpham_id') is-invalid @enderror" name="sanpham_id" required autofocus>
+                        <option value="">--Chọn sản phẩm--</option>
+                        @foreach($sp as $value)
+                            <option value="{{ $value->id }}">{{ $value->tensp}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group invalid mt-3">
+                    <label for="email" class="form-label">Nhập địa chỉ mail</label>
+                    <input type="email" class="form-control" name="email" id="email" required >
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="hinhthuc">Hình thức liên hệ<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="hinhthuc" class="form-control custom-select @error('hinhthuc') is-invalid @enderror" name="hinhthuc" required autofocus>
+                        <option value="">--Chọn hình thức liên hệ--</option>
+                        <option value="0">Gọi điện</option>
+                        <option value="1">SMS</option>
+                        <option value="2">Zalo</option>
+                        <option value="3">Email</option>    
+                    </select>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="yeucau_id">Yêu cầu tư vấn<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="yeucau_id" class="form-control custom-select @error('yeucau_id') is-invalid @enderror" name="yeucau_id" required autofocus>
+                        <option value="">--Chọn yêu cầu tư vấn--</option>
+                        <option value="0">Phản ánh sản phẩm dịch vụ</option>
+                        <option value="1">Tư vấn sản phẩm dịch vụ</option>    
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group invalid mt-3">
+                <label for="noidung" class="form-label">Nhập nội dung cụ thể</label>
+                <textarea class="form-control" name="noidung" id="noidung" cols="10" rows="5"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger">Gửi thông tin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </section>
+</main><!-- End #main -->
 
 @endsection
-@section('cke')
-	<script src="{{ asset('public/js/ckeditor/ckeditor.js') }}"></script>
-@endsection
+       

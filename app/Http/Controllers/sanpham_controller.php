@@ -119,7 +119,7 @@ class sanpham_controller extends Controller
             File::delete('public/uploads/sanpham/avatar/'.$data->anh);
             $request->merge(['anh'=>$file_name]); 
         } 
-        elseif($request->has('file_uploads1')){
+        if($request->has('file_uploads1')){
             $file1=$request->file_uploads1;
             $ex=$request->file_uploads1->extension();
             $file_name1=time().'-sanpham_chitiet'.'.'.$ex;
@@ -128,6 +128,11 @@ class sanpham_controller extends Controller
             $data=sanpham::find($id);
             File::delete('public/uploads/sanpham/chitiet/'.$data->anh1);
             $request->merge(['anh1'=>$file_name1]);  
+        }
+        else
+        {
+            $sub_link=substr($request->link,17);
+            $request->merge(['link'=>$sub_link]);
         }
     
         if(sanpham::find($id)->update($request->all())){

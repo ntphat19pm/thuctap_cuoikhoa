@@ -7,11 +7,16 @@ use App\Models\danhmuc;
 use App\Models\sanpham;
 use App\Models\khachhang;
 use App\Models\dathang;
+use App\Models\dacdiem;
+use App\Models\thongtin;
+use App\Models\tinhnang;
+use App\Models\loiich;
 use App\Models\dathang_chitiet;
 use App\Models\gioitinh;
 use App\Models\baiviet;
 use Illuminate\Support\Facades\DB;
 use App\Helper\giohang;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Mail\dathang_email;
@@ -30,7 +35,17 @@ class home_controller extends Controller
 
     public function chitiet($id){
         $data=sanpham::find($id);
-        return view('chitiet',compact('data'));
+        $dacdiem=dacdiem::where('sanpham_id',$id)->orderby('sanpham_id','DESC')->get();
+        $tinhnang=tinhnang::where('sanpham_id',$id)->orderby('sanpham_id','DESC')->get();
+        $loiich=loiich::where('sanpham_id',$id)->orderby('sanpham_id','DESC')->get();
+        return view('chitiet',compact('data','dacdiem','tinhnang','loiich'));
+    }
+    public function showlinhvuc($id){
+        $showlinhvuc=sanpham::where('danhmuc_id',$id)->orderby('danhmuc_id','DESC')->paginate(10);
+       
+        $data=danhmuc::find($id);
+        // $ten=$data->tendanhmuc;
+        return view('showlinhvuc',compact('data','showlinhvuc'));
     }
     public function chitietbai($id){
         $data=baiviet::find($id);
@@ -89,22 +104,21 @@ class home_controller extends Controller
   
     }
 
-    public function post_dangky(Request $request)
+    public function post_thongtin(Request $request)
     {
        
-        $data=new khachhang;
-        $data->hovaten=$request->hovaten;
-        $data->gioitinh=$request->gioitinh;
+        $data=new thongtin;
+        $data->hoten=$request->hoten;
         $data->sdt=$request->sdt;
-        $data->cmnd=$request->cmnd;
-        $data->ngaysinh=$request->ngaysinh;
         $data->diachi=$request->diachi;
         $data->email=$request->email;
-        $data->tendangnhap=$request->tendangnhap;
-        $data->password=bcrypt($request->password);
+        $data->hinhthuc=$request->hinhthuc;
+        $data->sanpham_id=$request->sanpham_id;
+        $data->yeucau_id=$request->yeucau_id;
+        $data->noidung=$request->noidung;
 
         if($data->save()){
-            return redirect('/dangnhap');
+            return view('completed');
         }
   
     }

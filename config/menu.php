@@ -22,16 +22,12 @@
                
             ]
         ],
-
-        
-
         [
             'label'=>'Quản lý khách hàng',
-            'route'=>'khachhang.index',
-            'icon'=>'fa-users'
-            
+            'route'=>'doanhnghiep.index',
+            'icon'=>'fa-tshirt'
 
-        ],
+        ],      
 
         [
             'label'=>'Quản lý thuộc tính',
@@ -63,6 +59,12 @@
             'icon'=>'fa-tshirt'
 
         ],
+        [
+            'label'=>'Quản lý thông tin',
+            'route'=>'thongtin.index',
+            'icon'=>'fa-tshirt'
+
+        ],
         
         [
             'label'=>' Quản lý nhân viên',
@@ -86,12 +88,16 @@
             'icon'=>'fa-users-cog',
             'item' =>[
                 [
-                    'label'=>'Thông tin cửa hàng',
+                    'label'=>'Quản lý thông tin',
                     'route'=>'lienhe.index'
                 ],
                 [
                     'label'=>'Các menu',
                     'route'=>'menu.index'
+                ],
+                [
+                    'label'=>'Quản lý slider',
+                    'route'=>'slider.index'
                 ]
             ]
 

@@ -32,10 +32,21 @@
                   
                   <div class="form-group invalid">
                       <label for="mota" class="form-label">Mô tả</label>
-                      <input type="text" class="form-control" name="mota" id="mota" required >
+                      <textarea class="form-control" name="mota" id="mota" cols="10" rows="1"></textarea>
                   </div>
                   
                   <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="phanloai_id">Lĩnh vực<span class="text-danger font-weight-bold">*</span></label>
+                        <select id="phanloai_id" class="form-control custom-select @error('phanloai_id') is-invalid @enderror" name="phanloai_id" required autofocus>
+                            <option value="">--Chọn lĩnh vực--</option>
+                            <option value="0">Tin sự kiện</option>
+                            <option value="1">Tin công nghệ</option>
+                            
+                        </select>
+                      </div>
+                    </div>
                     <div class="col-lg-6">
                       <div class="form-group invalid">
                         <label for="create_at" class="form-label">Ngày viết</label>

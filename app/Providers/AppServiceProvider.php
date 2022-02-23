@@ -7,7 +7,7 @@ use App\Helper\giohang;
 use App\Models\danhmuc;
 use App\Models\sanpham;
 use App\Models\nhanvien;
-use App\Models\khachhang;
+use App\Models\doanhnghiep;
 use App\Models\dathang;
 use App\Models\lienhe;
 use App\Models\video;
@@ -41,9 +41,13 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*',function($view){
             $view->with([
                 'danhmuc'=>danhmuc::all(),
+                "linhvuc"=>danhmuc::where('linhvuc_id',0)->get(),
+                "dichvu"=>danhmuc::where('linhvuc_id',1)->get(),
+                "doanhnghiep"=>doanhnghiep::where('loai_kh',0)->get(),
+                "chinhphu"=>doanhnghiep::where('loai_kh',1)->get(),
                 'lienhe'=>lienhe::all(),
                 'video'=>video::where('status',0)->paginate(6),
-                'baiviet'=>baiviet::where('status',0)->paginate(9),
+                'baiviet'=>baiviet::where('trangthai',0)->paginate(5),
                 'menu'=>menu::all(),
                 'giohang'=>new giohang(),
                 'sp'=>sanpham::search()->paginate(20),

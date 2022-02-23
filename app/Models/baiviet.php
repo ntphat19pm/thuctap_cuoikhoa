@@ -10,5 +10,5 @@ class baiviet extends Model
     use HasFactory;
     protected $table='baiviet';
     public $timestamps = false;
-    protected $fillable=['id','tenbai','mota','avatar','noidung','nguoidang','create_at','status'];
+    protected $fillable=['id','tenbai','mota','avatar','noidung','nguoidang','create_at','status','phanloai_id','trangthai'];
 }
