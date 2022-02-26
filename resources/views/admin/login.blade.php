@@ -103,7 +103,7 @@
             </div>
           </div>
           <div class="col-lg-5 login-half-bg d-none d-lg-flex flex-row">
-            <img src="{{url('public')}}/login.jpg" height="700px">
+            {{-- <img src="{{url('public')}}/login.jpg" height="700px"> --}}
             
           </div>
           <p class="font-weight-medium text-center flex-grow align-self-end" style="color: rgb(102, 0, 102)">Copyright &copy; Nguyễn Tấn Phát  All rights reserved.</p>

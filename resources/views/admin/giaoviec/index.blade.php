@@ -12,11 +12,11 @@
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
-      <a href="{{route('loiich.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm lợi ích</a> 
-      <a href="{{ route('loiich.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-file-download"></i> Xuất ra Excel</a>
-      <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
+      <a href="{{route('giaoviec.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm công việc</a> 
+      {{-- <a href="{{ route('dacdiem.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-file-download"></i> Xuất ra Excel</a>
+      <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button> --}}
     </div>
-    <form action="{{ route('loiich.nhap') }}" method="post" enctype="multipart/form-data">
+    {{-- <form action="{{ route('dacdiem.nhap') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="modal fade" id="modal-secondary">
         <div class="modal-dialog">
@@ -31,7 +31,7 @@
               <div class="mb-0">
                 <label for="file_excel" class="form-label">Chọn tập tin Excel</label>
                 <input type="file" class="form-control" id="file_excel" name="file_excel" required />
-                <a href="{{url('public')}}/danh-sach-san-pham.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
+                <a href="{{url('public/uploads/file_nhap')}}/danh-sach-dac-diem.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
               </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -43,7 +43,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-    </form>
+    </form> --}}
 
     <div class="card" >
     
@@ -52,8 +52,11 @@
           <thead>
             <tr>
               <th class="text-center" scope="col">STT</th>
-              <th class="text-center" scope="col">Tên lợi ích</th>
-              <th class="text-center" scope="col">Chi tiết</th>
+              <th class="text-center" scope="col">Tên công việc</th>
+              <th class="text-center" scope="col">Người phụ trách</th>
+              <th class="text-center" scope="col">Hạn chót</th>
+              <th class="text-center" scope="col">Ngày nộp</th>
+              <th class="text-center" scope="col">Trạng thái</th>
               <th class="text-right" scope="col">Action</th>
             </tr>
           </thead>
@@ -67,13 +70,16 @@
             @endphp
             <tr>
               <td class="text-center"><i>{{$i}}</i></td>
-              <td>{{$item->tenloiich}}</td>            
-              <td>{{$item->chitiet}}</td>            
+              <td>{{$item->ten_congviec}}</td>            
+              <td>{{$item->nhanvien->hovaten}}</td>            
+              <td>{{$item->hanchot}}</td>            
+              <td>{{$item->ngaynop}}</td>            
+              <td>{{$item->trangthai}}</td>            
               <td class="text-right">
-                <a href="{{route('loiich.edit',$item->id)}}" class="btn btn-sm btn-success">
+                <a href="{{route('giaoviec.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              
                 </a> 
-                <a  href="{{route('loiich.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
+                <a  href="{{route('giaoviec.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
                   <i class="fas fa-trash"></i>
                 </a>
               </td>

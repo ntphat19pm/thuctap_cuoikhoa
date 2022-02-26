@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\dacdiem;
 use App\Models\sanpham;
+use App\Imports\dacdiem_import;
+use App\Exports\dacdiem_export;
 use Toastr;
+use File;
+use Excel;
 
 use Illuminate\Http\Request;
 
@@ -108,5 +112,17 @@ class dacdiem_controller extends Controller
             Toastr::success('Xóa đặc điểm thành công','Xóa đặc điểm');
             return redirect('admin/dacdiem');
         }
+    }
+
+    public function postNhap(Request $request)
+    {
+        Excel::import(new dacdiem_import, $request->file('file_excel'));
+        return redirect('admin/dacdiem');
+    }
+    
+    // Xuất ra Excel
+    public function getXuat()
+    {
+        return Excel::download(new dacdiem_export, 'danh-sach-dac-diem.xlsx');
     }
 }

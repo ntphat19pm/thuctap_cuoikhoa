@@ -75,7 +75,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{{route('home.home')}}">Trang chủ</a></li>
+          <li><a class="nav-link scrollto" href="{{route('home.home')}}">Trang chủ</a></li>
           <li class="dropdown"><a href="#"><span>Giải pháp</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>Lĩnh vực</span> <i class="bi bi-chevron-right"></i></a>
@@ -95,7 +95,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="">Không gian số</a></li>        
-          <li><a class="nav-link scrollto" href="">Tin tức</a></li>        
+          <li><a class="nav-link scrollto" href="{{route('home.baiviet',$item->id)}}">Tin tức</a></li>        
           <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>

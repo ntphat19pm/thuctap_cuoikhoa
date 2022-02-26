@@ -88,6 +88,9 @@
         <a href="{{route('profile.edit',Auth::user()->id)}}" class="btn btn-sm btn-success float-right mt-3">
             <i class="fas fa-edit"> Sửa</i>              
         </a>
+        <a href="{{route('profile.show',Auth::user()->id)}}" class="btn btn-sm btn-success float-right mt-3">
+            <i class="fas fa-edit"> công việc</i>              
+        </a>
         <a href="{{route('admin.index')}}" class="btn btn-sm btn-danger mt-3">
             <i class="fas fa-sign-out-alt"> Quay về trang quản lý</i>     
         </a>

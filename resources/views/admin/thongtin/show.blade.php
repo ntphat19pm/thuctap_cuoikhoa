@@ -62,12 +62,33 @@
             </tr>
           </tbody>
         </table>
+        <form action="{{route('thongtin.update',$data->id)}}" method="POST">
+        @csrf @method('PUT')
+          <div class="row mt-3">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <select id="trangthai" class="form-control custom-select @error('trangthai') is-invalid @enderror" name="trangthai" required disabled>
+                  <option value="0" {{($data->trangthai== 0)?'selected':'' }}>Chưa liên hệ</option>
+                  <option value="1" {{($data->trangthai== 1)?'selected':'' }}>Đã liên hệ</option>
+                </select>
+              </div>
+            </div>
+            {{-- @if($data->trangthai==0)
+                <a href="{{ route('thongtin.active',$data->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i><br>Chưa liên hệ</a>
+              @elseif($data->trangthai==1)
+                <a href="{{ route('thongtin.unactive',$data->id)}}"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i><br>Đã liên hệ</a>
+              @endif --}}
+            {{-- <button type="submit" class="btn btn-outline-success mb-3">
+              <i class="fas fa-check-circle"></i>
+            </button> --}}
+          </div>
+        </form>
       </div>
     </div>
     <hr>
     <br>
     
-    {{-- <div class="card" >
+    <div class="card" >
     
         <div class="card-body">
           <table id="example1" class="table table-bordered table-striped">
@@ -81,11 +102,13 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($sanpham as $item)
                   <tr>
-                    <td class="text-center">{{$data->sanpham->tensp}}</td>
-                    <td class="text-center"></td>
+                    <td class="text-center">{{$item->tensp}}</td>
+                    <td class="text-center">{{$item->danhmuc->tendanhmuc}}</td>
                     
                   </tr>
+              @endforeach
             </tbody>    
           </table>
           <form method="POST" action="" id="form-delete">
@@ -93,7 +116,7 @@
           <form>
         </div>
       </div>
-      </div> --}}
+      </div>
 {{-- <div class="pagination justify-content-center">{{$data->appends(request()->all())->links()}}</div> --}}
 @endsection
 @section('js')

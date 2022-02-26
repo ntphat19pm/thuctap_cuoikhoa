@@ -25,10 +25,10 @@
             <td>{{$item->id}}</td>
             <td>{{$item->ten_slider}}</td>
             <td>
-              @if ($item->trangthai==1)
-              <span class="badge bg-navy">Chưa được duyệt</span>   
-              @elseif($item->trangthai==0)
-              <span class="badge bg-olive">Đã được duyệt</span>
+              @if($item->trangthai==0)
+                <a href="{{ route('slider.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>
+              @elseif($item->trangthai==1)
+                <a href="{{ route('slider.unactive',$item->id)}}"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i></a>
               @endif
             </td>
             <td><img src="{{url('public/uploads/slider')}}/{{$item->avatar}}" width="100px"></td>

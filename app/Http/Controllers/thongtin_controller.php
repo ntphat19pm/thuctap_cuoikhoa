@@ -49,7 +49,8 @@ class thongtin_controller extends Controller
     public function show($id)
     {
         $data=thongtin::find($id);
-        return view('admin.thongtin.show',compact('data'));
+        $sanpham=sanpham::where('id',$data->sanpham_id)->get();
+        return view('admin.thongtin.show',compact('data','sanpham'));
     }
 
     /**
@@ -84,5 +85,19 @@ class thongtin_controller extends Controller
     public function destroy(thongtin $thongtin)
     {
         //
+    }
+
+    public function active($id)
+    {
+        $mang=thongtin::find($id)->update(['trangthai'=>1]);
+        $data=thongtin::all();
+        return view('admin.thongtin.index',compact('mang','data'));
+    }
+
+    public function unactive($id)
+    {
+        $mang=thongtin::find($id)->update(['trangthai'=>0]);
+        $data=thongtin::all();
+        return view('admin.thongtin.index',compact('mang','data'));
     }
 }

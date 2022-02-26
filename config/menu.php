@@ -27,6 +27,12 @@
             'route'=>'doanhnghiep.index',
             'icon'=>'fa-tshirt'
 
+        ],
+        [
+            'label'=>'Quản lý công việc',
+            'route'=>'giaoviec.index',
+            'icon'=>'fa-tshirt'
+
         ],      
 
         [
@@ -90,10 +96,6 @@
                 [
                     'label'=>'Quản lý thông tin',
                     'route'=>'lienhe.index'
-                ],
-                [
-                    'label'=>'Các menu',
-                    'route'=>'menu.index'
                 ],
                 [
                     'label'=>'Quản lý slider',

@@ -11,6 +11,7 @@
             <th scope="col">Họ tên khách hàng</th>
             <th scope="col">Hình thức liên hệ</th>
             <th scope="col">Yêu cầu</th>
+            <th scope="col">Trạng thái</th>
             <th class="text-right" scope="col">Action</th>
           </tr>
         </thead>
@@ -43,14 +44,18 @@
                 Tư vấn sản phẩm dịch vụ
                 @endif
             </td>
+            <td class="text-center">
+              @if($item->trangthai==0)
+                <a href="{{ route('thongtin.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i><br>Chưa liên hệ</a>
+              @elseif($item->trangthai==1)
+                <a href="{{ route('thongtin.unactive',$item->id)}}"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i><br>Đã liên hệ</a>
+              @endif
+          </td>
             
             <td class="text-right">
                 <a href="{{route('thongtin.show',$item->id)}}" class="btn btn-sm btn-warning">
                     <i class="fas fa-eye"></i>              
                   </a>
-                <a href="{{route('thongtin.edit',$item->id)}}" class="btn btn-sm btn-success">
-                    <i class="fas fa-edit"></i>              
-                </a> 
                 <a  href="{{route('thongtin.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
                     <i class="fas fa-trash"></i>
                 </a>

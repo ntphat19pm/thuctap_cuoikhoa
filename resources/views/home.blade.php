@@ -19,12 +19,11 @@
             <div class="carousel-item active">
               <img src="{{url('public/arsha')}}/assets/img/hero-img.png" class="img-fluid animated d-block w-100" alt="">
             </div>
+            @foreach($slider as $item)
             <div class="carousel-item">
-              <img src="{{url('public/arsha')}}/assets/img/hero-img.png" class="img-fluid animated d-block w-100" alt="">
+              <img src="{{url('public/uploads/slider')}}/{{$item->avatar}}" class="img-fluid animated d-block w-100" alt="">
             </div>
-            <div class="carousel-item">
-              <img src="{{url('public/arsha')}}/assets/img/hero-img.png" class="img-fluid animated d-block w-100" alt="">
-            </div>
+            @endforeach
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -54,7 +53,7 @@
           </div>
           @foreach ($baiviet as $item)
           <div class="carousel-item">
-            <h5>{{$item->tenbai}}</h5>
+            <h5><a href="{{route('home.chitietbai',$item->id)}}">{{$item->tenbai}}</a></h5>
           </div>
           @endforeach
         </div>
@@ -121,7 +120,7 @@
                       <img src="{{url('public/uploads/linhvuc')}}/{{$item->avatar}}" alt="" height="300px">
                       <div class="hover-content">
                         <div class="inner-content">
-                          <a href="#"><h4>{{$item->tendanhmuc}}</h4></a>
+                          <a href="{{route('home.showlinhvuc',$item->id)}}"><h4>{{$item->tendanhmuc}}</h4></a>
                           <span>CHUYÊN MỤC SỐ</span>
                         </div>
                       </div>
@@ -221,7 +220,7 @@
                       <img src="{{url('public/uploads/baiviet')}}/{{$item->avatar}}" alt="" height="250px">
                       <div class="hover-content">
                         <div class="inner-content">
-                          <a href="#"><h4>{{$item->tenbai}}</h4></a>
+                          <a href="{{route('home.chitietbai',$item->id)}}"><h4>{{$item->tenbai}}</h4></a>
                           <span>
                             @if($item->phanloai_id==0)
                             TIN SỰ KIỆN

@@ -13,10 +13,10 @@
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
       <a href="{{route('tinhnang.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm tính năng</a> 
-      {{-- <a href="{{ route('sanpham.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-file-download"></i> Xuất ra Excel</a>
-      <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button> --}}
+      <a href="{{ route('tinhnang.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-file-download"></i> Xuất ra Excel</a>
+      <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
     </div>
-    {{-- <form action="{{ route('sanpham.nhap') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('tinhnang.nhap') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="modal fade" id="modal-secondary">
         <div class="modal-dialog">
@@ -43,7 +43,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-    </form> --}}
+    </form>
 
     <div class="card" >
     

@@ -32,7 +32,7 @@
                   
                   <div class="form-group invalid">
                       <label for="mota" class="form-label">Mô tả</label>
-                      <input type="text" value="{{$data->mota}}" class="form-control" name="mota" id="mota" required >
+                      <textarea type="text" class="form-control" name="mota" id="mota" required >{{$data->mota}}</textarea>
                   </div>
                   
                   <div class="row">

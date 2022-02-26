@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\loiich;
 use App\Models\sanpham;
 use Toastr;
+use App\Imports\loiich_import;
+use App\Exports\loiich_export;
+use File;
+use Excel;
 
 use Illuminate\Http\Request;
 
@@ -108,5 +112,17 @@ class loiich_controller extends Controller
             Toastr::success('Xóa lợi ích thành công','Xóa lợi ích');
             return redirect('admin/loiich');
         }
+    }
+
+    public function postNhap(Request $request)
+    {
+        Excel::import(new loiich_import, $request->file('file_excel'));
+        return redirect('admin/loiich');
+    }
+    
+    // Xuất ra Excel
+    public function getXuat()
+    {
+        return Excel::download(new loiich_export, 'danh-sach-loi-ich.xlsx');
     }
 }

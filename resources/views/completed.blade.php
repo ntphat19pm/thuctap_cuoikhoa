@@ -1,27 +1,20 @@
 @extends('layouts.site')
 @section('main')
-<div class="main_content">
-    <div class="section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <div class="text-center order_complete">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="">
-                            <b><h3>ĐẶT HÀNG THÀNH CÔNG!</h3></b>
-                            <h5>Cám ơn anh/chị {{Auth::guard('khachhang')->user()->hovaten}} đã mua hàng</h5>
-                        </div>
-                        <p>Bộ phận chăm sóc khách hàng sẽ liên hệ sớm với anh/chị trong 24h để xác nhận đơn hàng và giao hàng đến anh/chị.
-                            <br>Hotline hỗ trợ: (028) 7307 1441
-                        </p>
-                        <i><h6 style="color: slategray">* Đơn hàng của anh/chị sẽ được giao trong giờ hành chính, từ thứ 2 đến thứ 7. Anh/chị vui lòng chú ý điện thoại để nhận hàng nhanh nhất nhé!</h6></i>
-                        
-                        <a href="{{route('home.home')}}" class="btn btn-fill-out">Tiếp tục mua hàng</a>
-                    </div>
-                </div>
-            </div>
+
+<section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>THÀNH CÔNG</h1>
+          <h2>Cám ơn bạn đã gửi thông tin cho chúng tôi. <br>Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</h2>
         </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+            <img src="{{url('public/uploads')}}/completed.png" class="img-fluid animated d-block w-100" alt="">          
+        </div>
+      </div>
     </div>
-</div>
+  
+  </section>
        
 @endsection

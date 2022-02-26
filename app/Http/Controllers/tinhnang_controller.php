@@ -6,6 +6,10 @@ use App\Models\tinhnang;
 use App\Models\sanpham;
 use Toastr;
 use Illuminate\Http\Request;
+use App\Imports\tinhnang_import;
+use App\Exports\tinhnang_export;
+use File;
+use Excel;
 
 class tinhnang_controller extends Controller
 {
@@ -107,5 +111,17 @@ class tinhnang_controller extends Controller
             Toastr::success('Xóa tính năng thành công','Xóa tính năng');
             return redirect('admin/tinhnang');
         }
+    }
+
+    public function postNhap(Request $request)
+    {
+        Excel::import(new tinhnang_import, $request->file('file_excel'));
+        return redirect('admin/tinhnang');
+    }
+    
+    // Xuất ra Excel
+    public function getXuat()
+    {
+        return Excel::download(new tinhnang_export, 'danh-sach-tinh-nang.xlsx');
     }
 }

@@ -162,9 +162,19 @@ class nhanvien_controller extends Controller
             'password'=>$request->password
         ];
 
-        if(Auth::attempt($arr)){
-            Toastr::success('Đăng nhập thành công','Thành công');
-            return view('admin.index',['user'=>Auth::user()]);
+        if(Auth::attempt($arr))
+        {
+            if(Auth::user()->trangthai==0)
+            {
+                Toastr::success('Đăng nhập thành công','Thành công');
+                return view('admin.index',['user'=>Auth::user()]);
+            }
+            elseif(Auth::user()->trangthai==1)
+            {
+                Toastr::success('Đăng nhập thất bại','Thất bại');
+                return view('admin.login');
+            }
+            
         }
         else{
             Toastr::success('Đăng nhập thành công','Thành công');

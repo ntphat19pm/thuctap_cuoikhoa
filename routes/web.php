@@ -67,6 +67,21 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     
     Route::post('/sanpham/nhap', 'sanpham_controller@postNhap')->name('sanpham.nhap');
     Route::get('/sanpham/xuat', 'sanpham_controller@getXuat')->name('sanpham.xuat');
+
+    Route::post('/dacdiem/nhap', 'dacdiem_controller@postNhap')->name('dacdiem.nhap');
+    Route::get('/dacdiem/xuat', 'dacdiem_controller@getXuat')->name('dacdiem.xuat');
+
+    Route::post('/loiich/nhap', 'loiich_controller@postNhap')->name('loiich.nhap');
+    Route::get('/loiich/xuat', 'loiich_controller@getXuat')->name('loiich.xuat');
+
+    Route::post('/tinhnang/nhap', 'tinhnang_controller@postNhap')->name('tinhnang.nhap');
+    Route::get('/tinhnang/xuat', 'tinhnang_controller@getXuat')->name('tinhnang.xuat');
+
+    Route::get('/thongtin/active/{id}', 'thongtin_controller@active')->name('thongtin.active');
+    Route::get('/thongtin/unactive/{id}', 'thongtin_controller@unactive')->name('thongtin.unactive');
+    Route::get('/slider/active/{id}', 'slider_controller@active')->name('slider.active');
+    Route::get('/slider/unactive/{id}', 'slider_controller@unactive')->name('slider.unactive');
+
     
     Route::resources([
         'danhmuc'=>'danhmuc_controller',
@@ -87,7 +102,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'nhanvien'=>'nhanvien_controller',
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',
-        'khuyenmai'=>'khuyenmai_controller',
+        'giaoviec'=>'giaoviec_controller',
     ]);
 });
 

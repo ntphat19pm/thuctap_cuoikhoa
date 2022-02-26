@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\chucvu;
 use App\Models\nhanvien;
 use App\Models\gioitinh;
+use App\Models\giaoviec;
 use App\Models\User;
 use Toastr;
 use Illuminate\Http\Request;
@@ -25,6 +26,12 @@ class profile_controller extends Controller
         $data=nhanvien::find($id);
         return view('admin.profile.edit',compact('data','chucvu','gioitinh'));  
         
+    }
+    public function show($id)
+    {
+        $data=nhanvien::find($id);
+        $giaoviec_nv=giaoviec::where('nguoinhan',$id)->orderby('nguoinhan','DESC')->paginate(10);
+        return view('admin.profile.show',compact('data','giaoviec_nv'));
     }
     public function update(Request $request, $id)
     {

@@ -24,6 +24,10 @@ class nhanvien extends Model
     public function nhanvien(){
         return $this->hasMany(dathang::class,'nhanvien_id','id');
     }
+
+    public function giaoviec(){
+        return $this->hasMany(giaoviec::class,'nguoinhan','id');
+      }
     public function scopeSearch($query)
     {
         if($tukhoa=request()->tukhoa){

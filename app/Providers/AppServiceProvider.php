@@ -8,12 +8,12 @@ use App\Models\danhmuc;
 use App\Models\sanpham;
 use App\Models\nhanvien;
 use App\Models\doanhnghiep;
-use App\Models\dathang;
+use App\Models\thongtin;
 use App\Models\lienhe;
 use App\Models\video;
+use App\Models\giaoviec;
 use App\Models\baiviet;
-use App\Models\menu;
-use App\Models\khuyenmai;
+use App\Models\slider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -41,14 +41,16 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*',function($view){
             $view->with([
                 'danhmuc'=>danhmuc::all(),
+                "slider"=>slider::where('trangthai',1)->get(),
+                "thongtin"=>thongtin::where('trangthai',0)->get(),
                 "linhvuc"=>danhmuc::where('linhvuc_id',0)->get(),
                 "dichvu"=>danhmuc::where('linhvuc_id',1)->get(),
                 "doanhnghiep"=>doanhnghiep::where('loai_kh',0)->get(),
                 "chinhphu"=>doanhnghiep::where('loai_kh',1)->get(),
                 'lienhe'=>lienhe::all(),
+                'giaoviec'=>giaoviec::all(),
                 'video'=>video::where('status',0)->paginate(6),
-                'baiviet'=>baiviet::where('trangthai',0)->paginate(5),
-                'menu'=>menu::all(),
+                'baiviet'=>baiviet::where('trangthai',0)->paginate(6),
                 'giohang'=>new giohang(),
                 'sp'=>sanpham::search()->paginate(20),
             ]);
