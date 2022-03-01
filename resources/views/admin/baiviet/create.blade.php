@@ -59,6 +59,17 @@
                         <input type="text" value="{{Auth::user()->hovaten}}" class="form-control" name="nguoidang" id="nguoidang" required readonly >
                       </div>
                     </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="binhluan_id">Cho phép bình luận<span class="text-danger font-weight-bold">*</span></label>
+                        <select id="binhluan_id" class="form-control custom-select @error('binhluan_id') is-invalid @enderror" name="binhluan_id" required autofocus>
+                            <option value="">--Chọn--</option>
+                            <option value="0">Từ chối</option>
+                            <option value="1">Cho phép</option>
+                            
+                        </select>
+                      </div>
+                    </div>
                   </div>
 
                 </div>

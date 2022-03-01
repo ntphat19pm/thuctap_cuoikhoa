@@ -69,9 +69,15 @@
                                 <input type="text" value="https://youtu.be/{{$data->link}}" class="form-control" name="link" id="link" required>
                             </div>
                         </div>
-                        <div class="col-lg-8">
-                            <iframe width="100%" height="285" src="https://www.youtube.com/embed/{{$data->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="col-lg-4">
+                            <div class="form-group invalid">
+                                <label for="link_pdf" class="form-label">File tài liệu</label>
+                                <input type="text" value="{{$data->link_pdf}}" class="form-control" name="link_pdf" id="link_pdf" required>
+                            </div>
                         </div>
+                        {{-- <div class="col-lg-8">
+                            <iframe width="100%" height="285" src="https://www.youtube.com/embed/{{$data->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div> --}}
                     </div>
                 </div>
           </form>

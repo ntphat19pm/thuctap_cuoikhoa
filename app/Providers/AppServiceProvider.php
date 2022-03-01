@@ -50,7 +50,9 @@ class AppServiceProvider extends ServiceProvider
                 'lienhe'=>lienhe::all(),
                 'giaoviec'=>giaoviec::all(),
                 'video'=>video::where('status',0)->paginate(6),
-                'baiviet'=>baiviet::where('trangthai',0)->paginate(6),
+                'baiviet'=>baiviet::where('trangthai',0)->paginate(5),
+                'sukien'=>baiviet::where('trangthai',0)->where('phanloai_id',0)->paginate(6),
+                'congnghe'=>baiviet::where('trangthai',0)->where('phanloai_id',1)->paginate(6),
                 'giohang'=>new giohang(),
                 'sp'=>sanpham::search()->paginate(20),
             ]);

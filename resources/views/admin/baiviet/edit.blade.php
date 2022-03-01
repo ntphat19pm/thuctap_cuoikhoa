@@ -21,26 +21,15 @@
                     <img class="rounded mx-auto d-block mb-2" src="{{url('public/uploads/baiviet')}}/{{$data->avatar}}"  width="350px"/>
                     <input id="file_uploads" type="file" class="form-control @error('file_uploads') is-invalid @enderror" name="file_uploads" value="{{ $data->avatar }}" autocomplete="avatar" />
                   </div>
-                </div>
-    
-                <div class="col-lg-8">
-                  
-                  <div class="form-group invalid">
-                    <label for="tenbai" class="form-label">Tên bài</label>
-                    <input type="text" value="{{$data->tenbai}}" class="form-control" name="tenbai" id="tenbai" required >
-                  </div>
-                  
-                  <div class="form-group invalid">
-                      <label for="mota" class="form-label">Mô tả</label>
-                      <textarea type="text" class="form-control" name="mota" id="mota" required >{{$data->mota}}</textarea>
-                  </div>
-                  
                   <div class="row">
+
                     <div class="col-lg-6">
                       <div class="form-group invalid">
                         <label for="create_at" class="form-label">Ngày viết</label>
                         <input type="date" value="{{$data->create_at}}" class="form-control" name="create_at" id="create_at" required >
                       </div>
+                    </div>
+                    <div class="col-lg-6">
                       @if(Auth::user()->chucvu_id==1)
                       <div class="form-group">
                         <label for="trangthai">Status<span class="text-danger font-weight-bold">*</span></label>
@@ -54,19 +43,38 @@
                       </div>
                       @endif
                     </div>
-                    <div class="col-lg-6">
-                      <div class="form-group invalid">
-                        <label for="nguoidang" class="form-label">Người viết</label>
-                        <input type="text" value="{{$data->nguoidang}}" class="form-control" name="nguoidang" id="nguoidang" required readonly >
-                      </div>
-                      <div class="form-group">
-                        <label for="phanloai_id">Lĩnh vực<span class="text-danger font-weight-bold">*</span></label>
-                        <select id="phanloai_id" class="form-control custom-select @error('phanloai_id') is-invalid @enderror" name="phanloai_id" required autofocus>
-                          <option value="0" {{($data->phanloai_id== 0)?'selected':'' }}>Tin sự kiện</option>
-                          <option value="1" {{($data->phanloai_id== 1)?'selected':'' }}>Tin công nghệ</option>
-                        </select>
-                      </div>
-                    </div>
+                  </div>
+
+                  <div class="form-group invalid">
+                    <label for="nguoidang" class="form-label">Người viết</label>
+                    <input type="text" value="{{$data->nguoidang}}" class="form-control" name="nguoidang" id="nguoidang" required readonly >
+                  </div>
+                  <div class="form-group">
+                    <label for="phanloai_id">Lĩnh vực<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="phanloai_id" class="form-control custom-select @error('phanloai_id') is-invalid @enderror" name="phanloai_id" required autofocus>
+                      <option value="0" {{($data->phanloai_id== 0)?'selected':'' }}>Tin sự kiện</option>
+                      <option value="1" {{($data->phanloai_id== 1)?'selected':'' }}>Tin công nghệ</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="binhluan_id">Cho phép bình luận<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="binhluan_id" class="form-control custom-select @error('binhluan_id') is-invalid @enderror" name="binhluan_id" required autofocus>
+                      <option value="0" {{($data->binhluan_id== 0)?'selected':'' }}>Từ chối</option>
+                      <option value="1" {{($data->binhluan_id== 1)?'selected':'' }}>Cho phép</option>
+                    </select>
+                  </div>
+                </div>
+    
+                <div class="col-lg-8">
+                  
+                  <div class="form-group invalid">
+                    <label for="tenbai" class="form-label">Tên bài</label>
+                    <input type="text" value="{{$data->tenbai}}" class="form-control" name="tenbai" id="tenbai" required >
+                  </div>
+                  
+                  <div class="form-group invalid">
+                      <label for="mota" class="form-label">Mô tả</label>
+                      <textarea type="text" class="form-control" name="mota" id="mota" required >{{$data->mota}}</textarea>
                   </div>
                 </div>
                   

@@ -32,6 +32,7 @@ Route::get('/dangxuat','home_controller@dangxuat')->name('home.dangxuat');
 Route::post('/dangnhap','home_controller@post_dangnhap')->name('home.postdangnhap');
 Route::get('/dangky','home_controller@get_dangky')->name('home.getdangky');
 Route::post('/thongtin','home_controller@post_thongtin')->name('home.postthongtin');
+Route::post('/binhluan','home_controller@post_binhluan')->name('home.postbinhluan');
 Route::get('/chitiet/{id}','home_controller@chitiet')->name('home.chitiet');
 
 Route::get('/lienhe','home_controller@lienhe')->name('home.lienhe');
@@ -81,6 +82,10 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::get('/thongtin/unactive/{id}', 'thongtin_controller@unactive')->name('thongtin.unactive');
     Route::get('/slider/active/{id}', 'slider_controller@active')->name('slider.active');
     Route::get('/slider/unactive/{id}', 'slider_controller@unactive')->name('slider.unactive');
+    Route::get('/giaoviec/active/{id}', 'giaoviec_controller@active')->name('giaoviec.active');
+    Route::get('/giaoviec/unactive/{id}', 'giaoviec_controller@unactive')->name('giaoviec.unactive');
+    Route::get('/binhluan/active/{id}', 'binhluan_controller@active')->name('binhluan.active');
+    Route::get('/binhluan/unactive/{id}', 'binhluan_controller@unactive')->name('binhluan.unactive');
 
     
     Route::resources([
@@ -98,7 +103,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'menu'=>'menu_controller',
         'baiviet'=>'baiviet_controller',
         'profile'=>'profile_controller',
-        'dathang_chitiet'=>'dathang_chitiet_controller',
+        'binhluan'=>'binhluan_controller',
         'nhanvien'=>'nhanvien_controller',
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',

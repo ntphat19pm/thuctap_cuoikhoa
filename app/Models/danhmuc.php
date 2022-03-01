@@ -10,7 +10,7 @@ class danhmuc extends Model
     public $timestamps = false;
     use HasFactory;
     protected $table='danhmuc';
-    protected $fillable=['id','tendanhmuc','slug','linhvuc_id','avatar','anhbia'];
+    protected $fillable=['id','tendanhmuc','slug','linhvuc_id','avatar','anhbia','link_video','chitiet'];
 
     public function product()
     {

@@ -21,7 +21,7 @@
             </div>
             @foreach($slider as $item)
             <div class="carousel-item">
-              <img src="{{url('public/uploads/slider')}}/{{$item->avatar}}" class="img-fluid animated d-block w-100" alt="">
+              <img src="{{url('public/uploads/slider')}}/{{$item->avatar}}" class="img-fluid animated d-block rounded mx-auto d-block" style="width:500px" alt="">
             </div>
             @endforeach
           </div>
@@ -155,8 +155,8 @@
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
         @foreach ($doanhnghiep as $item)
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="{{url('public/uploads/doanhnghiep')}}/{{$item->hinhanh}}" class="img-fluid" alt=""></div>
+          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="{{url('public/uploads/doanhnghiep')}}/{{$item->hinhanh}}" class="img-fluid rounded mx-auto d-block" style="width:150px" alt=""></div>
             <div class="portfolio-info">
               <h4>{{$item->ten_kh}}</h4>
               <p>Doanh nghiệp</p>
@@ -165,8 +165,8 @@
         @endforeach
 
         @foreach ($chinhphu as $item)
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="{{url('public/uploads/doanhnghiep')}}/{{$item->hinhanh}}" class="img-fluid" alt=""></div>
+          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="{{url('public/uploads/doanhnghiep')}}/{{$item->hinhanh}}" class="img-fluid rounded mx-auto d-block" style="width:120px" alt=""></div>
             <div class="portfolio-info">
               <h4>{{$item->ten_kh}}</h4>
               <p>Chính phủ</p>
@@ -183,15 +183,90 @@
 
       <div class="row">
         <div class="col-lg-9 text-center text-lg-start">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h3>LIÊN HỆ TƯ VẤN</h3>
+          <p>Bạn có thể liên hệ với chúng tôi thông qua Email hoặc Số điện thoại. Bên cạnh đó bạn có để lại thông tin để chung tôi liên hệ.</p>
         </div>
         <div class="col-lg-3 cta-btn-container text-center">
-          <a class="cta-btn align-middle" href="#">Call To Action</a>
+          <a class="cta-btn align-middle" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Call To Action</a>
         </div>
       </div>
-
     </div>
+
+    <form action="{{route('home.postthongtin')}}" method="post">
+      @csrf
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">THÔNG TIN ĐĂNG KÝ</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group invalid">
+                <label for="hoten" class="form-label">Nhập họ và tên</label>
+                <input type="text" class="form-control" name="hoten" id="hoten" required >
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group invalid mt-3">
+                    <label for="sdt" class="form-label">Nhập số điện thoại</label>
+                    <input type="text" class="form-control" name="sdt" id="sdt" required >
+                  </div>
+                  <div class="form-group invalid mt-2">
+                    <label for="diachi" class="form-label">Nhập địa chỉ</label>
+                    <input type="text" class="form-control" name="diachi" id="diachi" required >
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="sanpham_id">Sản phẩm tư vấn<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="sanpham_id" class="form-control custom-select @error('sanpham_id') is-invalid @enderror" name="sanpham_id" required autofocus>
+                        <option value="">--Chọn sản phẩm--</option>
+                        @foreach($sp as $value)
+                            <option value="{{ $value->id }}">{{ $value->tensp}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group invalid mt-3">
+                    <label for="email" class="form-label">Nhập địa chỉ mail</label>
+                    <input type="email" class="form-control" name="email" id="email" required >
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="hinhthuc">Hình thức liên hệ<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="hinhthuc" class="form-control custom-select @error('hinhthuc') is-invalid @enderror" name="hinhthuc" required autofocus>
+                        <option value="">--Chọn hình thức liên hệ--</option>
+                        <option value="0">Gọi điện</option>
+                        <option value="1">SMS</option>
+                        <option value="2">Zalo</option>
+                        <option value="3">Email</option>    
+                    </select>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="yeucau_id">Yêu cầu tư vấn<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="yeucau_id" class="form-control custom-select @error('yeucau_id') is-invalid @enderror" name="yeucau_id" required autofocus>
+                        <option value="">--Chọn yêu cầu tư vấn--</option>
+                        <option value="0">Phản ánh sản phẩm dịch vụ</option>
+                        <option value="1">Tư vấn sản phẩm dịch vụ</option>    
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group invalid mt-3">
+                <label for="noidung" class="form-label">Nhập nội dung cụ thể</label>
+                <textarea class="form-control" name="noidung" id="noidung" cols="10" rows="5"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger">Gửi thông tin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </section>
 
   <!-- ======= Services Section ======= -->
@@ -217,7 +292,7 @@
                 <div class="item">
                   <div class="portfolio-item">
                     <div class="thumb">
-                      <img src="{{url('public/uploads/baiviet')}}/{{$item->avatar}}" alt="" height="250px">
+                      <img src="{{url('public/uploads/baiviet')}}/{{$item->avatar}}" alt="" height="220px" width="100px">
                       <div class="hover-content">
                         <div class="inner-content">
                           <a href="{{route('home.chitietbai',$item->id)}}"><h4>{{$item->tenbai}}</h4></a>

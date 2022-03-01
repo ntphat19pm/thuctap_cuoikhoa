@@ -68,8 +68,8 @@
             <div class="col-lg-4">
               <div class="form-group">
                 <select id="trangthai" class="form-control custom-select @error('trangthai') is-invalid @enderror" name="trangthai" required disabled>
-                  <option value="0" {{($data->trangthai== 0)?'selected':'' }}>Chưa liên hệ</option>
-                  <option value="1" {{($data->trangthai== 1)?'selected':'' }}>Đã liên hệ</option>
+                  <option value="0" {{($data->trangthai== 0)?'selected':'' }}>Trạng thái chưa liên hệ</option>
+                  <option value="1" {{($data->trangthai== 1)?'selected':'' }}>Trạng thái đã liên hệ</option>
                 </select>
               </div>
             </div>

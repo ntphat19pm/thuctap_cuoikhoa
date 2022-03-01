@@ -61,10 +61,16 @@ class sanpham_controller extends Controller
             $ex=$request->file_uploads1->extension();
             $file_name1=time().'-sanpham_chitiet'.'.'.$ex;
             $file1->move(public_path('uploads/sanpham/chitiet'),$file_name1);
+
+            $sub_link=substr($request->link,17);
+
+            $link_cut=substr($request->link_pdf,0,65);
           
         }
         $request->merge(['anh'=>$file_name]);
         $request->merge(['anh1'=>$file_name1]);
+        $request->merge(['link'=>$sub_link]);
+        $request->merge(['link_pdf'=>$link_cut]);
 
         if(sanpham::create($request->all())){
             Toastr::success('Thêm sản phẩm thành công','Thêm sản phẩm');
@@ -133,6 +139,9 @@ class sanpham_controller extends Controller
         {
             $sub_link=substr($request->link,17);
             $request->merge(['link'=>$sub_link]);
+
+            $link_cut=substr($request->link_pdf,0,65);
+            $request->merge(['link_pdf'=>$link_cut]);
         }
     
         if(sanpham::find($id)->update($request->all())){

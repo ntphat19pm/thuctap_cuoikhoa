@@ -16,12 +16,21 @@
         {!!$data->chitiet!!}
 
         <div class="row" data-aos="zoom-in">
+          <div class="col-lg-2 d-flex align-items-center justify-content-center">
+            
+          </div>
             <div class="col-lg-2 d-flex align-items-center justify-content-center">
               <a href="mailto:phatag852@gmail.com"><img src="{{url('public/uploads')}}/mail.png" class="img-fluid mr-5" alt="" style="width:150px"></a>
             </div>
             <div class="col-lg-2 d-flex align-items-center justify-content-center">
-                <a href="tel:0917663865"><img src="{{url('public/uploads')}}/phone.png" class="img-fluid" alt="" style="width:150px"></a>
-              </div>
+              <a href="tel:0917663865"><img src="{{url('public/uploads')}}/phone.png" class="img-fluid" alt="" style="width:150px"></a>
+            </div>
+            <div class="col-lg-2 d-flex align-items-center justify-content-center">
+              <a href="https://www.youtube.com/embed/{{$data->link}}" class="glightbox btn-watch-video"><img src="{{url('public/uploads')}}/video.png" class="img-fluid mr-5" alt="" style="width:140px"></a>
+            </div>
+            <div class="col-lg-2 d-flex align-items-center justify-content-center">
+              <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img src="{{url('public/uploads')}}/pdf.png" class="img-fluid mr-5" alt="" style="width:180px"></a>
+            </div>
         </div>
     </div>
   </section>
@@ -129,7 +138,7 @@
                             <option value="{{ $value->id }}">{{ $value->tensp}}</option>
                         @endforeach
                     </select>
-                </div>
+                  </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group invalid mt-3">
@@ -165,6 +174,22 @@
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger">Gửi thông tin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <form action="" method="">
+      <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">TÀI LIỆU KÈM THEO</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <iframe src="{{$data->link_pdf}}/preview" width="760" height="480" allow="autoplay"></iframe>
             </div>
           </div>
         </div>

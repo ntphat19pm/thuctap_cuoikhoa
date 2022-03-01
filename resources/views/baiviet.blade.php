@@ -23,7 +23,50 @@
 </section><!-- End Hero -->
 
 <main id="main">
-  <section id="about" class="services mb-2">
+  <section id="portfolio" class="portfolio mt-5">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>KHÁCH HÀNG TIÊU BIỂU</h2>
+        <p>Dưới đây là những khách hàng tiêu biểu đã cộng tác cùng VIETTEL SOLUTION </p>
+      </div>
+
+      <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <li data-filter="*" class="filter-active">All</li>
+        <li data-filter=".filter-app">Tin sự kiện</li>
+        <li data-filter=".filter-card">Tin công nghệ</li>
+      </ul>
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+        @foreach ($sukien as $item)
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <a href="{{route('home.chitietbai',$item->id)}}">
+              <div class="portfolio-img"><img src="{{url('public/uploads/baiviet')}}/{{$item->avatar}}" class="img-fluid" alt=""></div>
+              <div class="portfolio-info">
+                <h4><a>{{$item->tenbai}}<</h4>
+                <p>Tin sự kiện</p>
+              </div>
+            </a>
+          </div>
+        @endforeach
+
+        @foreach ($congnghe as $item)
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <a href="{{route('home.chitietbai',$item->id)}}">
+              <div class="portfolio-img"><img src="{{url('public/uploads/baiviet')}}/{{$item->avatar}}" class="img-fluid" alt=""></div>
+              <div class="portfolio-info">
+                <h4>{{$item->tenbai}}</h4>
+                <p>Tin công nghệ</p>
+              </div>
+            </a>
+          </div>
+        @endforeach
+      </div>
+
+    </div>
+  </section>
+  {{-- <section id="about" class="services mb-2">
     <div class="container" data-aos="fade-up">
 
       <div class="row">
@@ -48,7 +91,7 @@
         <div class="pagination justify-content-center" >{{$baiviet->appends(request()->all())->links()}}</div>
     </div>
     </div>
-  </section>
+  </section> --}}
 </main><!-- End #main -->
 
 @endsection

@@ -29,6 +29,12 @@
 
         ],
         [
+            'label'=>'Quản lý bình luận',
+            'route'=>'binhluan.index',
+            'icon'=>'fa-tshirt'
+
+        ],
+        [
             'label'=>'Quản lý công việc',
             'route'=>'giaoviec.index',
             'icon'=>'fa-tshirt'

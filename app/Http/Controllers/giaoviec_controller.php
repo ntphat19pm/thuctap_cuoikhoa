@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\giaoviec;
 use App\Models\nhanvien;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Toastr;
 use File;
 use Excel;
@@ -108,5 +109,22 @@ class giaoviec_controller extends Controller
             Toastr::success('Xóa công việc thành công','Xóa công việc');
             return redirect('admin/giaoviec');
         }
+    }
+    public function active($id)
+    {
+        $data=giaoviec::find($id);
+        $data->ngaynop=Carbon::now('Asia/Ho_Chi_Minh');
+        $data->trangthai=1;
+        if($data->save()) {
+            Toastr::success('Cập nhật công việc thành công','Cập nhật công việc');
+            return redirect('admin/giaoviec');
+        }
+    }
+
+    public function unactive($id)
+    {
+        $mang=giaoviec::find($id)->update(['trangthai'=>0]);
+        $data=giaoviec::all();
+        return view('admin.giaoviec.index',compact('mang','data'));
     }
 }

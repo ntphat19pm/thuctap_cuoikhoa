@@ -121,7 +121,7 @@
 <li class="nav-item dropdown">
   <a class="nav-link" href="{{route('profile.show',Auth::user()->id)}}">
     <i class="far fa-comments"></i>
-    <span class="badge badge-danger navbar-badge">{{$giaoviec->count()}}</span>
+    <span class="badge badge-danger navbar-badge">{{$giaoviec->where('nguoinhan',Auth::user()->id)->count()}}</span>
   </a>
 </li>
 

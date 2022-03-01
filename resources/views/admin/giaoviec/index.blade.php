@@ -72,9 +72,15 @@
               <td class="text-center"><i>{{$i}}</i></td>
               <td>{{$item->ten_congviec}}</td>            
               <td>{{$item->nhanvien->hovaten}}</td>            
-              <td>{{$item->hanchot}}</td>            
-              <td>{{$item->ngaynop}}</td>            
-              <td>{{$item->trangthai}}</td>            
+              <td>{{date("d-m-Y",strtotime($item->hanchot))}}</td>            
+              <td>{{date("d-m-Y H:i:s",strtotime($item->ngaynop))}}</td>            
+              <td>
+                @if($item->trangthai==0)
+                <a href="{{ route('giaoviec.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>
+                @elseif($item->trangthai==1)
+                  <a href="{{ route('giaoviec.unactive',$item->id)}}"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i></a>
+                @endif
+              </td>            
               <td class="text-right">
                 <a href="{{route('giaoviec.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              

@@ -11,7 +11,7 @@ use App\Models\dacdiem;
 use App\Models\thongtin;
 use App\Models\tinhnang;
 use App\Models\loiich;
-use App\Models\dathang_chitiet;
+use App\Models\binhluan;
 use App\Models\gioitinh;
 use App\Models\baiviet;
 use Illuminate\Support\Facades\DB;
@@ -49,7 +49,8 @@ class home_controller extends Controller
     }
     public function chitietbai($id){
         $data=baiviet::find($id);
-        return view('chitietbai',compact('data'));
+        $binhluan=binhluan::where('baiviet_id',$id)->where('trangthai',1)->get();
+        return view('chitietbai',compact('data','binhluan'));
     }
     public function shop(){
         return view('shop');
@@ -119,6 +120,20 @@ class home_controller extends Controller
 
         if($data->save()){
             return view('completed');
+        }
+  
+    }
+
+    public function post_binhluan(Request $request)
+    {
+       
+        $data=new binhluan;
+        $data->hoten=$request->hoten;
+        $data->noidung=$request->noidung;
+        $data->baiviet_id=$request->baiviet_id;
+
+        if($data->save()){
+            return view('baiviet');
         }
   
     }

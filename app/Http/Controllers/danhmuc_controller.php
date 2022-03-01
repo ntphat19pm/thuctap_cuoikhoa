@@ -55,11 +55,12 @@ class danhmuc_controller extends Controller
             $file1->move(public_path('uploads/linhvuc'),$file_name1);
 
             $slug=str_slug($request->tendanhmuc);
-          
+            $sub_link=substr($request->link_video,17);          
         }
         $request->merge(['avatar'=>$file_name]);
         $request->merge(['anhbia'=>$file_name1]);
         $request->merge(['slug'=>$slug]);
+        $request->merge(['link_video'=>$sub_link]);
 
         if(danhmuc::create($request->all())){
             Toastr::success('Thêm danh mục thành công','Thêm danh mục');
@@ -121,6 +122,11 @@ class danhmuc_controller extends Controller
             $data=danhmuc::find($id);
             File::delete('public/uploads/linhvuc/'.$data->anhbia);
             $request->merge(['anhbia'=>$file_name1]);  
+        }
+        else
+        {
+            $sub_link=substr($request->link_video,17);
+            $request->merge(['link_video'=>$sub_link]);
         }
     
         if(danhmuc::find($id)->update($request->all())){
