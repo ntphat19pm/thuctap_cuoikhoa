@@ -18,15 +18,9 @@
 
               <div class="col-lg-4">
                 <div class="form-group">
-                  <label for="hinhanh">Logo Shop <span class="text-danger font-weight-bold">*</span></label>
+                  <label for="hinhanh">Logo hệ thống <span class="text-danger font-weight-bold">*</span></label>
                   <img class="rounded mx-auto d-block mb-3" src="{{url('public/uploads')}}/{{$data->logo}}"  width="200px"/>
                   <input id="file_uploads" type="file" class="form-control @error('file_uploads') is-invalid @enderror" name="file_uploads" value="{{ $data->logo }}" autocomplete="hinhanh" />
-                </div>
-
-                <div class="form-group">
-                  <label for="hinhanh">Banner <span class="text-danger font-weight-bold">*</span></label>
-                  <img class="rounded mx-auto d-block mb-3" src="{{url('public/uploads')}}/{{$data->banner}}"  width="350px"/>
-                  <input id="file_uploads1" type="file" class="form-control @error('file_uploads1') is-invalid @enderror" name="file_uploads1" value="{{ $data->banner }}" autocomplete="hinhanh" />
                 </div>
 
                 <div class="form-group invalid">
@@ -48,13 +42,19 @@
   
               <div class="col-lg-8">
                 <div class="row">
-                  <div class="col-lg-6">
+                  <div class="col-lg-4">
+                    <div class="form-group invalid">
+                      <label for="ten_hethong" class="form-label">Tên hệ thống</label>
+                      <input type="text" value="{{$data->ten_hethong}}" class="form-control" name="ten_hethong" id="ten_hethong" required >
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
                     <div class="form-group invalid">
                       <label for="email" class="form-label">Email</label>
                       <input type="text" value="{{$data->email}}" class="form-control" name="email" id="email" required >
                     </div>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-4">
                     <div class="form-group invalid">
                       <label for="sdt" class="form-label">Số điện thoại</label>
                       <input type="text" value="{{$data->sdt}}" class="form-control" name="sdt" id="sdt" required >

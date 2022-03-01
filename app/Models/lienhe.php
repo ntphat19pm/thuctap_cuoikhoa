@@ -10,5 +10,5 @@ class lienhe extends Model
     use HasFactory;
     protected $table='lienhe';
     public $timestamps = false;
-    protected $fillable=['id','email','diachi','sdt','map','logo','fanpage','banner','zalo','facebook','mess'];
+    protected $fillable=['id','ten_hethong','email','diachi','sdt','map','logo','fanpage','zalo','facebook','mess'];
 }

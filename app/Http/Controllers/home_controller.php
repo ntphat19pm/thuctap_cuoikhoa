@@ -64,7 +64,11 @@ class home_controller extends Controller
        
         return view('home');
   
-     }
+    }
+
+    public function gioithieu(){
+        return view('gioithieu');
+    }
 
     public function post_dangnhap(Request $request){
        

@@ -6,7 +6,11 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Arsha Bootstrap Template - Index</title>
+  <title>
+    @foreach ($lienhe as $item)
+    {{$item->ten_hethong}}
+    @endforeach
+  </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -69,13 +73,26 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="{{route('home.home')}}">Arsha</a></h1>
+      <h1 class="logo me-auto">
+        <a href="{{route('home.home')}}">
+          @foreach ($lienhe as $item)
+            <img class="" width="55px" src="{{url('public/uploads')}}/{{$item->logo}}" alt="logo" />
+          @endforeach
+        </a>
+      </h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="{{route('home.home')}}">Trang chủ</a></li>
+          <li class="dropdown"><a href="{{route('home.home')}}"><span>Trang chủ</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="{{route('home.gioithieu')}}"><span>Giới thiệu chung</span></a></li>
+              <li class="dropdown"><a href="#"><span>Mạng lưới toàn cầu</span></a></li>
+              <li class="dropdown"><a href="#"><span>Giải thưởng</span></a></li>
+              <li class="dropdown"><a href="#"><span>Dấu ấn</span></a></li>
+            </ul>
+          </li>
           <li class="dropdown"><a href="#"><span>Giải pháp</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>Lĩnh vực</span> <i class="bi bi-chevron-right"></i></a>
@@ -115,35 +132,32 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Arsha</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
+            @foreach ($lienhe as $item)
+              <img class="rounded mx-auto d-block " style="width:200px" src="{{url('public/uploads')}}/{{$item->logo}}" alt="logo" />
+              <p>
+                {{$item->diachi}} <br><br>
+                <strong>Phone:</strong> {{$item->sdt}}<br>
+                <strong>Email:</strong> {{$item->email}}<br>
+              </p>
+            @endforeach
           </div>
+          
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Hạ tầng số</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              @foreach ($dichvu as $item)
+                <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.showlinhvuc',$item->id)}}">{{$item->tendanhmuc}}</a></li>
+              @endforeach
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Giải pháp số</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              @foreach ($linhvuc as $item)
+                <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.showlinhvuc',$item->id)}}">{{$item->tendanhmuc}}</a></li>
+              @endforeach
             </ul>
           </div>
 
@@ -202,6 +216,11 @@
   <script src="{{url('public/seo_dream')}}/assets/js/animation.js"></script>
   <script src="{{url('public/seo_dream')}}/assets/js/imagesloaded.js"></script>
   <script src="{{url('public/seo_dream')}}/assets/js/custom.js"></script>
+
+  @foreach ($lienhe as $item)
+    {!!$item->mess!!}
+    {!!$item->zalo!!}
+  @endforeach
 
 
 </body>

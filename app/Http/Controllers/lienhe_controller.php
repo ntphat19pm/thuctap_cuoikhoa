@@ -95,17 +95,6 @@ class lienhe_controller extends Controller
             File::delete('public/uploads/'.$data->logo);
             $request->merge(['logo'=>$file_name]); 
         }
-        elseif($request->has('file_uploads1'))
-        {
-            $file1=$request->file_uploads1;
-            $ex=$request->file_uploads1->extension();
-            $file_name1=time().'-banner'.'.'.$ex;
-            $file1->move(public_path('uploads'),$file_name1);
-
-            $data=lienhe::find($id);
-            File::delete('public/uploads/'.$data->banner);
-            $request->merge(['banner'=>$file_name1]);  
-        }
     
         if(lienhe::find($id)->update($request->all())){
             Toastr::success('Cập nhật liên hệ thành công','Cập nhật liên hệ');

@@ -10,6 +10,7 @@ use App\Models\nhanvien;
 use App\Models\doanhnghiep;
 use App\Models\thongtin;
 use App\Models\lienhe;
+use App\Models\gioithieu;
 use App\Models\video;
 use App\Models\giaoviec;
 use App\Models\baiviet;
@@ -48,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
                 "doanhnghiep"=>doanhnghiep::where('loai_kh',0)->get(),
                 "chinhphu"=>doanhnghiep::where('loai_kh',1)->get(),
                 'lienhe'=>lienhe::all(),
+                'gioithieu'=>gioithieu::all(),
                 'giaoviec'=>giaoviec::all(),
                 'video'=>video::where('status',0)->paginate(6),
                 'baiviet'=>baiviet::where('trangthai',0)->paginate(5),

@@ -104,6 +104,10 @@
                     'route'=>'lienhe.index'
                 ],
                 [
+                    'label'=>'Quản lý trang giới thiệu',
+                    'route'=>'gioithieu.index'
+                ],
+                [
                     'label'=>'Quản lý slider',
                     'route'=>'slider.index'
                 ]

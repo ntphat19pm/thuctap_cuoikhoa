@@ -27,6 +27,8 @@ Route::get('/home','home_controller@home')->name('home.home');
 Route::get('/themgiohang/{id}','giohang_controller@themgiohang')->name('home.themgiohang');
 Route::get('/shop','home_controller@shop')->name('home.shop');
 
+Route::get('/gioithieu','home_controller@gioithieu')->name('home.gioithieu');
+
 Route::get('/dangnhap','home_controller@get_dangnhap')->name('home.getdangnhap');
 Route::get('/dangxuat','home_controller@dangxuat')->name('home.dangxuat');
 Route::post('/dangnhap','home_controller@post_dangnhap')->name('home.postdangnhap');
@@ -105,6 +107,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'profile'=>'profile_controller',
         'binhluan'=>'binhluan_controller',
         'nhanvien'=>'nhanvien_controller',
+        'gioithieu'=>'gioithieu_controller',
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',
         'giaoviec'=>'giaoviec_controller',
