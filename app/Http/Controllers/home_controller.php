@@ -13,6 +13,7 @@ use App\Models\tinhnang;
 use App\Models\loiich;
 use App\Models\binhluan;
 use App\Models\gioitinh;
+use App\Models\giaithuong;
 use App\Models\baiviet;
 use Illuminate\Support\Facades\DB;
 use App\Helper\giohang;
@@ -68,6 +69,17 @@ class home_controller extends Controller
 
     public function gioithieu(){
         return view('gioithieu');
+    }
+
+    public function mangluoi(){
+        return view('mangluoi');
+    }
+    public function giaithuong(){
+        $vang=giaithuong::where('phanloai_id',1)->get();
+        $bac=giaithuong::where('phanloai_id',2)->get();
+        $dong=giaithuong::where('phanloai_id',3)->get();
+        $trongnuoc=giaithuong::where('phanloai_id',0)->get();
+        return view('giaithuong',compact('vang','bac','dong','trongnuoc'));
     }
 
     public function post_dangnhap(Request $request){

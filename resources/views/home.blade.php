@@ -70,30 +70,29 @@
       </div>
 
       <div class="row content">
-        <div class="col-lg-7">
-          <p>
-            Là một thành viên của Tập đoàn Công nghiệp – Viễn thông Quân đội, 
-            được thành lập với sứ mệnh “Tiên phong, đồng hành với Chính phủ, 
-            doanh nghiệp, cộng đồng để giải quyết những vấn đề của xã hội, đất
-             nước”. Tổng Công ty là đơn vị tiên phong của Viettel trong công 
-             cuộc chuyển đổi số, đóng vai trò chủ lực, thực hiện sứ mệnh tiên
-              phong kiến tạo xã hội số của Tập đoàn. Với mục tiêu trở thành doanh 
-              nghiệp số 1 Việt Nam về tư vấn và triển khai chuyển đổi số, chúng 
-              tôi hợp tác cùng các tổ chức, doanh nghiệp và người dân để mang 
-              lại cuộc sống tốt đẹp hơn cho mọi người.
+        <div class="col-lg-6">
+          @foreach ($gioithieu as $item)
+          <p class="">
+            {!!$item->noidung!!}
           </p>
+          @endforeach
           
         </div>
-        <div class="col-lg-5 pt-4 pt-lg-0">
+        <div class="col-lg-1">
+          
+        </div>
+        <div class="col-lg-5 ml-5">
+          @foreach ($gioithieu as $item)
           <ul>
-            <li><i class="ri-check-double-line"></i> Giá trị thương hiệu: 09 tỷ USD</li>
-            <li><i class="ri-check-double-line"></i>3.000 kỹ sư</li>
-            <li><i class="ri-check-double-line"></i>300 chuyên gia an ninh mạng</li>
-            <li><i class="ri-check-double-line"></i> Mạng lưới chăm sóc khách hàng: 63 tỉnh thành</li>
-            <li><i class="ri-check-double-line"></i>128.000 trạm hạ tầng số 1</li>
-            <li><i class="ri-check-double-line"></i>05 trung tâm dữ liệu</li>
+            <li><i class="ri-check-double-line"></i> Giá trị thương hiệu: <b style="font-size: 20px; color:red">{{number_format($item->giatri)}}</b> tỷ USD</li>
+            <li><i class="ri-check-double-line"></i><b style="font-size: 20px; color:red">{{number_format($item->canbo_nhanvien)}}</b> kỹ sư</li>
+            <li><i class="ri-check-double-line"></i><b style="font-size: 20px; color:red">{{number_format($item->chuyengia)}}</b> chuyên gia an ninh mạng</li>
+            <li><i class="ri-check-double-line"></i> Mạng lưới chăm sóc khách hàng: <b style="font-size: 20px; color:red">63</b> tỉnh thành</li>
+            <li><i class="ri-check-double-line"></i><b style="font-size: 20px; color:red">{{number_format($item->tram_hatang)}}</b> trạm hạ tầng số 1</li>
+            <li><i class="ri-check-double-line"></i><b style="font-size: 20px; color:red">{{number_format($item->trungtam)}}</b> trung tâm dữ liệu</li>
           </ul>
-          <a href="#" class="btn-learn-more">Learn More</a>
+          @endforeach
+          <a href="{{route('home.gioithieu')}}" class="btn-learn-more">Xem thêm</a>
         </div>
       </div>
 
@@ -193,7 +192,7 @@
           <p>Bạn có thể liên hệ với chúng tôi thông qua Email hoặc Số điện thoại. Bên cạnh đó bạn có để lại thông tin để chung tôi liên hệ.</p>
         </div>
         <div class="col-lg-3 cta-btn-container text-center">
-          <a class="cta-btn align-middle" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Call To Action</a>
+          <a class="cta-btn align-middle" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Đăng ký ngay</a>
         </div>
       </div>
     </div>
@@ -349,13 +348,13 @@
               </div>
 
               <div class="email">
-                <i class="bi bi-envelope"></i>
+                <a href="mailto:{{$item->email}}"><i class="bi bi-envelope"></i></a>
                 <h4>Email:</h4>
                 <p>{{$item->email}}</p>
               </div>
 
               <div class="phone">
-                <i class="bi bi-phone"></i>
+                <a href="tel:{{$item->sdt}}"><i class="bi bi-phone"></i></a>
                 <h4>Call:</h4>
                 <p>{{$item->sdt}}</p>
               </div>

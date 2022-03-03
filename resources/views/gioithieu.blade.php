@@ -14,11 +14,12 @@
   <section id="cliens" class="cliens section-bg">
     <div class="container mt-3 mb-3">
         <div class="row" data-aos="zoom-in">
+          
           <div class="col-lg-4 d-flex align-items-center justify-content-center">
-            <img src="{{url('public/uploads')}}/1646116179-logo.png" class="img-fluid mr-5" alt="" style="width:200px">
+            <img src="{{url('public/uploads')}}/logo1.png" class="img-fluid" alt="" style="width:1000px">
           </div>
           @foreach ($gioithieu as $item)
-          <div class="col-lg-8 d-flex align-items-center justify-content-center">
+          <div class="col-lg-8 ">
             {!!$item->noidung!!}
           </div>
           @endforeach
@@ -34,7 +35,7 @@
           <div class="icon-box">
             <div class="row">
               <div class="col-lg-4">
-                <img src="{{url('public/uploads')}}/completed.png" class="img-fluid mr-5" alt="" style="width:200px">
+                <img src="{{url('public/uploads/icon')}}/tram_hatang.png" class="img-fluid mr-5" alt="" style="width:200px">
               </div>
               @foreach ($gioithieu as $item)
               <div class="col-lg-8">
@@ -50,7 +51,7 @@
           <div class="icon-box">
             <div class="row">
               <div class="col-lg-4">
-                <img src="{{url('public/uploads')}}/completed.png" class="img-fluid mr-5" alt="" style="width:200px">
+                <img src="{{url('public/uploads/icon')}}/trungtam.png" class="img-fluid mr-5" alt="" style="width:200px">
               </div>
               @foreach ($gioithieu as $item)
               <div class="col-lg-8">
@@ -66,7 +67,7 @@
           <div class="icon-box">
             <div class="row">
               <div class="col-lg-4">
-                <img src="{{url('public/uploads')}}/completed.png" class="img-fluid mr-5" alt="" style="width:200px">
+                <img src="{{url('public/uploads/icon')}}/capquang.png" class="img-fluid mr-5" alt="" style="width:200px">
               </div>
               @foreach ($gioithieu as $item)
               <div class="col-lg-8">
@@ -82,7 +83,7 @@
           <div class="icon-box">
             <div class="row">
               <div class="col-lg-4">
-                <img src="{{url('public/uploads')}}/completed.png" class="img-fluid mr-5" alt="" style="width:200px">
+                <img src="{{url('public/uploads/icon')}}/diem_giaodich.png" class="img-fluid mr-5" alt="" style="width:200px">
               </div>
               @foreach ($gioithieu as $item)
               <div class="col-lg-8">
@@ -98,7 +99,7 @@
           <div class="icon-box">
             <div class="row">
               <div class="col-lg-4">
-                <img src="{{url('public/uploads')}}/completed.png" class="img-fluid mr-5" alt="" style="width:200px">
+                <img src="{{url('public/uploads/icon')}}/dieuhanh.png" class="img-fluid mr-5" alt="" style="width:200px">
               </div>
               @foreach ($gioithieu as $item)
               <div class="col-lg-8">
@@ -114,7 +115,7 @@
           <div class="icon-box">
             <div class="row">
               <div class="col-lg-4">
-                <img src="{{url('public/uploads')}}/completed.png" class="img-fluid mr-5" alt="" style="width:200px">
+                <img src="{{url('public/uploads/icon')}}/diem_giaonhan.png" class="img-fluid mr-5" alt="" style="width:200px">
               </div>
               @foreach ($gioithieu as $item)
               <div class="col-lg-8">
@@ -191,22 +192,22 @@
       <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><b style="color: red">GIỚI THIỆU </b></h2>
       <div class="row mt-5">
         <div class="col-lg-4 mb-5" data-aos="zoom-in" data-aos-delay="100">
-          <div class="icon-box">
-              <img src="{{url('public/uploads')}}/icon1.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:80px">
+          <a href="{{route('home.mangluoi')}}"><div class="icon-box h-100">
+            <img src="{{url('public/uploads')}}/icon1.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:80px">
               <br><p style="font-size: 20px" class="text-center"><b>MẠNG LƯỚI TOÀN CẦU</b></p>
-          </div>
+          </div></a>
         </div>
 
         <div class="col-lg-4 mb-5" data-aos="zoom-in" data-aos-delay="100">
-          <div class="icon-box">
+          <a href="{{route('home.giaithuong')}}"><div class="icon-box h-100">
               <img src="{{url('public/uploads')}}/icon2.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:80px">
               <br><p style="font-size: 20px" class="text-center"><b>GIẢI THƯỞNG TIÊU BIỂU</b></p>
-          </div>
+          </div></a>
         </div>
 
         <div class="col-lg-4 mb-5" data-aos="zoom-in" data-aos-delay="100">
-          <div class="icon-box">
-              <img src="{{url('public/uploads')}}/icon3.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:80px">
+          <div class="icon-box h-100">
+              <img src="{{url('public/uploads')}}/icon3.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:70px">
               <br><p style="font-size: 20px" class="text-center"><b>DẤU ẤN</b></p>
           </div>
         </div>

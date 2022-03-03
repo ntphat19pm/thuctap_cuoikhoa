@@ -26,11 +26,6 @@
   <section id="portfolio" class="portfolio mt-5">
     <div class="container" data-aos="fade-up">
 
-      <div class="section-title">
-        <h2>KHÁCH HÀNG TIÊU BIỂU</h2>
-        <p>Dưới đây là những khách hàng tiêu biểu đã cộng tác cùng VIETTEL SOLUTION </p>
-      </div>
-
       <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
         <li data-filter="*" class="filter-active">All</li>
         <li data-filter=".filter-app">Tin sự kiện</li>

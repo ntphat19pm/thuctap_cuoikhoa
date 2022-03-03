@@ -77,6 +77,20 @@
             'icon'=>'fa-tshirt'
 
         ],
+
+        [
+            'label'=>'Quản lý mạng lưới',
+            'route'=>'mangluoi.index',
+            'icon'=>'fa-tshirt'
+
+        ],
+
+        [
+            'label'=>'Quản lý giải thưởng',
+            'route'=>'giaithuong.index',
+            'icon'=>'fa-tshirt'
+
+        ],
         
         [
             'label'=>' Quản lý nhân viên',

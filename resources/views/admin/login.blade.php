@@ -40,7 +40,7 @@
     <div class="container-fluid page-body-wrapper full-page-wrapper d-flex">
       <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
         <div class="row flex-grow">
-          <div class="col-lg-7 d-flex align-items-center justify-content-center">
+          <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3">
               <div class="brand-logo">
                 
@@ -102,11 +102,10 @@
               </form>
             </div>
           </div>
-          <div class="col-lg-5 login-half-bg d-none d-lg-flex flex-row">
-            {{-- <img src="{{url('public')}}/login.jpg" height="700px"> --}}
-            
+          <div class="col-lg-6 d-flex align-items-center justify-content-center" style="background-color: rgb(54, 124, 124)">
+              <img src="{{url('public/uploads')}}/login.png" class="img-fluid animated d-block rounded mx-auto mt-3" style="width:650px; height:650px" alt="">  
           </div>
-          <p class="font-weight-medium text-center flex-grow align-self-end" style="color: rgb(102, 0, 102)">Copyright &copy; Nguyễn Tấn Phát  All rights reserved.</p>
+          {{-- <p class="font-weight-medium text-center flex-grow align-self-end" style="color: rgb(102, 0, 102)">Copyright &copy; Nguyễn Tấn Phát  All rights reserved.</p> --}}
         </div>
       </div>
       <!-- content-wrapper ends -->

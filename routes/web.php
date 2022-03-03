@@ -28,6 +28,8 @@ Route::get('/themgiohang/{id}','giohang_controller@themgiohang')->name('home.the
 Route::get('/shop','home_controller@shop')->name('home.shop');
 
 Route::get('/gioithieu','home_controller@gioithieu')->name('home.gioithieu');
+Route::get('/mangluoi','home_controller@mangluoi')->name('home.mangluoi');
+Route::get('/giaithuong','home_controller@giaithuong')->name('home.giaithuong');
 
 Route::get('/dangnhap','home_controller@get_dangnhap')->name('home.getdangnhap');
 Route::get('/dangxuat','home_controller@dangxuat')->name('home.dangxuat');
@@ -63,10 +65,6 @@ Route::get('admin/dangxuat','nhanvien_controller@dangxuat')->name('dangxuat');
 
 Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::get('/', 'admin_controller@index')->name('admin.index');
-
-    Route::get('/donhang', 'donhang_controller@index')->name('donhang.index');
-    Route::get('/donhang/show/{id}', 'donhang_controller@show')->name('donhang.show');
-    Route::get('/donhang/destroy/{id}', 'donhang_controller@destroy')->name('donhang.destroy');
     
     Route::post('/sanpham/nhap', 'sanpham_controller@postNhap')->name('sanpham.nhap');
     Route::get('/sanpham/xuat', 'sanpham_controller@getXuat')->name('sanpham.xuat');
@@ -108,6 +106,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'binhluan'=>'binhluan_controller',
         'nhanvien'=>'nhanvien_controller',
         'gioithieu'=>'gioithieu_controller',
+        'mangluoi'=>'mangluoi_controller',
+        'giaithuong'=>'giaithuong_controller',
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',
         'giaoviec'=>'giaoviec_controller',

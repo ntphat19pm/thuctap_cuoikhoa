@@ -88,8 +88,8 @@
           <li class="dropdown"><a href="{{route('home.home')}}"><span>Trang chủ</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li class="dropdown"><a href="{{route('home.gioithieu')}}"><span>Giới thiệu chung</span></a></li>
-              <li class="dropdown"><a href="#"><span>Mạng lưới toàn cầu</span></a></li>
-              <li class="dropdown"><a href="#"><span>Giải thưởng</span></a></li>
+              <li class="dropdown"><a href="{{route('home.mangluoi')}}"><span>Mạng lưới toàn cầu</span></a></li>
+              <li class="dropdown"><a href="{{route('home.giaithuong')}}"><span>Giải thưởng</span></a></li>
               <li class="dropdown"><a href="#"><span>Dấu ấn</span></a></li>
             </ul>
           </li>
@@ -111,7 +111,7 @@
               </li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="">Không gian số</a></li>        
+          <li><a class="nav-link scrollto" href="https://3dbooth.egal.vn/khonggianao/viettel/" target="_blank">Không gian số</a></li>        
           <li><a class="nav-link scrollto" href="{{route('home.baiviet',$item->id)}}">Tin tức</a></li>        
           <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>

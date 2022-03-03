@@ -19,12 +19,14 @@
           <div class="col-lg-2 d-flex align-items-center justify-content-center">
             
           </div>
+          @foreach($lienhe as $item)
             <div class="col-lg-2 d-flex align-items-center justify-content-center">
-              <a href="mailto:phatag852@gmail.com"><img src="{{url('public/uploads')}}/mail.png" class="img-fluid mr-5" alt="" style="width:150px"></a>
+              <a href="mailto:{{$item->email}}"><img src="{{url('public/uploads')}}/mail.png" class="img-fluid mr-5" alt="" style="width:150px"></a>
             </div>
             <div class="col-lg-2 d-flex align-items-center justify-content-center">
-              <a href="tel:0917663865"><img src="{{url('public/uploads')}}/phone.png" class="img-fluid" alt="" style="width:150px"></a>
+              <a href="tel:{{$item->sdt}}"><img src="{{url('public/uploads')}}/phone.png" class="img-fluid" alt="" style="width:150px"></a>
             </div>
+          @endforeach
             <div class="col-lg-2 d-flex align-items-center justify-content-center">
               <a href="https://www.youtube.com/embed/{{$data->link}}" class="glightbox btn-watch-video"><img src="{{url('public/uploads')}}/video.png" class="img-fluid mr-5" alt="" style="width:140px"></a>
             </div>

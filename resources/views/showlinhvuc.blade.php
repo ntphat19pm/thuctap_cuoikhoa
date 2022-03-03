@@ -36,7 +36,7 @@
             line-height: 25px;
             overflow: hidden;
             text-overflow: ellipsis;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;">{!!$item->chitiet!!}</span>
           </div>
         </div>
