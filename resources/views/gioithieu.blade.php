@@ -206,10 +206,10 @@
         </div>
 
         <div class="col-lg-4 mb-5" data-aos="zoom-in" data-aos-delay="100">
-          <div class="icon-box h-100">
+          <a href="{{route('home.dauan')}}"><div class="icon-box h-100">
               <img src="{{url('public/uploads')}}/icon3.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:70px">
               <br><p style="font-size: 20px" class="text-center"><b>DẤU ẤN</b></p>
-          </div>
+          </div></a>
         </div>
       </div>
     </div>

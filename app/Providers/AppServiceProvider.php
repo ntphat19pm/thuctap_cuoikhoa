@@ -15,6 +15,7 @@ use App\Models\video;
 use App\Models\giaithuong;
 use App\Models\giaoviec;
 use App\Models\baiviet;
+use App\Models\dauan;
 use App\Models\mangluoi;
 use App\Models\slider;
 use Illuminate\Pagination\Paginator;
@@ -50,8 +51,8 @@ class AppServiceProvider extends ServiceProvider
                 "dichvu"=>danhmuc::where('linhvuc_id',1)->get(),
                 "doanhnghiep"=>doanhnghiep::where('loai_kh',0)->get(),
                 "chinhphu"=>doanhnghiep::where('loai_kh',1)->get(),
-                
                 'lienhe'=>lienhe::all(),
+                'dauan'=>dauan::all(),
                 'gioithieu'=>gioithieu::all(),
                 'mangluoi'=>mangluoi::all(),
                 'giaoviec'=>giaoviec::all(),

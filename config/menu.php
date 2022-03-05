@@ -78,19 +78,9 @@
 
         ],
 
-        [
-            'label'=>'Quản lý mạng lưới',
-            'route'=>'mangluoi.index',
-            'icon'=>'fa-tshirt'
+        
 
-        ],
-
-        [
-            'label'=>'Quản lý giải thưởng',
-            'route'=>'giaithuong.index',
-            'icon'=>'fa-tshirt'
-
-        ],
+        
         
         [
             'label'=>' Quản lý nhân viên',
@@ -118,12 +108,35 @@
                     'route'=>'lienhe.index'
                 ],
                 [
-                    'label'=>'Quản lý trang giới thiệu',
+                    'label'=>'Quản lý slider',
+                    'route'=>'slider.index'
+                ]
+            ]
+
+        ],
+        [
+            'label'=>' Quản lý giới thiệu',
+            'route'=>'admin.index',
+            'icon'=>'fa-users-cog',
+            'item' =>[
+                [
+                    'label'=>'Giới thiệu',
                     'route'=>'gioithieu.index'
                 ],
                 [
-                    'label'=>'Quản lý slider',
-                    'route'=>'slider.index'
+                    'label'=>'Giải thưởng',
+                    'route'=>'giaithuong.index',
+        
+                ],
+                [
+                    'label'=>'Mạng lưới',
+                    'route'=>'mangluoi.index',
+        
+                ],
+                [
+                    'label'=>'Dấu ấn',
+                    'route'=>'dauan.index',
+        
                 ]
             ]
 

@@ -30,6 +30,7 @@ Route::get('/shop','home_controller@shop')->name('home.shop');
 Route::get('/gioithieu','home_controller@gioithieu')->name('home.gioithieu');
 Route::get('/mangluoi','home_controller@mangluoi')->name('home.mangluoi');
 Route::get('/giaithuong','home_controller@giaithuong')->name('home.giaithuong');
+Route::get('/dauan','home_controller@dauan')->name('home.dauan');
 
 Route::get('/dangnhap','home_controller@get_dangnhap')->name('home.getdangnhap');
 Route::get('/dangxuat','home_controller@dangxuat')->name('home.dangxuat');
@@ -107,6 +108,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'nhanvien'=>'nhanvien_controller',
         'gioithieu'=>'gioithieu_controller',
         'mangluoi'=>'mangluoi_controller',
+        'dauan'=>'dauan_controller',
         'giaithuong'=>'giaithuong_controller',
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',

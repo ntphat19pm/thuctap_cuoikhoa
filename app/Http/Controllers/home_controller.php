@@ -74,6 +74,9 @@ class home_controller extends Controller
     public function mangluoi(){
         return view('mangluoi');
     }
+    public function dauan(){
+        return view('dauan');
+    }
     public function giaithuong(){
         $vang=giaithuong::where('phanloai_id',1)->get();
         $bac=giaithuong::where('phanloai_id',2)->get();

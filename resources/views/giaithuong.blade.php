@@ -65,6 +65,36 @@
     
         </div>
     </section>
+
+    <section id="services" class="services section-bg">
+      <div class="container mt-5 mb-3">
+        <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Xem thêm </h2>
+        <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><b style="color: red">GIỚI THIỆU </b></h2>
+        <div class="row mt-5">
+          <div class="col-lg-4 mb-5" data-aos="zoom-in" data-aos-delay="100">
+              <a href="{{route('home.gioithieu')}}"><div class="icon-box h-100">
+                  <img src="{{url('public/uploads')}}/icon4.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:70px">
+                  <br><p style="font-size: 20px" class="text-center"><b>NĂNG LỰC</b></p>
+              </div></a>
+            </div>
+          <div class="col-lg-4 mb-5" data-aos="zoom-in" data-aos-delay="100">
+            <a href="{{route('home.mangluoi')}}"><div class="icon-box h-100">
+              <img src="{{url('public/uploads')}}/icon1.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:80px">
+                <br><p style="font-size: 20px" class="text-center"><b>MẠNG LƯỚI TOÀN CẦU</b></p>
+            </div></a>
+          </div>
+  
+          <div class="col-lg-4 mb-5" data-aos="zoom-in" data-aos-delay="100">
+            <a href="{{route('home.dauan')}}"><div class="icon-box h-100">
+                <img src="{{url('public/uploads')}}/icon3.png" class="img-fluid rounded mx-auto d-block" alt="" style="width:80px">
+                <br><p style="font-size: 20px" class="text-center"><b>DẤU ẤN</b></p>
+            </div></a>
+          </div>
+  
+          
+        </div>
+      </div>
+  </section>
     
 
 </main><!-- End #main -->

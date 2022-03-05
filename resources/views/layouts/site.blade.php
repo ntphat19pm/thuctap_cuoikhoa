@@ -90,7 +90,7 @@
               <li class="dropdown"><a href="{{route('home.gioithieu')}}"><span>Giới thiệu chung</span></a></li>
               <li class="dropdown"><a href="{{route('home.mangluoi')}}"><span>Mạng lưới toàn cầu</span></a></li>
               <li class="dropdown"><a href="{{route('home.giaithuong')}}"><span>Giải thưởng</span></a></li>
-              <li class="dropdown"><a href="#"><span>Dấu ấn</span></a></li>
+              <li class="dropdown"><a href="{{route('home.dauan')}}"><span>Dấu ấn</span></a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Giải pháp</span> <i class="bi bi-chevron-down"></i></a>
