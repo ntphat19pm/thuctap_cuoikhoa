@@ -77,10 +77,12 @@
             'icon'=>'fa-tshirt'
 
         ],
+        [
+            'label'=>'Quản lý câu hỏi',
+            'route'=>'cauhoi.index',
+            'icon'=>'fa-tshirt'
 
-        
-
-        
+        ],     
         
         [
             'label'=>' Quản lý nhân viên',

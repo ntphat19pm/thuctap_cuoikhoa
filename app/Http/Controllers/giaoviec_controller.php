@@ -86,12 +86,19 @@ class giaoviec_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=giaoviec::find($id);
-        $data->ten_congviec=$request->ten_congviec;
-        $data->nguoinhan=$request->nguoinhan;
-        $data->hanchot=$request->hanchot;
-        if($data->save()) {
-            Toastr::success('Cập nhật công việc thành công','Cập nhật công việc');
+        if($request->has('file_uploads')){
+            $file=$request->file_uploads;
+            $ex=$request->file_uploads->extension();
+            $file_name=time().'-giaoviec'.'.'.$ex;
+            $file->move(public_path('uploads/giaoviec'),$file_name);
+
+            $data=giaoviec::find($id);
+            File::delete('public/uploads/giaoviec/'.$data->file_nop);
+            $request->merge(['file_nop'=>$file_name]); 
+        }
+    
+        if(giaoviec::find($id)->update($request->all())){
+            Toastr::success('Cập nhật bài viết thành công','Cập nhật bài viết');
             return redirect('admin/giaoviec');
         }
     }
@@ -127,4 +134,5 @@ class giaoviec_controller extends Controller
         $data=giaoviec::all();
         return view('admin.giaoviec.index',compact('mang','data'));
     }
+
 }

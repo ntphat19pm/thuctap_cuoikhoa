@@ -114,6 +114,14 @@
           <li><a class="nav-link scrollto" href="https://3dbooth.egal.vn/khonggianao/viettel/" target="_blank">Không gian số</a></li>        
           <li><a class="nav-link scrollto" href="{{route('home.baiviet',$item->id)}}">Tin tức</a></li>        
           <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+          <li class="dropdown"><a href="#"><span>Hỗ trợ</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="{{route('home.cauhoi')}}"><span>Câu hỏi thường gặp</span></a></li>
+              <li class="dropdown"><a href="{{route('home.chinhsach')}}"><span>Chính sách bảo mật</span></a></li>
+              <li class="dropdown"><a href="{{route('home.dieukhoan')}}"><span>Điều khoản sử dụng website</span></a></li>
+              <li class="dropdown"><a href="{{route('home.dauan')}}"><span>Dấu ấn</span></a></li>
+            </ul>
+          </li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

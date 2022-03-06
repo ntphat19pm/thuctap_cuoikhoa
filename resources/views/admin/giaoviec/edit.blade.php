@@ -37,6 +37,13 @@
                         <input type="date" value="{{$data->hanchot}}" class="form-control" id="hanchot" name="hanchot" required>
                     </div>
                 </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="ten_congviec" class="form-label">Nhập tên công việc</label>
+                        <input type="text" value="public/uploads/giaoviec/{{$data->file_nop}}" class="form-control" name="ten_congviec" id="ten_congviec" required >
+                    </div>
+                </div>
             </div>
           </form>
     </div>

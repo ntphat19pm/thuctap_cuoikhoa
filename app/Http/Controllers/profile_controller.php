@@ -31,7 +31,8 @@ class profile_controller extends Controller
     {
         $data=nhanvien::find($id);
         $giaoviec_nv=giaoviec::where('nguoinhan',$id)->orderby('nguoinhan','DESC')->paginate(10);
-        return view('admin.profile.show',compact('data','giaoviec_nv'));
+        $giaoviec_nop=giaoviec::all();
+        return view('admin.profile.show',compact('data','giaoviec_nv','giaoviec_nop'));
     }
     public function update(Request $request, $id)
     {
@@ -60,5 +61,24 @@ class profile_controller extends Controller
             return redirect('dangnhap');
         }
             
+    }
+
+    public function postSua(Request $request, $id)
+    {
+        if($request->has('file_uploads')){
+            $file=$request->file_uploads;
+            $ex=$request->file_uploads->extension();
+            $file_name=time().'-file_giaoviec'.'.'.$ex;
+            $file->move(public_path('uploads/giaoviec'),$file_name);
+
+            $data=giaoviec::find($id);
+            File::delete('public/uploads/giaoviec/'.$data->file_nop);
+            $request->merge(['file_nop'=>$file_name]); 
+        }
+    
+        if(giaoviec::find($id)->update($request->all())){
+            Toastr::success('Cập nhật file thành công','Cập nhật file');
+            return redirect('admin/giaoviec');
+        }
     }
 }

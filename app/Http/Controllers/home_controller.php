@@ -15,6 +15,7 @@ use App\Models\binhluan;
 use App\Models\gioitinh;
 use App\Models\giaithuong;
 use App\Models\baiviet;
+use App\Models\cauhoi;
 use Illuminate\Support\Facades\DB;
 use App\Helper\giohang;
 use App\Http\Controllers\HomeController;
@@ -77,6 +78,15 @@ class home_controller extends Controller
     public function dauan(){
         return view('dauan');
     }
+    public function cauhoi(){
+        return view('cauhoi');
+    }
+    public function chinhsach(){
+        return view('chinhsach');
+    }
+    public function dieukhoan(){
+        return view('dieukhoan');
+    }
     public function giaithuong(){
         $vang=giaithuong::where('phanloai_id',1)->get();
         $bac=giaithuong::where('phanloai_id',2)->get();
@@ -136,6 +146,22 @@ class home_controller extends Controller
         $data->sanpham_id=$request->sanpham_id;
         $data->yeucau_id=$request->yeucau_id;
         $data->noidung=$request->noidung;
+
+        if($data->save()){
+            return view('completed');
+        }
+  
+    }
+    public function post_cauhoi(Request $request)
+    {
+       
+        $data=new cauhoi;
+        $data->hoten=$request->hoten;
+        $data->sdt=$request->sdt;
+        $data->diachi=$request->diachi;
+        $data->email=$request->email;
+        $data->cauhoi=$request->cauhoi;
+        $data->traloi=$request->traloi;
 
         if($data->save()){
             return view('completed');

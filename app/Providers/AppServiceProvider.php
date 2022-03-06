@@ -16,6 +16,7 @@ use App\Models\giaithuong;
 use App\Models\giaoviec;
 use App\Models\baiviet;
 use App\Models\dauan;
+use App\Models\cauhoi;
 use App\Models\mangluoi;
 use App\Models\slider;
 use Illuminate\Pagination\Paginator;
@@ -58,6 +59,7 @@ class AppServiceProvider extends ServiceProvider
                 'giaoviec'=>giaoviec::all(),
                 'video'=>video::where('status',0)->paginate(6),
                 'baiviet'=>baiviet::where('trangthai',0)->paginate(5),
+                'cauhoi'=>cauhoi::where('trangthai',1)->paginate(5),
                 'sukien'=>baiviet::where('trangthai',0)->where('phanloai_id',0)->paginate(6),
                 'congnghe'=>baiviet::where('trangthai',0)->where('phanloai_id',1)->paginate(6),
                 'giohang'=>new giohang(),

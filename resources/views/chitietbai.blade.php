@@ -34,7 +34,7 @@
                 <p class="text-left"><i>Được viết bởi {{$data->nguoidang}}
                     <br>Xuất bản: {{date("d-m-Y",strtotime($data->create_at))}}</i></p>
                 <p class="text-right">
-                    <div class="zalo-share-button" data-href="" data-oaid="228440942617831112" data-layout="1" data-color="blue" data-customize="false"></div>
+                    <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
                 </p>
                 <p><b><h5 style="color:rgb(0, 0, 0)">{!!$data->mota!!}</h5></b></p>
                 <hr>

@@ -11,7 +11,7 @@ class giaoviec extends Model
     use HasFactory;
     protected $table='giaoviec';
     public $timestamps = false;
-    protected $fillable=['id','ten_congviec','nguoinhan','hanchot','ngaynop','trangthai'];
+    protected $fillable=['id','ten_congviec','nguoinhan','hanchot','ngaynop','trangthai','file_nop'];
 
     public function nhanvien()
     {

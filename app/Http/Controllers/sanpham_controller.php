@@ -160,20 +160,14 @@ class sanpham_controller extends Controller
      */
     public function destroy($id)
     {
-        if( sanpham::find($id)->dathang_chitiet->count()){
-            Toastr::warning('Không thể xóa sản phẩm','Cảnh báo');
-            return redirect()->route('sanpham.index')->with('error','không thể xóa sản phẩm vì sản phẩm có trong đơn hàng');
-        }
-        else{
-            $data=sanpham::find($id);
-            $duongdan = 'public/uploads/sanpham/avatar';
-            $duongdan1 = 'public/uploads/sanpham/chitiet';
-            File::delete($duongdan.'/'.$data->anh);
-            File::delete($duongdan1.'/'.$data->anh1);
-            $data->delete();
-            Toastr::success('Xóa sản phẩm thành công','Xóa sản phẩm');
-            return redirect()->route('sanpham.index')->with('success','Xóa sản phẩm thành công');
-        }
+        $data=sanpham::find($id);
+        $duongdan = 'public/uploads/sanpham/avatar';
+        $duongdan1 = 'public/uploads/sanpham/chitiet';
+        File::delete($duongdan.'/'.$data->anh);
+        File::delete($duongdan1.'/'.$data->anh1);
+        $data->delete();
+        Toastr::success('Xóa sản phẩm thành công','Xóa sản phẩm');
+        return redirect()->route('sanpham.index')->with('success','Xóa sản phẩm thành công');
     }
 
     public function postNhap(Request $request)

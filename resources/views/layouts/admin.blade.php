@@ -385,6 +385,7 @@ All rights reserved.
 
 <script>
   CKEDITOR.replace('chitiet');
+  CKEDITOR.replace('traloi');
   CKEDITOR.replace('noidung');
   CKEDITOR.replace('mota');
 </script>

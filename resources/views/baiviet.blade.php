@@ -59,6 +59,9 @@
       </div>
 
     </div>
+    <div>
+      <div class="pagination justify-content-center" >{{$baiviet->appends(request()->all())->links()}}</div>
+  </div>
   </section>
   {{-- <section id="about" class="services mb-2">
     <div class="container" data-aos="fade-up">
