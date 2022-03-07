@@ -35,9 +35,19 @@
 
         ],
         [
-            'label'=>'Quản lý công việc',
-            'route'=>'giaoviec.index',
-            'icon'=>'fa-tshirt'
+            'label'=>' Quản lý công việc',
+            'route'=>'admin.index',
+            'icon'=>'fa-users-cog',
+            'item' =>[
+                [
+                    'label'=>'Giao việc',
+                    'route'=>'giaoviec.index'
+                ],
+                [
+                    'label'=>'Quản lý file',
+                    'route'=>'nop_file.index'
+                ]
+            ]
 
         ],      
 

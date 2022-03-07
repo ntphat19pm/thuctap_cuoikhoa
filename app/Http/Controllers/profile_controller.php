@@ -31,8 +31,8 @@ class profile_controller extends Controller
     {
         $data=nhanvien::find($id);
         $giaoviec_nv=giaoviec::where('nguoinhan',$id)->orderby('nguoinhan','DESC')->paginate(10);
-        $giaoviec_nop=giaoviec::all();
-        return view('admin.profile.show',compact('data','giaoviec_nv','giaoviec_nop'));
+        $nop_file=giaoviec::where('nguoinhan',$id)->where('trangthai',0)->orderby('nguoinhan','DESC')->paginate(10);
+        return view('admin.profile.show',compact('data','giaoviec_nv','nop_file'));
     }
     public function update(Request $request, $id)
     {

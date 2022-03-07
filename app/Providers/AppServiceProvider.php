@@ -65,7 +65,6 @@ class AppServiceProvider extends ServiceProvider
                 'giohang'=>new giohang(),
                 'sp'=>sanpham::search()->paginate(20),
             ]);
-
         });
     }
 }

@@ -84,7 +84,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::post('/tinhnang/nhap', 'tinhnang_controller@postNhap')->name('tinhnang.nhap');
     Route::get('/tinhnang/xuat', 'tinhnang_controller@getXuat')->name('tinhnang.xuat');
 
-    Route::post('/giaoviec/sua/{id}', 'giaoviec_controller@postSua')->name('giaoviec.sua');
+    Route::post('/profile/sua/{id}', 'profile_controller@postSua')->name('profile.sua');
 
     Route::get('/thongtin/active/{id}', 'thongtin_controller@active')->name('thongtin.active');
     Route::get('/thongtin/unactive/{id}', 'thongtin_controller@unactive')->name('thongtin.unactive');
@@ -123,6 +123,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',
         'giaoviec'=>'giaoviec_controller',
+        'nop_file'=>'nop_file_controller',
     ]);
 });
 

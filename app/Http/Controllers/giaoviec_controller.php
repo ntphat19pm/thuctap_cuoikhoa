@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\giaoviec;
 use App\Models\nhanvien;
+use App\Models\nop_file;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Toastr;
 use File;
+use Storage;
 use Excel;
 
 class giaoviec_controller extends Controller
@@ -20,7 +22,8 @@ class giaoviec_controller extends Controller
     public function index()
     {
         $data=giaoviec::all();
-        return view('admin.giaoviec.index',compact('data'));
+        $nop_file=nop_file::all();
+        return view('admin.giaoviec.index',compact('data','nop_file'));
     }
 
     /**
@@ -122,6 +125,7 @@ class giaoviec_controller extends Controller
         $data=giaoviec::find($id);
         $data->ngaynop=Carbon::now('Asia/Ho_Chi_Minh');
         $data->trangthai=1;
+
         if($data->save()) {
             Toastr::success('Cập nhật công việc thành công','Cập nhật công việc');
             return redirect('admin/giaoviec');

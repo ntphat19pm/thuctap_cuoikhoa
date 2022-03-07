@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('main')
 
+<div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+  <button type="button" class="btn btn-outline-info mt-2" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fa fa-upload"></i>Upload file</button>
+</div>
 
     <div class="card" >
     
@@ -14,7 +17,6 @@
               <th class="text-center" scope="col">Hạn chót</th>
               <th class="text-center" scope="col">Ngày nộp</th>
               <th class="text-center" scope="col">Trạng thái</th>
-              <th class="text-right" scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -30,7 +32,13 @@
               <td>{{$item->ten_congviec}}</td>            
               <td>{{$item->nhanvien->hovaten}}</td>            
               <td>{{$item->hanchot}}</td>            
-              <td>{{date("d-m-Y H:i:s",strtotime($item->ngaynop))}}</td>            
+              <td>
+                @if($item->ngaynop=="")
+                Chưa nộp
+                @else
+                {{date("d-m-Y H:i:s",strtotime($item->ngaynop))}}
+                @endif
+              </td>          
               <td>
                 @if($item->trangthai==0)
                 <a href="{{ route('giaoviec.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>
@@ -38,25 +46,14 @@
                   <a href=""><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i></a>
                 @endif
               </td>            
-              <td class="text-right">
-                {{-- <a  href="" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i class="fa fa-upload"></i>
-                </a> --}}
-                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fa fa-upload"></i></button>
-                @if($item->trangthai==1)
-                <a  href="{{route('giaoviec.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
-                  <i class="fas fa-trash"></i>
-                </a>
-                @endif
-              </td>
           
               </tr>
             @endforeach
           </tbody>
         </table>
 
-        <form action="{{route('giaoviec.update',$data->id)}}" method="post" enctype="multipart/form-data">
-          @csrf @method('PUT')
+        <form action="{{route('nop_file.store')}}" method="post" enctype="multipart/form-data">
+          @csrf
           <div class="modal fade" id="modal-secondary">
             <div class="modal-dialog">
               <div class="modal-content bg-secondary">
@@ -67,13 +64,21 @@
                   </button>
                 </div>
                 <div class="modal-body">
+
                   <div class="form-group">
-                    <label for="file_nop">Chọn file <span class="text-danger font-weight-bold">*</span></label>
-                    <input id="file_uploads" type="file" class="form-control @error('file_nop') is-invalid @enderror" name="file_uploads" value="{{ old('file_uploads') }}" required autocomplete="file_uploads" />
-                    @error('file_uploads')
-                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                    @enderror
-                </div>
+                    <label for="congviec_id">Công việc<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="congviec_id" class="form-control custom-select @error('congviec_id') is-invalid @enderror" name="congviec_id" required autofocus>
+                        <option value="">--Chọn công việc cần nộp--</option>
+                        @foreach($nop_file as $value)
+                            <option value="{{ $value->id }}">{{ $value->ten_congviec}}</option>
+                        @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="file">File cần nộp <span class="text-danger font-weight-bold">*</span></label>
+                    <input id="file_uploads" type="file" class="form-control @error('file') is-invalid @enderror" name="file_uploads" value="{{ old('file_uploads') }}" required autocomplete="file_uploads" />
+                  </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>

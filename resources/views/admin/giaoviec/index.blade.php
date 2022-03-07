@@ -57,6 +57,7 @@
               <th class="text-center" scope="col">Hạn chót</th>
               <th class="text-center" scope="col">Ngày nộp</th>
               <th class="text-center" scope="col">Trạng thái</th>
+              <th class="text-center" scope="col">Số lượng file</th>
               <th class="text-right" scope="col">Action</th>
             </tr>
           </thead>
@@ -73,12 +74,24 @@
               <td>{{$item->ten_congviec}}</td>            
               <td>{{$item->nhanvien->hovaten}}</td>            
               <td>{{date("d-m-Y",strtotime($item->hanchot))}}</td>            
-              <td>{{date("d-m-Y H:i:s",strtotime($item->ngaynop))}}</td>            
+              <td>
+                @if($item->ngaynop=="")
+                Chưa nộp
+                @else
+                {{date("d-m-Y H:i:s",strtotime($item->ngaynop))}}
+                @endif</td>            
               <td>
                 @if($item->trangthai==0)
                 <a href="{{ route('giaoviec.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>
                 @elseif($item->trangthai==1)
                   <a href="{{ route('giaoviec.unactive',$item->id)}}"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i></a>
+                @endif
+              </td>
+              <td>
+                @if($item->product->count()==0)
+                Chưa nộp
+                @else
+                Đã nộp {{$item->product->count()}} file
                 @endif
               </td>            
               <td class="text-right">
