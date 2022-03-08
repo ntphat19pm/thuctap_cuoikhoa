@@ -1,53 +1,63 @@
 @extends('layouts.site')
 @section('main')
 
-@foreach ($lienhe as $item)
-<br><img src="{{url('public/uploads')}}/{{$item->banner}}" width="100%" alt="">
-@endforeach
+<section id="hero" class="d-flex align-items-center">
 
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+        <h1>VIDEO</h1>
+      </div>
+      <div class="col-lg-7 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+        <img src="{{url('public/uploads')}}/tintuc.png" class="img-fluid animated d-block rounded mx-auto" style="width:500px" alt="">
+        
+      </div>
+    </div>
+  </div>
 
-<div>
-    <div class="main_content">
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    @foreach ($video as $item)                 
-                    <div class="col-lg-6">
-                                <div class="product">
-                                        <a href="">
-                                            <iframe width="100%" height="316" src="https://www.youtube.com/embed/{{$item->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        </a>
-                                        <div class="product_info">
-                                            {{-- <h6 class="product_title"><a href="{{route('home.chitiet',$item->id)}}">{{$item->tensp}}</a></h6> --}}
-                                            <div class="product_price">
-                                                <span class="price">{{$item->tenvideo}}</span>
-                                                {{-- <del>$99.00</del>
-                                                <div class="on_sale">
-                                                    <span>20% Off</span>
-                                                </div> --}}
-                                            </div>
-                        
-                                            {!!$item->mota!!}
-                                            <hr>
-                                            <div class="text-right"><i>{{date("d-m-Y",strtotime($item->ngaydang))}}</i></div>
-                                        </div>
-                                        
-                                </div>
-                        
-                    </div>
-                     @endforeach
-                     
-                </div>
-                <div>
-                    <div class="pagination justify-content-center" >{{$video->appends(request()->all())->links()}}</div>
+</section><!-- End Hero -->
+
+<main id="main">
+  <section id="about" class="services mb-5">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+        @foreach($video as $item)
+        <div class="col-lg-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          <div class="icon-box mb-5 w-100">
+            <h6 class="text-center" style="font-size: 17px; color:rgb(255, 57, 57)"><b>{{$item->tenvideo}}</b></h6>
+            <span></span>
+            <a class="btn btn-block btn-outline-primary mt-3 mb-3" data-bs-toggle="collapse" href="#collapseExample{{$item->id}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 100%;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+                Mô tả chi tiết video
+            </a>
+            <div class="collapse mb-3" id="collapseExample{{$item->id}}">
+                <div class="card card-body">
+                    {!!$item->mota!!}
                 </div>
             </div>
+            <div class="d-flex justify-content-center justify-content-lg-start">
+                {{-- <button type="button" class="btn btn-outline-info mt-2" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fa fa-upload"></i>Upload file</button> --}}
+                <a href="https://www.youtube.com/embed/{{$item->link}}" class="glightbox btn btn-block btn-outline-warning" style="width: 100%;
+                    border: 1px solid black;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;"><i class="fa fa-circle-play"></i><span>Watch Video</span>
+                </a>
+            </div>
+          </div>
         </div>
-        <div>
-            
-        </div>
+        @endforeach
+      </div>
+      <div>
+        <div class="pagination justify-content-center" >{{$video->appends(request()->all())->links()}}</div>
+      </div>
     </div>
-    
-</div>    
-    @endsection
+  </section>
+</main><!-- End #main -->
+
+@endsection
        

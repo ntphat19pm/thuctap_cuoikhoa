@@ -25,19 +25,13 @@
         [
             'label'=>'Quản lý khách hàng',
             'route'=>'doanhnghiep.index',
-            'icon'=>'fa-tshirt'
-
-        ],
-        [
-            'label'=>'Quản lý bình luận',
-            'route'=>'binhluan.index',
-            'icon'=>'fa-tshirt'
+            'icon'=>'fa-user-tie'
 
         ],
         [
             'label'=>' Quản lý công việc',
             'route'=>'admin.index',
-            'icon'=>'fa-users-cog',
+            'icon'=>'fa-briefcase',
             'item' =>[
                 [
                     'label'=>'Giao việc',
@@ -78,22 +72,27 @@
         [
             'label'=>'Quản lý sản phẩm',
             'route'=>'sanpham.index',
-            'icon'=>'fa-tshirt'
+            'icon'=>'fa-microchip'
 
         ],
         [
             'label'=>'Quản lý thông tin',
             'route'=>'thongtin.index',
-            'icon'=>'fa-tshirt'
+            'icon'=>'fa-phone-volume'
 
         ],
         [
             'label'=>'Quản lý câu hỏi',
             'route'=>'cauhoi.index',
-            'icon'=>'fa-tshirt'
+            'icon'=>'fa-question'
 
         ],     
-        
+        [
+            'label'=>'Quản lý chỉ tiêu',
+            'route'=>'chitieu.index',
+            'icon'=>'fa-question'
+
+        ],
         [
             'label'=>' Quản lý nhân viên',
             'route'=>'admin.index',
@@ -113,7 +112,7 @@
         [
             'label'=>' Cài đặt',
             'route'=>'admin.index',
-            'icon'=>'fa-users-cog',
+            'icon'=>'fa-wrench',
             'item' =>[
                 [
                     'label'=>'Quản lý thông tin',
@@ -129,7 +128,7 @@
         [
             'label'=>' Quản lý giới thiệu',
             'route'=>'admin.index',
-            'icon'=>'fa-users-cog',
+            'icon'=>'fa-info',
             'item' =>[
                 [
                     'label'=>'Giới thiệu',
@@ -154,9 +153,9 @@
 
         ],
         [
-            'label'=>' Quản lý blog',
+            'label'=>' Quản lý tin tức',
             'route'=>'admin.index',
-            'icon'=>'fa-file-video',
+            'icon'=>'fa-newspaper',
             'item' =>[
                 [
                     'label'=>'Video',
@@ -165,6 +164,10 @@
                 [
                     'label'=>'Bài viết',
                     'route'=>'baiviet.index'
+                ],
+                [
+                    'label'=>'Bình luận bài viết',
+                    'route'=>'binhluan.index'
                 ]
             ]
 

@@ -102,7 +102,7 @@
 <div class="wrapper">
 
 <div class="preloader flex-column justify-content-center align-items-center">
-<img class="animation__wobble" src="{{url('public/adminlte')}}/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+<img class="animation__wobble" src="{{url('public')}}/logo2.png" alt="AdminLTELogo" width="200">
 </div>
 
 <nav class="main-header navbar navbar-expand navbar-dark">
@@ -112,7 +112,7 @@
 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 </li>
 <marquee width="100%" behavior="scroll" scrollamount="10">  
-  <h5>Xin chào bạn {{Auth::user()->hovaten}}! Đây là trang Quản lý Shop bán áo. Bạn đang đăng nhập bằng tài khoản {{Auth::user()->tendangnhap}}.</h5>
+  <h5>Xin chào bạn {{Auth::user()->hovaten}}! Đây là trang Quản lý của Viettel Solutions. Bạn đang đăng nhập bằng tài khoản {{Auth::user()->tendangnhap}}.</h5>
 </marquee>
 </ul>
 
@@ -168,29 +168,25 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-5">
 
 <a href="" class="brand-link text-center">
-<span class="brand-text font-weight-light"><b style="color: red">VIETTEL SOLUTION</b></span>
+  <img src="{{url('public')}}/logo2.png" alt="User Image" style="width:90px" class="">
 </a>
 
 <div class="sidebar">
 
-<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-<div class="image">
-<img src="{{url('public')}}/logo2.png" alt="User Image" style="width:70px">
-</div>
-<div class="info">
-
-<a href="#" class="d-block">
+<div class="user-panel mt-3 pb-3 mb-3 text-center">
   @if(Auth::user()->chucvu_id==1)
-    <b><a class="d-block" style="color: red">{{Auth::user()->hovaten}}</a></b>
-  @else
-    <b><a class="d-block tex-center" style="color: rgb(0, 153, 255)">{{Auth::user()->hovaten}}</a></b>
-  @endif
-</a>
-</div>
+        <b><a class=" d-block" style="color: rgb(0, 153, 255)">Quản lý</a></b>
+      @else
+        <b><a class="d-block text-center" style="color: rgb(0, 153, 255)">Nhân viên/a></b>
+      @endif
 </div>
 
 
-
+@if(Auth::user()->chucvu_id==1)
+        <b><a class=" d-block text-center" style="color: red">{{Auth::user()->hovaten}}</a></b>
+      @else
+        <b><a class="d-block text-center" style="color: rgb(0, 153, 255)">{{Auth::user()->hovaten}}</a></b>
+      @endif
 @if(Auth::user()->trangthai==0)
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

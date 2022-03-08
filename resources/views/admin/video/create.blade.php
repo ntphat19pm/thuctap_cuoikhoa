@@ -16,25 +16,26 @@
 
             <div class="row">
 
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                 <div class="form-group invalid">
                     <label for="tenvideo" class="form-label">Tên video</label>
                     <input type="text" class="form-control" name="tenvideo" id="tenvideo" required >
                   </div>
               </div>
   
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                 <div class="form-group invalid">
                     <label for="link" class="form-label">Đường dẫn</label>
                     <input type="text" class="form-control" name="link" id="link" required >
                 </div>
               </div>
 
-              <div class="col-lg-4">
-                <div class="form-group invalid">
-                    <label for="mota" class="form-label">Mô tả</label>
-                    <input type="text" class="form-control" name="mota" id="mota" required >
-                </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="mota" class="form-label">Mô tả</label>
+                  <textarea class="form-control" name="mota" id="mota" cols="10" rows="1"></textarea>
+                  <div class="invalid-feedback"></div>
+              </div>
               </div>
                 
             </div>

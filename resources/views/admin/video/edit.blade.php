@@ -34,8 +34,8 @@
                     <div class="form-group">
                       <label for="status">Status<span class="text-danger font-weight-bold">*</span></label>
                       <select id="status" class="form-control custom-select @error('status') is-invalid @enderror" name="status" required autofocus>
-                          <option value="0" {{($data->status== 0)?'selected':'' }}>Đã duyệt</option>
-                          <option value="1" {{($data->status== 1)?'selected':'' }}>Chưa duyệt</option>
+                          <option value="0" {{($data->status== 0)?'selected':'' }}>Chưa duyệt</option>
+                          <option value="1" {{($data->status== 1)?'selected':'' }}>Đã duyệt</option>
                       </select>
                       @error('phanloai_id')
                           <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
@@ -44,17 +44,18 @@
                   @endif
                   </div>
                 </div>
-
-                <div class="form-group invalid">
-                    <label for="mota" class="form-label">Mô tả</label>
-                    <textarea type="text" style="resize: none" rows="5" class="form-control" name="mota" id="mota" required >{{$data->mota}}</textarea>
-                </div>
               </div>
   
               <div class="col-lg-6">
                 
-                    <iframe width="600" height="350" src="https://www.youtube.com/embed/{{$data->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="570" height="321" src="https://www.youtube.com/embed/{{$data->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group invalid">
+                  <label for="mota" class="form-label">Mô tả</label>
+                  <textarea type="text" style="resize: none" rows="5" class="form-control" name="mota" id="mota" required >{{$data->mota}}</textarea>
+                </div>
               </div>
                 
 

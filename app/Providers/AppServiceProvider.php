@@ -57,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
                 'gioithieu'=>gioithieu::all(),
                 'mangluoi'=>mangluoi::all(),
                 'giaoviec'=>giaoviec::all(),
-                'video'=>video::where('status',0)->paginate(6),
+                'video'=>video::where('status',1)->paginate(6),
                 'baiviet'=>baiviet::where('trangthai',0)->paginate(5),
                 'cauhoi'=>cauhoi::where('trangthai',1)->paginate(5),
                 'sukien'=>baiviet::where('trangthai',0)->where('phanloai_id',0)->paginate(6),

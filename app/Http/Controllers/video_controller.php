@@ -115,4 +115,23 @@ class video_controller extends Controller
         }
             
     }
+
+    public function active($id)
+    {
+        $data=video::find($id);
+        $data->ngaydang=Carbon::now('Asia/Ho_Chi_Minh');
+        $data->status=1;
+
+        if($data->save()) {
+            Toastr::success('Cập nhật trạng thái video thành công','Cập nhật trạng thái video');
+            return redirect('admin/video');
+        }
+    }
+
+    public function unactive($id)
+    {
+        $mang=video::find($id)->update(['status'=>0]);
+        $data=video::all();
+        return view('admin.video.index',compact('mang','data'));
+    }
 }

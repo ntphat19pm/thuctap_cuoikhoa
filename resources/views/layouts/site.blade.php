@@ -112,7 +112,13 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="https://3dbooth.egal.vn/khonggianao/viettel/" target="_blank">Không gian số</a></li>        
-          <li><a class="nav-link scrollto" href="{{route('home.baiviet',$item->id)}}">Tin tức</a></li>        
+          <li><a class="nav-link scrollto" href="">Tin tức</a></li>   
+          <li class="dropdown"><a href="#"><span>Tin tức</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="{{route('home.baiviet')}}"><span>Bài viết</span></a></li>
+              <li class="dropdown"><a href="{{route('home.video')}}"><span>Video</span></a></li>
+            </ul>
+          </li>     
           <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
           <li class="dropdown"><a href="#"><span>Hỗ trợ</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -229,7 +235,6 @@
     {!!$item->mess!!}
     {!!$item->zalo!!}
   @endforeach
-
 
 </body>
 

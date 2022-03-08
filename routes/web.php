@@ -96,6 +96,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::get('/binhluan/unactive/{id}', 'binhluan_controller@unactive')->name('binhluan.unactive');
     Route::get('/cauhoi/active/{id}', 'cauhoi_controller@active')->name('cauhoi.active');
     Route::get('/cauhoi/unactive/{id}', 'cauhoi_controller@unactive')->name('cauhoi.unactive');
+    Route::get('/video/active/{id}', 'video_controller@active')->name('video.active');
+    Route::get('/video/unactive/{id}', 'video_controller@unactive')->name('video.unactive');
 
     
     Route::resources([
@@ -122,6 +124,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'cauhoi'=>'cauhoi_controller',
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',
+        'chitieu'=>'chitieu_controller',
         'giaoviec'=>'giaoviec_controller',
         'nop_file'=>'nop_file_controller',
     ]);
