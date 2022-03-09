@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\chitieu;
 use App\Models\thang;
+use App\Imports\chitieu_import;
+use App\Exports\chitieu_export;
 use Illuminate\Http\Request;
 use Toastr;
+use Excel;
 
 class chitieu_controller extends Controller
 {
@@ -125,5 +128,15 @@ class chitieu_controller extends Controller
     public function destroy(chitieu $chitieu)
     {
         //
+    }
+
+    public function postNhap(Request $request)
+    {
+        Excel::import(new chitieu_import, $request->file('file_excel'));
+        return redirect('admin/chitieu');
+    }
+    public function getXuat()
+    {
+        return Excel::download(new chitieu_export, 'danh-sach-chi-tieu.xlsx');
     }
 }

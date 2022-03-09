@@ -84,6 +84,10 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::post('/tinhnang/nhap', 'tinhnang_controller@postNhap')->name('tinhnang.nhap');
     Route::get('/tinhnang/xuat', 'tinhnang_controller@getXuat')->name('tinhnang.xuat');
 
+    Route::post('/chitieu/nhap', 'chitieu_controller@postNhap')->name('chitieu.nhap');
+    Route::get('/chitieu/xuat', 'chitieu_controller@getXuat')->name('chitieu.xuat');
+
+
     Route::post('/profile/sua/{id}', 'profile_controller@postSua')->name('profile.sua');
 
     Route::get('/thongtin/active/{id}', 'thongtin_controller@active')->name('thongtin.active');

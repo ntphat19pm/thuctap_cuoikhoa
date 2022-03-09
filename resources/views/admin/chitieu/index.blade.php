@@ -13,10 +13,10 @@
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
       <a href="{{route('chitieu.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm chỉ tiêu</a> 
-      {{-- <a href="{{ route('dacdiem.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-file-download"></i> Xuất ra Excel</a>
-      <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button> --}}
+      <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
+      <a href="{{ route('chitieu.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-file-download"></i> Xuất ra Excel</a>
     </div>
-    {{-- <form action="{{ route('dacdiem.nhap') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('chitieu.nhap') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="modal fade" id="modal-secondary">
         <div class="modal-dialog">
@@ -31,7 +31,7 @@
               <div class="mb-0">
                 <label for="file_excel" class="form-label">Chọn tập tin Excel</label>
                 <input type="file" class="form-control" id="file_excel" name="file_excel" required />
-                <a href="{{url('public/uploads/file_nhap')}}/danh-sach-dac-diem.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
+                <a href="{{url('public/uploads/file_nhap')}}/danh-sach-chi-tieu.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
               </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -43,7 +43,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-    </form> --}}
+    </form>
 
     <div class="card" >
     
