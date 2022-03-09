@@ -70,6 +70,11 @@ class AppServiceProvider extends ServiceProvider
 
         $charts->register([
             \App\Charts\DoanhThuDichVuChart::class,
+            \App\Charts\TongDoanhThuChart::class,
+            \App\Charts\DuAnChart::class,
+            \App\Charts\KenhTruyenChart::class,
+            \App\Charts\GiaoDucChart::class,
+            \App\Charts\YTeChart::class,
         ]);
     }
 }

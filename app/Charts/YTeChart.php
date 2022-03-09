@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\chitieu;
 use App\Models\thuchien_chitieu;
 
-class DoanhThuDichVuChart extends BaseChart
+class YTeChart extends BaseChart
 {
     /**
      * Handles the HTTP request for the given chart.
@@ -19,26 +19,25 @@ class DoanhThuDichVuChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $KH = chitieu::select('doanhthu_dichvu','tytrong_dichvu')->first();
-        $TH = thuchien_chitieu::select('doanhthu_dichvu')->first();
+        $KH = chitieu::select('yte','tytrong_yte')->first();
+        $TH = thuchien_chitieu::select('yte')->first();
 
-        $ptTH = $TH->doanhthu_dichvu/$KH->doanhthu_dichvu ;
-        $conlai= $KH->doanhthu_dichvu - $TH->doanhthu_dichvu;
+        $ptTH = $TH->yte/$KH->yte ;
+        $conlai= $KH->yte - $TH->yte;
         $diem = 0 ;
 
         if($ptTH < 120 )
         {
-            $diem = $ptTH * $KH->tytrong_dichvu;
+            $diem = $ptTH * $KH->tytrong_yte;
         }
         else
         {
-            $diem = (120/100) * $KH->tytrong_dichvu;
+            $diem = (120/100) * $KH->tytrong_yte;
         }
-
         return Chartisan::build()
         ->labels(['Doanh thu dịch vụ'])
-        ->dataset('Kế hoạch', [$KH->doanhthu_dichvu])
-        ->dataset('Thực hiện', [$TH->doanhthu_dichvu])
+        ->dataset('Kế hoạch', [$KH->yte])
+        ->dataset('Thực hiện', [$TH->yte])
         ->dataset('Còn lại', [$conlai]);
     }
 }
