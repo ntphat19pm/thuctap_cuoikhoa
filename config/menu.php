@@ -94,6 +94,12 @@
 
         ],
         [
+            'label'=>'Thực hiện chỉ tiêu',
+            'route'=>'thuchien_chitieu.index',
+            'icon'=>'fa-question'
+
+        ],
+        [
             'label'=>' Quản lý nhân viên',
             'route'=>'admin.index',
             'icon'=>'fa-users-cog',

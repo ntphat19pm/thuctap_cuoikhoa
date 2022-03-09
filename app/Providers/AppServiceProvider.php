@@ -21,6 +21,7 @@ use App\Models\mangluoi;
 use App\Models\slider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
+use ConsoleTVs\Charts\Registrar as Charts;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -40,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Charts $charts)
     {
         Paginator::useBootstrap();
         view()->composer('*',function($view){
@@ -66,5 +67,9 @@ class AppServiceProvider extends ServiceProvider
                 'sp'=>sanpham::search()->paginate(20),
             ]);
         });
+
+        $charts->register([
+            \App\Charts\DoanhThuDichVuChart::class,
+        ]);
     }
 }

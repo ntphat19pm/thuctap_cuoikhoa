@@ -14,6 +14,8 @@ use App\Models\loiich;
 use App\Models\binhluan;
 use App\Models\gioitinh;
 use App\Models\giaithuong;
+use App\Models\chitieu;
+use App\Models\thuchien_chitieu;
 use App\Models\baiviet;
 use App\Models\cauhoi;
 use Illuminate\Support\Facades\DB;

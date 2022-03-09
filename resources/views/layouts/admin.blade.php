@@ -321,6 +321,10 @@ All rights reserved.
 <script src="{{url('public/adminlte')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{url('public/adminlte')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+<script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
+<script src="https://unpkg.com/chart.js@^2.9.3/dist/Chart.min.js"></script>
+<script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
 {{-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> --}}
 {!! Toastr::message() !!}
 

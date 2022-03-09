@@ -3,13 +3,13 @@
     <div class="card-body">
         <form action="{{route('chitieu.update',$data->id)}}" method="POST">
             @csrf @method('PUT')
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="form-group">
-                    <label for="thang">Tháng<span class="text-danger font-weight-bold">*</span></label>
-                    <select id="thang" class="form-control custom-select @error('thang') is-invalid @enderror" name="thang" required autofocus>
+                    <label for="thang_id">Tháng<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="thang_id" class="form-control custom-select @error('thang_id') is-invalid @enderror" name="thang_id" required autofocus>
                         <option value="">--Chọn tháng--</option>
                         @foreach($thang as $value)
-                        <option value="{{ $value->id }}" {{($data->thang== $value->id)?'selected':'' }}>{{$value->tenthang}}</option>
+                        <option value="{{ $value->id }}" {{($data->thang_id== $value->id)?'selected':'' }}>{{$value->tenthang}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -69,6 +69,5 @@
 
           </form>
     </div>
-</div>
 
 @endsection

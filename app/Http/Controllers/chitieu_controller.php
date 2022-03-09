@@ -42,7 +42,7 @@ class chitieu_controller extends Controller
     public function store(Request $request)
     {
         $data=new chitieu;
-        $data->thang=$request->thang;
+        $data->thang_id=$request->thang_id;
         $data->doanhthu_dichvu=$request->doanhthu_dichvu;
         $data->tytrong_dichvu=$request->tytrong_dichvu;
         $data->doanhthu_tong=$request->doanhthu_tong;
@@ -96,7 +96,7 @@ class chitieu_controller extends Controller
     public function update(Request $request,  $id)
     {
         $data=chitieu::find($id);
-        $data->thang=$request->thang;
+        $data->thang_id=$request->thang_id;
         $data->doanhthu_dichvu=$request->doanhthu_dichvu;
         $data->tytrong_dichvu=$request->tytrong_dichvu;
         $data->doanhthu_tong=$request->doanhthu_tong;

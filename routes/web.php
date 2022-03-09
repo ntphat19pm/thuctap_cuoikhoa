@@ -125,6 +125,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',
         'chitieu'=>'chitieu_controller',
+        'thuchien_chitieu'=>'thuchien_chitieu_controller',
         'giaoviec'=>'giaoviec_controller',
         'nop_file'=>'nop_file_controller',
     ]);
