@@ -19,11 +19,19 @@ class YTeChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $KH = chitieu::select('yte','tytrong_yte')->first();
-        $TH = thuchien_chitieu::select('yte')->first();
+        $KH = chitieu::select('id','yte','tytrong_yte')->orderby('id','DESC')->first();
+        $TH = thuchien_chitieu::select('chitieu_id','yte')->where('chitieu_id',$KH->id)->first();
 
         $ptTH = $TH->yte/$KH->yte ;
         $conlai= $KH->yte - $TH->yte;
+        if($conlai > 0)
+        {
+            $tinh=$KH->yte - $TH->yte;
+        }
+        else
+        {
+            $tinh=0;
+        }
         $diem = 0 ;
 
         if($ptTH < 120 )
@@ -38,6 +46,6 @@ class YTeChart extends BaseChart
         ->labels(['Doanh thu dịch vụ'])
         ->dataset('Kế hoạch', [$KH->yte])
         ->dataset('Thực hiện', [$TH->yte])
-        ->dataset('Còn lại', [$conlai]);
+        ->dataset('Còn lại', [$tinh]);
     }
 }

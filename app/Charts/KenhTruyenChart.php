@@ -19,11 +19,19 @@ class KenhTruyenChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $KH = chitieu::select('kenhtruyen','tytrong_kenhtruyen')->first();
-        $TH = thuchien_chitieu::select('kenhtruyen')->first();
+        $KH = chitieu::select('id','kenhtruyen','tytrong_kenhtruyen')->orderby('id','DESC')->first();
+        $TH = thuchien_chitieu::select('chitieu_id','kenhtruyen')->where('chitieu_id',$KH->id)->first();
 
         $ptTH = $TH->kenhtruyen/$KH->kenhtruyen ;
         $conlai= $KH->kenhtruyen - $TH->kenhtruyen;
+        if($conlai > 0)
+        {
+            $tinh=$KH->kenhtruyen - $TH->kenhtruyen;
+        }
+        else
+        {
+            $tinh=0;
+        }
         $diem = 0 ;
 
         if($ptTH < 120 )
@@ -38,6 +46,6 @@ class KenhTruyenChart extends BaseChart
         ->labels(['Doanh thu kênh truyền'])
         ->dataset('Kế hoạch', [$KH->kenhtruyen])
         ->dataset('Thực hiện', [$TH->kenhtruyen])
-        ->dataset('Còn lại', [$conlai]);
+        ->dataset('Còn lại', [$tinh]);
     }
 }

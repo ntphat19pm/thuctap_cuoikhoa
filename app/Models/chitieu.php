@@ -16,4 +16,7 @@ class chitieu extends Model
     public function thang(){
         return $this->hasOne(thang::class,'id','thang_id');
       }
+      public function thuchien_chitieu(){
+        return $this->hasMany(thuchien_chitieu::class,'chitieu_id','id');
+      }
 }

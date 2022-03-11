@@ -34,20 +34,6 @@
                         <label for="slug" class="form-label">Sản phẩm Slug</label>
                         <input type="text" class="form-control" name="slug" id="slug" required readonly>
                     </div>
-
-
-                    <div class="form-group">
-                        <label for="danhmuc_id">Danh mục<span class="text-danger font-weight-bold">*</span></label>
-                        <select id="danhmuc_id" class="form-control custom-select @error('danhmuc_id') is-invalid @enderror" name="danhmuc_id" required autofocus>
-                            <option value="">--Chọn danh mục sản phẩm--</option>
-                            @foreach($danhmuc as $value)
-                                <option value="{{ $value->id }}">{{ $value->tendanhmuc}}</option>
-                            @endforeach
-                        </select>
-                        @error('phanloai_id')
-                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                        @enderror
-                    </div>
                     
                 </div>
                 
@@ -60,6 +46,18 @@
                         <input type="text" class="form-control" name="link" id="link" required >
                     </div>
                     
+                    <div class="form-group">
+                        <label for="danhmuc_id">Danh mục<span class="text-danger font-weight-bold">*</span></label>
+                        <select id="danhmuc_id" class="form-control custom-select @error('danhmuc_id') is-invalid @enderror" name="danhmuc_id" required autofocus>
+                            <option value="">--Chọn danh mục sản phẩm--</option>
+                            @foreach($danhmuc as $value)
+                                <option value="{{ $value->id }}">{{ $value->tendanhmuc}}</option>
+                            @endforeach
+                        </select>
+                        @error('phanloai_id')
+                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="col-lg-4">

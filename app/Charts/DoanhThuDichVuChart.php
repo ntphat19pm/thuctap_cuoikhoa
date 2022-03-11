@@ -19,11 +19,19 @@ class DoanhThuDichVuChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $KH = chitieu::select('doanhthu_dichvu','tytrong_dichvu')->first();
-        $TH = thuchien_chitieu::select('doanhthu_dichvu')->first();
-
+        $KH = chitieu::select('id','doanhthu_dichvu','tytrong_dichvu')->orderby('id','DESC')->first();
+        $TH = thuchien_chitieu::select('chitieu_id','doanhthu_dichvu')->where('chitieu_id',$KH->id)->first();
+        
         $ptTH = $TH->doanhthu_dichvu/$KH->doanhthu_dichvu ;
         $conlai= $KH->doanhthu_dichvu - $TH->doanhthu_dichvu;
+        if($conlai > 0)
+        {
+            $tinh=$KH->doanhthu_dichvu - $TH->doanhthu_dichvu;
+        }
+        else
+        {
+            $tinh=0;
+        }
         $diem = 0 ;
 
         if($ptTH < 120 )
@@ -39,6 +47,6 @@ class DoanhThuDichVuChart extends BaseChart
         ->labels(['Doanh thu dịch vụ'])
         ->dataset('Kế hoạch', [$KH->doanhthu_dichvu])
         ->dataset('Thực hiện', [$TH->doanhthu_dichvu])
-        ->dataset('Còn lại', [$conlai]);
+        ->dataset('Còn lại', [$tinh]);
     }
 }

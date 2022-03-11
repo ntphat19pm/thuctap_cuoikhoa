@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\chitieu;
+use App\Models\thuchien_chitieu;
 use App\Models\thang;
 use App\Imports\chitieu_import;
 use App\Exports\chitieu_export;
@@ -58,7 +59,17 @@ class chitieu_controller extends Controller
         $data->tytrong_kenhtruyen=$request->tytrong_kenhtruyen;
         $data->yte=$request->yte;
         $data->tytrong_yte=$request->tytrong_yte;
-        if($data->save()){
+        $data->save();
+
+        $th=new thuchien_chitieu;
+        $th->chitieu_id=$data->id;
+        $th->doanhthu_dichvu=0;
+        $th->doanhthu_tong=0;
+        $th->duan=0;
+        $th->giaoduc=0;
+        $th->kenhtruyen=0;
+        $th->yte=0;
+        if($th->save()){
             $data=chitieu::all();
             Toastr::success('Thêm câu hỏi thành công','Thêm câu hỏi');
             return redirect('admin/chitieu');
@@ -71,9 +82,12 @@ class chitieu_controller extends Controller
      * @param  \App\Models\chitieu  $chitieu
      * @return \Illuminate\Http\Response
      */
-    public function show(chitieu $chitieu)
+    public function show( $id)
     {
-        //
+        $thang=thang::all();
+        $data=chitieu::find($id);
+        $thuchien=thuchien_chitieu::where('chitieu_id',$id)->orderby('chitieu_id','DESC')->first();
+        return view('admin.chitieu.show',compact('data','thang','thuchien'));  
     }
 
     /**
@@ -125,9 +139,13 @@ class chitieu_controller extends Controller
      * @param  \App\Models\chitieu  $chitieu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(chitieu $chitieu)
+    public function destroy( $id)
     {
-        //
+        $data=chitieu::find($id)->delete();
+        if($data){
+            Toastr::success('Xóa chỉ tiêu thành công','Xóa chỉ tiêu');
+            return redirect('admin/chitieu');
+        }
     }
 
     public function postNhap(Request $request)

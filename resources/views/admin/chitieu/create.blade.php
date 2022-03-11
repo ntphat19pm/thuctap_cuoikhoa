@@ -6,6 +6,14 @@
     <div class="card-body">
         <form action="{{route('chitieu.store')}}" method="POST">
             @csrf
+            <div class="form-group">
+                <a>
+                    <button type="submit" onclick="LayNoiDung()" class="btn btn-sm btn-primary float-right mb-3">Thêm</button>
+                </a>
+                <a href="{{route('chitieu.index')}}" class="btn btn-sm btn-danger mb-3">
+                    <i class="fas fa-sign-out-alt"> Quay về bảng chỉ tiêu</i>     
+                </a>
+            </div>
             <div class="col-lg-3">
                 <div class="form-group">
                 <label for="thang_id">Tháng<span class="text-danger font-weight-bold">*</span></label>
@@ -68,8 +76,6 @@
                 </div>            
             </div>
             
-            <button type="submit" class="btn btn-primary">Submit</button>
-
           </form>
     </div>
 </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\thuchien_chitieu;
+use App\Models\thang;
+use App\Models\chitieu;
 use Illuminate\Http\Request;
 use Toastr;
 
@@ -16,8 +18,9 @@ class thuchien_chitieu_controller extends Controller
      */
     public function index()
     {
-        $data=thuchien_chitieu::all();  
-        return view('admin.thuchien_chitieu.index',compact('data'));
+        $data=thuchien_chitieu::orderby('id','DESC')->get(); 
+        $thang=thang::all(); 
+        return view('admin.thuchien_chitieu.index',compact('data','thang'));
     }
 
     /**
@@ -27,7 +30,9 @@ class thuchien_chitieu_controller extends Controller
      */
     public function create()
     {
-        return view('admin.thuchien_chitieu.create'); 
+        $thang=thang::all();
+        $chitieu=chitieu::all(); 
+        return view('admin.thuchien_chitieu.create',compact('thang','chitieu')); 
     }
 
     /**
@@ -39,6 +44,7 @@ class thuchien_chitieu_controller extends Controller
     public function store(Request $request)
     {
         $data=new thuchien_chitieu;
+        $data->chitieu_id=$request->chitieu_id;
         $data->doanhthu_dichvu=$request->doanhthu_dichvu;
         $data->doanhthu_tong=$request->doanhthu_tong;
         $data->duan=$request->duan;

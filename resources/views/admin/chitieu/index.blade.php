@@ -59,7 +59,7 @@
               <th class="text-center" scope="col">Doanh thu kênh truyền</th>
               <th class="text-center" scope="col">Doanh thu giáo dục</th>
               <th class="text-center" scope="col">Doanh thu y tế</th>
-              <th class="text-right" scope="col">Action</th>
+              <th class="text-right" width="12%" scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -81,6 +81,9 @@
               <td>{{$item->yte}}</td>
                           
               <td class="text-right">
+                <a href="{{route('chitieu.show',$item->id)}}" class="btn btn-sm btn-warning">
+                  <i class="fas fa-eye"></i>              
+                </a> 
                 <a href="{{route('chitieu.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              
                 </a> 

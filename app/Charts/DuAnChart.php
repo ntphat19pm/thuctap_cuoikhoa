@@ -20,11 +20,19 @@ class DuAnChart extends BaseChart
     public function handler(Request $request): Chartisan
     {
 
-        $KH = chitieu::select('duan','tytrong_duan')->first();
-        $TH = thuchien_chitieu::select('duan')->first();
+        $KH = chitieu::select('id','duan','tytrong_duan')->orderby('id','DESC')->first();
+        $TH = thuchien_chitieu::select('chitieu_id','duan')->where('chitieu_id',$KH->id)->first();
 
         $ptTH = $TH->duan/$KH->duan ;
         $conlai= $KH->duan - $TH->duan;
+        if($conlai > 0)
+        {
+            $tinh=$KH->duan - $TH->duan;
+        }
+        else
+        {
+            $tinh=0;
+        }
         $diem = 0 ;
 
         if($ptTH < 120 )
@@ -40,6 +48,6 @@ class DuAnChart extends BaseChart
         ->labels(['Doanh thu dự án'])
         ->dataset('Kế hoạch', [$KH->duan])
         ->dataset('Thực hiện', [$TH->duan])
-        ->dataset('Còn lại', [$conlai]);
+        ->dataset('Còn lại', [$tinh]);
     }
 }

@@ -14,6 +14,7 @@
           <thead>
             <tr>
               <th class="text-center" scope="col">STT</th>
+              <th class="text-center" scope="col">Chỉ tiêu</th>
               <th class="text-center" scope="col">Doanh thu dịch vụ</th>
               <th class="text-center" scope="col">Tổng doanh thu</th>
               <th class="text-center" scope="col">Doanh thu dự án</th>
@@ -33,6 +34,7 @@
             @endphp
             <tr>
               <td class="text-center"><i>{{$i}}</i></td>          
+              <td>Chỉ tiêu {{$item->chitieu->thang->tenthang}}</td>
               <td>{{$item->doanhthu_dichvu}}</td>
               <td>{{$item->doanhthu_tong}}</td>
               <td>{{$item->duan}}</td>

@@ -15,6 +15,17 @@
                 </a>
             </div>
             <div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                    <label for="chitieu_id">Chỉ tiêu<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="chitieu_id" class="form-control custom-select @error('chitieu_id') is-invalid @enderror" name="chitieu_id" required autofocus>
+                        <option value="">-- Chọn chỉ tiêu --</option>
+                        @foreach($chitieu as $value)
+                            <option value="{{$value->id }}">{{ $value->thang->tenthang }}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                </div>
                 <div class="col-lg-3">  
                     <label for="doanhthu_dichvu" class="form-label">Doanh thu dịch vụ</label>
                     <input type="number" class="form-control" id="doanhthu_dichvu" name="doanhthu_dichvu" required>

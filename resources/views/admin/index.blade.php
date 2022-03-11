@@ -233,17 +233,99 @@
           </button>
         </div>
       </div>
-          <div class="card-body">
-              <div class="tab-content p-0">
-              
-                  <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                    <div id="chart" style="height: 300px;"></div>
-                  </div>
+      <div class="card-body">
+          <div class="tab-content p-0">
+          
+              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                <div id="chart" style="height: 300px;"></div>
               </div>
-              <b style="color: springgreen">Điểm đạt được: {{number_format($diem_yt,2)}}</b>
           </div>
+          <b style="color: springgreen">Điểm đạt được: {{number_format($diem_yt,2)}}</b>
+      </div>
       <!-- /.card-body -->
-    
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-chart-bar mr-1"></i>
+          CHƯƠNG TRÌNH HÀNH ĐỘNG
+        </h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>                
+      <div class="card-body">
+        <div class="btn-group" style="float: right;">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Chọn tháng
+          </button>
+          <ul class="dropdown-menu">
+              @if(!empty($thang))
+                  @foreach($thang as $item)
+              <li><a class="dropdown-item" href="{{route('home.showchuongtrinh',$item->id)}}">{{$item->tenthang}}</a></li>
+                  @endforeach
+              @endif
+          </ul>
+        </div>
+        <table id="example11" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">ID</th>
+              <th class="text-center" scope="col">Tên chương trình hành động</th>
+              <th class="text-center" scope="col">Phần trăm thực hiện</th>
+              <th class="text-center" scope="col">Điểm</th>
+              <th class="text-center" scope="col">Thanh tiến độ</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if(!empty($showchuongtrinh))
+              @foreach($showchuongtrinh as $value)
+                <tr>
+                  <th>{{ $loop->iteration }}</th>
+                  <td class="text-center">{{$value->ten_chuongtrinh}}</td>
+                  <td class="text-center">{{number_format(($value->thuchien/$value->kehoach)*100,2)}}/100%</td>
+                  <td class="text-center">
+                    @if(($value->thuchien/$value->kehoach)*100==0)
+                    Chưa hoàn thành
+                    @elseif(($value->thuchien/$value->kehoach)*100<70)
+                    1 điểm
+                    @elseif(($value->thuchien/$value->kehoach)*100<90)
+                    2 điểm
+                    @elseif(($value->thuchien/$value->kehoach)*100==90)
+                    3 điểm
+                    @elseif(($value->thuchien/$value->kehoach)*100<110)
+                    4 điểm
+                    @else
+                    5 điểm
+                    @endif
+                  </td>
+                  <td class="text-center">
+                    {{-- <div class="progress">
+                      <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="{{$value->thuchien}}" aria-valuemin="0" aria-valuemax="{{$value->kehoach}}" style="width:{{number_format(($value->thuchien/$value->kehoach)*100,2)}}%">
+                        {{number_format(($value->thuchien/$value->kehoach)*100,2)}}%
+                      </div>
+                    </div> --}}
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="{{$value->thuchien}}" aria-valuemin="0" aria-valuemax="{{$value->kehoach}}" style="width:{{number_format(($value->thuchien/$value->kehoach)*100,2)}}%">{{number_format(($value->thuchien/$value->kehoach)*100,2)}}%</div>
+                      
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
+            @endif
+          </tbody>
+        </table>
+        <form method="POST" action="" id="form-delete">
+          @csrf @method('DELETE')
+        <form>
+      </div>    
     </div>
   </div>
 </div>
@@ -272,55 +354,55 @@ const chart_doanhthudichvu = new Chartisan({
     el: '#chart_doanhthudichvu',
     url: "@chart('doanh_thu_dich_vu_chart')",
     hooks: new ChartisanHooks()
-        .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
-        .responsive()
-        .beginAtZero()
-        .legend({ position: 'bottom' })
+      .colors(['#2E8364', '#0487D9','#F24444'])
+      .responsive()
+      .beginAtZero()
+      .legend({ position: 'right'})
 });
 const chart_tongdoanhthu = new Chartisan({
     el: '#chart_tongdoanhthu',
     url: "@chart('tong_doanh_thu_chart')",
     hooks: new ChartisanHooks()
-        .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
-        .responsive()
-        .beginAtZero()
-        .legend({ position: 'bottom' })
+      .colors(['#2E8364', '#0487D9','#F24444'])
+      .responsive()
+      .beginAtZero()
+      .legend({ position: 'right'})
 });
 const chart_duan = new Chartisan({
     el: '#chart_duan',
     url: "@chart('du_an_chart')",
     hooks: new ChartisanHooks()
-        .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
-        .responsive()
-        .beginAtZero()
-        .legend({ position: 'bottom' })
+      .colors(['#2E8364', '#0487D9','#F24444'])
+      .responsive()
+      .beginAtZero()
+      .legend({ position: 'right'})
 });
 const chartkenhtruyen = new Chartisan({
     el: '#chartkenhtruyen',
     url: "@chart('kenh_truyen_chart')",
     hooks: new ChartisanHooks()
-        .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
-        .responsive()
-        .beginAtZero()
-        .legend({ position: 'bottom' })
+      .colors(['#2E8364', '#0487D9','#F24444'])
+      .responsive()
+      .beginAtZero()
+      .legend({ position: 'right'})
 });
 const chartgiaoduc = new Chartisan({
     el: '#chartgiaoduc',
     url: "@chart('giao_duc_chart')",
     hooks: new ChartisanHooks()
-        .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
-        .responsive()
-        .beginAtZero()
-        .legend({ position: 'bottom' })
+      .colors(['#2E8364', '#0487D9','#F24444'])
+      .responsive()
+      .beginAtZero()
+      .legend({ position: 'right'})
 });
 const chart = new Chartisan({
     el: '#chart',
     url: "@chart('y_te_chart')",
     hooks: new ChartisanHooks()
-        .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
-        .responsive()
-        .beginAtZero()
-        .legend({ position: 'bottom' })
+      .colors(['#2E8364', '#0487D9','#F24444'])
+      .responsive()
+      .beginAtZero()
+      .legend({ position: 'right'})
 });
 
 </script>

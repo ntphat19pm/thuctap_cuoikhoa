@@ -1,22 +1,12 @@
 @extends('layouts.admin')
 @section('main')
-{{-- <form action="" class="form-inline">
-
-  <div class="form-group ">
-    <input class="form-control" name="tukhoa" placeholder="Nhập tên sản phẩm">
-  </div>
-  <button type="submit" class="btn btn-primary">
-    <i class ="fas fa-search"></i>
-  </button>  
-</form> --}}
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
-      <a href="{{route('tinhnang.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm tính năng</a> 
-      <a href="{{ route('tinhnang.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-file-download"></i> Xuất ra Excel</a>
+      <a href="{{route('chuongtrinh.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm chương trình</a> 
       <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
     </div>
-    <form action="{{ route('tinhnang.nhap') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('chuongtrinh.nhap') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="modal fade" id="modal-secondary">
         <div class="modal-dialog">
@@ -31,7 +21,7 @@
               <div class="mb-0">
                 <label for="file_excel" class="form-label">Chọn tập tin Excel</label>
                 <input type="file" class="form-control" id="file_excel" name="file_excel" required />
-                <a href="{{url('public/uploads/file_nhap')}}/danh-sach-tinh-nang.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
+                <a href="{{url('public/uploads/file_nhap')}}/danh-sach-chuong-trinh.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
               </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -52,8 +42,11 @@
           <thead>
             <tr>
               <th class="text-center" scope="col">STT</th>
-              <th class="text-center" scope="col">Tên tính năng</th>
-              <th class="text-center" scope="col">Chi tiết</th>
+              <th class="text-center" scope="col">Tháng</th>
+              <th class="text-center" scope="col">Tên chương trình</th>
+              <th class="text-center" scope="col">Kế hoạch</th>
+              <th class="text-center" scope="col">Tỷ trọng</th>
+              <th class="text-center" scope="col">Thực hiện</th>
               <th class="text-right" scope="col">Action</th>
             </tr>
           </thead>
@@ -67,13 +60,17 @@
             @endphp
             <tr>
               <td class="text-center"><i>{{$i}}</i></td>
-              <td>{{$item->tentinhnang}}</td>            
-              <td>{{$item->chitiet}}</td>            
+              <td>{{$item->thang->tenthang}}</td>            
+              <td>{{$item->ten_chuongtrinh}}</td>
+              <td>{{$item->kehoach}}</td>
+              <td>{{$item->tytrong}}</td>
+              <td>{{$item->thuchien}}</td>
+                          
               <td class="text-right">
-                <a href="{{route('tinhnang.edit',$item->id)}}" class="btn btn-sm btn-success">
+                <a href="{{route('chuongtrinh.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              
                 </a> 
-                <a  href="{{route('tinhnang.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
+                <a  href="{{route('chuongtrinh.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
                   <i class="fas fa-trash"></i>
                 </a>
               </td>

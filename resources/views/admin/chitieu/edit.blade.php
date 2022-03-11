@@ -3,6 +3,15 @@
     <div class="card-body">
         <form action="{{route('chitieu.update',$data->id)}}" method="POST">
             @csrf @method('PUT')
+            <div class="form-group">
+                <a href="{{route('chitieu.index')}}" class="btn btn-sm btn-danger mb-3">
+                    <i class="fas fa-sign-out-alt"> Quay về bảng chỉ tiêu</i>     
+                </a>
+    
+                <a>
+                  <button type="submit" class="btn btn-sm btn-primary float-right mb-3">Lưu</button>
+              </a>
+              </div>
             <div class="col-lg-3">
                 <div class="form-group">
                     <label for="thang_id">Tháng<span class="text-danger font-weight-bold">*</span></label>
@@ -64,8 +73,6 @@
                     <input type="number" value="{{$data->tytrong_yte}}" class="form-control" id="tytrong_yte" name="tytrong_yte" required>
                 </div>            
             </div>
-
-            <button type="submit" class="btn btn-primary">Lưu</button>
 
           </form>
     </div>

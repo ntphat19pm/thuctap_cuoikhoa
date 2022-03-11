@@ -173,7 +173,7 @@ class sanpham_controller extends Controller
     public function postNhap(Request $request)
     {
         Excel::import(new sanpham_import, $request->file('file_excel'));
-        return redirect()->route('admin/sanpham');
+        return redirect('admin/sanpham');
     }
 
     public function getXuat()

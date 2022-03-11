@@ -95,6 +95,9 @@
                 @endif
               </td>            
               <td class="text-right">
+                <a href="{{route('giaoviec.show',$item->id)}}" class="btn btn-sm btn-warning">
+                  <i class="fas fa-eye"></i>              
+                </a>
                 <a href="{{route('giaoviec.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              
                 </a> 

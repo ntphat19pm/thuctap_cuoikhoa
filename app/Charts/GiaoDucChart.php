@@ -19,11 +19,19 @@ class GiaoDucChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $KH = chitieu::select('giaoduc','tytrong_giaoduc')->first();
-        $TH = thuchien_chitieu::select('giaoduc')->first();
+        $KH = chitieu::select('id','giaoduc','tytrong_giaoduc')->orderby('id','DESC')->first();
+        $TH = thuchien_chitieu::select('chitieu_id','giaoduc')->where('chitieu_id',$KH->id)->first();
 
         $ptTH = $TH->giaoduc/$KH->giaoduc ;
         $conlai= $KH->giaoduc - $TH->giaoduc;
+        if($conlai > 0)
+        {
+            $tinh=$KH->giaoduc - $TH->giaoduc;
+        }
+        else
+        {
+            $tinh=0;
+        }
         $diem = 0 ;
 
         if($ptTH < 120 )
@@ -38,6 +46,6 @@ class GiaoDucChart extends BaseChart
         ->labels(['Doanh thu dịch vụ'])
         ->dataset('Kế hoạch', [$KH->giaoduc])
         ->dataset('Thực hiện', [$TH->giaoduc])
-        ->dataset('Còn lại', [$conlai]);
+        ->dataset('Còn lại', [$tinh]);
     }
 }

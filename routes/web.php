@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\home_controller; 
+use App\Http\Controllers\admin_controller; 
 use App\Http\Controllers\danhmuc_controller;
 
 /*
@@ -87,6 +88,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::post('/chitieu/nhap', 'chitieu_controller@postNhap')->name('chitieu.nhap');
     Route::get('/chitieu/xuat', 'chitieu_controller@getXuat')->name('chitieu.xuat');
 
+    Route::post('/chuongtrinh/nhap', 'chuongtrinh_controller@postNhap')->name('chuongtrinh.nhap');
+
+    Route::get('/showchuongtrinh/{id}', [admin_controller::class, 'showchuongtrinh'])->name('home.showchuongtrinh');
 
     Route::post('/profile/sua/{id}', 'profile_controller@postSua')->name('profile.sua');
 
@@ -129,6 +133,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'tinhtrang'=>'tinhtrang_controller',
         'thongke'=>'thongke_controller',
         'chitieu'=>'chitieu_controller',
+        'chuongtrinh'=>'chuongtrinh_controller',
         'thuchien_chitieu'=>'thuchien_chitieu_controller',
         'giaoviec'=>'giaoviec_controller',
         'nop_file'=>'nop_file_controller',

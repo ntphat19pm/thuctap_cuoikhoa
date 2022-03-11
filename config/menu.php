@@ -86,19 +86,27 @@
             'route'=>'cauhoi.index',
             'icon'=>'fa-question'
 
-        ],     
-        [
-            'label'=>'Quản lý chỉ tiêu',
-            'route'=>'chitieu.index',
-            'icon'=>'fa-question'
-
         ],
         [
-            'label'=>'Thực hiện chỉ tiêu',
-            'route'=>'thuchien_chitieu.index',
-            'icon'=>'fa-question'
-
-        ],
+            'label'=>'Chỉ tiêu - Chương trình',
+            'route'=>'admin.index',
+            'icon'=>'fa-chart-line',
+            'item'=>[
+                [
+                    'label'=>'Chỉ tiêu',
+                    'route'=>'chitieu.index'
+                ],
+                [
+                    'label'=>'Thực hiện chỉ tiêu',
+                    'route'=>'thuchien_chitieu.index'
+                ],
+                [
+                    'label'=>'Chương trình hành động',
+                    'route'=>'chuongtrinh.index'
+                ]
+               
+            ]
+        ],   
         [
             'label'=>' Quản lý nhân viên',
             'route'=>'admin.index',

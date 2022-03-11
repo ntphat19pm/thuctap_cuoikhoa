@@ -51,33 +51,26 @@
                 <div class="col-lg-4">
     
                     <div class="form-group">
-                        <img class="rounded mx-auto d-block" src="{{url('public/uploads/sanpham/chitiet')}}/{{$data->anh1}}"  width="300px"/>
+                        <img class="rounded mx-auto d-block" src="{{url('public/uploads/sanpham/chitiet')}}/{{$data->anh1}}"  width="380px"/>
                         <input id="file_uploads1" type="file" class="form-control @error('file_uploads1') is-invalid @enderror" name="file_uploads1" value="{{ $data->anh1 }}" autocomplete="hinhanh" />
+                    </div>
+
+                    <div class="form-group invalid">
+                        <label for="link" class="form-label">Đường dẫn</label>
+                        <input type="text" value="https://youtu.be/{{$data->link}}" class="form-control" name="link" id="link" required>
+                    </div>
+
+                    <div class="form-group invalid">
+                        <label for="link_pdf" class="form-label">File tài liệu</label>
+                        <input type="text" value="{{$data->link_pdf}}" class="form-control" name="link_pdf" id="link_pdf" required>
                     </div>
                 </div>
 
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="form-group">
                         <label for="chitiet" class="form-label">Chi tiết</label>
                         <textarea class="form-control" name="chitiet" id="chitiet" cols="10" rows="1">{{$data->chitiet}}</textarea>
                         <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group invalid">
-                                <label for="link" class="form-label">Đường dẫn</label>
-                                <input type="text" value="https://youtu.be/{{$data->link}}" class="form-control" name="link" id="link" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group invalid">
-                                <label for="link_pdf" class="form-label">File tài liệu</label>
-                                <input type="text" value="{{$data->link_pdf}}" class="form-control" name="link_pdf" id="link_pdf" required>
-                            </div>
-                        </div>
-                        {{-- <div class="col-lg-8">
-                            <iframe width="100%" height="285" src="https://www.youtube.com/embed/{{$data->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div> --}}
                     </div>
                 </div>
           </form>

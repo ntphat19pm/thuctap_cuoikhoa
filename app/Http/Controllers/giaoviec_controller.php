@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\giaoviec;
 use App\Models\nhanvien;
 use App\Models\nop_file;
+use App\Models\chucvu;
+use App\Models\gioitinh;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Toastr;
@@ -21,9 +23,19 @@ class giaoviec_controller extends Controller
      */
     public function index()
     {
-        $data=giaoviec::all();
-        $nop_file=nop_file::all();
-        return view('admin.giaoviec.index',compact('data','nop_file'));
+        $nv=nhanvien::select('chucvu_id')->first();
+        if($nv->chucvu_id==3)
+        {
+            $data=giaoviec::all();
+            $nop_file=nop_file::all();
+            return view('admin.giaoviec.index',compact('data','nop_file'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng giao việc','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
+        
     }
 
     /**
@@ -62,9 +74,12 @@ class giaoviec_controller extends Controller
      * @param  \App\Models\giaoviec  $giaoviec
      * @return \Illuminate\Http\Response
      */
-    public function show(giaoviec $giaoviec)
+    public function show( $id)
     {
-        //
+        $nhanvien=nhanvien::all();
+        $nop_file=nop_file::where('congviec_id',$id)->orderby('thoigian_nop','DESC')->paginate(10);
+        $data=giaoviec::find($id);
+        return view('admin.giaoviec.show',compact('data','nhanvien','nop_file'));
     }
 
     /**
