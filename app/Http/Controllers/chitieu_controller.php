@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\chitieu;
 use App\Models\thuchien_chitieu;
 use App\Models\thang;
+use App\Models\nhanvien;
 use App\Imports\chitieu_import;
 use App\Exports\chitieu_export;
 use Illuminate\Http\Request;
 use Toastr;
 use Excel;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class chitieu_controller extends Controller
 {
@@ -20,10 +23,17 @@ class chitieu_controller extends Controller
      */
     public function index()
     {
-        $data=chitieu::all();
-        $thang=thang::all();
-        
-        return view('admin.chitieu.index',compact('data','thang'));
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=chitieu::all();
+            $thang=thang::all(); 
+            return view('admin.chitieu.index',compact('data','thang'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng chỉ tiêu','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
     }
 
     /**

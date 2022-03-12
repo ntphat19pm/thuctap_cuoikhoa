@@ -85,4 +85,146 @@
     <!-- /.card-body -->
 </div>
 
+<div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-chart-bar mr-1"></i>
+          BIỂU ĐỒ DOANH THU Y TẾ
+        </h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+            <div class="tab-content p-0">
+                
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                    <div class="row">
+                        <div class="col-lg-9">  
+                            <div class="progress-group">
+                                Doanh thu dịch vụ
+                                <span class="float-right"><b>{{$thuchien->doanhthu_dichvu}}</b>/{{$data->doanhthu_dichvu}}</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="{{$thuchien->doanhthu_dichvu}}" aria-valuemin="0" aria-valuemax="{{$data->doanhthu_dichvu}}" style="width:{{number_format(($thuchien->doanhthu_dichvu/$data->doanhthu_dichvu)*100)}}%">{{number_format(($thuchien->doanhthu_dichvu/$data->doanhthu_dichvu)*100)}}%</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                Tổng doanh thu
+                                <span class="float-right"><b>{{$thuchien->doanhthu_tong}}</b>/{{$data->doanhthu_tong}}</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{$thuchien->doanhthu_tong}}" aria-valuemin="0" aria-valuemax="{{$data->doanhthu_tong}}" style="width:{{number_format(($thuchien->doanhthu_tong/$data->doanhthu_tong)*100)}}%">{{number_format(($thuchien->doanhthu_tong/$data->doanhthu_tong)*100)}}%</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                Doanh thu kênh truyền
+                                <span class="float-right"><b>{{$thuchien->kenhtruyen}}</b>/{{$data->kenhtruyen}}</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="{{$thuchien->kenhtruyen}}" aria-valuemin="0" aria-valuemax="{{$data->kenhtruyen}}" style="width:{{number_format(($thuchien->kenhtruyen/$data->kenhtruyen)*100)}}%">{{number_format(($thuchien->kenhtruyen/$data->kenhtruyen)*100)}}%</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                Doanh thu dự án
+                                <span class="float-right"><b>{{$thuchien->duan}}</b>/{{$data->duan}}</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="{{$thuchien->duan}}" aria-valuemin="0" aria-valuemax="{{$data->duan}}" style="width:{{number_format(($thuchien->duan/$data->duan)*100,2)}}%">{{number_format(($thuchien->duan/$data->duan)*100)}}%</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                Doanh thu giáo dục
+                                <span class="float-right"><b>{{$thuchien->giaoduc}}</b>/{{$data->giaoduc}}</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-indigo" role="progressbar" aria-valuenow="{{$thuchien->giaoduc}}" aria-valuemin="0" aria-valuemax="{{$data->giaoduc}}" style="width:{{number_format(($thuchien->giaoduc/$data->giaoduc)*100,2)}}%">{{number_format(($thuchien->giaoduc/$data->giaoduc)*100)}}%</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                Doanh thu y tế
+                                <span class="float-right"><b>{{$thuchien->yte}}</b>/{{$data->yte}}</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{$thuchien->yte}}" aria-valuemin="0" aria-valuemax="{{$data->yte}}" style="width:{{number_format(($thuchien->yte/$data->yte)*100,2)}}%">{{number_format(($thuchien->yte/$data->yte)*100)}}%</div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">  
+                            <div class="progress-group">
+                                Điểm doanh thu dịch vụ
+                                @if(($thuchien->doanhthu_dichvu/$data->doanhthu_dichvu) < 120 )
+                                    <span class="float-right"><b>{{number_format(($thuchien->doanhthu_dichvu/$data->doanhthu_dichvu)*$data->tytrong_dichvu,2)}}</b></span>
+                                @else
+                                    <span class="float-right"><b>{{number_format((120/100)*$data->tytrong_dichvu,2)}}</b></span>
+                                @endif
+                                
+                            </div>
+
+                            <div class="progress-group">
+                                Điểm tổng doanh thu
+                                @if(($thuchien->doanhthu_tong/$data->doanhthu_tong) < 120 )
+                                    <span class="float-right"><b>{{number_format(($thuchien->doanhthu_tong/$data->doanhthu_tong)*$data->tytrong_tong,2)}}</b></span>
+                                @else
+                                    <span class="float-right"><b>{{number_format((120/100)*$data->tytrong_tong,2)}}</b></span>
+                                @endif
+                                
+                            </div>
+
+                            <div class="progress-group">
+                                Điểm doanh thu kênh truyền
+                                @if(($thuchien->kenhtruyen/$data->kenhtruyen) < 120 )
+                                    <span class="float-right"><b>{{number_format(($thuchien->kenhtruyen/$data->kenhtruyen)*$data->tytrong_kenhtruyen,2)}}</b></span>
+                                @else
+                                    <span class="float-right"><b>{{number_format((120/100)*$data->tytrong_kenhtruyen,2)}}</b></span>
+                                @endif
+                                
+                            </div>
+
+                            <div class="progress-group">
+                                Điểm doanh thu dự án
+                                @if(($thuchien->duan/$data->duan) < 120 )
+                                    <span class="float-right"><b>{{number_format(($thuchien->duan/$data->duan)*$data->tytrong_duan,2)}}</b></span>
+                                @else
+                                    <span class="float-right"><b>{{number_format((120/100)*$data->tytrong_duan,2)}}</b></span>
+                                @endif
+                                
+                            </div>
+
+                            <div class="progress-group">
+                                Điểm doanh thu giáo dục
+                                @if(($thuchien->giaoduc/$data->giaoduc) < 120 )
+                                    <span class="float-right"><b>{{number_format(($thuchien->giaoduc/$data->giaoduc)*$data->tytrong_giaoduc,2)}}</b></span>
+                                @else
+                                    <span class="float-right"><b>{{number_format((120/100)*$data->tytrong_giaoduc,2)}}</b></span>
+                                @endif
+                                
+                            </div>
+                            <div class="progress-group">
+                                Điểm doanh thu y tế
+                                @if(($thuchien->yte/$data->yte) < 120 )
+                                    <span class="float-right"><b>{{number_format(($thuchien->yte/$data->yte)*$data->tytrong_yte,2)}}</b></span>
+                                @else
+                                    <span class="float-right"><b>{{number_format((120/100)*$data->tytrong_yte,2)}}</b></span>
+                                @endif
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+  </div>
+
 @endsection

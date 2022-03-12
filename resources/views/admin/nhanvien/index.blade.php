@@ -1,22 +1,15 @@
 @extends('layouts.admin')
 @section('main')
-<form action="" class="form-inline mb-3">
+<div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+
+  <a href="{{route('nhanvien.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm nhân viên</a>
   
-  <div class="form-group ">
-    <input class="form-control" name="tukhoa" placeholder="Nhập tên danh mục">
-   </div>
-   <button type="submit" class="btn btn-primary">
-    <i class ="fas fa-search"></i>
-  </button>
-  @if(Auth::user()->chucvu_id==1)
-  <a href="{{route('nhanvien.create')}}"  class="btn btn-secondary ml-5">Thêm</a>
-  @endif
-</form> 
+</div>
 
 <div class="card" >
  
     <div class="card-body">
-      <table class="table">
+      <table id="example1" class="table table-bordered table-striped">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -26,9 +19,7 @@
             <th scope="col">SĐT</th>
             <th scope="col">Chức vụ</th>
             <th class="text-center" scope="col">Trạng thái</th>
-            @if(Auth::user()->chucvu_id==1)
-            <th class="text-right" scope="col">Action</th>
-            @endif
+            <th class="text-right" width="12%" scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -62,7 +53,6 @@
                 <i style="color: red" class="far fa-times-circle fa-lg"></i>
               @endif
             </td>
-          @if(Auth::user()->chucvu_id==1)
             <td class="text-right">
               <a href="{{route('nhanvien.show',$item->id)}}" class="btn btn-sm btn-warning">
                 <i class="fas fa-eye"></i>              
@@ -76,7 +66,6 @@
 
               {{-- <a onclick="return confirm('Bạn có muốn xóa {{$item->hovaten}} ?')" href="{{route('nhanvien.destroy',$item->id)}}" class="btn btn-danger"><i class="align-middle" data-feather="trash"></i>Xóa</a> --}}
             </td>
-          @endif
            
             </tr>
           @endforeach

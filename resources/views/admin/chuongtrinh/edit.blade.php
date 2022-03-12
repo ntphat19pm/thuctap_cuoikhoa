@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-lg-2"> 
                     <label for="thuchien" class="form-label">Thực hiện</label>
-                    <input type="number" value="{{$data->thuchien}}" class="form-control" id="thuchien" name="thuchien" onblur="calcular();" readonly required>
+                    <input type="number" value="{{$data->thuchien}}" class="form-control" id="thuchien" name="thuchien" readonly required>
                 </div>          
             </div>
 
@@ -40,7 +40,7 @@
           <hr>
           <div class="col-lg-3"> 
             <label for="nhap_thuchien" class="form-label">Nhập thực hiện</label>
-            <input type="number" class="form-control" id="nhap_thuchien" name="nhap_thuchien" onblur="calcular();" required>
+            <input type="number" class="form-control" value="0" id="nhap_thuchien" name="nhap_thuchien" onblur="calcular();" required>
         </div>  
     </div>
 

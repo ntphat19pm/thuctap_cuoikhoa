@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\nhanvien;
 use App\Models\chucvu;
 use Illuminate\Http\Request;
+use Toastr;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class chucvu_controller extends Controller
 {
@@ -15,8 +18,16 @@ class chucvu_controller extends Controller
      */
     public function index()
     {
-        $data=chucvu::all();
-        return view('admin.chucvu.index',compact('data'));
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=chucvu::all();
+            return view('admin.chucvu.index',compact('data'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng chức vụ','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        } 
     }
 
     /**

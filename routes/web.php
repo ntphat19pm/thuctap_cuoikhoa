@@ -35,6 +35,7 @@ Route::get('/dauan','home_controller@dauan')->name('home.dauan');
 Route::get('/cauhoi','home_controller@cauhoi')->name('home.cauhoi');
 Route::get('/chinhsach','home_controller@chinhsach')->name('home.chinhsach');
 Route::get('/dieukhoan','home_controller@dieukhoan')->name('home.dieukhoan');
+Route::get('/tuyendung','home_controller@tuyendung')->name('home.tuyendung');
 
 Route::get('/dangnhap','home_controller@get_dangnhap')->name('home.getdangnhap');
 Route::get('/dangxuat','home_controller@dangxuat')->name('home.dangxuat');

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\lienhe;
+use App\Models\nhanvien;
 use File;
 use Illuminate\Http\Request;
 use Toastr;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class lienhe_controller extends Controller
 {
@@ -16,8 +19,16 @@ class lienhe_controller extends Controller
      */
     public function index()
     {
-        $data=lienhe::all();
-        return view('admin.lienhe.index',compact('data'));
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=lienhe::all();
+            return view('admin.lienhe.index',compact('data'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng thông tin hệ thống','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
     }
 
     /**

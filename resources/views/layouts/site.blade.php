@@ -127,7 +127,7 @@
               <li class="dropdown"><a href="{{route('home.dauan')}}"><span>Dấu ấn</span></a></li>
             </ul>
           </li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          <li><a class="getstarted" href="{{route('home.tuyendung')}}">Tuyển dụng</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

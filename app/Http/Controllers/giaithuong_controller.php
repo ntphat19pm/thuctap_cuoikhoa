@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\giaithuong;
+use App\Models\nhanvien;
 use Illuminate\Http\Request;
 use File;
 use Toastr;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class giaithuong_controller extends Controller
 {
@@ -16,8 +19,16 @@ class giaithuong_controller extends Controller
      */
     public function index()
     {
-        $data=giaithuong::all();
-        return view('admin.giaithuong.index',compact('data'));
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=giaithuong::all();
+            return view('admin.giaithuong.index',compact('data'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng giải thưởng','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
     }
 
     /**

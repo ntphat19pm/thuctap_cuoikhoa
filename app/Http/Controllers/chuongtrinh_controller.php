@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\chuongtrinh;
 use App\Models\thang;
+use App\Models\nhanvien;
 use App\Imports\chuongtrinh_import;
 use Illuminate\Http\Request;
 use Toastr;
 use Excel;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class chuongtrinh_controller extends Controller
 {
@@ -30,8 +33,19 @@ class chuongtrinh_controller extends Controller
      */
     public function create()
     {
-        $thang=thang::all();
-        return view('admin.chuongtrinh.create',compact('thang')); 
+        if(Auth::user()->chucvu_id==1)
+        {
+            $thang=thang::all();
+            return view('admin.chuongtrinh.create',compact('thang'));
+        }
+        else
+        {   
+            $data=chuongtrinh::all();
+            $thang=thang::all();  
+            
+            Toastr::warning('Bạn không có quyền thêm chương trình','Hạn chế truy cập');
+            return view('admin.chuongtrinh.index',compact('data','thang'));
+        } 
     }
 
     /**

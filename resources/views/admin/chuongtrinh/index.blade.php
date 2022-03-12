@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('main')
 
+  @if(Auth::user()->chucvu_id==1)
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
       <a href="{{route('chuongtrinh.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm chương trình</a> 
       <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
     </div>
+  @endif
     <form action="{{ route('chuongtrinh.nhap') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="modal fade" id="modal-secondary">
@@ -70,9 +72,11 @@
                 <a href="{{route('chuongtrinh.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              
                 </a> 
+                @if(Auth::user()->chucvu_id==1)
                 <a  href="{{route('chuongtrinh.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
                   <i class="fas fa-trash"></i>
                 </a>
+                @endif
               </td>
           
               </tr>

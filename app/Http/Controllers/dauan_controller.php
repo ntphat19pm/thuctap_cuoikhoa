@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\dauan;
+use App\Models\nhanvien;
 use Illuminate\Http\Request;
 use File;
 use Toastr;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class dauan_controller extends Controller
 {
@@ -16,8 +19,17 @@ class dauan_controller extends Controller
      */
     public function index()
     {
-        $data=dauan::all();
-        return view('admin.dauan.index',compact('data'));
+        
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=dauan::all();
+            return view('admin.dauan.index',compact('data'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng dấu ấn','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
     }
 
     /**

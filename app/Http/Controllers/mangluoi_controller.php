@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\mangluoi;
+use App\Models\nhanvien;
 use Illuminate\Http\Request;
 use File;
 use Toastr;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class mangluoi_controller extends Controller
 {
@@ -16,8 +19,16 @@ class mangluoi_controller extends Controller
      */
     public function index()
     {
-        $data=mangluoi::all();
-        return view('admin.mangluoi.index',compact('data'));
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=mangluoi::all();
+            return view('admin.mangluoi.index',compact('data'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng mạng lưới','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
     }
 
     /**

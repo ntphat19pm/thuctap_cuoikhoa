@@ -13,6 +13,8 @@ use Toastr;
 use File;
 use Storage;
 use Excel;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class giaoviec_controller extends Controller
 {
@@ -23,8 +25,7 @@ class giaoviec_controller extends Controller
      */
     public function index()
     {
-        $nv=nhanvien::select('chucvu_id')->first();
-        if($nv->chucvu_id==3)
+        if(Auth::user()->chucvu_id==1)
         {
             $data=giaoviec::all();
             $nop_file=nop_file::all();

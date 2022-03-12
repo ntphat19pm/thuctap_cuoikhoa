@@ -25,8 +25,16 @@ class nhanvien_controller extends Controller
      */
     public function index()
     {
-        $data=nhanvien::orderBy('id','ASC')->search()->paginate(10);
-        return view('admin.nhanvien.index',compact('data'));    
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=nhanvien::orderBy('id','ASC')->search()->paginate(10);
+            return view('admin.nhanvien.index',compact('data'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng nhân viên','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        } 
     }
 
     /**

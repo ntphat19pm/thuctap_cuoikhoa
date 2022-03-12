@@ -1,22 +1,17 @@
 @extends('layouts.admin')
 @section('main')
-<form action="" method="GET" class="form-inline mb-3">
-  <div class="form-group ">
-    <input class="form-control" name="tukhoa" placeholder="Nhập tên danh mục">
-   </div>
-  <button type="submit" class="btn btn-primary">
-    <i class ="fas fa-search"></i>
-  </button>
-  @if(Auth::user()->chucvu_id==1)
-  <a href="{{route('chucvu.create')}}"  class="btn btn-secondary ml-5">Thêm</a>
-  @endif
-</form>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+
+  <a href="{{route('chucvu.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm chức vụ</a>
+  
+</div>
 
 
 <div class="card" >
  
     <div class="card-body">
-      <table class="table">
+      <table id="example1" class="table table-bordered table-striped">
         <thead>
           <tr>
             <th scope="col">ID</th>

@@ -179,7 +179,7 @@
   @if(Auth::user()->chucvu_id==1)
         <b><a class=" d-block" style="color: rgb(0, 153, 255)">Quản lý</a></b>
       @else
-        <b><a class="d-block text-center" style="color: rgb(0, 153, 255)">Nhân viên/a></b>
+        <b><a class="d-block text-center" style="color: rgb(0, 153, 255)">Nhân viên</a></b>
       @endif
 </div>
 

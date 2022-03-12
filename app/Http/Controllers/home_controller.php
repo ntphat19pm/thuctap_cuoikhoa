@@ -73,6 +73,9 @@ class home_controller extends Controller
     public function gioithieu(){
         return view('gioithieu');
     }
+    public function tuyendung(){
+        return view('tuyendung');
+    }
 
     public function mangluoi(){
         return view('mangluoi');

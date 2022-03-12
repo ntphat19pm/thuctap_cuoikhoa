@@ -2,10 +2,10 @@
 @section('main')
 
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+    {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
       <a href="{{route('thuchien_chitieu.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm thực hiện chỉ tiêu</a> 
-    </div>
+    </div> --}}
 
     <div class="card" >
     
@@ -46,9 +46,9 @@
                 <a href="{{route('thuchien_chitieu.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              
                 </a> 
-                <a  href="{{route('thuchien_chitieu.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
+                {{-- <a  href="{{route('thuchien_chitieu.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
                   <i class="fas fa-trash"></i>
-                </a>
+                </a> --}}
               </td>
           
               </tr>

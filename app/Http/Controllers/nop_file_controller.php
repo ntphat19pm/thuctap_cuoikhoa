@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\nop_file;
+use App\Models\nhanvien;
 use App\Models\giaoviec;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use File;
 use Toastr;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class nop_file_controller extends Controller
 {
@@ -18,10 +21,17 @@ class nop_file_controller extends Controller
      */
     public function index()
     {
-        $data=nop_file::all();
-        $giaoviec=giaoviec::all();
-        
-        return view('admin.nop_file.index',compact('data','giaoviec'));
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=nop_file::all();
+            $giaoviec=giaoviec::all();
+            return view('admin.nop_file.index',compact('data','giaoviec'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng nộp file','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
     }
 
     /**
