@@ -5,23 +5,23 @@
             'route'=>'admin.index',
             'icon'=>'fa-home'
         ],
-        [
-            'label'=>'Quản lý thông tin',
-            'route'=>'admin.index',
-            'icon'=>'fa-user-circle',
-            'item'=>[
-                [
-                    'label'=>'Đăng xuất',
-                    'route'=>'dangxuat'
-                ],
-                [
-                    'label'=>'Thông tin cá nhân',
-                    'route'=>'profile.index'
-                ]
+        // [
+        //     'label'=>'Quản lý thông tin',
+        //     'route'=>'admin.index',
+        //     'icon'=>'fa-user-circle',
+        //     'item'=>[
+        //         [
+        //             'label'=>'Đăng xuất',
+        //             'route'=>'dangxuat'
+        //         ],
+        //         [
+        //             'label'=>'Thông tin cá nhân',
+        //             'route'=>'profile.index'
+        //         ]
                
                
-            ]
-        ],
+        //     ]
+        // ],
         [
             'label'=>'Quản lý khách hàng',
             'route'=>'doanhnghiep.index',

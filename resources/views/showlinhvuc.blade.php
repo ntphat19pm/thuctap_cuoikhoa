@@ -44,6 +44,9 @@
       </div>
 
     </div>
+    <div>
+      <div class="pagination justify-content-center" >{{$showlinhvuc->appends(request()->all())->links()}}</div>
+    </div>
   </section>
 </main><!-- End #main -->
 

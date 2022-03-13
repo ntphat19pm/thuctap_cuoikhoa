@@ -21,6 +21,9 @@
 {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> --}}
 
 <link rel="stylesheet" href="{{url('public/adminlte')}}/dist/css/adminlte.min.css?v=3.2.0">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script nonce="d4909c9b-66ba-4a96-a675-053bb32409b9">(function(w,d){!function(a,e,t,r,z){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zarazData.tracks=[],a.zaraz={deferred:[]};var s=e.getElementsByTagName("title")[0];s&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.dataLayer=a.dataLayer||[],a.zaraz.track=(e,t)=>{for(key in a.zarazData.tracks.push(e),t)a.zarazData["z_"+key]=t[key]},a.zaraz._preSet=[],a.zaraz.set=(e,t,r)=>{a.zarazData["z_"+e]=t,a.zaraz._preSet.push([e,t,r])},a.dataLayer.push({"zaraz.start":(new Date).getTime()}),a.addEventListener("DOMContentLoaded",(()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r);z.defer=!0,z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)}))}(w,d,0,"script");})(window,document);</script>
 
 <link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/summernote/summernote-bs4.min.css"> 
@@ -120,14 +123,24 @@
 
 <ul class="navbar-nav ml-auto">
 
-<li class="nav-item dropdown">
+{{-- <li class="nav-item dropdown">
   <a class="nav-link" href="{{route('profile.show',Auth::user()->id)}}">
     <i class="far fa-comments"></i>
     <span class="badge badge-danger navbar-badge">{{$giaoviec->where('nguoinhan',Auth::user()->id)->count()}}</span>
   </a>
-</li>
-
-<li class="nav-item dropdown">
+</li> --}}
+<div class="dropdown mt-2">
+  <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+    <strong >{{Auth::user()->hovaten}}</strong>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+    <li><a class="dropdown-item" href="{{route('profile.show',Auth::user()->id)}}">Công việc <span class="badge bg-secondary float-right">{{$giaoviec->where('nguoinhan',Auth::user()->id)->count()}}</span></a></li>
+    <li><a class="dropdown-item" href="{{route('profile.index')}}">Profile</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="{{route('dangxuat')}}">Sign out</a></li>
+  </ul>
+</div>
+{{-- <li class="nav-item dropdown">
 <a class="nav-link" data-toggle="dropdown" href="#">
 <i class="far fa-bell"></i>
 <span class="badge badge-warning navbar-badge">15</span>
@@ -152,17 +165,13 @@
 <div class="dropdown-divider"></div>
 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 </div>
-</li>
+</li> --}}
 <li class="nav-item">
 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
 <i class="fas fa-expand-arrows-alt"></i>
 </a>
 </li>
-<li class="nav-item">
-<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-<i class="fas fa-th-large"></i>
-</a>
-</li>
+
 </ul>
 </nav>
 
@@ -233,9 +242,11 @@
         <i class="fas fa-sign-out-alt"></i>
           Đăng xuất
       </a>
-      @endif
+@endif
+
 
 </div>
+
 
 </aside>
 

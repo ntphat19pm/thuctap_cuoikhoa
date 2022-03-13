@@ -31,7 +31,7 @@
               <div class="mb-0">
                 <label for="file_excel" class="form-label">Chọn tập tin Excel</label>
                 <input type="file" class="form-control" id="file_excel" name="file_excel" required />
-                <a href="{{url('public')}}/danh-sach-san-pham.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
+                <a href="{{url('public/uploads/file_nhap')}}/danh-sach-san-pham.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
               </div>
             </div>
             <div class="modal-footer justify-content-between">

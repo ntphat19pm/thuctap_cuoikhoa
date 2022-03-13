@@ -85,12 +85,189 @@
     <!-- /.card-body -->
 </div>
 
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            DOANH THU DỊCH VỤ THÁNG {{ $data->thang_id }}
+            </h3>
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+            </div>
+        </div>
+        <div class="card-body">
+                <div class="tab-content p-0">
+                    
+                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                        <canvas id="cookieChart" width="100%" height="85"></canvas>
+
+                    </div>
+                    
+                </div>
+        </div>
+        <!-- /.card-body -->
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            TỔNG DOANH THU THÁNG {{ $data->thang_id }}
+            </h3>
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+            </div>
+        </div>
+        <div class="card-body">
+                <div class="tab-content p-0">
+                    
+                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                        <canvas id="tongChart" width="100%" height="85"></canvas>
+
+                    </div>
+                    
+                </div>
+        </div>
+        <!-- /.card-body -->
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            DOANH THU DỰ ÁN THÁNG {{ $data->thang_id }}
+            </h3>
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+            </div>
+        </div>
+        <div class="card-body">
+                <div class="tab-content p-0">
+                    
+                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                        <canvas id="duanChart" width="100%" height="85"></canvas>
+
+                    </div>
+                    
+                </div>
+        </div>
+        <!-- /.card-body -->
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            DOANH THU KÊNH TRUYỀN THÁNG {{ $data->thang_id }}
+            </h3>
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+            </div>
+        </div>
+        <div class="card-body">
+                <div class="tab-content p-0">
+                    
+                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                        <canvas id="kenhtruyenChart" width="100%" height="85"></canvas>
+
+                    </div>
+                    
+                </div>
+        </div>
+        <!-- /.card-body -->
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            DOANH THU GIÁO DỤC THÁNG {{ $data->thang_id }}
+            </h3>
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+            </div>
+        </div>
+        <div class="card-body">
+                <div class="tab-content p-0">
+                    
+                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                        <canvas id="giaoducChart" width="100%" height="85"></canvas>
+
+                    </div>
+                    
+                </div>
+        </div>
+        <!-- /.card-body -->
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            DOANH THU Y TẾ THÁNG {{ $data->thang_id }}
+            </h3>
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+            </div>
+        </div>
+        <div class="card-body">
+                <div class="tab-content p-0">
+                    
+                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                        <canvas id="yteChart" width="100%" height="85"></canvas>
+
+                    </div>
+                    
+                </div>
+        </div>
+        <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
 <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">
-          <i class="fas fa-chart-bar mr-1"></i>
-          BIỂU ĐỒ DOANH THU Y TẾ
+          <i class="fa fa-bars mr-1"></i>
+          PROGRESS BAR BIỂU THỊ CÁC HẠNG MỤC THÁNG {{ $data->thang_id }}
         </h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -225,6 +402,176 @@
       </div>
       <!-- /.card-body -->
     </div>
-  </div>
+</div>
 
+@endsection
+
+@section('js')
+<script>
+    var canvasElement = document.getElementById("cookieChart");
+    var config={
+        type:"pie",
+        data:{
+            labels: ["Thực hiện","Kế hoạch"],
+            datasets: [
+                {
+                    label:"Số lượng",
+                    data:[{{$thuchien->doanhthu_dichvu}},{{$data->doanhthu_dichvu}}],
+                    backgroundColor: [
+                        "rgba(0, 255, 255, 0.2)",
+                        "rgba(255, 200, 56, 0.2)",
+                    ],
+                    borderColor: [
+                        "rgba(0, 255, 255, 1)",
+                        "rgba(255, 200, 56, 1)",
+                    ],
+                    borderWidth:1,
+                },
+            ],
+            
+        },
+    };
+
+    var cookieChart=new Chart(canvasElement, config);
+</script>
+
+<script>
+    var canvasElement = document.getElementById("tongChart");
+    var config={
+        type:"pie",
+        data:{
+            labels: ["Thực hiện","Kế hoạch"],
+            datasets: [
+                {
+                    label:"number",
+                    data:[{{$thuchien->doanhthu_tong}},{{$data->doanhthu_tong}}],
+                    backgroundColor: [
+                        "rgba(0, 255, 255, 0.2)",
+                        "rgba(255, 200, 56, 0.2)",
+                    ],
+                    borderColor: [
+                        "rgba(0, 255, 255, 1)",
+                        "rgba(255, 200, 56, 1)",
+                    ],
+                    borderWidth:1,
+                },
+            ],
+            
+        },
+    };
+
+    var tongChart=new Chart(canvasElement, config);
+</script>
+
+<script>
+    var canvasElement = document.getElementById("duanChart");
+    var config={
+        type:"pie",
+        data:{
+            labels: ["Thực hiện","Kế hoạch"],
+            datasets: [
+                {
+                    label:"number",
+                    data:[{{$thuchien->duan}},{{$data->duan}}],
+                    backgroundColor: [
+                        "rgba(0, 255, 255, 0.2)",
+                        "rgba(255, 200, 56, 0.2)",
+                    ],
+                    borderColor: [
+                        "rgba(0, 255, 255, 1)",
+                        "rgba(255, 200, 56, 1)",
+                    ],
+                    borderWidth:1,
+                },
+            ],
+            
+        },
+    };
+
+    var duanChart=new Chart(canvasElement, config);
+</script>
+
+<script>
+    var canvasElement = document.getElementById("kenhtruyenChart");
+    var config={
+        type:"pie",
+        data:{
+            labels: ["Thực hiện","Kế hoạch"],
+            datasets: [
+                {
+                    label:"number",
+                    data:[{{$thuchien->kenhtruyen}},{{$data->kenhtruyen}}],
+                    backgroundColor: [
+                        "rgba(0, 255, 255, 0.2)",
+                        "rgba(255, 200, 56, 0.2)",
+                    ],
+                    borderColor: [
+                        "rgba(0, 255, 255, 1)",
+                        "rgba(255, 200, 56, 1)",
+                    ],
+                    borderWidth:1,
+                },
+            ],
+            
+        },
+    };
+
+    var kenhtruyenChart=new Chart(canvasElement, config);
+</script>
+
+<script>
+    var canvasElement = document.getElementById("giaoducChart");
+    var config={
+        type:"pie",
+        data:{
+            labels: ["Thực hiện","Kế hoạch"],
+            datasets: [
+                {
+                    label:"number",
+                    data:[{{$thuchien->giaoduc}},{{$data->giaoduc}}],
+                    backgroundColor: [
+                        "rgba(0, 255, 255, 0.2)",
+                        "rgba(255, 200, 56, 0.2)",
+                    ],
+                    borderColor: [
+                        "rgba(0, 255, 255, 1)",
+                        "rgba(255, 200, 56, 1)",
+                    ],
+                    borderWidth:1,
+                },
+            ],
+            
+        },
+    };
+
+    var giaoducChart=new Chart(canvasElement, config);
+</script>
+
+<script>
+    var canvasElement = document.getElementById("yteChart");
+    var config={
+        type:"pie",
+        data:{
+            labels: ["Thực hiện","Kế hoạch"],
+            datasets: [
+                {
+                    label:"number",
+                    data:[{{$thuchien->yte}},{{$data->yte}}],
+                    backgroundColor: [
+                        "rgba(0, 255, 255, 0.2)",
+                        "rgba(255, 200, 56, 0.2)",
+                    ],
+                    borderColor: [
+                        "rgba(0, 255, 255, 1)",
+                        "rgba(255, 200, 56, 1)",
+                    ],
+                    borderWidth:1,
+                },
+            ],
+            
+        },
+    };
+
+    var yteChart=new Chart(canvasElement, config);
+</script>
 @endsection

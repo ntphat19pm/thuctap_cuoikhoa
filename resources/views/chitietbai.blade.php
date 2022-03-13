@@ -17,7 +17,7 @@
     <div class="mt-5 mb-5">
         <div class="row">
             <div class="col-lg-1">
-                <img src="{{url('public/uploads')}}/stk-bn-left.png" class="img-fluid animated d-block rounded mx-auto" style="width:100%" alt="">
+                
             </div>
             <div class="col-lg-10">
                 <div class="text-center">
@@ -33,19 +33,29 @@
                             <br>Xuất bản: {{date("d-m-Y",strtotime($data->create_at))}}</i></p>
                         <p class="text-right">
                             <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
+                            <div class="fb-share-button" data-href="" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                            
+                            {{-- <div class="fb-like" data-href="" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div> --}}
+                        </p>
+                        <p class="text-left">
+                            
                         </p>
                         <p><b><h5 style="color:rgb(0, 0, 0)">{!!$data->mota!!}</h5></b></p>
                         <hr>
                         <div style="text-align: center;">                
                             {!!$data->noidung!!}
                         </div>
+                        <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
+                        <div class="fb-like" data-href="" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
+                        <div class="fb-share-button" data-href="" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                        {{-- <div class="fb-comments" data-href="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Flien.nhu.946954%2Fposts%2F150722977206556&show_text=true&width=500" data-width="" data-numposts="5"></div> --}}
                     </div>
                     <div class="col-lg-2">
                     </div>
                 </div>
             </div>
             <div class="col-lg-1">
-                <img src="{{url('public/uploads')}}/stk-bn-left.png" class="img-fluid animated d-block rounded mx-auto" style="width:100%" alt="">
+                
             </div>
         </div>
         
@@ -120,4 +130,5 @@
             </div>
           </form>
       </section>
+
 </main>

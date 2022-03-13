@@ -29,7 +29,8 @@ use Illuminate\Support\Facades\Mail;
 class home_controller extends Controller
 {
     public function index(){
-        return view('welcome');
+        $data=sanpham::paginate(20);
+        return view('home');
     }
 
     public function home(){
@@ -45,7 +46,7 @@ class home_controller extends Controller
         return view('chitiet',compact('data','dacdiem','tinhnang','loiich'));
     }
     public function showlinhvuc($id){
-        $showlinhvuc=sanpham::where('danhmuc_id',$id)->orderby('danhmuc_id','DESC')->paginate(10);
+        $showlinhvuc=sanpham::where('danhmuc_id',$id)->orderby('danhmuc_id','DESC')->paginate(9);
        
         $data=danhmuc::find($id);
         // $ten=$data->tendanhmuc;
