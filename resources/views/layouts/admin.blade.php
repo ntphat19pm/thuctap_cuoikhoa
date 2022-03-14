@@ -134,7 +134,7 @@
     <strong >{{Auth::user()->hovaten}}</strong>
   </a>
   <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-    <li><a class="dropdown-item" href="{{route('profile.show',Auth::user()->id)}}">Công việc <span class="badge bg-secondary float-right">{{$giaoviec->where('nguoinhan',Auth::user()->id)->count()}}</span></a></li>
+    <li><a class="dropdown-item" href="{{route('profile.show',Auth::user()->id)}}">Công việc <span class="badge bg-secondary float-right">{{$giaoviec->where('trangthai',0)->where('nguoinhan',Auth::user()->id)->count()}}</span></a></li>
     <li><a class="dropdown-item" href="{{route('profile.index')}}">Profile</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="{{route('dangxuat')}}">Sign out</a></li>

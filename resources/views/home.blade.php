@@ -356,7 +356,7 @@
               <div class="phone">
                 <a href="tel:{{$item->sdt}}"><i class="bi bi-phone"></i></a>
                 <h4>Call:</h4>
-                <p>{{$item->sdt}}</p>
+                <p>0{{number_format($item->sdt,0,',',' ')}}</p>
               </div>
               <div class="text-center">
                 {!!$item->fanpage!!}

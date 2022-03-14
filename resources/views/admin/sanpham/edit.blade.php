@@ -57,12 +57,12 @@
 
                     <div class="form-group invalid">
                         <label for="link" class="form-label">Đường dẫn</label>
-                        <input type="text" value="https://youtu.be/{{$data->link}}" class="form-control" name="link" id="link" required>
+                        <input type="text" value="https://youtu.be/{{$data->link}}" class="form-control" name="link" id="link">
                     </div>
 
                     <div class="form-group invalid">
                         <label for="link_pdf" class="form-label">File tài liệu</label>
-                        <input type="text" value="{{$data->link_pdf}}" class="form-control" name="link_pdf" id="link_pdf" required>
+                        <input type="text" value="{{$data->link_pdf}}" class="form-control" name="link_pdf" id="link_pdf" >
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@
 <section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads/sanpham/chitiet')}}/{{$data->anh1}}'); background-size:1600px; height: 300px">
 
   <div class="container">
-    <h1 class="text-center">{{$data->tensp}}</h1>
+    <h1 class="text-center" style="color: rgb(255, 0, 0); opacity:inherit">{{$data->tensp}}</h1>
   </div>
 
 </section><!-- End Hero -->
@@ -27,12 +27,22 @@
               <a href="tel:{{$item->sdt}}"><img src="{{url('public/uploads')}}/phone.png" class="img-fluid" alt="" style="width:150px"></a>
             </div>
           @endforeach
+          @if($data->link=="")
+          @else
+          
             <div class="col-lg-2 d-flex align-items-center justify-content-center">
               <a href="https://www.youtube.com/embed/{{$data->link}}" class="glightbox btn-watch-video"><img src="{{url('public/uploads')}}/video.png" class="img-fluid mr-5" alt="" style="width:140px"></a>
             </div>
+          
+          @endif
+          @if($data->link_pdf=="")
+          @else
+          
             <div class="col-lg-2 d-flex align-items-center justify-content-center">
               <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img src="{{url('public/uploads')}}/pdf.png" class="img-fluid mr-5" alt="" style="width:180px"></a>
             </div>
+          
+          @endif
         </div>
     </div>
   </section>

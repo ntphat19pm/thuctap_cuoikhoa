@@ -1,17 +1,17 @@
 @extends('layouts.site')
 @section('main')
 
-<section id="hero" class="d-flex align-items-center">
+<section id="hero" class="d-flex align-items-center"  style="background-image: url('{{url('public/uploads')}}/banner-video.jpg'); background-size:1600px; height: 800px">
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-5 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+      {{-- <div class="col-lg-5 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
         <h1>VIDEO</h1>
       </div>
       <div class="col-lg-7 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
         <img src="{{url('public/uploads')}}/tintuc.png" class="img-fluid animated d-block rounded mx-auto" style="width:500px" alt="">
         
-      </div>
+      </div> --}}
     </div>
   </div>
 

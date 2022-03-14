@@ -52,7 +52,7 @@
           <thead>
             <tr>
               <th class="text-center" scope="col">STT</th>
-              <th class="text-center" width="12%" scope="col">Tên sản phẩm</th>
+              <th class="text-center" scope="col">Tên sản phẩm</th>
               <th scope="col">Ảnh</th>
               <th scope="col">Danh mục</th>
               <th class="text-right" scope="col">Action</th>

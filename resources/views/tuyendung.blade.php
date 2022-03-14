@@ -2,10 +2,10 @@
 @section('main')
  
 
-<section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads')}}/banner_gioithieu.jpg'); background-size:1600px; height: 300px">
+<section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads')}}/banner_tuyendung.png'); background-size:1520px; height: 950px">
 
   <div class="container">
-    <h1 class="text-center">TUYỂN DỤNG</h1>
+    {{-- <h1 class="text-center">TUYỂN DỤNG</h1> --}}
   </div>
 
 </section><!-- End Hero -->

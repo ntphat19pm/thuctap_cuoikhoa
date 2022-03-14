@@ -43,7 +43,7 @@
                 <div class="col-lg-4">                    
                     <div class="form-group">
                         <label for="link">Link youtube <span class="text-danger font-weight-bold">*</span></label>
-                        <input type="text" class="form-control" name="link" id="link" required >
+                        <input type="text" class="form-control" name="link" id="link" >
                     </div>
                     
                     <div class="form-group">
