@@ -36,6 +36,10 @@ Route::get('/cauhoi','home_controller@cauhoi')->name('home.cauhoi');
 Route::get('/chinhsach','home_controller@chinhsach')->name('home.chinhsach');
 Route::get('/dieukhoan','home_controller@dieukhoan')->name('home.dieukhoan');
 Route::get('/tuyendung','home_controller@tuyendung')->name('home.tuyendung');
+Route::get('/tailieu','home_controller@tailieu')->name('home.tailieu');
+Route::get('/timkiem','home_controller@timkiem')->name('home.timkiem');
+
+Route::get('/autocomplete','home_controller@autocomplete')->name('home.autocomplete');
 
 Route::get('/dangnhap','home_controller@get_dangnhap')->name('home.getdangnhap');
 Route::get('/dangxuat','home_controller@dangxuat')->name('home.dangxuat');
@@ -55,16 +59,6 @@ Route::get('/chitietbai/{id}','home_controller@chitietbai')->name('home.chitietb
 Route::get('/edit/{id}','home_controller@edit')->name('home.edit');
 Route::post('/update','home_controller@update')->name('home.update');
 
-Route::get('/giohang','giohang_controller@index')->name('giohang.index');
-Route::get('/giohang/capnhat/{id}','giohang_controller@capnhat')->name('giohang.capnhattang');
-Route::get('/giohang/xoa/{id}','giohang_controller@xoa')->name('giohang.xoa');
-Route::get('/giohang/xoatatca','giohang_controller@xoatatca')->name('giohang.xoatatca');
-
-Route::get('/giohang/xacnhan','dathang_controller@create')->name('get_dathang');
-Route::post('/giohang/xacnhan','dathang_controller@store')->name('post_dathang');
-Route::get('/giohang/completed','dathang_controller@completed')->name('dathang.completed');
-Route::get('/donhang/{id}','dathang_controller@getdonhang')->name('get.donhang');
-Route::get('/donhang_chitiet/{id}','dathang_controller@getchitiet_donhang')->name('get.chitiet_donhang');
 
 
 Route::get('admin/dangnhap','nhanvien_controller@getdangnhap')->name('get.dangnhap');
@@ -138,6 +132,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'thuchien_chitieu'=>'thuchien_chitieu_controller',
         'giaoviec'=>'giaoviec_controller',
         'nop_file'=>'nop_file_controller',
+        'tailieu'=>'tailieu_controller',
     ]);
 });
 

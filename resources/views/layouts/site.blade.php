@@ -24,6 +24,7 @@
   <!-- Vendor CSS Files -->
   <link href="{{url('public/arsha')}}/assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="{{url('public/arsha')}}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/fontawesome-free/css/all.min.css">
   <link href="{{url('public/arsha')}}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="{{url('public/arsha')}}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="{{url('public/arsha')}}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -68,7 +69,31 @@
 </head>
 
 <body>
-
+  <form action="{{ route('home.timkiem') }}" method="get" enctype="multipart/form-data">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Tìm kiếm sản phẩm</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" class="form-inline mb-3" autocomplete="off">
+    
+              <div class="input-group mb-3">
+                <input type="text" class="form-control typeahead" name="tukhoa" aria-describedby="button-addon2"> 
+                {{-- <input type="text" name="tukhoa" id="tukhoa" class="form-control typeahead" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"> --}}
+              </div>
+            </form> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
@@ -124,14 +149,20 @@
               <li class="dropdown"><a href="{{route('home.cauhoi')}}"><span>Câu hỏi thường gặp</span></a></li>
               <li class="dropdown"><a href="{{route('home.chinhsach')}}"><span>Chính sách bảo mật</span></a></li>
               <li class="dropdown"><a href="{{route('home.dieukhoan')}}"><span>Điều khoản sử dụng website</span></a></li>
-              <li class="dropdown"><a href="{{route('home.dauan')}}"><span>Dấu ấn</span></a></li>
+              <li class="dropdown"><a href="{{route('home.tailieu')}}"><span>Tài liệu</span></a></li>
             </ul>
           </li>
           <li><a class="getstarted" href="{{route('home.tuyendung')}}">Tuyển dụng</a></li>
+          <li><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <img class="" src="{{url('public/uploads')}}/loupe.png"/>
+          </a></li>
+          
+          <!-- Modal -->
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+      
     </div>
   </header><!-- End Header -->
 
@@ -144,7 +175,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6 footer-contact">
+          <div class="col-lg-4 col-md-6 footer-contact">
             @foreach ($lienhe as $item)
               <img class="rounded mx-auto d-block " style="width:200px" src="{{url('public/uploads')}}/{{$item->logo}}" alt="logo" />
               <p>
@@ -156,8 +187,17 @@
             <img class="rounded mx-auto d-block mt-3 " style="width:150px" src="{{url('public/uploads')}}/logo_thongbao.png" alt="logo" />
           </div>
           
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Giới thiệu</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.gioithieu')}}">Giới thiệu chung</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.mangluoi')}}">Mạng lưới toàn cầu</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.giaithuong')}}">Giải thưởng tiêu biểu</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.dauan')}}">Dấu ấn</a></li>
+            </ul>
+          </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          <div class="col-lg-2 col-md-6 footer-links">
             <h4>Hạ tầng số</h4>
             <ul>
               @foreach ($dichvu as $item)
@@ -166,7 +206,7 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          <div class="col-lg-2 col-md-6 footer-links">
             <h4>Giải pháp số</h4>
             <ul>
               @foreach ($linhvuc as $item)
@@ -175,13 +215,16 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Hỗ trợ</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.cauhoi')}}">Câu hỏi thường gặp</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.chinhsach')}}">Chính sách bảo mật</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.dieukhoan')}}">Điều khoản sử dụng</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="">Dấu ấn</a></li>
+            </ul>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="https://www.facebook.com/ViettelBusinessSolutionsCorporation" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
               <a href="https://www.youtube.com/channel/UCfs8bzO6K8IwBXsdgcHEm3g" target="_blank" class="google-plus"><i class="bx bxl-youtube"></i></a>
               <a href="https://www.linkedin.com/company/viettel-business-solutions" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>

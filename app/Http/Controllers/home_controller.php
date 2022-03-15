@@ -15,6 +15,7 @@ use App\Models\binhluan;
 use App\Models\gioitinh;
 use App\Models\giaithuong;
 use App\Models\chitieu;
+use App\Models\tailieu;
 use App\Models\thuchien_chitieu;
 use App\Models\baiviet;
 use App\Models\cauhoi;
@@ -77,7 +78,20 @@ class home_controller extends Controller
     public function tuyendung(){
         return view('tuyendung');
     }
-
+    public function tailieu(){
+        return view('tailieu');
+    }
+    public function timkiem(Request $request){
+        $key = $request->tukhoa;
+        $tim_sp= sanpham::where('tensp','like','%'.$key.'%')->get();
+        $tim_bv= baiviet::where('tenbai','like','%'.$key.'%')->where('trangthai',0)->get();
+        return view('timkiem',compact('tim_sp','key','tim_bv'));
+    }
+    public function autocomplete(Request $request) 
+    { 
+        $data = tailieu::select("ten_tailieu as name","loai_file as loai")->where("ten_tailieu","LIKE","%{$request->input('query')}%")->get(); 
+        return response()->json($data); 
+    } 
     public function mangluoi(){
         return view('mangluoi');
     }

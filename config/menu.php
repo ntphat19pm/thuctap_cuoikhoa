@@ -162,6 +162,11 @@
                     'label'=>'Dấu ấn',
                     'route'=>'dauan.index',
         
+                ],
+                [
+                    'label'=>'Tài liệu',
+                    'route'=>'tailieu.index',
+        
                 ]
             ]
 

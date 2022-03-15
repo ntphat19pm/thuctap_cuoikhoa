@@ -12,6 +12,7 @@ use App\Models\thongtin;
 use App\Models\lienhe;
 use App\Models\gioithieu;
 use App\Models\video;
+use App\Models\tailieu;
 use App\Models\giaithuong;
 use App\Models\thang;
 use App\Models\giaoviec;
@@ -61,6 +62,7 @@ class AppServiceProvider extends ServiceProvider
                 'thang'=>thang::all(),
                 'giaoviec'=>giaoviec::all(),
                 'video'=>video::where('status',1)->paginate(6),
+                'tailieu'=>tailieu::search()->paginate(10),
                 'baiviet'=>baiviet::where('trangthai',0)->paginate(5),
                 'cauhoi'=>cauhoi::where('trangthai',1)->paginate(5),
                 'sukien'=>baiviet::where('trangthai',0)->where('phanloai_id',0)->paginate(6),

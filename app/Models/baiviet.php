@@ -12,7 +12,7 @@ class baiviet extends Model
     use HasFactory;
     protected $table='baiviet';
     public $timestamps = false;
-    protected $fillable=['id','tenbai','mota','avatar','noidung','nguoidang','create_at','status','phanloai_id','binhluan_id','trangthai'];
+    protected $fillable=['id','tenbai','mota','avatar','noidung','nguoidang','create_at','phanloai_id','binhluan_id','trangthai'];
 
     public function binhluan(){
         return $this->hasMany(binhluan::class,'baiviet_id','id');
