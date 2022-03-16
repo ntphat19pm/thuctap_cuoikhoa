@@ -36,13 +36,13 @@
                   <form action="" class="form-inline mb-3" autocomplete="off">
   
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control typeahead" name="tukhoa" aria-describedby="button-addon2"> 
+                      <input type="text" class="form-control typeahead" name="tukhoa" id="myInput" aria-describedby="button-addon2"> 
                       {{-- <input type="text" name="tukhoa" id="tukhoa" class="form-control typeahead" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"> --}}
-                      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+                      {{-- <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button> --}}
                     </div>
                   </form> 
                     <table id="example1" class="table table-hover">
-                        <tbody>
+                        <tbody id="myTable">
                             @foreach($tailieu as $item)
                             <tr>
                                 <td>
@@ -58,7 +58,10 @@
                                     <img src="{{url('public/uploads/tailieu')}}/document.png" class="img-fluid" alt="" style="width:30px">
                                     @endif 
                                     {{$item->ten_tailieu}}
-                                </td>            
+                                </td>
+                                <td width="5%" class="text-right" hidden>
+                                  {{$item->loai_file}}
+                                </td>             
                                 <td width="5%" class="text-right">
                                     <a  href="{{url('public/uploads/tailieu')}}/{{$item->file}}" class="">
                                         <i class="fa fa-download"></i>
@@ -78,7 +81,7 @@
 </main><!-- End #main -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
-  <script type="text/javascript">                      
+<script type="text/javascript">                      
       var path = "{{ route('home.autocomplete') }}";
       $('input.typeahead').typeahead({
           source:  function (query, process) {
@@ -101,6 +104,16 @@
     });
 
 </script> 
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
 
 @endsection
        

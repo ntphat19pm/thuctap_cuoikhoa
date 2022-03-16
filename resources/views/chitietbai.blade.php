@@ -30,7 +30,7 @@
                     </div>              
                     <div class="col-lg-8">
                         <p class="text-left"><i>Được viết bởi {{$data->nguoidang}}
-                            <br>Xuất bản: {{date("d-m-Y",strtotime($data->create_at))}}</i></p>
+                            <br>Xuất bản: {{date("l, d-m-Y",strtotime($data->create_at))}}</i></p>
                         <p class="text-right">
                             <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
                             <div class="fb-share-button" data-href="" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>

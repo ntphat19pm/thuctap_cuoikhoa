@@ -333,7 +333,6 @@
 
       <div class="section-title">
         <h2>Liên hệ</h2>
-        <p>Dưới đây là những thông tin liên hệ với chúng tôi</p>
       </div>
 
       <div class="row">

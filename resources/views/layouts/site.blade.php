@@ -70,25 +70,24 @@
 
 <body>
   <form action="{{ route('home.timkiem') }}" method="get" enctype="multipart/form-data">
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal1111" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Tìm kiếm sản phẩm</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Tìm kiếm</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form action="" class="form-inline mb-3" autocomplete="off">
     
               <div class="input-group mb-3">
-                <input type="text" class="form-control typeahead" name="tukhoa" aria-describedby="button-addon2"> 
+                <input type="text" class="form-control" name="timkiem" aria-describedby="button-addon2" placeholder="Search..."> 
                 {{-- <input type="text" name="tukhoa" id="tukhoa" class="form-control typeahead" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"> --}}
               </div>
             </form> 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+
           </div>
         </div>
       </div>
@@ -153,7 +152,7 @@
             </ul>
           </li>
           <li><a class="getstarted" href="{{route('home.tuyendung')}}">Tuyển dụng</a></li>
-          <li><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <li><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1111">
             <img class="" src="{{url('public/uploads')}}/loupe.png"/>
           </a></li>
           
@@ -221,7 +220,8 @@
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.cauhoi')}}">Câu hỏi thường gặp</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.chinhsach')}}">Chính sách bảo mật</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.dieukhoan')}}">Điều khoản sử dụng</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="">Dấu ấn</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.tailieu')}}">Tài liệu</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.tuyendung')}}">Tuyển dụng</a></li>
             </ul>
             <div class="social-links mt-3">
               <a href="https://www.facebook.com/ViettelBusinessSolutionsCorporation" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>

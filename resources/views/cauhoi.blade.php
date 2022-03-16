@@ -2,10 +2,10 @@
 @section('main')
  
 
-<section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads')}}/banner_cauhoi.jpg'); background-size:1600px; height: 300px;">
+<section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads')}}/banner_cauhoi.png'); background-size:1600px; height: 380px;">
 
   <div class="container">
-    <h1 class="text-center">CÂU HỎI THƯỜNG GẶP</h1>
+    {{-- <h1 class="text-center">CÂU HỎI THƯỜNG GẶP</h1> --}}
   </div>
 
 </section><!-- End Hero -->

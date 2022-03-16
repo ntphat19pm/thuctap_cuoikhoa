@@ -2,10 +2,10 @@
 @section('main')
  
 
-<section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads')}}/banner_mangluoi.jpg'); background-size:1600px; height: 300px">
+<section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads')}}/banner_timkiem.png'); background-size:1520px; height: 790px">
 
   <div class="container">
-    <h1 class="text-center">TÌM KIẾM</h1>
+    {{-- <h1 class="text-center">TÌM KIẾM</h1> --}}
   </div>
 
 </section><!-- End Hero -->
@@ -20,8 +20,8 @@
       </section>
 
     <section id="portfolio" class="portfolio mt-5">
+      @if(!empty($tim_sp) && !empty($tim_bv))
         <div class="container" data-aos="fade-up">
-    
           <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <li data-filter=".filter-app">Giải pháp</li>
             <li data-filter=".filter-card">Tin tức</li>
@@ -55,8 +55,10 @@
               </div>
             @endforeach
           </div>
-          
         </div>
+      @else
+      Không có giải pháp và tin tức cần tìm
+      @endif
     </section>
 </main><!-- End #main -->
 

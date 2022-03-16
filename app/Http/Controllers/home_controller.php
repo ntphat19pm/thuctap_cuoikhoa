@@ -82,7 +82,7 @@ class home_controller extends Controller
         return view('tailieu');
     }
     public function timkiem(Request $request){
-        $key = $request->tukhoa;
+        $key = $request->timkiem;
         $tim_sp= sanpham::where('tensp','like','%'.$key.'%')->get();
         $tim_bv= baiviet::where('tenbai','like','%'.$key.'%')->where('trangthai',0)->get();
         return view('timkiem',compact('tim_sp','key','tim_bv'));

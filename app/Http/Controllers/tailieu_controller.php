@@ -46,6 +46,10 @@ class tailieu_controller extends Controller
             $file->move(public_path('uploads/tailieu'),$file_name);
           
         }
+        else{
+            Toastr::error('Upload tài liệu thất bại','Upload tài liệu');
+            return view('admin.tailieu.create');
+        }
         $request->merge(['file'=>$file_name]);
         
 
