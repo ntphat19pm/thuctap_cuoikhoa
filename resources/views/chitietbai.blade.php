@@ -45,6 +45,20 @@
                         <div style="text-align: center;">                
                             {!!$data->noidung!!}
                         </div>
+                        <fieldset>
+                            <legend>Tags bài viết</legend>
+                            <p>
+                                <i class="fa fa-tag"></i>
+                                @php
+                                    $tags=$data->tags;
+                                    $tags= explode(",",$tags);
+                                @endphp
+
+                                @foreach($tags as $tag)
+                                    <a style="background: rgb(78, 227, 253); color:white; margin: 1px 2px" href="{{route('home.tag',str_slug($tag))}}" clas="tags_style">{{$tag}}</a>
+                                @endforeach
+                            </p>
+                        </fieldset>
                         <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
                         <div class="fb-like" data-href="" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
                         <div class="fb-share-button" data-href="" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
@@ -81,13 +95,50 @@
             @foreach($binhluan as $item)
                 <div class="col-lg-4 ">
                     <div class="icon-box">
-                        <h5>{{$item->hoten}}</h5>
-                        <hr>
-                        <p>{!!$item->noidung!!}</p>
+                        <div class="row">
+                            <div class="col-lg-4 ">
+                                @if($item->avatar_id==1)
+                                    <img src="{{url('public/uploads/binhluan')}}/avatar_01.png" class="img-fluid" alt="" style="width:100px">
+                                    @elseif($item->avatar_id==2)
+                                    <img src="{{url('public/uploads/binhluan')}}/avatar_02.png" class="img-fluid" alt="" style="width:100px">
+                                    @elseif($item->avatar_id==3)
+                                    <img src="{{url('public/uploads/binhluan')}}/avatar_03.png" class="img-fluid" alt="" style="width:100px">
+                                    @elseif($item->avatar_id==4)
+                                    <img src="{{url('public/uploads/binhluan')}}/avatar_04.png" class="img-fluid" alt="" style="width:100px">
+                                    @elseif($item->avatar_id==5)
+                                    <img src="{{url('public/uploads/binhluan')}}/avatar_05.png" class="img-fluid" alt="" style="width:100px">
+                                    @elseif($item->avatar_id==6)
+                                    <img src="{{url('public/uploads/binhluan')}}/avatar_06.png" class="img-fluid" alt="" style="width:100px">
+                                    @elseif($item->avatar_id==7)
+                                    <img src="{{url('public/uploads/binhluan')}}/avatar_07.png" class="img-fluid" alt="" style="width:100px">
+                                    @elseif($item->avatar_id==8)
+                                    <img src="{{url('public/uploads/binhluan')}}/avatar_08.png" class="img-fluid" alt="" style="width:100px">
+                                    @endif 
+                            </div>
+                            <div class="col-lg-8 ">
+                                <h5>{{$item->hoten}}</h5>
+                                <hr>
+                                <p>{!!$item->noidung!!}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
-  
+
+            {{-- <table id="example1" class="table table-hover">
+                <tbody id="myTable">
+                    @foreach($binhluan as $item)
+                    <tr>
+                        <td>
+                            <img src="{{url('public/uploads/tailieu')}}/file.png" class="img-fluid" alt="" style="width:30px">
+                            {{$item->hoten}}
+                            <br>
+                        </td>           
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+   --}}
           </div>  
         </div>
 
@@ -101,26 +152,112 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    
       
                     <div class="row">
-                        <div class="col-lg-10">
+                        <div class="col-lg-4">
+                            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{{url('public/uploads/binhluan')}}/avatar_01.png" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                        <h5>Avatar Nam 01</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{url('public/uploads/binhluan')}}/avatar_02.png" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Avatar Nam 02</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{url('public/uploads/binhluan')}}/avatar_03.png" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Avatar Nam 03</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{url('public/uploads/binhluan')}}/avatar_04.png" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Avatar Nam 04</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{url('public/uploads/binhluan')}}/avatar_05.png" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Avatar Nữ 01</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{url('public/uploads/binhluan')}}/avatar_06.png" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Avatar Nữ 02</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{url('public/uploads/binhluan')}}/avatar_07.png" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Avatar Nữ 03</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{url('public/uploads/binhluan')}}/avatar_08.png" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Avatar Nữ 04</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Next</span>
+                                </button>
+                              </div>
+                        </div>
+                        <div class="col-lg-8">
                             <div class="form-group invalid">
                                 <label for="hoten" class="form-label">Nhập họ và tên</label>
                                 <input type="text" class="form-control" name="hoten" id="hoten" required >
                             </div>
+                            <div class="form-group">
+                                <label for="avatar_id">Chọn avatar<span class="text-danger font-weight-bold">*</span></label>
+                                <select id="avatar_id" class="form-control custom-select @error('avatar_id') is-invalid @enderror" name="avatar_id" autofocus>
+                                    <option value="">--Chọn avatar bạn thích--</option>
+                                    <option value="1">Nam 01</option>
+                                    <option value="2">Nam 02</option>
+                                    <option value="3">Nam 03</option>
+                                    <option value="4">Nam 04</option>
+                                    <option value="5">Nữ 01</option>
+                                    <option value="6">Nữ 02</option>
+                                    <option value="7">Nữ 03</option>
+                                    <option value="8">Nữ 04</option>
+                                </select>
+                            </div>
+                            <div class="form-group invalid mt-3">
+                                <label for="noidung" class="form-label">Nhập nội dung cụ thể</label>
+                                <textarea class="form-control" name="noidung" id="noidung" cols="10" rows="4"></textarea>
+                              </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-2" hidden>
                             <div class="form-group">
                                 <label for="baiviet_id" class="form-label">Bài viết</label>
                                 <input type="text" value="{{$data->id}}" class="form-control" name="baiviet_id" id="baiviet_id" required readonly >
                             </div>
                         </div>
                     </div>
-                    <div class="form-group invalid mt-3">
-                      <label for="noidung" class="form-label">Nhập nội dung cụ thể</label>
-                      <textarea class="form-control" name="noidung" id="noidung" cols="10" rows="5"></textarea>
-                    </div>
+                    
                   </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-danger">Gửi thông tin</button>

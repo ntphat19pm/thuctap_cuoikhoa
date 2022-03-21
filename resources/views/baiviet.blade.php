@@ -38,8 +38,10 @@
             <a href="{{route('home.chitietbai',$item->id)}}">
               <div class="portfolio-img"><img src="{{url('public/uploads/baiviet')}}/{{$item->avatar}}" class="img-fluid" alt=""></div>
               <div class="portfolio-info">
-                <h4><a>{{$item->tenbai}}<</h4>
-                <p>Tin sự kiện</p>
+                <h4>{{$item->tenbai}}</h4>
+                
+                <p>Tin sự kiện - {{date("l, d-m-Y",strtotime($item->create_at))}}</p>
+                <p style="text-align: right"><i class="fa fa-eye"></i> {{$item->view}} lượt xem</p>
               </div>
             </a>
           </div>
@@ -51,16 +53,13 @@
               <div class="portfolio-img"><img src="{{url('public/uploads/baiviet')}}/{{$item->avatar}}" class="img-fluid" alt=""></div>
               <div class="portfolio-info">
                 <h4>{{$item->tenbai}}</h4>
-                <p>Tin công nghệ</p>
+                <p>Tin công nghệ - {{date("l, d-m-Y",strtotime($item->create_at))}}</p>
               </div>
             </a>
           </div>
         @endforeach
       </div>
 
-    </div>
-    <div>
-      <div class="pagination justify-content-center" >{{$baiviet->appends(request()->all())->links()}}</div>
     </div>
   </section>
   {{-- <section id="about" class="services mb-2">

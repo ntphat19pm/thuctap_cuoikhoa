@@ -30,9 +30,16 @@
                         <input type="text" class="form-control" name="tensp" id="tensp" onblur="ChangeToSlug();" required >
                     </div>
 
-                    <div class="form-group invalid">
+                    <div class="form-group invalid" hidden>
                         <label for="slug" class="form-label">Sản phẩm Slug</label>
                         <input type="text" class="form-control" name="slug" id="slug" required readonly>
+                    </div>
+                    <div class="form-group invalid">
+                        <label for="link_pdf" class="form-label">Link tài liệu</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="link_pdf" id="link_pdf" aria-describedby="button-addon2"> 
+                            <a href="https://drive.google.com/drive/folders/1Ba-aNQFZzfqiDLM6aoBpkK-IO6z8dDwS?usp=sharing" target="_blank" class="btn btn-outline-warning" id="button-addon2"><i class="fa fa-folder-open"></i></a>
+                        </div>
                     </div>
                     
                 </div>

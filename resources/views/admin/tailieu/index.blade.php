@@ -46,7 +46,7 @@
                 @endif
               </td>              
               <td class="text-right">
-                <a href="{{url('public/uploads/tailieu')}}/{{$item->file}}" class="btn btn-sm btn-outline-info"><i class="fa fa-download"></i></a>
+                <a target="_blank" href="{{url('public/uploads/tailieu')}}/{{$item->file}}" class="btn btn-sm btn-outline-info"><i class="fa fa-download"></i></a>
                 <a href="{{route('tailieu.edit',$item->id)}}" class="btn btn-sm btn-success">
                     <i class="fas fa-edit"></i>              
                   </a> 

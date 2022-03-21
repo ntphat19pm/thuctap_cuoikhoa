@@ -11,7 +11,7 @@ class binhluan extends Model
     public $timestamps = false;
     use HasFactory;
     protected $table='binhluan';
-    protected $fillable=['id','hoten','noidung','baiviet_id','trangthai'];
+    protected $fillable=['id','avatar_id','hoten','noidung','baiviet_id','trangthai'];
 
     public function baiviet(){
         return $this->hasOne(baiviet::class,'id','baiviet_id');

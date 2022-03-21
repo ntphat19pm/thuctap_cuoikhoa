@@ -38,6 +38,7 @@ Route::get('/dieukhoan','home_controller@dieukhoan')->name('home.dieukhoan');
 Route::get('/tuyendung','home_controller@tuyendung')->name('home.tuyendung');
 Route::get('/tailieu','home_controller@tailieu')->name('home.tailieu');
 Route::get('/timkiem','home_controller@timkiem')->name('home.timkiem');
+Route::get('/tag/{tags}','home_controller@tag')->name('home.tag');
 
 Route::get('/autocomplete','home_controller@autocomplete')->name('home.autocomplete');
 

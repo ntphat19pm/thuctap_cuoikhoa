@@ -6,14 +6,16 @@ use App\Models\thuchien_chitieu;
 use App\Models\chitieu;
 use App\Models\chuongtrinh;
 use App\Models\thang;
+use App\Models\visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\User;
 
 class admin_controller extends Controller
 {
-   public function index(){
+   public function index(Request $request){
     $KH = chitieu::select('thang_id','doanhthu_dichvu','tytrong_dichvu','doanhthu_tong','tytrong_tong','kenhtruyen','tytrong_kenhtruyen','duan','tytrong_duan','giaoduc','tytrong_giaoduc','yte','tytrong_yte')->first();
     $TH = thuchien_chitieu::select('doanhthu_dichvu','doanhthu_tong','kenhtruyen','duan','giaoduc','yte')->first();
     
@@ -86,7 +88,42 @@ class admin_controller extends Controller
 
     $showchuongtrinh=chuongtrinh::where('thang_id',$CT)->orderby('thang_id','DESC')->paginate(10);
 
-    return view('admin.index', compact('diem_dv','diem_tong','diem_kt','diem_da','diem_gd','diem_yt','showchuongtrinh'));
+    $user_ip_address=$request->ip();
+
+    $early_lastmonth = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth();
+    $end_lastmonth = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->endOfMonth();
+
+    $early_thismonth= Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth();
+
+    $oneyears = Carbon::now('Asia/Ho_Chi_Minh')->subdays(365);
+
+    $now= Carbon::now('Asia/Ho_Chi_Minh');
+
+    $visitor_of_lastmonth = visitor::whereBetween('date_visitor',[$early_lastmonth,$end_lastmonth])->get();
+    $visitor_lastmonth_count = $visitor_of_lastmonth->count();
+
+    $visitor_of_thismonth = visitor::whereBetween('date_visitor',[$early_thismonth,$now])->get();
+    $visitor_thismonth_count = $visitor_of_thismonth->count();
+
+    $visitor_of_year = visitor::whereBetween('date_visitor',[$oneyears,$now])->get();
+    $visitor_year_count = $visitor_of_year->count();
+
+    $vistors = visitor::all();
+    $vistors_total = $vistors->count();
+
+
+
+    $visitor_curent= visitor::where('ip_address',$user_ip_address)->get();
+    $visitor_count= $visitor_curent->count();
+    if($visitor_count<1)
+    {
+        $visitor=new visitor;
+        $visitor->ip_address= $user_ip_address;
+        $visitor->date_visitor=Carbon::now('Asia/Ho_Chi_Minh');
+        $visitor->save();
+    }
+
+    return view('admin.index', compact('diem_dv','diem_tong','diem_kt','diem_da','diem_gd','diem_yt','showchuongtrinh','visitor_lastmonth_count','visitor_thismonth_count','visitor_year_count','vistors_total','visitor_count'));
    }
     public function getdangnhap(){
         return view('admin.login');

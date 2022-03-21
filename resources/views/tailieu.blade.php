@@ -38,7 +38,7 @@
                     <div class="input-group mb-3">
                       <input type="text" class="form-control typeahead" name="tukhoa" id="myInput" aria-describedby="button-addon2"> 
                       {{-- <input type="text" name="tukhoa" id="tukhoa" class="form-control typeahead" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"> --}}
-                      {{-- <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button> --}}
+                      <a href="{{route('home.tailieu')}}" class="btn btn-outline-danger" id="button-addon2"><i class="fa fa-rotate-left"></i></a>
                     </div>
                   </form> 
                     <table id="example1" class="table table-hover">

@@ -223,15 +223,15 @@
                     <input type="text" class="form-control" name="diachi" id="diachi" required >
                   </div>
 
-                  <div class="form-group mt-3">
-                    <label for="sanpham_id">Sản phẩm tư vấn<span class="text-danger font-weight-bold">*</span></label>
+                  <div class="form-group">
+                    <label for="sanpham_id">Sản phẩm<span class="text-danger font-weight-bold">*</span></label>
                     <select id="sanpham_id" class="form-control custom-select @error('sanpham_id') is-invalid @enderror" name="sanpham_id" required autofocus>
-                        <option value="">--Chọn sản phẩm--</option>
+                        <option value="">--Chọn danh mục sản phẩm--</option>
                         @foreach($sp as $value)
                             <option value="{{ $value->id }}">{{ $value->tensp}}</option>
                         @endforeach
                     </select>
-                </div>
+                  </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group invalid mt-3">
@@ -382,6 +382,5 @@
   </section><!-- End Contact Section -->
 
 </main><!-- End #main -->
-
 @endsection
        

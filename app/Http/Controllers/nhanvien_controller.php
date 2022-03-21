@@ -9,7 +9,8 @@ use App\Models\gioitinh;
 use App\Models\province;
 use App\Models\thuchien_chitieu;
 use App\Models\chitieu;
-
+use App\Rules\captcha_admin; 
+use Validator;
 use App\Models\User;
 use Toastr;
 
@@ -169,85 +170,99 @@ class nhanvien_controller extends Controller
     public function postdangnhap(Request $request){
         $arr=[
             'tendangnhap'=>$request->tendangnhap,
-            'password'=>$request->password
+            'password'=>$request->password,
+            
         ];
-
+        $data = $request->validate([
+           'g-recaptcha-response' => new captcha_admin(), 		//dòng kiểm tra Captcha
+        ]);
         if(Auth::attempt($arr))
         {
-            $KH = chitieu::select('doanhthu_dichvu','tytrong_dichvu','doanhthu_tong','tytrong_tong','kenhtruyen','tytrong_kenhtruyen','duan','tytrong_duan','giaoduc','tytrong_giaoduc','yte','tytrong_yte')->first();
-            $TH = thuchien_chitieu::select('doanhthu_dichvu','doanhthu_tong','kenhtruyen','duan','giaoduc','yte')->first();
+            if(Auth::user()->trangthai==0)
+            {
+                // $KH = chitieu::select('doanhthu_dichvu','tytrong_dichvu','doanhthu_tong','tytrong_tong','kenhtruyen','tytrong_kenhtruyen','duan','tytrong_duan','giaoduc','tytrong_giaoduc','yte','tytrong_yte')->first();
+                // $TH = thuchien_chitieu::select('doanhthu_dichvu','doanhthu_tong','kenhtruyen','duan','giaoduc','yte')->first();
+                
+                // $ptTH_dv = $TH->doanhthu_dichvu/$KH->doanhthu_dichvu ;
+                // $ptTH_tong = $TH->doanhthu_tong/$KH->doanhthu_tong ;
+                // $ptTH_kt = $TH->kenhtruyen/$KH->kenhtruyen ;
+                // $ptTH_da = $TH->duan/$KH->duan ;
+                // $ptTH_gd = $TH->giaoduc/$KH->giaoduc ;
+                // $ptTH_yt = $TH->yte/$KH->yte ;
+                
+                // $diem_dv = 0 ;
+                // $diem_tong = 0 ;
+                // $diem_kt = 0 ;
+                // $diem_da = 0 ;
+                // $diem_gd = 0 ;
+                // $diem_yt = 0 ;
+
+                // if($ptTH_dv < 120 )
+                // {
+                //     $diem_dv = $ptTH_dv * $KH->tytrong_dichvu;
+                // }
+                // else
+                // {
+                //     $diem_dv = (120/100) * $KH->tytrong_dichvu;
+                // }
+
+                // if($ptTH_tong < 120 )
+                // {
+                //     $diem_tong = $ptTH_tong * $KH->tytrong_tong;
+                // }
+                // else
+                // {
+                //     $diem_tong = (120/100) * $KH->tytrong_tong;
+                // }
+
+                // if($ptTH_kt < 120 )
+                // {
+                //     $diem_kt = $ptTH_kt * $KH->tytrong_kenhtruyen;
+                // }
+                // else
+                // {
+                //     $diem_kt = (120/100) * $KH->tytrong_kenhtruyen;
+                // }
+
+                // if($ptTH_da < 120 )
+                // {
+                //     $diem_da = $ptTH_da * $KH->tytrong_duan;
+                // }
+                // else
+                // {
+                //     $diem_da = (120/100) * $KH->tytrong_duan;
+                // }
+                // if($ptTH_gd < 120 )
+                // {
+                //     $diem_gd = $ptTH_gd * $KH->tytrong_giaoduc;
+                // }
+                // else
+                // {
+                //     $diem_gd = (120/100) * $KH->tytrong_giaoduc;
+                // }
+                // if($ptTH_yt < 120 )
+                // {
+                //     $diem_yt = $ptTH_yt * $KH->tytrong_yte;
+                // }
+                // else
+                // {
+                //     $diem_yt = (120/100) * $KH->tytrong_yte;
+                // }
+
+                Toastr::success('Đăng nhập thành công','Thành công');
+                // return view('admin.index',['user'=>Auth::user()]);
+                return redirect()->route('admin.index', ['user'=>Auth::user()]);
+
+            }
+            else
+            {
+                Toastr::warning('Tài khoản của bạn đã vô hiệu hoá','Vô hiệu hoá tài khoản');
+                return view('admin.login');
+            }
             
-            $ptTH_dv = $TH->doanhthu_dichvu/$KH->doanhthu_dichvu ;
-            $ptTH_tong = $TH->doanhthu_tong/$KH->doanhthu_tong ;
-            $ptTH_kt = $TH->kenhtruyen/$KH->kenhtruyen ;
-            $ptTH_da = $TH->duan/$KH->duan ;
-            $ptTH_gd = $TH->giaoduc/$KH->giaoduc ;
-            $ptTH_yt = $TH->yte/$KH->yte ;
-            
-            $diem_dv = 0 ;
-            $diem_tong = 0 ;
-            $diem_kt = 0 ;
-            $diem_da = 0 ;
-            $diem_gd = 0 ;
-            $diem_yt = 0 ;
-
-            if($ptTH_dv < 120 )
-            {
-                $diem_dv = $ptTH_dv * $KH->tytrong_dichvu;
-            }
-            else
-            {
-                $diem_dv = (120/100) * $KH->tytrong_dichvu;
-            }
-
-            if($ptTH_tong < 120 )
-            {
-                $diem_tong = $ptTH_tong * $KH->tytrong_tong;
-            }
-            else
-            {
-                $diem_tong = (120/100) * $KH->tytrong_tong;
-            }
-
-            if($ptTH_kt < 120 )
-            {
-                $diem_kt = $ptTH_kt * $KH->tytrong_kenhtruyen;
-            }
-            else
-            {
-                $diem_kt = (120/100) * $KH->tytrong_kenhtruyen;
-            }
-
-            if($ptTH_da < 120 )
-            {
-                $diem_da = $ptTH_da * $KH->tytrong_duan;
-            }
-            else
-            {
-                $diem_da = (120/100) * $KH->tytrong_duan;
-            }
-            if($ptTH_gd < 120 )
-            {
-                $diem_gd = $ptTH_gd * $KH->tytrong_giaoduc;
-            }
-            else
-            {
-                $diem_gd = (120/100) * $KH->tytrong_giaoduc;
-            }
-            if($ptTH_yt < 120 )
-            {
-                $diem_yt = $ptTH_yt * $KH->tytrong_yte;
-            }
-            else
-            {
-                $diem_yt = (120/100) * $KH->tytrong_yte;
-            }
-
-            Toastr::success('Đăng nhập thành công','Thành công');
-            return view('admin.index',['user'=>Auth::user()],compact('diem_dv','diem_tong','diem_kt','diem_da','diem_gd','diem_yt'));
         }
         else{
-            Toastr::success('Đăng nhập thành công','Thành công');
+            Toastr::error('Đăng nhập thất bại','Thất bại');
             return view('admin.login');
 
         }

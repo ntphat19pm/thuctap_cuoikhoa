@@ -65,8 +65,8 @@ class AppServiceProvider extends ServiceProvider
                 'tailieu'=>tailieu::search()->paginate(10),
                 'baiviet'=>baiviet::where('trangthai',0)->orderby('id','DESC')->paginate(5),
                 'cauhoi'=>cauhoi::where('trangthai',1)->paginate(5),
-                'sukien'=>baiviet::where('trangthai',0)->where('phanloai_id',0)->paginate(6),
-                'congnghe'=>baiviet::where('trangthai',0)->where('phanloai_id',1)->paginate(6),
+                'sukien'=>baiviet::where('trangthai',0)->where('phanloai_id',0)->orderby('id','DESC')->paginate(20),
+                'congnghe'=>baiviet::where('trangthai',0)->where('phanloai_id',1)->orderby('id','DESC')->paginate(20),
                 'giohang'=>new giohang(),
                 'sp'=>sanpham::search()->paginate(20),
             ]);

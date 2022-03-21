@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
 <link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.min.css"/>
 
 <link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 <link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -340,6 +341,7 @@ All rights reserved.
 <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
 <script src="https://unpkg.com/chart.js@^2.9.3/dist/Chart.min.js"></script>
 <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.min.js"></script>
 {{-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> --}}
 {!! Toastr::message() !!}
 

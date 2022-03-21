@@ -72,6 +72,10 @@
                     </div>
                   </div>
 
+                  <div class="form-group invalid">
+                    <label for="tags" class="form-label">Tags bài viết</label>
+                    <input type="text" class="form-control" name="tags" id="tags" required >
+                  </div>
                 </div>
                   
               </div>
@@ -87,4 +91,12 @@
     </div>
 </div>
 
+@endsection
+
+@section('js')
+<script>
+  $('#tags').tagsinput({
+    tagClass: 'label label-warning'
+});
+</script>
 @endsection

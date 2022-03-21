@@ -30,6 +30,10 @@
   <link href="{{url('public/arsha')}}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="{{url('public/arsha')}}/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="{{url('public/arsha')}}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+  {{-- <link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/select2/css/select2.min.css"> --}}
+  <link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
   <!-- Template Main CSS File -->
   <link href="{{url('public/arsha')}}/assets/css/style.css" rel="stylesheet">
@@ -467,12 +471,14 @@
   <script src="{{url('public/seo_dream')}}/assets/js/animation.js"></script>
   <script src="{{url('public/seo_dream')}}/assets/js/imagesloaded.js"></script>
   <script src="{{url('public/seo_dream')}}/assets/js/custom.js"></script>
+  <script src="{{url('public/adminlte')}}/plugins/select2/js/select2.full.min.js"></script>
+
 
   @foreach ($lienhe as $item)
     {!!$item->mess!!}
     {!!$item->zalo!!}
   @endforeach
-
+  @yield('js')
 </body>
 
 </html>

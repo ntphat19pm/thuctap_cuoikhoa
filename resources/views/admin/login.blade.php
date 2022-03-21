@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{url('public/spica')}}/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{url('public/spica')}}/images/favicon.png" />
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
   <script>
     function SHPassword(x)
@@ -85,6 +86,15 @@
                   </div>
                   {{-- <a href="#" class="auth-link text-black">Forgot password?</a> --}}
                 </div>
+
+                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
+                <br/>
+                @if($errors->has('g-recaptcha-response'))
+                <span class="invalid-feedback" style="display:block">
+                  <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                </span>
+                @endif
+                
                 <div class="my-3">
                   <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                 </div>
@@ -99,6 +109,9 @@
                 {{-- <div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a href="register-2.html" class="text-primary">Create</a>
                 </div> --}}
+
+                
+
               </form>
             </div>
           </div>
@@ -120,7 +133,12 @@
   <script src="{{url('public/spica')}}/js/off-canvas.js"></script>
   <script src="{{url('public/spica')}}/js/hoverable-collapse.js"></script>
   <script src="{{url('public/spica')}}/js/template.js"></script>
+  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- endinject -->
+
+  {!! Toastr::message() !!}
 </body>
 
 </html>

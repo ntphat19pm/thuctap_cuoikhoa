@@ -55,6 +55,8 @@ class home_controller extends Controller
     }
     public function chitietbai($id){
         $data=baiviet::find($id);
+        $data->view=$data->view + 1;
+        $data->save();
         $binhluan=binhluan::where('baiviet_id',$id)->where('trangthai',1)->get();
         return view('chitietbai',compact('data','binhluan'));
     }
@@ -86,6 +88,13 @@ class home_controller extends Controller
         $tim_sp= sanpham::where('tensp','like','%'.$key.'%')->get();
         $tim_bv= baiviet::where('tenbai','like','%'.$key.'%')->where('trangthai',0)->get();
         return view('timkiem',compact('tim_sp','key','tim_bv'));
+    }
+    public function tag(Request $request, $tags){
+        $key = str_replace("-"," ",$tags);
+
+        $timkiem_tag= baiviet::where('trangthai',0)->where('tenbai','like','%'.$key.'%')->orWhere('tags','like','%'.$key.'%')->get();
+
+        return view('tag',compact('key','timkiem_tag'));
     }
     public function autocomplete(Request $request) 
     { 
@@ -194,11 +203,12 @@ class home_controller extends Controller
        
         $data=new binhluan;
         $data->hoten=$request->hoten;
+        $data->avatar_id=$request->avatar_id;
         $data->noidung=$request->noidung;
         $data->baiviet_id=$request->baiviet_id;
 
         if($data->save()){
-            return view('baiviet');
+            return redirect()->route('home.chitietbai', ['id'=>$request->baiviet_id]);
         }
   
     }
