@@ -29,7 +29,7 @@
                     <div class="col-lg-2">
                     </div>              
                     <div class="col-lg-8">
-                        <p class="text-left"><i>Được viết bởi {{$data->nguoidang}}
+                        <p class="text-left"><i>Được viết bởi {{$data->nhanvien->hovaten}}
                             <br>Xuất bản: {{date("l, d-m-Y",strtotime($data->create_at))}}</i></p>
                         <p class="text-right">
                             <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
@@ -62,7 +62,11 @@
                         <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
                         <div class="fb-like" data-href="" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
                         <div class="fb-share-button" data-href="" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
-                        {{-- <div class="fb-comments" data-href="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Flien.nhu.946954%2Fposts%2F150722977206556&show_text=true&width=500" data-width="" data-numposts="5"></div> --}}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="fb-comments" data-href="https://www.facebook.com/plugins/{{$data->id}}" data-width="100%" data-numposts="5"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-2">
                     </div>

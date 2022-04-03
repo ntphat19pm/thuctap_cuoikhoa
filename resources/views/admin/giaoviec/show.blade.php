@@ -6,7 +6,7 @@
   <div class="col-lg-4">
     <div class="">
       <a href="{{route('giaoviec.index')}}" class="btn btn-sm btn-danger mb-3">
-        <i class="fas fa-sign-out-alt"> Quay về danh sách các đơn hàng</i>     
+        <i class="fas fa-sign-out-alt"> Quay về danh sách giao việc</i>     
       </a>
     </div>
   </div>

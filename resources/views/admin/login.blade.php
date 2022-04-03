@@ -53,7 +53,7 @@
               </div>
               <h4>Xin chào!</h4>
               <h6 class="font-weight-light">Chúng tôi rất hân hạnh được phục vụ bạn!</h6>
-              <form class="pt-3" action="{{route('post.dangnhap')}}" method="post">
+              <form class="pt-3 needs-validation" action="{{route('post.dangnhap')}}" method="post" novalidate>
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail">Username</label>
@@ -63,7 +63,10 @@
                         <i class="mdi mdi-account-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="text" class="form-control form-control-lg border-left-0" name="tendangnhap" placeholder="Username">
+                    <input type="text" class="form-control form-control-lg border-left-0" name="tendangnhap" placeholder="Username" id="validationTooltip03" required>
+                    <div class="invalid-tooltip">
+                    Bạn chưa điền tên đăng nhập.
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">
@@ -74,7 +77,10 @@
                         <i class="mdi mdi-lock-outline text-primary"></i>
                       </span>
                     </div>
-                    <input id="password" type="password" class="form-control form-control-lg border-left-0" name="password" placeholder="Password">                        
+                    <input id="password" type="password" class="form-control form-control-lg border-left-0" name="password" placeholder="Password" id="validationTooltip03" required>                        
+                    <div class="invalid-tooltip">
+                    Bạn chưa điền mật khẩu.
+                    </div>
                   </div>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
@@ -137,7 +143,27 @@
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- endinject -->
+<script>
+  (function () {
+  'use strict'
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>
   {!! Toastr::message() !!}
 </body>
 

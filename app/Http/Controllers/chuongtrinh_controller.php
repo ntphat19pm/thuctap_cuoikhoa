@@ -75,9 +75,11 @@ class chuongtrinh_controller extends Controller
      * @param  \App\Models\chuongtrinh  $chuongtrinh
      * @return \Illuminate\Http\Response
      */
-    public function show(chuongtrinh $chuongtrinh)
+    public function show( $id)
     {
-        //
+        $thang=thang::all();
+        $data=chuongtrinh::find($id);
+        return view('admin.chuongtrinh.show',compact('data','thang'));  
     }
 
     /**

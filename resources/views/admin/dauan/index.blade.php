@@ -24,7 +24,7 @@
           <tr>
             <td>{{$item->id}}</td>
             <td>{{$item->nam}}</td>
-            <td>{{$item->noidung}}</td>
+            <td>{!!$item->noidung!!}</td>
             <td><img src="{{url('public/uploads/dauan')}}/{{$item->avatar}}" width="100px"></td>
             {{-- <td>{{$item->link}}</td> --}}
             

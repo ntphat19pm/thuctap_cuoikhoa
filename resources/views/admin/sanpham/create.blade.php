@@ -2,7 +2,7 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('sanpham.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('sanpham.store')}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
             <div class="form-group">
                 <a>
@@ -27,7 +27,7 @@
                 <div class="col-lg-4">
                     <div class="form-group invalid">
                         <label for="tensp" class="form-label">Nhập tên sản phẩm</label>
-                        <input type="text" class="form-control" name="tensp" id="tensp" onblur="ChangeToSlug();" required >
+                        <input type="text" class="form-control" name="tensp" id="tensp" onblur="ChangeToSlug();" autocomplete="off" required >
                     </div>
 
                     <div class="form-group invalid" hidden>

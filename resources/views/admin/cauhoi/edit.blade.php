@@ -2,11 +2,11 @@
 @section('main')
 <div class="card">
     <div class="card-body">
-        <form action="{{route('cauhoi.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('cauhoi.update',$data->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf  @method('PUT')
             <div class="form-group">
                 <a href="{{route('cauhoi.index')}}" class="btn btn-sm btn-danger mb-3">
-                    <i class="fas fa-sign-out-alt"> Quay về bảng khuyến mãi</i>     
+                    <i class="fas fa-sign-out-alt"> Quay về bảng câu hỏi</i>     
                 </a>
     
                 <a>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                    <label for="trangthai">Lĩnh vực<span class="text-danger font-weight-bold">*</span></label>
+                    <label for="trangthai">Trạng thái câu hỏi<span class="text-danger font-weight-bold">*</span></label>
                     <select id="trangthai" class="form-control custom-select @error('linhvuc_id') is-invalid @enderror" name="trangthai" required autofocus>
                         <option value="0" {{($data->trangthai== 0)?'selected':'' }}>Không duyệt</option>
                         <option value="1" {{($data->trangthai== 1)?'selected':'' }}>Đã duyệt</option>
@@ -51,7 +51,7 @@
             <div class="col-lg-12">
                 <div class="mb-3">
                     <label for="cauhoi" class="form-label">Câu hỏi</label>
-                    <input value="{{$data->cauhoi}}" type="text" class="form-control" name="cauhoi" id="cauhoi" >
+                    <input value="{{$data->cauhoi}}" type="text" class="form-control" name="cauhoi" id="cauhoi" required>
                 </div>
             </div>
           <div class="col-lg-12">

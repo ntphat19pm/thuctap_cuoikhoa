@@ -20,6 +20,7 @@ use App\Models\baiviet;
 use App\Models\dauan;
 use App\Models\cauhoi;
 use App\Models\mangluoi;
+use App\Models\lienhe_chuyendoi;
 use App\Models\slider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -51,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
                 'danhmuc'=>danhmuc::all(),
                 "slider"=>slider::where('trangthai',1)->get(),
                 "thongtin"=>thongtin::where('trangthai',0)->get(),
+                "lienhe_chuyendoi"=>lienhe_chuyendoi::where('trangthai_id',0)->get(),
                 "linhvuc"=>danhmuc::where('linhvuc_id',0)->get(),
                 "dichvu"=>danhmuc::where('linhvuc_id',1)->get(),
                 "doanhnghiep"=>doanhnghiep::where('loai_kh',0)->get(),

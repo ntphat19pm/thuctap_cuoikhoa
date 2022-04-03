@@ -27,7 +27,19 @@ class nhanvien extends Model
 
     public function giaoviec(){
         return $this->hasMany(giaoviec::class,'nguoinhan','id');
-      }
+    }
+    public function baiviet(){
+        return $this->hasMany(baiviet::class,'nguoidang','id');
+    }
+    public function video(){
+        return $this->hasMany(video::class,'nguoidang','id');
+    }
+    public function lienhe_chuyendoi(){
+        return $this->hasMany(lienhe_chuyendoi::class,'nhanvien_id','id');
+    }
+    public function thongtin(){
+        return $this->hasMany(thongtin::class,'nhanvien_id','id');
+    }
     public function scopeSearch($query)
     {
         if($tukhoa=request()->tukhoa){

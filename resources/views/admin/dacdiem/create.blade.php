@@ -2,21 +2,21 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('dacdiem.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('dacdiem.store')}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
             <div class="form-group">
                 <a>
                     <button type="submit" onclick="LayNoiDung()" class="btn btn-sm btn-primary float-right mb-3">Thêm</button>
                 </a>
                 <a href="{{route('dacdiem.index')}}" class="btn btn-sm btn-danger mb-3">
-                    <i class="fas fa-sign-out-alt"> Quay về bảng sản phẩm</i>     
+                    <i class="fas fa-sign-out-alt"> Quay về bảng đặc điểm</i>     
                 </a>
             </div>
             <div class="row">  
                 <div class="col-lg-4">
                     <div class="form-group invalid">
                         <label for="tendacdiem" class="form-label">Nhập tên đặc điểm</label>
-                        <input type="text" class="form-control" name="tendacdiem" id="tendacdiem" required >
+                        <input type="text" class="form-control" name="tendacdiem" id="tendacdiem" autocomplete="off" required >
                     </div>
 
 

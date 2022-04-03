@@ -2,7 +2,7 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('cauhoi.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('cauhoi.store')}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
             <div class="form-group">
                 <a>
@@ -16,20 +16,20 @@
                 <div class="col-lg-4">
                     <div class="form-group invalid">
                         <label for="hoten" class="form-label">Nhập họ và tên</label>
-                        <input type="text" class="form-control" name="hoten" id="hoten" required >
+                        <input type="text" class="form-control" value="{{Auth::user()->hovaten}}" name="hoten" id="hoten" required readonly>
                     </div>                    
                 </div>
                 <div class="col-lg-4">  
                     <label for="sdt" class="form-label">Số điện thoại</label>
-                    <input type="text" class="form-control" id="sdt" name="sdt" required>
+                    <input type="text" class="form-control" value="{{Auth::user()->sdt}}" id="sdt" name="sdt" required readonly>
                 </div>
                 <div class="col-lg-4">  
                     <label for="diachi" class="form-label">Địa chỉ</label>
-                    <input type="text" class="form-control" id="diachi" name="diachi" required>
+                    <input type="text" class="form-control" value="{{Auth::user()->diachi}}" id="diachi" name="diachi" required readonly>
                 </div>
                 <div class="col-lg-4">  
                     <label for="email" class="form-label">Địa chỉ mail</label>
-                    <input type="text" class="form-control" id="email" name="email" required>
+                    <input type="text" class="form-control" id="email" value="{{Auth::user()->email}}" name="email" required readonly>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">

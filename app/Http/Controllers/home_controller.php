@@ -11,14 +11,21 @@ use App\Models\dacdiem;
 use App\Models\thongtin;
 use App\Models\tinhnang;
 use App\Models\loiich;
+use App\Models\nhanvien;
 use App\Models\binhluan;
 use App\Models\gioitinh;
 use App\Models\giaithuong;
 use App\Models\chitieu;
 use App\Models\tailieu;
 use App\Models\thuchien_chitieu;
+use App\Models\danhmuc_chuyendoi;
+use App\Models\review;
+use App\Models\dichvu_chuyendoi;
+use App\Models\lienhe_chuyendoi;
 use App\Models\baiviet;
+use App\Models\doitac;
 use App\Models\cauhoi;
+use App\Models\visitor;
 use Illuminate\Support\Facades\DB;
 use App\Helper\giohang;
 use App\Http\Controllers\HomeController;
@@ -26,15 +33,38 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Mail\dathang_email;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class home_controller extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $user_ip_address=$request->ip();
+        $visitor_curent= visitor::where('ip_address',$user_ip_address)->get();
+        $visitor_count= $visitor_curent->count();
+        // $visitor_id=Auth::user()->id;
+        if($visitor_count<1)
+        {
+            $visitor=new visitor;
+            $visitor->ip_address= $user_ip_address;
+            $visitor->date_visitor=Carbon::now('Asia/Ho_Chi_Minh');
+            $visitor->save();
+        }
         $data=sanpham::paginate(20);
         return view('home');
     }
 
-    public function home(){
+    public function home(Request $request){
+        $user_ip_address=$request->ip();
+        $visitor_curent= visitor::where('ip_address',$user_ip_address)->get();
+        $visitor_count= $visitor_curent->count();
+        // $visitor_id=Auth::user()->id;
+        if($visitor_count<1)
+        {
+            $visitor=new visitor;
+            $visitor->ip_address= $user_ip_address;
+            $visitor->date_visitor=Carbon::now('Asia/Ho_Chi_Minh');
+            $visitor->save();
+        }
         $data=sanpham::paginate(20);
         return view('home');
     }
@@ -55,10 +85,11 @@ class home_controller extends Controller
     }
     public function chitietbai($id){
         $data=baiviet::find($id);
+        $nhanvien=nhanvien::all();
         $data->view=$data->view + 1;
         $data->save();
         $binhluan=binhluan::where('baiviet_id',$id)->where('trangthai',1)->get();
-        return view('chitietbai',compact('data','binhluan'));
+        return view('chitietbai',compact('data','binhluan','nhanvien'));
     }
     public function shop(){
         return view('shop');
@@ -82,6 +113,14 @@ class home_controller extends Controller
     }
     public function tailieu(){
         return view('tailieu');
+    }
+    public function chuyendoiso(){
+        $chuyendoi_linhvuc=danhmuc_chuyendoi::where('phanloai_id',1)->get();
+        $chuyendoi_chucnang=danhmuc_chuyendoi::where('phanloai_id',0)->get();
+        $dichvu_chuyendoi=dichvu_chuyendoi::all();
+        $review=review::all();
+        $doitac=doitac::all();
+        return view('chuyendoiso',compact('chuyendoi_linhvuc','chuyendoi_chucnang','dichvu_chuyendoi','review','doitac'));
     }
     public function timkiem(Request $request){
         $key = $request->timkiem;
@@ -175,6 +214,23 @@ class home_controller extends Controller
         $data->sanpham_id=$request->sanpham_id;
         $data->yeucau_id=$request->yeucau_id;
         $data->noidung=$request->noidung;
+
+        if($data->save()){
+            return view('completed');
+        }
+  
+    }
+    public function post_lienhe_chuyendoi(Request $request)
+    {
+       
+        $data=new lienhe_chuyendoi;
+        $data->hoten_lienhe=$request->hoten_lienhe;
+        $data->sdt_lienhe=$request->sdt_lienhe;
+        $data->email_lienhe=$request->email_lienhe;
+        $data->congty_lienhe=$request->congty_lienhe;
+        $data->linhvuc_lienhe=$request->linhvuc_lienhe;
+        $data->chitiet=$request->chitiet;
+        $data->trangthai_id=0;
 
         if($data->save()){
             return view('completed');

@@ -68,7 +68,7 @@
             <tr>
               <td class="text-center"><i>{{$i}}</i></td>
               <td>{{$item->tenloiich}}</td>            
-              <td>{{$item->chitiet}}</td>            
+              <td>{!!$item->chitiet!!}</td>            
               <td class="text-right">
                 <a href="{{route('loiich.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              

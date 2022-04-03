@@ -2,7 +2,7 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('baiviet.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('baiviet.store')}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
 
             <div class="form-group">
@@ -10,7 +10,7 @@
                   <button type="submit" class="btn btn-sm btn-primary float-right mb-3">Thêm</button>
               </a>
               <a href="{{route('baiviet.index')}}" class="btn btn-sm btn-danger mb-3">
-                  <i class="fas fa-sign-out-alt"> Quay về bảng khuyến mãi</i>     
+                  <i class="fas fa-sign-out-alt"> Quay về bảng bài viết</i>     
               </a>
             </div>
 
@@ -27,7 +27,7 @@
                   
                   <div class="form-group invalid">
                     <label for="tenbai" class="form-label">Tên bài</label>
-                    <input type="text" class="form-control" name="tenbai" id="tenbai" required >
+                    <input type="text" class="form-control" name="tenbai" id="tenbai" autocomplete="off" required >
                   </div>
                   
                   <div class="form-group invalid">
@@ -47,7 +47,7 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                       <div class="form-group invalid">
                         <label for="create_at" class="form-label">Ngày viết</label>
                         <input type="date" class="form-control" name="create_at" id="create_at" required >
@@ -58,7 +58,7 @@
                         <label for="nguoidang" class="form-label">Người viết</label>
                         <input type="text" value="{{Auth::user()->hovaten}}" class="form-control" name="nguoidang" id="nguoidang" required readonly >
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="binhluan_id">Cho phép bình luận<span class="text-danger font-weight-bold">*</span></label>

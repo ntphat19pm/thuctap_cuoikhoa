@@ -273,4 +273,26 @@ class nhanvien_controller extends Controller
         Auth::logout();
         return redirect('admin/dangnhap');
     }
+
+    public function active($id)
+    {
+        $data=nhanvien::find($id);
+        $data->trangthai=0;
+
+        if($data->save()) {
+            Toastr::success('Cập nhật trạng thái tài khoản thành công','Cập nhật trạng thái tài khoản');
+            return redirect('admin/nhanvien');
+        }
+    }
+
+    public function unactive($id)
+    {
+        $data=nhanvien::find($id);
+        $data->trangthai=1;
+
+        if($data->save()) {
+            Toastr::success('Cập nhật trạng thái tài khoản thành công','Cập nhật trạng thái tài khoản');
+            return redirect('admin/nhanvien');
+        }
+    }
 }

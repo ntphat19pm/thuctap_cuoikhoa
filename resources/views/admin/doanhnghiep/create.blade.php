@@ -2,7 +2,7 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('doanhnghiep.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('doanhnghiep.store')}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
 
             <div class="form-group">
@@ -27,7 +27,7 @@
                   
                   <div class="form-group invalid">
                     <label for="ten_kh" class="form-label">Tên doanh nghiệp</label>
-                    <input type="text" class="form-control" name="ten_kh" id="ten_kh" required >
+                    <input type="text" class="form-control" name="ten_kh" id="ten_kh" autocomplete="off" required >
                   </div>
                 </div>
                 <div class="col-lg-4">

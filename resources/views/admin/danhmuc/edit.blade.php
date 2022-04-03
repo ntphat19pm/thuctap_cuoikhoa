@@ -2,7 +2,7 @@
 @section('main')
 <div class="card">
     <div class="card-body">
-        <form action="{{route('danhmuc.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('danhmuc.update',$data->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf  @method('PUT')
           <div class="row">
               <div class="col-lg-6">
@@ -20,7 +20,7 @@
               <div class="col-lg-4">
                 <div class="mb-3">
                   <label for="tendanhmuc" class="form-label">nhập tên danh mục</label>
-                  <input value="{{$data->tendanhmuc}}" type="text" class="form-control" name="tendanhmuc" id="tendanhmuc" >
+                  <input value="{{$data->tendanhmuc}}" type="text" class="form-control" name="tendanhmuc" id="tendanhmuc" autocomplete="off" required>
                 </div>
               </div>
               <div class="col-lg-4">

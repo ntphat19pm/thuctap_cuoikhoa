@@ -1,8 +1,5 @@
 @extends('layouts.admin')
 @section('main')
-<div class="row">
-  
-
 
 <div class="row">
   <div class="col-lg-4">
@@ -283,7 +280,7 @@
       <div class="card-header">
         <h3 class="card-title">
             <i class="fas fa-chart-bar mr-1"></i>
-            CÁC THÔNG TIN CẦN LIÊN HỆ
+            CÁC THÔNG TIN TƯ VẤN GIẢI PHÁP
         </h3>
         <div class="card-tools">
           <button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#collapseExample7" aria-expanded="false" aria-controls="collapseExample">
@@ -295,124 +292,200 @@
           
         </div>
       </div>
-     
+      
       <div class="collapse" id="collapseExample7">
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
-            <thead>
+              <thead>
+                  <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Họ tên khách hàng</th>
+                  <th scope="col">Hình thức liên hệ</th>
+                  <th scope="col">Yêu cầu</th>
+                  <th scope="col">Trạng thái</th>
+                  <th class="text-right" scope="col">Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @php 
+                  $i = 0;
+                  @endphp
+                  @foreach ($thongtin as $item)
+                  @php 
+                  $i++;
+                  @endphp
+                  <tr>
+                  <td class="text-center"><i>{{$i}}</i></td>
+                  <td>{{$item->hoten}}</td>
+                  <td>
+                      @if($item->hinhthuc==0)
+                      Gọi điện
+                      @elseif($item->hinhthuc==1)
+                      SMS
+                      @elseif($item->hinhthuc==2)
+                      Zalo
+                      @elseif($item->hinhthuc==3)
+                      Email
+                      @endif
+                  </td>
+                  <td>
+                      @if($item->yeucau_id==0)
+                      Phản ánh sản phẩm dịch vụ
+                      @elseif($item->yeucau_id==1)
+                      Tư vấn sản phẩm dịch vụ
+                      @endif
+                  </td>
+                  <td class="text-center">
+                      @if($item->trangthai==0)
+                      <a href="{{ route('thongtin.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i><br>Chưa liên hệ</a>
+                      @elseif($item->trangthai==1)
+                      <a href="{{ route('thongtin.unactive',$item->id)}}"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i><br>Đã liên hệ</a>
+                      @endif
+                  </td>
+                  
+                  <td class="text-right">
+                      <a href="{{route('thongtin.show',$item->id)}}" class="btn btn-sm btn-warning">
+                          <i class="fas fa-eye"></i>              
+                          </a>
+                      <a  href="{{route('thongtin.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
+                          <i class="fas fa-trash"></i>
+                      </a>
+                  </td>
+              
+                  </tr>
+                  @endforeach
+              </tbody>
+            </table>
+            <form method="POST" action="" id="form-delete">
+            @csrf @method('DELETE')
+            <form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="fas fa-chart-bar mr-1"></i>
+            CÁC THÔNG TIN TƯ VẤN CHUYỂN ĐỔI SỐ
+          </h3>
+          <div class="card-tools">
+            <button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#collapseExample9" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="collapse" id="collapseExample9">
+          <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
                 <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Họ tên khách hàng</th>
-                <th scope="col">Hình thức liên hệ</th>
-                <th scope="col">Yêu cầu</th>
-                <th scope="col">Trạng thái</th>
-                <th class="text-right" scope="col">Action</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Họ tên khách hàng</th>
+                  <th scope="col">Số điện thoại</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Công ty</th>
+                  <th scope="col">Lĩnh vực</th>
+                  <th scope="col">Chi tiết</th>
+                  <th class="text-right" scope="col">Trạng thái</th>
                 </tr>
-            </thead>
-            <tbody>
+              </thead>
+              <tbody>
                 @php 
                 $i = 0;
                 @endphp
-                @foreach ($thongtin as $item)
+                @foreach ($lienhe_chuyendoi as $item)
                 @php 
                 $i++;
                 @endphp
                 <tr>
-                <td class="text-center"><i>{{$i}}</i></td>
-                <td>{{$item->hoten}}</td>
-                <td>
-                    @if($item->hinhthuc==0)
-                    Gọi điện
-                    @elseif($item->hinhthuc==1)
-                    SMS
-                    @elseif($item->hinhthuc==2)
-                    Zalo
-                    @elseif($item->hinhthuc==3)
-                    Email
+                  <td class="text-center"><i>{{$i}}</i></td>
+                  <td>{{$item->hoten_lienhe}}</td>
+                  <td>{{$item->sdt_lienhe}}</td>
+                  <td>{{$item->email_lienhe}}</td>
+                  <td>{{$item->congty_lienhe}}</td>
+                  <td>{{$item->danhmuc_chuyendoi->ten_danhmuc}}</td>
+                  <td>{{$item->chitiet}}</td>
+                  <td class="text-center">
+                    @if($item->trangthai_id==0)
+                    <a href="{{ route('lienhe_chuyendoi.active',$item->id)}}" class="float-left"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>
+                    @elseif($item->trangthai_id==1)
+                    <a href="{{ route('lienhe_chuyendoi.unactive',$item->id)}}" class="float-left"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i> {{date("d-m-Y H:i:s",strtotime($item->create_at))}}</a>
                     @endif
-                </td>
-                <td>
-                    @if($item->yeucau_id==0)
-                    Phản ánh sản phẩm dịch vụ
-                    @elseif($item->yeucau_id==1)
-                    Tư vấn sản phẩm dịch vụ
-                    @endif
-                </td>
-                <td class="text-center">
-                    @if($item->trangthai==0)
-                    <a href="{{ route('thongtin.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i><br>Chưa liên hệ</a>
-                    @elseif($item->trangthai==1)
-                    <a href="{{ route('thongtin.unactive',$item->id)}}"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i><br>Đã liên hệ</a>
-                    @endif
-                </td>
-                
-                <td class="text-right">
-                    <a href="{{route('thongtin.show',$item->id)}}" class="btn btn-sm btn-warning">
-                        <i class="fas fa-eye"></i>              
-                        </a>
-                    <a  href="{{route('thongtin.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                </td>
-            
+                  </td>            
                 </tr>
                 @endforeach
-            </tbody>
+              </tbody>
             </table>
             <form method="POST" action="" id="form-delete">
             @csrf @method('DELETE')
             <form>
-        </div>
-    </div>
-  </div>
-  <div class="col-lg-12">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">
-            <i class="fas fa-chart-bar mr-1"></i>
-            THỐNG KÊ TRUY CẬP
-        </h3>
-        <div class="card-tools">
-          <button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fas fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
-          
+          </div>
         </div>
       </div>
-     
-      <div class="collapse" id="collapseExample8">
-        <div class="card-body">
+    </div>
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+              <i class="fas fa-chart-bar mr-1"></i>
+              THỐNG KÊ TRUY CẬP
+          </h3>
+          <div class="card-tools">
+            <button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+            
+          </div>
+        </div>
+      
+        <div class="collapse" id="collapseExample8">
+          <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                <th scope="col">Đang Online</th>
-                <th scope="col">Tổng tháng trước</th>
-                <th scope="col">Tổng tháng này</th>
-                <th scope="col">Tổng một năm</th>
-                <th scope="col">Tổng truy cập</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td class="text-center"><i>{{$visitor_count}}</i></td>           
-                <td class="text-center"><i>{{$visitor_lastmonth_count}}</i></td>           
-                <td class="text-center"><i>{{$visitor_thismonth_count}}</i></td>           
-                <td class="text-center"><i>{{$visitor_year_count}}</i></td>           
-                <td class="text-center"><i>{{$vistors_total}}</i></td>           
-                </tr>
-            </tbody>
+              <thead>
+                  <tr>
+                  <th scope="col">Tổng tháng trước</th>
+                  <th scope="col">Tổng tháng này (Tháng {{$thang_hientai}})</th>
+                  <th scope="col">Tổng một năm</th>
+                  <th scope="col">Tổng truy cập</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>         
+                  <td class="text-center"><i>{{$visitor_lastmonth_count}}</i></td>           
+                  <td class="text-center"><i>{{$visitor_thismonth_count}}</i></td>           
+                  <td class="text-center"><i>{{$visitor_year_count}}</i></td>           
+                  <td class="text-center"><i>{{$vistors_total}}</i></td>           
+                  </tr>
+              </tbody>
             </table>
             <form method="POST" action="" id="form-delete">
             @csrf @method('DELETE')
             <form>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
 
+
+
+
+  
+  
+  
   
 
 @endsection

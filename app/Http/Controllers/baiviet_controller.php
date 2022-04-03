@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use File;
 use Toastr;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class baiviet_controller extends Controller
 {
@@ -17,8 +19,16 @@ class baiviet_controller extends Controller
      */
     public function index()
     {
-        $data=baiviet::all();
-        return view('admin.baiviet.index',compact('data'));
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=baiviet::all();
+            return view('admin.baiviet.index',compact('data'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng bài viểt','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
     }
 
     /**
@@ -45,9 +55,14 @@ class baiviet_controller extends Controller
             $ex=$request->file_uploads->extension();
             $file_name=time().'-baiviet'.'.'.$ex;
             $file->move(public_path('uploads/baiviet'),$file_name);
+
+            $ngayviet=Carbon::now('Asia/Ho_Chi_Minh');
+            $nguoiviet=Auth::user()->id;
           
         }
         $request->merge(['avatar'=>$file_name]);
+        $request->merge(['create_at'=>$ngayviet]);
+        $request->merge(['nguoidang'=>$nguoiviet]);
         
 
         if(baiviet::create($request->all())){

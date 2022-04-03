@@ -2,8 +2,16 @@
 @section('main')
 <div class="card">
     <div class="card-body">
-        <form action="{{route('dauan.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('dauan.update',$data->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf  @method('PUT')
+            <div class="form-group">
+                <a>
+                    <button type="submit" class="btn btn-sm btn-primary float-right mb-3">Lưu</button>
+                </a>
+                <a href="{{route('dauan.index')}}" class="btn btn-sm btn-danger mb-3">
+                    <i class="fas fa-sign-out-alt"> Quay về bảng dấu ấn</i>     
+                </a>
+            </div>
           <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
@@ -14,7 +22,7 @@
               <div class="col-lg-6">
                 <div class="mb-3">
                   <label for="nam" class="form-label">Nhập năm dấu ấn</label>
-                  <input value="{{$data->nam}}" type="text" class="form-control" name="nam" id="nam" >
+                  <input value="{{$data->nam}}" type="text" class="form-control" name="nam" id="nam" autocomplete="off" required >
                 </div>
               </div>
           </div>
@@ -25,7 +33,6 @@
               <div class="invalid-feedback"></div>
             </div>
           </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </div>
 </div>

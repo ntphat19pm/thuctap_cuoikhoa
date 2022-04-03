@@ -10,5 +10,10 @@ class video extends Model
     use HasFactory;
     protected $table='video';
     public $timestamps = false;
-    protected $fillable=['id','tenvideo','link','mota','slug','ngaydang','status'];
+    protected $fillable=['id','tenvideo','link','mota','slug','ngaydang','status','nguoidang'];
+
+    public function nhanvien()
+    {
+        return $this->hasOne(nhanvien::class,'id','nguoidang');
+    }
 }

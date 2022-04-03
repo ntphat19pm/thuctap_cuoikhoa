@@ -10,8 +10,9 @@
 <title>AdminLTE 3 | Dashboard 2</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-
-<link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<!-- 
+<link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/fontawesome-free/css/all.min.css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.min.css"/>
 
 <link rel="stylesheet" href="{{url('public/adminlte')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
@@ -102,6 +103,20 @@
       
     }
   </script>
+  <script>
+    function SHPassword1(x)
+    {
+      var chbox=x.checked;
+      if(chbox)
+      {
+        document.getElementById("repassword").type="text";
+      }
+      else{
+        document.getElementById("repassword").type="password";
+      }
+      
+    }
+  </script>
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -136,7 +151,10 @@
   </a>
   <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
     <li><a class="dropdown-item" href="{{route('profile.show',Auth::user()->id)}}">Công việc <span class="badge bg-secondary float-right">{{$giaoviec->where('trangthai',0)->where('nguoinhan',Auth::user()->id)->count()}}</span></a></li>
+    <li><a class="dropdown-item" href="{{route('profile.baiviet_canhan')}}">Bài viết - Video</a></li>
     <li><a class="dropdown-item" href="{{route('profile.index')}}">Profile</a></li>
+    <li><a class="dropdown-item" href="{{route('profile.matkhau')}}">Đổi mật khẩu</a></li>
+    
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="{{route('dangxuat')}}">Sign out</a></li>
   </ul>
@@ -402,9 +420,31 @@ All rights reserved.
 
 <script>
   CKEDITOR.replace('chitiet');
+  CKEDITOR.replace('chitiet1');
+  CKEDITOR.replace('chitiet2');
   CKEDITOR.replace('traloi');
   CKEDITOR.replace('noidung');
   CKEDITOR.replace('mota');
+
+  (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
 </script>
 
 {{-- <script>

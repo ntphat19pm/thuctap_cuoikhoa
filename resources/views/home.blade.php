@@ -197,7 +197,7 @@
       </div>
     </div>
 
-    <form action="{{route('home.postthongtin')}}" method="post">
+    <form action="{{route('home.postthongtin')}}" method="post" class="needs-validation" novalidate>
       @csrf
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -209,21 +209,21 @@
             <div class="modal-body">
               <div class="form-group invalid">
                 <label for="hoten" class="form-label">Nhập họ và tên</label>
-                <input type="text" class="form-control" name="hoten" id="hoten" required >
+                <input type="hoten" class="form-control" name="hoten" id="hoten" required >
               </div>
 
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group invalid mt-3">
                     <label for="sdt" class="form-label">Nhập số điện thoại</label>
-                    <input type="text" class="form-control" name="sdt" id="sdt" required >
+                    <input type="number" class="form-control" name="sdt" id="sdt" required >
                   </div>
                   <div class="form-group invalid mt-2">
                     <label for="diachi" class="form-label">Nhập địa chỉ</label>
                     <input type="text" class="form-control" name="diachi" id="diachi" required >
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group invalid mt-3">
                     <label for="sanpham_id">Sản phẩm<span class="text-danger font-weight-bold">*</span></label>
                     <select id="sanpham_id" class="form-control custom-select @error('sanpham_id') is-invalid @enderror" name="sanpham_id" required autofocus>
                         <option value="">--Chọn danh mục sản phẩm--</option>
@@ -262,7 +262,7 @@
               </div>
               <div class="form-group invalid mt-3">
                 <label for="noidung" class="form-label">Nhập nội dung cụ thể</label>
-                <textarea class="form-control" name="noidung" id="noidung" cols="10" rows="5"></textarea>
+                <textarea class="form-control" name="noidung" id="noidung" cols="10" rows="5" required></textarea>
               </div>
             </div>
             <div class="modal-footer">

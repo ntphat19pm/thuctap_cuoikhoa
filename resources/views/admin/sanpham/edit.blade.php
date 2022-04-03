@@ -2,7 +2,7 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('sanpham.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('sanpham.update',$data->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf @method('PUT')
             <div class="form-group">
                 <a>

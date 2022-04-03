@@ -6,6 +6,8 @@ use App\Models\video;
 use Carbon\Carbon;
 use Toastr;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class video_controller extends Controller
 {
@@ -16,8 +18,17 @@ class video_controller extends Controller
      */
     public function index()
     {
-        $data=video::all();
+        if(Auth::user()->chucvu_id==1)
+        {
+            $data=video::all();
         return view('admin.video.index',compact('data'));
+        }
+        else
+        {
+            Toastr::warning('Bạn không có quyền truy cập vào bảng video','Hạn chế truy cập');
+            return redirect()->route('admin.index');
+        }
+        
     }
 
     /**
@@ -45,6 +56,7 @@ class video_controller extends Controller
         $data->mota=$request->mota;
         $data->slug=str_slug($request->tenvideo);
         $data->ngaydang=Carbon::now('Asia/Ho_Chi_Minh');
+        $data->nguoidang=Auth::user()->id;
         if($data->save()){
             $data=video::all();
             Toastr::success('Thêm video thành công','Thêm video');
@@ -93,6 +105,7 @@ class video_controller extends Controller
         $data->slug=str_slug($request->tenvideo);
         $data->ngaydang=Carbon::now('Asia/Ho_Chi_Minh');
         $data->status=$request->status;
+        $data->nguoidang=$request->nguoidang;
         if($data->save()){
             $data=video::all();
             Toastr::success('Cập nhật video thành công','Cập nhật video');

@@ -47,10 +47,9 @@
             </td>
             <td class="text-center">
               @if ($item->trangthai==0)
-                <i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i>
-                  
+              <a href="{{ route('nhanvien.unactive',$item->id)}}"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i> <a>    
               @elseif($item->trangthai==1)
-                <i style="color: red" class="far fa-times-circle fa-lg"></i>
+              <a href="{{ route('nhanvien.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>
               @endif
             </td>
             <td class="text-right">

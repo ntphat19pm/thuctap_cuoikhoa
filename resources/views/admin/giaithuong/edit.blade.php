@@ -2,14 +2,14 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('giaithuong.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('giaithuong.update',$data->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf @method('PUT')
             <div class="form-group">
                 <a>
                     <button type="submit" class="btn btn-sm btn-primary float-right mb-3">Lưu</button>
                 </a>
                 <a href="{{route('giaithuong.index')}}" class="btn btn-sm btn-danger mb-3">
-                    <i class="fas fa-sign-out-alt"> Quay về bảng sản phẩm</i>     
+                    <i class="fas fa-sign-out-alt"> Quay về bảng giải thưởng</i>     
                 </a>
             </div>
             <div class="row">

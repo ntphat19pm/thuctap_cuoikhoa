@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\thongtin;
 use App\Models\sanpham;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Toastr;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class thongtin_controller extends Controller
 {
@@ -89,15 +93,25 @@ class thongtin_controller extends Controller
 
     public function active($id)
     {
-        $mang=thongtin::find($id)->update(['trangthai'=>1]);
-        $data=thongtin::all();
-        return view('admin.thongtin.index',compact('mang','data'));
+        $data=thongtin::find($id);
+        $data->ngay_lienhe=Carbon::now('Asia/Ho_Chi_Minh');
+        $data->trangthai=1;
+        $data->nhanvien_id=Auth::user()->id;
+
+        if($data->save()) {
+            Toastr::success('Cập nhật liên hệ thành công','Cập nhật liên hệ');
+            return redirect('admin/thongtin');
+        }
     }
 
     public function unactive($id)
     {
-        $mang=thongtin::find($id)->update(['trangthai'=>0]);
-        $data=thongtin::all();
-        return view('admin.thongtin.index',compact('mang','data'));
+        $data=thongtin::find($id);
+        $data->trangthai=0;
+
+        if($data->save()) {
+            Toastr::success('Cập nhật liên hệ thành công','Cập nhật liên hệ');
+            return redirect('admin/thongtin');
+        }
     }
 }

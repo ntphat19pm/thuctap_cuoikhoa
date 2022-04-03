@@ -2,14 +2,14 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('loiich.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('loiich.update',$data->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf @method('PUT')
             <div class="form-group">
                 <a>
                     <button type="submit" class="btn btn-sm btn-primary float-right mb-3">Lưu</button>
                 </a>
                 <a href="{{route('loiich.index')}}" class="btn btn-sm btn-danger mb-3">
-                    <i class="fas fa-sign-out-alt"> Quay về bảng sản phẩm</i>     
+                    <i class="fas fa-sign-out-alt"> Quay về bảng lợi ích</i>     
                 </a>
             </div>
             <div class="row">
@@ -17,7 +17,7 @@
                 <div class="col-lg-4">
                     <div class="form-group">
                     <label for="tenloiich" class="form-label">Nhập tên lợi ích</label>
-                    <input type="text" value="{{$data->tenloiich}}" class="form-control" name="tenloiich" id="tenloiich" required >
+                    <input type="text" value="{{$data->tenloiich}}" class="form-control" name="tenloiich" id="tenloiich" autocomplete="off"  required >
                     </div>
     
                     <div class="form-group">

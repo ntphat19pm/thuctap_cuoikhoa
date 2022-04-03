@@ -3,16 +3,13 @@
 <div class="card" >
  
     <div class="card-body">
-        <form class="mb-3" action="{{route('danhmuc.store')}}" method="POST" enctype="multipart/form-data">
+        <form class="mb-3 needs-validation" action="{{route('danhmuc.store')}}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="row">
               <div class="col-lg-3">
                 <div class="form-group">
                     <label for="avatar">Hình ảnh đại diện <span class="text-danger font-weight-bold">*</span></label>
                     <input id="file_uploads" type="file" class="form-control @error('avatar') is-invalid @enderror" name="file_uploads" value="{{ old('file_uploads') }}" required autocomplete="file_uploads" />
-                    @error('file_uploads')
-                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                    @enderror
                 </div>
               </div>
 
@@ -20,16 +17,13 @@
                 <div class="form-group">
                   <label for="anhbia">Hình ảnh bìa <span class="text-danger font-weight-bold">*</span></label>
                   <input id="file_uploads1" type="file" class="form-control @error('anhbia') is-invalid @enderror" name="file_uploads1" value="{{ old('file_uploads1') }}" required autocomplete="file_uploads1" />
-                  @error('file_uploads1')
-                      <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                  @enderror
                 </div>
               </div>
 
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="tendanhmuc" class="form-label">Nhập tên danh mục</label>
-                  <input id="tendanhmuc" type="text" class="form-control" name="tendanhmuc" placeholder="Nhập danh mục" required>
+                  <input id="tendanhmuc" type="text" class="form-control" name="tendanhmuc" autocomplete="off" placeholder="Nhập danh mục" required>
                   <span class="form-message"></span>
                 </div>
               </div>

@@ -4,7 +4,7 @@
 <div class="card" >
  
     <div class="card-body">
-        <form action="{{route('chuongtrinh.store')}}" method="POST">
+        <form action="{{route('chuongtrinh.store')}}" method="POST" class="needs-validation" novalidate>
             @csrf
             <div class="form-group">
                 <a>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-lg-6">  
                     <label for="ten_chuongtrinh" class="form-label">Tên chương trình hành động</label>
-                    <input type="text" class="form-control" id="ten_chuongtrinh" name="ten_chuongtrinh" required>
+                    <input type="text" class="form-control" id="ten_chuongtrinh" name="ten_chuongtrinh" autocomplete="off" required>
                 </div>
                 <div class="col-lg-6"> 
                     <label for="kehoach" class="form-label">Kế hoạch</label>

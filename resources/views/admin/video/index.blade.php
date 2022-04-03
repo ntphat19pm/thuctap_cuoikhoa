@@ -13,6 +13,7 @@
             <th class="text-center" scope="col">ID</th>
             <th class="text-center" scope="col">Tên video</th>
             <th class="text-center" scope="col">Video</th>
+            <th class="text-center" scope="col">Người đăng</th>
             <th class="text-center" scope="col">Trạng thái</th>
             <th class="text-center" width="10%" scope="col">Action</th>
           </tr>
@@ -24,6 +25,7 @@
             <td class="text-center">{{$item->tenvideo}}</td>
             <td class="text-center"><iframe width="300" height="169" src="https://www.youtube.com/embed/{{$item->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
             {{-- <td>{{$item->link}}</td> --}}
+            <td class="text-center">{{$item->nhanvien->hovaten}}</td>
             <td class="text-center">
               @if($item->status==0)
                 <a href="{{ route('video.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>

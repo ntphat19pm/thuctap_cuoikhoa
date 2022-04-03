@@ -10,5 +10,5 @@ class visitor extends Model
     use HasFactory;
     protected $table='visitor';
     public $timestamps = false;
-    protected $fillable=['id','ip_address','date_visitor'];
+    protected $fillable=['id','ip_address','date_visitor','nguoidung_id'];
 }

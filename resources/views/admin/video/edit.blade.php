@@ -2,7 +2,7 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('video.update',$data->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('video.update',$data->id)}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf @method('PUT')
               <div class="form-group">
                 <a href="{{route('video.index')}}" class="btn btn-sm btn-danger mb-3">
@@ -42,6 +42,10 @@
                       @enderror
                     </div>
                   @endif
+                  </div>
+                  <div class="form-group invalid" hidden>
+                    <label for="nguoidang" class="form-label">Người viết</label>
+                    <input type="text" value="{{$data->nguoidang}}" class="form-control" name="nguoidang" id="nguoidang" required readonly >
                   </div>
                 </div>
               </div>

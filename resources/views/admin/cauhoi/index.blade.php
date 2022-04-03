@@ -69,7 +69,7 @@
             <tr>
               <td class="text-center"><i>{{$i}}</i></td>
               <td>{{$item->cauhoi}}</td>            
-              <td>{{$item->traloi}}</td>
+              <td>{!!$item->traloi!!}</td>
               <td>
                 @if($item->trangthai==0)
                 <a href="{{ route('cauhoi.active',$item->id)}}"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>

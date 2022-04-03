@@ -4,7 +4,7 @@
 <div class="card" >
  
     <div class="card-body">
-        <form action="{{route('chitieu.store')}}" method="POST">
+        <form action="{{route('chitieu.store')}}" method="POST" class="needs-validation" novalidate>
             @csrf
             <div class="form-group">
                 <a>
@@ -71,7 +71,7 @@
                     <input type="number" class="form-control" id="yte" name="yte" required>
                 </div>
                 <div class="col-lg-3"> 
-                    <label for="tytrong_yte" class="form-label">Tỷ trọng doanh thu kênh truyền</label>
+                    <label for="tytrong_yte" class="form-label">Tỷ trọng doanh thu y tế</label>
                     <input type="number" class="form-control" id="tytrong_yte" name="tytrong_yte" required>
                 </div>            
             </div>

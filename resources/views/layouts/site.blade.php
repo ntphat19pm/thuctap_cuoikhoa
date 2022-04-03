@@ -119,8 +119,10 @@
               <li class="dropdown"><a href="{{route('home.mangluoi')}}"><span>Mạng lưới toàn cầu</span></a></li>
               <li class="dropdown"><a href="{{route('home.giaithuong')}}"><span>Giải thưởng</span></a></li>
               <li class="dropdown"><a href="{{route('home.dauan')}}"><span>Dấu ấn</span></a></li>
+              <li class="dropdown"><a href="#contact"><span>Liên hệ</span></a></li>
             </ul>
           </li>
+          <li><a class="nav-link scrollto" href="{{route('home.chuyendoiso')}}">Chuyển đổi số</a></li>
           <li class="dropdown"><a href="#"><span>Giải pháp</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>Lĩnh vực</span> <i class="bi bi-chevron-right"></i></a>
@@ -146,7 +148,7 @@
               <li class="dropdown"><a href="{{route('home.video')}}"><span>Video</span></a></li>
             </ul>
           </li>     
-          <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li> -->
           <li class="dropdown"><a href="#"><span>Hỗ trợ</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li class="dropdown"><a href="{{route('home.cauhoi')}}"><span>Câu hỏi thường gặp</span></a></li>
@@ -240,14 +242,14 @@
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Viettel Solutions</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://www.facebook.com/ntphatdesigner/">Nguyễn Tấn Phát</a>
       </div>
       @foreach ($lienhe as $item)
       <style>
@@ -472,6 +474,28 @@
   <script src="{{url('public/seo_dream')}}/assets/js/imagesloaded.js"></script>
   <script src="{{url('public/seo_dream')}}/assets/js/custom.js"></script>
   <script src="{{url('public/adminlte')}}/plugins/select2/js/select2.full.min.js"></script>
+
+  <script>
+  (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
 
 
   @foreach ($lienhe as $item)

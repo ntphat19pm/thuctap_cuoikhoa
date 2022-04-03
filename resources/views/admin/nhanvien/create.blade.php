@@ -4,7 +4,7 @@
 <div class="card" >
  
     <div class="card-body">
-        <form action="{{route('nhanvien.store')}}" method="POST">
+        <form action="{{route('nhanvien.store')}}" method="POST" class="needs-validation" novalidate>
             @csrf
            
             <div class="row">
@@ -12,8 +12,7 @@
               <div class="col-lg-3">
                 <div class="mb-3">
                   <label for="TieuDe" class="form-label">Họ và tên</label>
-                  <input type="text" class="form-control" id="hovaten" name="hovaten" required>
-                  <div class="invalid-feedback">Họ và tên không được bỏ trống.</div>
+                  <input type="text" class="form-control" id="hovaten" name="hovaten" autocomplete="off" required>
                 </div>
               </div>
                   
@@ -26,38 +25,35 @@
                           <option value="{{$value->id }}">{{ $value->gioitinh }}</option>
                       @endforeach
                   </select>
-                  @error('chucvu_id')
-                      <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                  @enderror
                 </div>
               </div>
               <div class="col-lg-3">  
                 <label for="ngaysinh" class="form-label">Ngày sinh</label>
                 <input type="date" class="form-control" id="ngaysinh" name="ngaysinh" required>
-                <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
+
               </div>
               <div class="col-lg-4"> 
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-                <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
+                <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
+
               </div>
               <div class="col-lg-3">
                 <label for="diachi" class="form-label">Địa chỉ</label>
-                <input type="text" class="form-control" id="diachi" name="diachi" required>
-                <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
+                <input type="text" class="form-control" id="diachi" name="diachi" autocomplete="off" required>
+
               </div>
               <div class="col-lg-2">
                 <div class="mb-3">
                   <label for="sdt" class="form-label">SĐT</label>
-                  <input type="text" class="form-control" id="sdt" name="sdt" required>
-                  <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
+                  <input type="text" class="form-control" id="sdt" name="sdt" autocomplete="off" required>
+
               </div>
               </div>
               <div class="col-lg-3">
                 <div class="mb-3">
                   <label for="cmnd" class="form-label">CMND</label>
-                  <input type="text" class="form-control" id="cmnd" name="cmnd" required>
-                  <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
+                  <input type="text" class="form-control" id="cmnd" name="cmnd" autocomplete="off" required>
+
               </div>
               </div>
               <div class="col-lg-2">
@@ -69,16 +65,12 @@
                           <option value="{{$value->id }}">{{ $value->tenchucvu }}</option>
                       @endforeach
                   </select>
-                  @error('chucvu_id')
-                      <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                  @enderror
                 </div>
               </div>
               <div class="col-lg-2">   
                 <div class="mb-3">
                   <label for="matkhau" class="form-label">Mật khẩu</label>
-                  <input type="password" class="form-control" id="password" name="matkhau" required>
-                  <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
+                  <input type="password" class="form-control" id="password" name="matkhau" autocomplete="off" required>
               </div>
 
               <div class="form-check mb-3">
@@ -87,9 +79,6 @@
                   Hiện mật khẩu
                 </label>
               </div>
-              </div>
-              <div class="col-lg-3">
-                
               </div>
               
             

@@ -88,8 +88,6 @@ class admin_controller extends Controller
 
     $showchuongtrinh=chuongtrinh::where('thang_id',$CT)->orderby('thang_id','DESC')->paginate(10);
 
-    $user_ip_address=$request->ip();
-
     $early_lastmonth = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth();
     $end_lastmonth = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->endOfMonth();
 
@@ -111,19 +109,12 @@ class admin_controller extends Controller
     $vistors = visitor::all();
     $vistors_total = $vistors->count();
 
+    // $visitor_curent= visitor::where('date_visitor',Carbon::now('Asia/Ho_Chi_Minh')->day)->get();
+    // $visitor_count= $visitor_curent->count();
+    $thang_hientai= Carbon::now()->month;
 
 
-    $visitor_curent= visitor::where('ip_address',$user_ip_address)->get();
-    $visitor_count= $visitor_curent->count();
-    if($visitor_count<1)
-    {
-        $visitor=new visitor;
-        $visitor->ip_address= $user_ip_address;
-        $visitor->date_visitor=Carbon::now('Asia/Ho_Chi_Minh');
-        $visitor->save();
-    }
-
-    return view('admin.index', compact('diem_dv','diem_tong','diem_kt','diem_da','diem_gd','diem_yt','showchuongtrinh','visitor_lastmonth_count','visitor_thismonth_count','visitor_year_count','vistors_total','visitor_count'));
+    return view('admin.index', compact('diem_dv','diem_tong','diem_kt','diem_da','diem_gd','diem_yt','showchuongtrinh','visitor_lastmonth_count','visitor_thismonth_count','visitor_year_count','vistors_total','thang_hientai'));
    }
     public function getdangnhap(){
         return view('admin.login');
@@ -199,8 +190,29 @@ class admin_controller extends Controller
         }
 
         $showchuongtrinh=chuongtrinh::where('thang_id',$id)->orderby('thang_id','DESC')->paginate(10);
-        $thang=thang::all(); 
-        return view('admin.index',compact('thang','showchuongtrinh','diem_dv','diem_tong','diem_kt','diem_da','diem_gd','diem_yt'));
+
+        $early_lastmonth = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth();
+        $end_lastmonth = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->endOfMonth();
+
+        $early_thismonth= Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth();
+
+        $oneyears = Carbon::now('Asia/Ho_Chi_Minh')->subdays(365);
+
+        $now= Carbon::now('Asia/Ho_Chi_Minh');
+
+        $visitor_of_lastmonth = visitor::whereBetween('date_visitor',[$early_lastmonth,$end_lastmonth])->get();
+        $visitor_lastmonth_count = $visitor_of_lastmonth->count();
+
+        $visitor_of_thismonth = visitor::whereBetween('date_visitor',[$early_thismonth,$now])->get();
+        $visitor_thismonth_count = $visitor_of_thismonth->count();
+
+        $visitor_of_year = visitor::whereBetween('date_visitor',[$oneyears,$now])->get();
+        $visitor_year_count = $visitor_of_year->count();
+
+        $vistors = visitor::all();
+        $vistors_total = $vistors->count();
+        
+        return view('admin.index',compact('showchuongtrinh','diem_dv','diem_tong','diem_kt','diem_da','diem_gd','diem_yt','visitor_lastmonth_count','visitor_thismonth_count','visitor_year_count','vistors_total'));
     }
     public function profile(){
         return view('admin.profile');

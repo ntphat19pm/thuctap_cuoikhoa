@@ -2,7 +2,7 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('video.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('video.store')}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
 
             <div class="form-group">
@@ -10,7 +10,7 @@
                   <button type="submit" class="btn btn-sm btn-primary float-right mb-3">Thêm</button>
               </a>
               <a href="{{route('video.index')}}" class="btn btn-sm btn-danger mb-3">
-                  <i class="fas fa-sign-out-alt"> Quay về bảng khuyến mãi</i>     
+                  <i class="fas fa-sign-out-alt"> Quay về bảng video</i>     
               </a>
             </div>
 
@@ -19,7 +19,7 @@
               <div class="col-lg-6">
                 <div class="form-group invalid">
                     <label for="tenvideo" class="form-label">Tên video</label>
-                    <input type="text" class="form-control" name="tenvideo" id="tenvideo" required >
+                    <input type="text" class="form-control" name="tenvideo" id="tenvideo" autocomplete="off" required >
                   </div>
               </div>
   

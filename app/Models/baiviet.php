@@ -17,4 +17,8 @@ class baiviet extends Model
     public function binhluan(){
         return $this->hasMany(binhluan::class,'baiviet_id','id');
       }
+      public function nhanvien()
+    {
+        return $this->hasOne(nhanvien::class,'id','nguoidang');
+    }
 }

@@ -29,6 +29,12 @@
 
         ],
         [
+            'label'=>'Quản lý đối tác',
+            'route'=>'doitac.index',
+            'icon'=>'fa-user-tie'
+
+        ],
+        [
             'label'=>' Quản lý công việc',
             'route'=>'admin.index',
             'icon'=>'fa-briefcase',
@@ -43,7 +49,31 @@
                 ]
             ]
 
-        ],      
+        ],
+        [
+            'label'=>' Chuyển đổi số',
+            'route'=>'admin.index',
+            'icon'=>'fa-briefcase',
+            'item' =>[
+                [
+                    'label'=>'Danh mục chuyển đổi số',
+                    'route'=>'danhmuc_chuyendoi.index'
+                ],
+                [
+                    'label'=>'Dịch vụ chuyển đổi số',
+                    'route'=>'dichvu_chuyendoi.index'
+                ],
+                [
+                    'label'=>'Nhận xét của đối tác',
+                    'route'=>'review.index'
+                ],
+                [
+                    'label'=>'Liên hệ chuyển đổi số',
+                    'route'=>'lienhe_chuyendoi.index'
+                ]
+            ]
+
+        ],        
 
         [
             'label'=>'Quản lý thuộc tính',

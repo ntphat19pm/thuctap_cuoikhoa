@@ -61,13 +61,20 @@ class nop_file_controller extends Controller
             $file->move(public_path('uploads/giaoviec'),$file_name);
             
             $ngaynop=Carbon::now('Asia/Ho_Chi_Minh');
+
+
         }
         $request->merge(['file'=>$file_name]);
         $request->merge(['thoigian_nop'=>$ngaynop]);
+
+        $data=giaoviec::find($request->congviec_id);
+        $data->ngaynop=Carbon::now('Asia/Ho_Chi_Minh');
+        $data->trangthai=1;
+        $data->save();
         
         if(nop_file::create($request->all())){
             Toastr::success('Thêm file nộp thành công','Thêm file nộp');
-            return view('admin.index');
+            return redirect()->route('admin.index', ['user'=>Auth::user()]);
         }
     }
 

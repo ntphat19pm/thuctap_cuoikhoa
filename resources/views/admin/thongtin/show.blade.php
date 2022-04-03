@@ -29,7 +29,6 @@
               <th class="text-center" scope="col">Địa chỉ</th>
               <th class="text-center" scope="col">Hình thức liên hệ</th>
               <th class="text-center" scope="col">Yêu cầu</th>
-              <th class="text-center" scope="col">Nội dung</th>
 
             </tr>
           </thead>
@@ -57,8 +56,7 @@
                     @elseif($data->yeucau_id==1)
                     Tư vấn sản phẩm dịch vụ
                     @endif
-                </td>      
-                <td class="text-center">{{$data->noidung}}</td>          
+                </td>           
             </tr>
           </tbody>
         </table>
@@ -85,6 +83,55 @@
         </form>
       </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                    <i class="fas fa-chart-bar mr-1"></i>
+                    YÊU CẦU TƯ VẤN CHI TIẾT
+                    </h3>
+                    <div class="card-tools">
+                    <button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    
+                    </div>
+                </div>
+                
+                <div class="" id="collapseExample1">
+                    <div class="card-body">
+                    <div class="tab-content p-0 h-100">
+                    {{$data->noidung}}
+                    <hr>
+                    @if($data->nhanvien_id=="")
+                      Chưa có nhân viên liên hệ
+                      @else
+                      <i class="fa fa-user"></i> Nhân viên liên hệ: {{$data->nhanvien->hovaten}}
+                    @endif
+                    </div>
+                    </div>
+                    <div class="card-footer clearfix">
+                      @if($data->trangthai==0)
+                      <a href="{{ route('thongtin.active',$data->id)}}" class="float-left"><i style="color: red" class="far fa-times-circle fa-lg"></i></a>
+                      @elseif($data->trangthai==1)
+                      <a href="{{ route('thongtin.unactive',$data->id)}}" class="float-left"><i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i> {{date("d-m-Y H:i:s",strtotime($data->ngay_lienhe))}}</a>
+                      @endif
+                      
+                      
+                    </div>
+                </div>
+            </div>
+            <form method="POST" action="" id="form-delete">
+              @csrf @method('DELETE')
+            <form>
+        </div>
+    </div>
+
     <hr>
     <br>
     

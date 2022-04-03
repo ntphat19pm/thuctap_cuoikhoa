@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('main')
     <div class="card-body">
-        <form action="{{route('chitieu.update',$data->id)}}" method="POST">
+        <form action="{{route('chitieu.update',$data->id)}}" method="POST" class="needs-validation" novalidate>
             @csrf @method('PUT')
             <div class="form-group">
                 <a href="{{route('chitieu.index')}}" class="btn btn-sm btn-danger mb-3">
