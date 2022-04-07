@@ -180,4 +180,17 @@ class sanpham_controller extends Controller
     {
         return Excel::download(new sanpham_export, 'danh-sach-san-pham.xlsx');
     }
+
+    public function post_dacdiem_them(Request $request)
+    {
+        $data=new dacdiem;
+        $data->tendacdiem=$request->tendacdiem;
+        $data->sanpham_id=$request->sanpham_id;
+        $data->chitiet=$request->chitiet;
+        if($data->save()){
+            $data=dacdiem::all();
+            Toastr::success('Thêm đặc điểm thành công','Thêm đặc điểm');
+            return redirect('admin/sanpham');
+        }
+    }
 }

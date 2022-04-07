@@ -102,7 +102,7 @@
                           <div class="hover-content">
                             <div class="inner-content">
                               <h4>{{$item->ten_danhmuc}}</h4>
-                              <a class="btn btn-danger" title="{!!$item->chitiet!!}" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Chi tiết</a>
+                              {{-- <a class="btn btn-danger" title="{!!$item->chitiet!!}" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Chi tiết</a> --}}
                             </div>
                           </div>
                         </div>
@@ -128,7 +128,7 @@
                           <div class="hover-content">
                             <div class="inner-content">
                               <h4>{{$item->ten_danhmuc}}</h4>
-                              <a class="btn btn-danger" title="{!!$item->chitiet!!}" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Chi tiết</a>
+                              {{-- <a class="btn btn-danger" title="{!!$item->chitiet!!}" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Chi tiết</a> --}}
                             </div>
                           </div>
                         </div>
@@ -160,14 +160,26 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row">
-              <div class="col-lg-2">
-                
+              <div class="col-lg-4">
+                  <img src="{{url('public/uploads/review')}}/127.jpeg" width="100%">
               </div>
-              <div class="col-lg-8">
-                <img src="{{url('public/uploads')}}/4912139.jpg" width="100%">
+              <div class="col-lg-7">
+                  <b style="font-size:50px">KHÁCH HÀNG NÓI GÌ ?</b>
+                  <div class="card-body">
+                    <h5 class="card-title placeholder-glow">
+                      <span class="placeholder col-6"></span>
+                    </h5>
+                    <p class="card-text placeholder-glow">
+                      <span class="placeholder col-7"></span>
+                      <span class="placeholder col-4"></span>
+                      <span class="placeholder col-4"></span>
+                      <span class="placeholder col-6"></span>
+                      <span class="placeholder col-8"></span>
+                    </p>
+                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                  </div>
               </div>
-              <div class="col-lg-2">
-                
+              <div class="col-lg-1">
               </div>
             </div>
           </div>
@@ -182,7 +194,6 @@
                   <br><br><i>{!!$item->noidung!!}</i>
                   <br><b style="font-size:50px"> {{$item->ten_reviewer}}</b>
                   <br> <p style="font-size:25px">{{$item->noicongtac}}</p>
-                  <hr>
               </div>
               <div class="col-lg-1">
               </div>
@@ -205,96 +216,49 @@
 
 </section>
 
-<section id="why-us" class="why-us section-bg">
-  <div class="container-fluid" data-aos="fade-up">
-
-    <div id="portfolio" class="our-portfolio section">
-      <div class="container">
-      <div class="section-title">
-        <h2>KHÁCH HÀNG DOANH NGHIỆP</h2>
-      </div>
-      </div>
-      <div class="container">
-        
-        <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="loop owl-carousel">
-                @foreach ($doanhnghiep as $item)
-                <div class="item">
-                  <div class="portfolio-item">
-                    <div class="thumb">
-                      <img src="{{url('public/uploads/doanhnghiep')}}/{{$item->hinhanh}}" alt="" height="100px">
-                    </div>
-                  </div>
-                </div>
-                @endforeach
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<section id="portfolio" class="portfolio mt-5">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>KHÁCH HÀNG DOANH NGHIỆP</h2>
     </div>
 
-    <div id="portfolio" class="our-portfolio section">
-      <div class="container">
-      <div class="section-title">
-        <h2>KHÁCH HÀNG CHÍNH PHỦ</h2>
-      </div>
-      </div>
-      <div class="container">
-        
-        <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="loop owl-carousel">
-                @foreach ($chinhphu as $item)
-                <div class="item">
-                  <div class="portfolio-item">
-                    <div class="thumb">
-                      <img src="{{url('public/uploads/doanhnghiep')}}/{{$item->hinhanh}}" alt="" height="250px">
-                      <div class="hover-content">
-                        <div class="inner-content">
-                          <h4>{{$item->ten_kh}}</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                @endforeach
-              </div>
-            </div>
-          </div>
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+      @foreach ($doanhnghiep as $item)
+        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-img"><img src="{{url('public/uploads/doanhnghiep')}}/{{$item->hinhanh}}" class="img-fluid rounded mx-auto d-block" style="width:150px" alt=""></div>
         </div>
-      </div>
+      @endforeach
+    </div>
+  </div>
+  
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>KHÁCH HÀNG CHÍNH PHỦ</h2>
     </div>
 
-    <div id="portfolio" class="our-portfolio section">
-      <div class="container">
-      <div class="section-title">
-        <h2>ĐỐI TÁC</h2>
-      </div>
-      </div>
-      <div class="container">
-        
-        <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="loop owl-carousel">
-                @foreach ($doitac as $item)
-                <div class="item">
-                  <div class="portfolio-item">
-                    <div class="thumb">
-                      <img src="{{url('public/uploads/doitac')}}/{{$item->hinhanh}}" alt="" height="80px">
-                    </div>
-                  </div>
-                </div>
-                @endforeach
-              </div>
-            </div>
-          </div>
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+      @foreach ($chinhphu as $item)
+        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-img"><img src="{{url('public/uploads/doanhnghiep')}}/{{$item->hinhanh}}" class="img-fluid rounded mx-auto d-block" style="width:150px" alt=""></div>
         </div>
-      </div>
+      @endforeach
+    </div>
+  </div>
+
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>ĐỐI TÁC</h2>
+    </div>
+
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+      @foreach ($doitac as $item)
+        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-img"><img src="{{url('public/uploads/doitac')}}/{{$item->hinhanh}}" class="img-fluid rounded mx-auto d-block" style="width:150px" alt=""></div>
+        </div>
+      @endforeach
     </div>
   </div>
 </section>

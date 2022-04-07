@@ -55,7 +55,10 @@
               <th class="text-center" scope="col">Tên sản phẩm</th>
               <th scope="col">Ảnh</th>
               <th scope="col">Danh mục</th>
-              <th class="text-right" scope="col">Action</th>
+              <th scope="col">Đặc điểm</th>
+              <th scope="col">Tính năng</th>
+              <th scope="col">Lợi ích</th>
+              <th class="text-right" width="12%" scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -73,6 +76,9 @@
                 <img src="{{url('public/uploads/sanpham/avatar')}}/{{$item->anh}}" width="30px">
               </td>
               <td>{{$item->danhmuc->tendanhmuc}}</td>
+              <td>{{$item->dem_dacdiem->count()}}</td>
+              <td>{{$item->dem_tinhnang->count()}}</td>
+              <td>{{$item->dem_loiich->count()}}</td>
             
               <td class="text-right">
                 <a href="{{route('sanpham.show',$item->id)}}" class="btn btn-sm btn-warning">

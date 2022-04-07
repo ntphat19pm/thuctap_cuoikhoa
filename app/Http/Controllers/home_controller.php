@@ -26,12 +26,13 @@ use App\Models\baiviet;
 use App\Models\doitac;
 use App\Models\cauhoi;
 use App\Models\visitor;
+use App\Models\tuyendung;
 use Illuminate\Support\Facades\DB;
 use App\Helper\giohang;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Mail\dathang_email;
+use App\Mail\tuyendung_email;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
@@ -69,18 +70,16 @@ class home_controller extends Controller
         return view('home');
     }
 
-    public function chitiet($id){
-        $data=sanpham::find($id);
-        $dacdiem=dacdiem::where('sanpham_id',$id)->orderby('sanpham_id','DESC')->get();
-        $tinhnang=tinhnang::where('sanpham_id',$id)->orderby('sanpham_id','DESC')->get();
-        $loiich=loiich::where('sanpham_id',$id)->orderby('sanpham_id','DESC')->get();
+    public function chitiet($slug){
+        $data=sanpham::where('slug',$slug)->first();
+        $dacdiem=dacdiem::where('sanpham_id',$data->id)->orderby('sanpham_id','DESC')->get();
+        $tinhnang=tinhnang::where('sanpham_id',$data->id)->orderby('sanpham_id','DESC')->get();
+        $loiich=loiich::where('sanpham_id',$data->id)->orderby('sanpham_id','DESC')->get();
         return view('chitiet',compact('data','dacdiem','tinhnang','loiich'));
     }
-    public function showlinhvuc($id){
-        $showlinhvuc=sanpham::where('danhmuc_id',$id)->orderby('danhmuc_id','DESC')->paginate(9);
-       
-        $data=danhmuc::find($id);
-        // $ten=$data->tendanhmuc;
+    public function showlinhvuc($slug){
+        $data=danhmuc::where('slug',$slug)->first();
+        $showlinhvuc=sanpham::where('danhmuc_id',$data->id)->orderby('danhmuc_id','DESC')->paginate(9);
         return view('showlinhvuc',compact('data','showlinhvuc'));
     }
     public function chitietbai($id){
@@ -107,6 +106,9 @@ class home_controller extends Controller
 
     public function gioithieu(){
         return view('gioithieu');
+    }
+    public function lienhe(){
+        return view('lienhe');
     }
     public function tuyendung(){
         return view('tuyendung');
@@ -185,11 +187,6 @@ class home_controller extends Controller
         return view('regis_kh');
   
     }
-    public function lienhe()
-    {
-        return view('lienhe');
-  
-    }
 
     public function video()
     {
@@ -216,6 +213,27 @@ class home_controller extends Controller
         $data->noidung=$request->noidung;
 
         if($data->save()){
+            return view('completed');
+        }
+  
+    }
+    public function post_tuyendung(Request $request)
+    {
+       
+        if($request->has('file_uploads')){
+            
+            $slug=str_slug($request->hoten_ungvien);
+
+            $file=$request->file_uploads;
+            $ex=$request->file_uploads->extension();
+            $file_name=time().'-'.$slug.'.'.$ex;
+            $file->move(public_path('uploads/tuyendung'),$file_name);
+          
+        }
+        $request->merge(['file_cv'=>$file_name]);
+        
+
+        if(tuyendung::create($request->all())){
             return view('completed');
         }
   
@@ -317,7 +335,7 @@ class home_controller extends Controller
         ]);
         
         // Gởi email
-        Mail::to(Auth::guard('khachhang')->user()->email)->send(new dathang_email($dathang));
+        Mail::to( Auth::user()->email)->send(new tuyendung_email($tuyendung));
         
         return redirect()->route('completed');
     }

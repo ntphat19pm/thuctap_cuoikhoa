@@ -27,7 +27,7 @@
                     <input type="text" value="{{$data->tensp}}" class="form-control" name="tensp" id="tensp" onblur="ChangeToSlug();" required >
                     </div>
 
-                    <div class="form-group invalid">
+                    <div class="form-group invalid" hidden>
                         <label for="slug" class="form-label">Sản phẩm Slug</label>
                         <input type="text" value="{{$data->slug}}" class="form-control" name="slug" id="slug" required readonly >
                     </div>
@@ -62,10 +62,16 @@
 
                     <div class="form-group invalid">
                         <label for="link_pdf" class="form-label">Link tài liệu</label>
-                        <div class="input-group">
+                        {{-- <div class="input-group">
                             <input type="text" value="{{$data->link_pdf}}" class="form-control" name="link_pdf" id="link_pdf" aria-describedby="button-addon2"> 
                             <a href="https://drive.google.com/drive/folders/1Ba-aNQFZzfqiDLM6aoBpkK-IO6z8dDwS?usp=sharing" target="_blank" class="btn btn-outline-warning" id="button-addon2"><i class="fa fa-folder-open"></i></a>
-                        </div>
+                        </div> --}}
+                        <div class="input-group">
+                            <input type="text" value="{{$data->link_pdf}}" class="form-control" name="link_pdf" id="link_pdf" aria-label="Recipient's username with two button addons">
+                            <a  href="https://drive.google.com/drive/folders/1Ba-aNQFZzfqiDLM6aoBpkK-IO6z8dDwS?usp=sharing" target="_blank" class="btn btn-outline-warning" type="button"><i class="fa fa-folder-open"></i></a>
+                            {{-- <a class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#modal-secondary" href="#nhap"><i class="fas fa-file-upload"></i> </a> --}}
+                            <a class="btn btn-outline-success" type="button" href="" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fa fa-eye"></i></a>
+                          </div>
                     </div>
                 </div>
 
@@ -76,6 +82,22 @@
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
+          </form>
+
+          <form action="" method="">
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">TÀI LIỆU KÈM THEO</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe src="{{$data->link_pdf}}/preview" width="760" height="480" allow="autoplay"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
     </div>
 </div>
@@ -104,7 +126,7 @@
         //Xóa các ký tự đặt biệt
         slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
         //Đổi khoảng trắng thành ký tự gạch ngang
-        slug = slug.replace(/ /gi, " - ");
+        slug = slug.replace(/ /gi, "-");
         //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
         //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
         slug = slug.replace(/\-\-\-\-\-/gi, '-');

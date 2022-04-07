@@ -119,7 +119,7 @@
               <li class="dropdown"><a href="{{route('home.mangluoi')}}"><span>Mạng lưới toàn cầu</span></a></li>
               <li class="dropdown"><a href="{{route('home.giaithuong')}}"><span>Giải thưởng</span></a></li>
               <li class="dropdown"><a href="{{route('home.dauan')}}"><span>Dấu ấn</span></a></li>
-              <li class="dropdown"><a href="#contact"><span>Liên hệ</span></a></li>
+              <li class="dropdown"><a href="{{route('home.lienhe')}}"><span>Liên hệ</span></a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="{{route('home.chuyendoiso')}}">Chuyển đổi số</a></li>
@@ -128,7 +128,7 @@
               <li class="dropdown"><a href="#"><span>Lĩnh vực</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   @foreach ($linhvuc as $item)
-                    <li><a href="{{route('home.showlinhvuc',$item->id)}}">{{$item->tendanhmuc}}</a></li>
+                    <li><a href="{{route('home.showlinhvuc',$item->slug)}}">{{$item->tendanhmuc}}</a></li>
                   @endforeach
                 </ul>
               </li>

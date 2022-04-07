@@ -54,7 +54,7 @@
               <th class="text-center" scope="col">STT</th>
               <th class="text-center" scope="col">Tên tính năng</th>
               <th class="text-center" scope="col">Chi tiết</th>
-              <th class="text-right" scope="col">Action</th>
+              <th class="text-right" width="10%" scope="col">Action</th>
             </tr>
           </thead>
           <tbody>

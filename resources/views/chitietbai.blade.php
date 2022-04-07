@@ -62,11 +62,7 @@
                         <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
                         <div class="fb-like" data-href="" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
                         <div class="fb-share-button" data-href="" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="fb-comments" data-href="https://www.facebook.com/plugins/{{$data->id}}" data-width="100%" data-numposts="5"></div>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="col-lg-2">
                     </div>
@@ -79,73 +75,6 @@
         
     </div>
     <section id="services" class="services section-bg">
-        <div class="container mb-5" data-aos="fade-up">
-  
-          <div class="section-title mt-5">
-            <h2>BÌNH LUẬN</h2>
-            
-            <p>Có {{$binhluan->count()}} bình luận</p>
-
-            @if($data->binhluan_id==1)
-            <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                BÌNH LUẬN
-            </button>
-            @elseif($data->binhluan_id==0)
-            <p>Hiện tại bài viết này đã tắt tính năng bình luận. </p>
-            @endif
-          </div>
-  
-          <div class="row">
-            @foreach($binhluan as $item)
-                <div class="col-lg-4 ">
-                    <div class="icon-box">
-                        <div class="row">
-                            <div class="col-lg-4 ">
-                                @if($item->avatar_id==1)
-                                    <img src="{{url('public/uploads/binhluan')}}/avatar_01.png" class="img-fluid" alt="" style="width:100px">
-                                    @elseif($item->avatar_id==2)
-                                    <img src="{{url('public/uploads/binhluan')}}/avatar_02.png" class="img-fluid" alt="" style="width:100px">
-                                    @elseif($item->avatar_id==3)
-                                    <img src="{{url('public/uploads/binhluan')}}/avatar_03.png" class="img-fluid" alt="" style="width:100px">
-                                    @elseif($item->avatar_id==4)
-                                    <img src="{{url('public/uploads/binhluan')}}/avatar_04.png" class="img-fluid" alt="" style="width:100px">
-                                    @elseif($item->avatar_id==5)
-                                    <img src="{{url('public/uploads/binhluan')}}/avatar_05.png" class="img-fluid" alt="" style="width:100px">
-                                    @elseif($item->avatar_id==6)
-                                    <img src="{{url('public/uploads/binhluan')}}/avatar_06.png" class="img-fluid" alt="" style="width:100px">
-                                    @elseif($item->avatar_id==7)
-                                    <img src="{{url('public/uploads/binhluan')}}/avatar_07.png" class="img-fluid" alt="" style="width:100px">
-                                    @elseif($item->avatar_id==8)
-                                    <img src="{{url('public/uploads/binhluan')}}/avatar_08.png" class="img-fluid" alt="" style="width:100px">
-                                    @endif 
-                            </div>
-                            <div class="col-lg-8 ">
-                                <h5>{{$item->hoten}}</h5>
-                                <hr>
-                                <p>{!!$item->noidung!!}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-
-            {{-- <table id="example1" class="table table-hover">
-                <tbody id="myTable">
-                    @foreach($binhluan as $item)
-                    <tr>
-                        <td>
-                            <img src="{{url('public/uploads/tailieu')}}/file.png" class="img-fluid" alt="" style="width:30px">
-                            {{$item->hoten}}
-                            <br>
-                        </td>           
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-   --}}
-          </div>  
-        </div>
-
         <form action="{{route('home.postbinhluan')}}" method="post">
             @csrf
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -269,7 +198,90 @@
                 </div>
               </div>
             </div>
-          </form>
+        </form>
+    </section>
+
+
+    <section id="portfolio" class="portfolio mt-5">
+        <div class="container" data-aos="fade-up">
+    
+          <div class="section-title">
+            <h2>BÌNH LUẬN</h2>
+            <p>Dưới đây là những bình luận của bài viết</p>
+            <b style="color: red">{{$data->tenbai}}</b>
+          </div>
+    
+          <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter=".filter-app">Bình luận thường</li>
+            <li data-filter=".filter-card">Bình luận facebook</li>
+          </ul>
+    
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-12 portfolio-item filter-app">
+                <div class="container mb-5" data-aos="fade-up">
+  
+                    <div class="section-title mt-5">
+                        <h2>BÌNH LUẬN</h2>
+                        
+                        <p>Có {{$binhluan->count()}} bình luận</p>
+        
+                        @if($data->binhluan_id==1)
+                        <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            BÌNH LUẬN
+                        </button>
+                        @elseif($data->binhluan_id==0)
+                        <p>Hiện tại bài viết này đã tắt tính năng bình luận. </p>
+                        @endif
+                    </div>
+          
+                    <div class="row">
+                        @foreach($binhluan as $item)
+                            <div class="col-lg-4 ">
+                                <div class="icon-box">
+                                    <div class="row">
+                                        <div class="col-lg-4 ">
+                                            @if($item->avatar_id==1)
+                                                <img src="{{url('public/uploads/binhluan')}}/avatar_01.png" class="img-fluid" alt="" style="width:100px">
+                                                @elseif($item->avatar_id==2)
+                                                <img src="{{url('public/uploads/binhluan')}}/avatar_02.png" class="img-fluid" alt="" style="width:100px">
+                                                @elseif($item->avatar_id==3)
+                                                <img src="{{url('public/uploads/binhluan')}}/avatar_03.png" class="img-fluid" alt="" style="width:100px">
+                                                @elseif($item->avatar_id==4)
+                                                <img src="{{url('public/uploads/binhluan')}}/avatar_04.png" class="img-fluid" alt="" style="width:100px">
+                                                @elseif($item->avatar_id==5)
+                                                <img src="{{url('public/uploads/binhluan')}}/avatar_05.png" class="img-fluid" alt="" style="width:100px">
+                                                @elseif($item->avatar_id==6)
+                                                <img src="{{url('public/uploads/binhluan')}}/avatar_06.png" class="img-fluid" alt="" style="width:100px">
+                                                @elseif($item->avatar_id==7)
+                                                <img src="{{url('public/uploads/binhluan')}}/avatar_07.png" class="img-fluid" alt="" style="width:100px">
+                                                @elseif($item->avatar_id==8)
+                                                <img src="{{url('public/uploads/binhluan')}}/avatar_08.png" class="img-fluid" alt="" style="width:100px">
+                                                @endif 
+                                        </div>
+                                        <div class="col-lg-8 ">
+                                            <h5>{{$item->hoten}}</h5>
+                                            <hr>
+                                            <p>{!!$item->noidung!!}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                     </div>  
+                </div>
+            </div>
+    
+              <div class="col-lg-12 portfolio-item filter-card">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="fb-comments" data-href="https://www.facebook.com/plugins/{{$data->id}}" data-width="100%" data-numposts="5"></div>
+                    </div>
+                </div>
+              </div>
+          </div>
+    
+        </div>
       </section>
 
 </main>

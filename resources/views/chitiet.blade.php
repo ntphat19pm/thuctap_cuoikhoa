@@ -16,7 +16,7 @@
         {!!$data->chitiet!!}
 
         <div class="row" data-aos="zoom-in">
-          <div class="col-lg-2 d-flex align-items-center justify-content-center">
+          <div class="col-lg-3 d-flex align-items-center justify-content-center">
             
           </div>
           @foreach($lienhe as $item)
@@ -35,14 +35,14 @@
             </div>
           
           @endif
-          @if($data->link_pdf=="")
+          {{-- @if($data->link_pdf=="")
           @else
           
             <div class="col-lg-2 d-flex align-items-center justify-content-center">
               <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img src="{{url('public/uploads')}}/pdf.png" class="img-fluid mr-5" alt="" style="width:180px"></a>
             </div>
           
-          @endif
+          @endif --}}
         </div>
     </div>
   </section>

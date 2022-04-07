@@ -50,7 +50,7 @@ class tinhnang_controller extends Controller
         $data->chitiet=$request->chitiet;
         if($data->save()){
             $data=tinhnang::all();
-            Toastr::success('Thêm đặc điểm thành công','Thêm đặc điểm');
+            Toastr::success('Thêm tính năng thành công','Thêm tính năng');
             return redirect('admin/tinhnang');
         }
     }

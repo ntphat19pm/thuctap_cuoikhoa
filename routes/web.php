@@ -20,7 +20,7 @@ Route::get('/clear-cache',function(){
     $exitCode= Artisan::call('cache:clear');
 });
 
-Route::get('/showlinhvuc/{id}', [home_controller::class, 'showlinhvuc'])->name('home.showlinhvuc');
+Route::get('/showlinhvuc/{slug}', [home_controller::class, 'showlinhvuc'])->name('home.showlinhvuc');
 
 
 Route::get('/','home_controller@index')->name('home.index');
@@ -29,6 +29,7 @@ Route::get('/themgiohang/{id}','giohang_controller@themgiohang')->name('home.the
 Route::get('/shop','home_controller@shop')->name('home.shop');
 
 Route::get('/gioithieu','home_controller@gioithieu')->name('home.gioithieu');
+Route::get('/lienhe','home_controller@lienhe')->name('home.lienhe');
 Route::get('/mangluoi','home_controller@mangluoi')->name('home.mangluoi');
 Route::get('/giaithuong','home_controller@giaithuong')->name('home.giaithuong');
 Route::get('/dauan','home_controller@dauan')->name('home.dauan');
@@ -49,12 +50,12 @@ Route::post('/dangnhap','home_controller@post_dangnhap')->name('home.postdangnha
 Route::get('/dangky','home_controller@get_dangky')->name('home.getdangky');
 
 Route::post('/thongtin','home_controller@post_thongtin')->name('home.postthongtin');
+Route::post('/tuyendung','home_controller@post_tuyendung')->name('home.posttuyendung');
 Route::post('/lienhe_chuyendoi','home_controller@post_lienhe_chuyendoi')->name('home.postlienhe_chuyendoi');
 Route::post('/binhluan','home_controller@post_binhluan')->name('home.postbinhluan');
 Route::post('/cauhoi','home_controller@post_cauhoi')->name('home.postcauhoi');
-Route::get('/chitiet/{id}','home_controller@chitiet')->name('home.chitiet');
+Route::get('/chitiet/{slug}','home_controller@chitiet')->name('home.chitiet');
 
-Route::get('/lienhe','home_controller@lienhe')->name('home.lienhe');
 Route::get('/video','home_controller@video')->name('home.video');
 Route::get('/baiviet','home_controller@baiviet')->name('home.baiviet');
 Route::get('/chitietbai/{id}','home_controller@chitietbai')->name('home.chitietbai');
@@ -95,6 +96,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
 
     Route::get('/showchuongtrinh/{id}', [admin_controller::class, 'showchuongtrinh'])->name('home.showchuongtrinh');
 
+    Route::post('/dacdiem/them','sanpham_controller@post_dacdiem_them')->name('dacdiem.them');
+    
     Route::post('/profile/sua/{id}', 'profile_controller@postSua')->name('profile.sua');
 
     Route::get('/nhanvien/active/{id}', 'nhanvien_controller@active')->name('nhanvien.active');

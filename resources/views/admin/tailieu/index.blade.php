@@ -16,7 +16,7 @@
               <th class="text-center" scope="col">STT</th>
               <th class="text-center" scope="col">Tên tài liệu</th>
               <th class="text-center" width="17%" scope="col">File</th>
-              <th class="text-center" width="11%" scope="col">Loại file</th>
+              <th class="text-center" width="15%" scope="col">Loại file</th>
               <th class="text-right" width="12%" scope="col">Action</th>
             </tr>
           </thead>

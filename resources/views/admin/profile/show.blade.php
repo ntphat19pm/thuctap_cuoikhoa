@@ -75,9 +75,16 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label for="file">File cần nộp <span class="text-danger font-weight-bold">*</span></label>
                     <input id="file_uploads" type="file" class="form-control @error('file') is-invalid @enderror" name="file_uploads" value="{{ old('file_uploads') }}" required autocomplete="file_uploads" />
+                  </div> --}}
+                  <div class="form-group">
+                    <div class="btn btn-default btn-file">
+                      <i class="fas fa-paperclip"></i> Upload file
+                      <input type="file" name="file_uploads">
+                    </div>
+                    <p class="help-block">Max. 32MB</p>
                   </div>
                 </div>
                 <div class="modal-footer justify-content-between">

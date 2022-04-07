@@ -177,7 +177,7 @@
           <div class="col-lg-6">
             <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" class="ml-5">Chăm sóc </h2>
             <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" class="ml-5"><b style="color: red">KHÁCH HÀNG </b></h2>
-            <br><a href="tel:0917663865"><img src="{{url('public/uploads')}}/phone.png" class="img-fluid" alt="" style="width:60px"></a> <b>LIÊN HỆ CHÚNG TÔI: 0917663865</b>
+            <br><a href="tel:0917663865"><img src="{{url('public/uploads')}}/phone.png" class="img-fluid" alt="" style="width:60px"></a> <b>LIÊN HỆ CHÚNG TÔI: @foreach ($lienhe as $item)0{{number_format($item->sdt,0,',',' ')}}@endforeach</b>
             @foreach ($gioithieu as $item)
             <br><br><b style="font-size: 35px">{{$item->chamsoc}}</b>
             @endforeach

@@ -38,7 +38,8 @@
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
-          </form>
+            </div>
+        </form>
     </div>
 </div>
 

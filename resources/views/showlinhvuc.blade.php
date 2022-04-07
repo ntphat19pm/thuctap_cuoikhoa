@@ -31,7 +31,7 @@
         <div class="col-lg-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
           <div class="icon-box mb-5">
             <img src="{{url('public/uploads/sanpham/avatar')}}/{{$item->anh}}" class="img-fluid animated d-block w-100" alt="">
-            <h6 class="mt-2 text-center" style="font-size: 15px"><a href="{{route('home.chitiet',$item->id)}}">{{$item->tensp}}</a></h6>
+            <h6 class="mt-2 text-center" style="font-size: 15px"><a href="{{route('home.chitiet',$item->slug)}}">{{$item->tensp}}</a></h6>
             <span style="display: -webkit-box;
             line-height: 25px;
             overflow: hidden;

@@ -35,6 +35,7 @@
             {{-- <input type="date" style="color:rgb(255, 67, 67)" value="{{$data->ngaydathang}}" class="text-left" id="ngaydathang" name="ngaydathang" readonly> --}}
             
             <tr>
+              <th class="text-center" scope="col">Mã sản phẩm</th>
               <th class="text-center" scope="col">Tên sản phẩm</th>
               <th class="text-center" scope="col">Hình ảnh</th>
               <th class="text-center" scope="col">Tên danh mục</th>
@@ -44,6 +45,7 @@
           <tbody>
 
             <tr>
+              <td class="text-center">{{$data->id}}</td>
               <td class="text-center">{{$data->tensp}}</td>
               <td class="text-center"><img src="{{url('public/uploads/sanpham/avatar')}}/{{$data->anh}}" width="30px"></td>          
               <td class="text-center">{{$data->danhmuc->tendanhmuc}}</td>          
@@ -66,7 +68,45 @@
               <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
                 <a href="{{route('dacdiem.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm đặc điểm</a> 
+                {{-- <button type="button" class="btn btn-outline-secondary mt-2 ml-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="fas fa-plus-circle"></i>
+                  Thêm đặc điểm
+                </button> --}}
                 <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
+          
+                {{-- <form action="{{route('dacdiem.them')}}" enctype="multipart/form-data" method="post" class="needs-validation" novalidate>
+                  @csrf
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">THÊM ĐẶC ĐIỂM SẢN PHẨM {{$data->tensp}}</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form-group invalid">
+                            <label for="tendacdiem" class="form-label">Tên đặc điểm</label>
+                            <input type="text" class="form-control" name="tendacdiem" id="tendacdiem" autocomplete="off" required >
+                          </div>
+
+                          <div class="form-group invalid" hidden>
+                            <label for="sanpham_id" class="form-label">sanpham_id</label>
+                            <input type="text" class="form-control" value="{{$data->id}}" name="sanpham_id" id="sanpham_id" autocomplete="off" required >
+                          </div>
+                          
+                          <div class="form-group invalid mt-3">
+                            <label for="chitiet" class="form-label">Mô tả chi tiết</label>
+                            <textarea class="form-control" name="chitiet" id="chitiet" cols="10" rows="5"></textarea>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-danger">Thêm đặc điểm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form> --}}
+              
               </div>
               <form action="{{ route('dacdiem.nhap') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -142,6 +182,7 @@
               <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
                 <a href="{{route('tinhnang.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm tính năng</a> 
+                
                 <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary1" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
               </div>
               <form action="{{ route('tinhnang.nhap') }}" method="post" enctype="multipart/form-data">
@@ -220,6 +261,7 @@
 
                 <a href="{{route('loiich.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm lợi ích</a> 
                 <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary2" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
+               
               </div>
               <form action="{{ route('loiich.nhap') }}" method="post" enctype="multipart/form-data">
                 @csrf

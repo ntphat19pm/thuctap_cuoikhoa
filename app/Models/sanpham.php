@@ -46,4 +46,17 @@ class sanpham extends Model
       return $query;
 
     }
+
+    public function dem_dacdiem()
+    {
+        return $this->hasMany(dacdiem::class,'sanpham_id','id');
+    }
+    public function dem_tinhnang()
+    {
+        return $this->hasMany(tinhnang::class,'sanpham_id','id');
+    }
+    public function dem_loiich()
+    {
+        return $this->hasMany(loiich::class,'sanpham_id','id');
+    }
 }

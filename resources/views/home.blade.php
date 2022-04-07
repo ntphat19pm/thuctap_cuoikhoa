@@ -360,8 +360,8 @@
               <div class="text-center">
                 {!!$item->fanpage!!}
               </div>
-          @endforeach
-            </div>
+            @endforeach
+          </div>
 
         </div>
 
