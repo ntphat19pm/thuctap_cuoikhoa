@@ -14,4 +14,7 @@ class gioitinh extends Model
     public function nhanvien(){
         return $this->hasMany(nhanvien::class,'gioitinh_id','id');
     }
+    public function tuyendung(){
+        return $this->hasMany(tuyendung::class,'gioitinh_id','id');
+    }
 }

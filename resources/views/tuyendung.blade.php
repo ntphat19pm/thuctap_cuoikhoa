@@ -58,8 +58,26 @@
                       <label for="email" class="form-label">Email</label>
                       <input type="email" class="form-control" name="email" id="email" required >
                     </div>
+                    <div class="form-group mt-3">
+                      <label for="vitri_id">Vị trí ứng tuyển<span class="text-danger font-weight-bold">*</span></label>
+                      <select id="vitri_id" class="form-control custom-select @error('vitri_id') is-invalid @enderror" name="vitri_id" required autofocus>
+                          <option value="">--Chọn vị trí ứng tuyển--</option>
+                          @foreach($vitri as $value)
+                              <option value="{{ $value->id }}">{{ $value->tenvitri}}</option>
+                          @endforeach
+                      </select>
+                    </div>
                   </div>
                   <div class="col-lg-6">
+                    <div class="form-group mt-4">
+                      <label for="gioitinh_id">Giới tính<span class="text-danger font-weight-bold">*</span></label>
+                      <select id="gioitinh_id" class="form-control custom-select @error('gioitinh_id') is-invalid @enderror" name="gioitinh_id" required autofocus>
+                          <option value="">--Chọn giới tính--</option>
+                          @foreach($gioitinh as $value)
+                              <option value="{{ $value->id }}">{{ $value->gioitinh}}</option>
+                          @endforeach
+                      </select>
+                    </div>
                     <div class="form-group invalid mt-3">
                       <label for="ngaysinh" class="form-label">Ngày sinh</label>
                       <input type="date" class="form-control" name="ngaysinh" id="ngaysinh" required >
@@ -76,18 +94,7 @@
                   
                 </div>
                 <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group mt-3">
-                      <label for="vitri_ungtuyen">Vị trí ứng tuyển<span class="text-danger font-weight-bold">*</span></label>
-                      <select id="vitri_ungtuyen" class="form-control custom-select @error('vitri_ungtuyen') is-invalid @enderror" name="vitri_ungtuyen" required autofocus>
-                        <option value="">--Chọn vị trí ứng tuyển--</option>
-                        <option value="1">Nhân viên bán hàng điểm bán</option>
-                        <option value="2">Nhân viên bán hàng doanh nghiệp</option>
-                        <option value="3">Nhân viên bán hàng dịch vụ số</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-12">
                     <div class="form-group mt-3">
                       <label for="file_cv">File tài liệu <span class="text-danger font-weight-bold">*</span></label>
                       <input id="file_uploads" type="file" class="form-control @error('file_cv') is-invalid @enderror" name="file_uploads" value="{{ old('file_uploads') }}" required autocomplete="file_uploads" />

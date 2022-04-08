@@ -97,6 +97,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::get('/showchuongtrinh/{id}', [admin_controller::class, 'showchuongtrinh'])->name('home.showchuongtrinh');
 
     Route::post('/dacdiem/them','sanpham_controller@post_dacdiem_them')->name('dacdiem.them');
+
+    Route::post('/chuyendulieu','tuyendung_controller@post_dulieu')->name('tuyendung.chuyendulieu');
     
     Route::post('/profile/sua/{id}', 'profile_controller@postSua')->name('profile.sua');
 
@@ -130,7 +132,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'thongtin'=>'thongtin_controller',
         'lienhe'=>'lienhe_controller',
         'video'=>'video_controller',
-        'menu'=>'menu_controller',
+        'tuyendung'=>'tuyendung_controller',
+        'vitri_ungtuyen'=>'vitri_ungtuyen_controller',
         'danhmuc_chuyendoi'=>'danhmuc_chuyendoi_controller',
         'dichvu_chuyendoi'=>'dichvu_chuyendoi_controller',
         'lienhe_chuyendoi'=>'lienhe_chuyendoi_controller',

@@ -27,6 +27,7 @@ use App\Models\doitac;
 use App\Models\cauhoi;
 use App\Models\visitor;
 use App\Models\tuyendung;
+use App\Models\vitri_ungtuyen;
 use Illuminate\Support\Facades\DB;
 use App\Helper\giohang;
 use App\Http\Controllers\HomeController;
@@ -111,7 +112,9 @@ class home_controller extends Controller
         return view('lienhe');
     }
     public function tuyendung(){
-        return view('tuyendung');
+        $vitri=vitri_ungtuyen::all();
+        $gioitinh=gioitinh::all();
+        return view('tuyendung',compact('vitri','gioitinh'));
     }
     public function tailieu(){
         return view('tailieu');
@@ -231,7 +234,23 @@ class home_controller extends Controller
           
         }
         $request->merge(['file_cv'=>$file_name]);
+
+        $vitri= vitri_ungtuyen::find($request->vitri_id);
+        $gioitinh= gioitinh::find($request->gioitinh_id);
+
+        $tuyendung = array(
+            'hoten' => $request->hoten_ungvien,
+            'ngaysinh' => $request->ngaysinh,
+            'sdt' => $request->sdt,
+            'diachi' => $request->diachi,
+            'email' => $request->email,
+            'cmnd' => $request->cmnd,
+            'gioitinh' => $gioitinh->gioitinh,
+            'vitri' => $vitri->tenvitri
+        );
         
+
+        Mail::to($request->email)->queue(new tuyendung_email($tuyendung));
 
         if(tuyendung::create($request->all())){
             return view('completed');

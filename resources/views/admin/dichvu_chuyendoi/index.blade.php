@@ -2,7 +2,7 @@
 @section('main')
 <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
-    <!-- <a href="{{route('dichvu_chuyendoi.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm dich vụ chuyển đổi số</a>  -->
+    {{-- <!-- <a href="{{route('dichvu_chuyendoi.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm dich vụ chuyển đổi số</a>  --> --}}
     <button type="button" class="btn btn-outline-secondary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="fas fa-plus-circle"></i>
         Thêm dịch vụ chuyển đổi số

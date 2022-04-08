@@ -29,6 +29,12 @@
 
         ],
         [
+            'label'=>'Quản lý tuyển dụng',
+            'route'=>'tuyendung.index',
+            'icon'=>'fa-user-tie'
+
+        ],
+        [
             'label'=>'Quản lý đối tác',
             'route'=>'doitac.index',
             'icon'=>'fa-user-tie'
