@@ -237,6 +237,7 @@ class home_controller extends Controller
 
         $vitri= vitri_ungtuyen::find($request->vitri_id);
         $gioitinh= gioitinh::find($request->gioitinh_id);
+        $now=Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y H:i:s');
 
         $tuyendung = array(
             'hoten' => $request->hoten_ungvien,
@@ -246,6 +247,7 @@ class home_controller extends Controller
             'email' => $request->email,
             'cmnd' => $request->cmnd,
             'gioitinh' => $gioitinh->gioitinh,
+            'ngay' => $now,
             'vitri' => $vitri->tenvitri
         );
         

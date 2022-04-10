@@ -38,6 +38,7 @@ class vitri_ungtuyen_controller extends Controller
     {
         $data=new vitri_ungtuyen;
         $data->tenvitri=$request->tenvitri;
+        $data->chitiet=$request->chitiet;
         if($data->save()){
             $data=vitri_ungtuyen::all();
             Toastr::success('Thêm vị trí tuyển dụng thành công','Thêm vị trí tuyển dụng');
@@ -62,9 +63,10 @@ class vitri_ungtuyen_controller extends Controller
      * @param  \App\Models\vitri_ungtuyen  $vitri_ungtuyen
      * @return \Illuminate\Http\Response
      */
-    public function edit(vitri_ungtuyen $vitri_ungtuyen)
+    public function edit( $id)
     {
-        //
+        $data=vitri_ungtuyen::find($id);
+        return view('admin.vitri_ungtuyen.edit',compact('data'));
     }
 
     /**
@@ -74,9 +76,15 @@ class vitri_ungtuyen_controller extends Controller
      * @param  \App\Models\vitri_ungtuyen  $vitri_ungtuyen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vitri_ungtuyen $vitri_ungtuyen)
+    public function update(Request $request, $id)
     {
-        //
+        $data=vitri_ungtuyen::find($id);
+        $data->tenvitri=$request->tenvitri;
+        $data->chitiet=$request->chitiet;
+        if($data->save()) {
+            Toastr::success('Cập nhật vị trí tuyển dụng thành công','Cập nhật vị trí tuyển dụng');
+            return redirect('admin/tuyendung');
+        }
     }
 
     /**

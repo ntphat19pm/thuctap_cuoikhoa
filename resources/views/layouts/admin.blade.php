@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | Dashboard 2</title>
+<title>Trang quản lý Viettel Solutions</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -316,7 +316,7 @@
 
 
 <footer class="main-footer">
-<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+<strong>Copyright &copy; 2022 <a href="https://www.facebook.com/ntphatdesigner/" target="_blank">Nguyễn Tấn Phát</a>.</strong>
 All rights reserved.
 <div class="float-right d-none d-sm-inline-block">
   <div class="text-center"><b><span style="color: rgb(255, 187, 0)" id="dem_vn_clo"></span></b></div>

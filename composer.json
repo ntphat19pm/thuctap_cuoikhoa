@@ -14,12 +14,15 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.54",
         "laravel/helpers": "^1.4",
+        "laravel/nexmo-notification-channel": "^3.0",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "league/flysystem-aws-s3-v3": "1.0",
         "maatwebsite/excel": "^3.1",
         "nao-pon/flysystem-google-drive": "~1.1",
-        "psr/simple-cache": "1.0"
+        "nexmo/laravel": "^3.0",
+        "psr/simple-cache": "1.0",
+        "vonage/client": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

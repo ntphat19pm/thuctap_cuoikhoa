@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\nhanvien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\chucvu;
 use App\Models\gioitinh;
@@ -13,6 +14,12 @@ use App\Rules\captcha_admin;
 use Validator;
 use App\Models\User;
 use Toastr;
+use Nexmo;
+use App\Mail\reset_matkhau_email;
+use App\Notifications\sms_notification;
+use App\Mail\forget_pass_email;
+use Illuminate\Support\Facades\Mail;
+
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -163,6 +170,82 @@ class nhanvien_controller extends Controller
     public function getdangnhap(){
         return view('admin.login');
     }
+    public function quen_matkhau(Request $request){
+        $email_nhap=$request->email;
+
+        $nhanvien=nhanvien::where('email','=',$email_nhap)->get();
+        foreach($nhanvien as $item)
+        {
+            $nhanvien_id=$item->id;
+        }
+        if($nhanvien)
+        {
+            $count_nv=$nhanvien->count();
+            if($count_nv==0)
+            {
+                Toastr::error('Email chưa được đăng ký để khôi phục mật khẩu','Thất bại');
+                return redirect()->route('get.dangnhap');
+            }
+            else
+            {
+                $random= Str::random();
+                $nhanvien=nhanvien::find($nhanvien_id);
+                $nhanvien->token=$random;
+                $nhanvien->save();
+
+                $to_mail=$email_nhap;
+                $link_reset= url('/update-new-pass?email='.$to_mail.'&token='.$random);
+
+                $forget = array(
+                    'link_reset' => $link_reset,
+                    'email' => $email_nhap,
+                    'hoten' => $nhanvien->hovaten,
+                );
+                Mail::to($email_nhap)->queue(new forget_pass_email($forget));
+
+                Toastr::success('Vui lòng check mail.','Gửi mail thành công');
+                return redirect()->route('get.dangnhap');
+            }
+        }
+    }
+
+    public function reset_new_pass(Request $request){
+        if($request->password==$request->repassword)
+        {
+            $data=$request->all();
+            $random= Str::random();
+            $nhanvien=nhanvien::where('email','=',$data['email'])->where('token','=',$data['token'])->get();
+
+            $count_nv=$nhanvien->count();
+            if($count_nv>0)
+            {
+                foreach($nhanvien as $item)
+                {
+                    $nhanvien_id=$item->id;
+                }
+                $reset=nhanvien::find($nhanvien_id);
+                $reset->password = bcrypt($request->password);
+                $reset->token = $random;
+                $reset->save();
+                Toastr::success('Mật khẩu đã được cập nhật.','Đăng nhập lại');
+                return redirect()->route('get.dangnhap');
+            }
+            else
+            {
+                Toastr::warning('Vui lòng nhập lại email vì link đã hết hạn','Khôi phục mật khẩu lỗi');
+                return redirect()->route('get.dangnhap');
+            }
+        }
+        else
+        {
+            Toastr::warning('Mật khẩu và nhập lại mật khẩu không khớp','Mật khẩu không khớp');
+            return redirect('/update-new-pass?email='.$request->email.'&token='.$request->token);
+        }
+        
+    }
+    public function update_new_pass(){
+        return view('admin.new_pass');
+    }
     public function profile(){
         return view('admin.profile');
     }
@@ -292,6 +375,27 @@ class nhanvien_controller extends Controller
 
         if($data->save()) {
             Toastr::success('Cập nhật trạng thái tài khoản thành công','Cập nhật trạng thái tài khoản');
+            return redirect('admin/nhanvien');
+        }
+    }
+    public function reset_matkhau($id)
+    {
+        $random= Str::random(9);
+        $data=nhanvien::find($id);
+        $data->password = bcrypt($random);
+
+        $reset = array(
+            'hoten' => $data->hovaten,
+            'email' => $data->email,
+            'tendangnhap' => $data->tendangnhap,
+            'matkhau' => $random,
+        );
+        
+
+        Mail::to($data->email)->queue(new reset_matkhau_email($reset));
+
+        if($data->save()) {
+            Toastr::success('Reset mật khẩu thành công','Reset mật khẩu');
             return redirect('admin/nhanvien');
         }
     }

@@ -69,6 +69,11 @@ Route::get('admin/dangnhap','nhanvien_controller@getdangnhap')->name('get.dangnh
 Route::post('admin/dangnhap','nhanvien_controller@postdangnhap')->name('post.dangnhap');
 Route::get('admin/dangxuat','nhanvien_controller@dangxuat')->name('dangxuat');
 
+// Route::get('/thaydoi/matkhau/', 'nhanvien_controller@thaydoi_matkhau')->name('admin.matkhau');
+Route::post('/quenmatkhau', 'nhanvien_controller@quen_matkhau')->name('nhanvien.quenmatkhau');
+Route::get('/update-new-pass','nhanvien_controller@update_new_pass')->name('update.pass');
+Route::post('/reset-new-pass','nhanvien_controller@reset_new_pass')->name('reset.new_pass');
+
 Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::get('/', 'admin_controller@index')->name('admin.index');
     
@@ -101,6 +106,10 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::post('/chuyendulieu','tuyendung_controller@post_dulieu')->name('tuyendung.chuyendulieu');
     
     Route::post('/profile/sua/{id}', 'profile_controller@postSua')->name('profile.sua');
+
+    Route::get('/thaydoi/matkhau/{id}', 'nhanvien_controller@reset_matkhau')->name('nhanvien.reset');
+    
+    
 
     Route::get('/nhanvien/active/{id}', 'nhanvien_controller@active')->name('nhanvien.active');
     Route::get('/nhanvien/unactive/{id}', 'nhanvien_controller@unactive')->name('nhanvien.unactive');

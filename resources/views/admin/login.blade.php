@@ -18,6 +18,7 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="{{url('public/spica')}}/images/favicon.png" />
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+  {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> --}}
 
   <script>
     function SHPassword(x)
@@ -37,6 +38,33 @@
 </head>
 
 <body>
+  <form action="{{route('nhanvien.quenmatkhau')}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+    @csrf
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Khôi phục tài khoản bằng email</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Để giữ an toàn cho tài khoản của bạn, Viettel Solutions muốn đảm bảo rằng bạn chính là người đang cố đăng nhập.</p>
+            <hr>
+            <h4 class="text-center"><b>Nhận mã xác minh</b></h4>
+            <p> Để nhận mã xác minh, trước tiên hãy xác nhận địa chỉ email khôi phục bạn đã thêm vào tài khoản của mình.</p>
+            <div class="form-group invalid">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email khôi phục mật khẩu" autocomplete="off" required >
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Gửi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
   <div class="container-scroller d-flex">
     <div class="container-fluid page-body-wrapper full-page-wrapper d-flex">
       <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
@@ -90,7 +118,7 @@
                       Hiện mật khẩu
                     </label>
                   </div>
-                  {{-- <a href="#" class="auth-link text-black">Forgot password?</a> --}}
+                  <a href="#" class="auth-link text-black"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Forgot password?</a>
                 </div>
 
                 <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
@@ -134,6 +162,7 @@
   <!-- container-scroller -->
   <!-- base:js -->
   <script src="{{url('public/spica')}}/vendors/js/vendor.bundle.base.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <!-- endinject -->
   <!-- inject:js -->
   <script src="{{url('public/spica')}}/js/off-canvas.js"></script>

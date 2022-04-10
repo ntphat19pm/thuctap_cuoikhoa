@@ -119,6 +119,21 @@ class admin_controller extends Controller
     public function getdangnhap(){
         return view('admin.login');
     }
+    public function quen_matkhau(Request $request){
+        $data=$request->email;
+        dd($data);
+        // $random= Str::random(9);
+        // $forget = array(
+        //     'hoten' => $data->hovaten,
+        //     'email' => $data->email,
+        //     'tendangnhap' => $data->tendangnhap,
+        //     'matkhau' => $random,
+        // );
+        
+
+        // Mail::to($data->email)->queue(new reset_matkhau_email($reset));
+
+    }
     public function showchuongtrinh($id){
         $KH = chitieu::select('doanhthu_dichvu','tytrong_dichvu','doanhthu_tong','tytrong_tong','kenhtruyen','tytrong_kenhtruyen','duan','tytrong_duan','giaoduc','tytrong_giaoduc','yte','tytrong_yte')->first();
         $TH = thuchien_chitieu::select('doanhthu_dichvu','doanhthu_tong','kenhtruyen','duan','giaoduc','yte')->first();

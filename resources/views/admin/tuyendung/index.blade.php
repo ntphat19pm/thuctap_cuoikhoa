@@ -13,7 +13,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">THÊM VỊ TRÍ TUYỂN DỤNG</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="modal-body">
                     <div class="card-body">
@@ -27,6 +27,11 @@
                                   <input id="tenvitri" type="text" class="form-control" name="tenvitri" autocomplete="off" required>
                                   <span class="form-message"></span>
                                 </div>
+                                <div class="form-group">
+                                  <label for="chitiet" class="form-label">Chi tiết</label>
+                                  <textarea class="form-control" name="chitiet" id="chitiet" cols="10" rows="1"></textarea>
+                                  <div class="invalid-feedback"></div>
+                              </div>
                               </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Thêm vị trí ứng tuyển</button>
@@ -39,7 +44,8 @@
                             <tr>
                               <th class="text-center" scope="col">STT</th>
                               <th class="text-center" scope="col">Tên vị trí tuyển dụng</th>
-                              <th class="text-right" scope="col">Action</th>
+                              <th class="text-center" scope="col">Mô tả vị trí tuyển dụng</th>
+                              <th class="text-right" width="10%" scope="col">Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -53,7 +59,11 @@
                             <tr>
                               <td class="text-center"><i>{{$i}}</i></td>
                               <td>{{$item->tenvitri}}</td>                      
+                              <td>{!!$item->chitiet!!}</td>                      
                               <td class="text-right">
+                                <a href="{{route('vitri_ungtuyen.edit',$item->id)}}" class="btn btn-sm btn-success">
+                                  <i class="fas fa-edit"></i>              
+                                </a>
                                 <a  href="{{route('vitri_ungtuyen.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
                                   <i class="fas fa-trash"></i>
                                 </a>

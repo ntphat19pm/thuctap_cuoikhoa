@@ -11,7 +11,7 @@ class vitri_ungtuyen extends Model
     use HasFactory;
     protected $table='vitri_ungtuyen';
     public $timestamps = false;
-    protected $fillable=['id','tenvitri'];
+    protected $fillable=['id','tenvitri','chitiet'];
 
     public function tuyendung(){
         return $this->hasMany(tuyendung::class,'vitri_id','id');

@@ -73,7 +73,7 @@
         <div class="card-header">
           <h3 class="card-title">
           <i class="fas fa-chart-bar mr-1"></i>
-          THÔNG TIN CÁ NHÂN
+          THÔNG TIN CÁ NHÂN ỨNG VIÊN
           </h3>
           <div class="card-tools">
           <button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#collapseExample{{$data->id}}" aria-expanded="false" aria-controls="collapseExample">
@@ -90,22 +90,27 @@
             <div class="card-body">
                 <div class="tab-content p-0 h-100">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <p>Họ tên ứng viên: {{$data->hoten_ungvien}}</p>
-                            <p>CMND/CCCD: {{$data->cmnd}}</p>
-                            <p>Số diện thoại: {{$data->sdt}}</p>
-                        </div>
-                        <div class="col-lg-6">
-                            <p>Ngày sinh: {{$data->ngaysinh}}</p>
-                            <p>Email: {{$data->email}}</p>
+                            <p>Số điện thoại: {{$data->sdt}}</p>
                             <p>Địa chỉ: {{$data->diachi}}</p>
+                            
                         </div>
+                        <div class="col-lg-4">
+                            <p>Giới tính: {{$data->gioitinh->gioitinh}}</p>
+                            <p>CMND/CCCD: {{$data->cmnd}}</p>
+                            Vị trí ứng tuyển: {{$data->vitri_ungtuyen->tenvitri}}
+                        </div>
+                        <div class="col-lg-4">
+                          <p>Ngày sinh: {{date("d-m-Y",strtotime($data->ngaysinh))}}</p>
+                          <p>Email: {{$data->email}}</p>
+                      </div>
                     </div>
                 </div>
             </div>
             <div class="card-footer clearfix">
                 <div class="text-left">
-                    Vị trí ứng tuyển: {{$data->vitri_ungtuyen->tenvitri}}
+                    
                     <a href="{{url('public/uploads/tuyendung')}}/{{$data->file_cv}}" class="btn btn-outline-info float-right"><i class="fa fa-download"></i> Download file CV ứng viên</a>
                 </div>
                 {{-- <a href="{{route('danhmuc_chuyendoi.destroy',$item->id)}}" type="button" class="btn btn-danger float-left"><i class="fas fa-trash"></i> Xóa</a> --}}

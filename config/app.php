@@ -164,6 +164,7 @@ return [
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -235,6 +236,7 @@ return [
 
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
+        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
 
     ],
 

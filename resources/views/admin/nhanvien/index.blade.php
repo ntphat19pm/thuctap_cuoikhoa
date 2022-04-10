@@ -19,7 +19,7 @@
             <th scope="col">SĐT</th>
             <th scope="col">Chức vụ</th>
             <th class="text-center" scope="col">Trạng thái</th>
-            <th class="text-right" width="12%" scope="col">Action</th>
+            <th class="text-right" width="15%" scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -53,6 +53,9 @@
               @endif
             </td>
             <td class="text-right">
+              <a href="{{route('nhanvien.reset',$item->id)}}" class="btn btn-sm btn-info">
+                <i class="fa fa-reply"></i>            
+              </a>
               <a href="{{route('nhanvien.show',$item->id)}}" class="btn btn-sm btn-warning">
                 <i class="fas fa-eye"></i>              
               </a>
