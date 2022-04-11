@@ -35,7 +35,7 @@ class nhanvien_controller extends Controller
     {
         if(Auth::user()->chucvu_id==1)
         {
-            $data=nhanvien::orderBy('id','ASC')->search()->paginate(10);
+            $data=nhanvien::all();
             return view('admin.nhanvien.index',compact('data'));
         }
         else
