@@ -65,31 +65,31 @@
         
         @foreach($dacdiem as $item)
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel.jpg" class="img-fluid" alt=""></div>
+          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel1.jpg" class="img-fluid" alt=""></div>
           <div class="portfolio-info">
             <h4>{{$item->tendacdiem}}</h4>
             <p>Đặc điểm</p>
-            <a href="{{url('public/uploads')}}/viettel.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="ĐẶC ĐIỂM <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="ĐẶC ĐIỂM <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
           </div>
         </div>
         @endforeach
         @foreach($loiich as $item)
         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel.jpg" class="img-fluid" alt=""></div>
+          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel1.jpg" class="img-fluid" alt=""></div>
           <div class="portfolio-info">
             <h4>{{$item->tenloiich}}</h4>
             <p>Lợi ích</p>
-            <a href="{{url('public/uploads')}}/viettel.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="LỢI ÍCH <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="LỢI ÍCH <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
           </div>
         </div>
         @endforeach
         @foreach($tinhnang as $item)
         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel.jpg" class="img-fluid" alt=""></div>
+          <div class="portfolio-img"><img src="{{url('public/uploads')}}/viettel1.jpg" class="img-fluid" alt=""></div>
           <div class="portfolio-info">
             <h4>{{$item->tentinhnang}}</h4>
             <p>Tính năng</p>
-            <a href="{{url('public/uploads')}}/viettel.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="TÍNH NĂNG <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="TÍNH NĂNG <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
           </div>
         </div>
         @endforeach

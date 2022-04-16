@@ -43,9 +43,11 @@
               <td>{{$item->yte}}</td>
                           
               <td class="text-right">
+                @if($item->chitieu->thang->id==$thang_id)
                 <a href="{{route('thuchien_chitieu.edit',$item->id)}}" class="btn btn-sm btn-success">
                   <i class="fas fa-edit"></i>              
                 </a> 
+                @endif
                 {{-- <a  href="{{route('thuchien_chitieu.destroy',$item->id)}}" class="btn btn-sm btn-danger btndelete">
                   <i class="fas fa-trash"></i>
                 </a> --}}

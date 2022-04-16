@@ -72,7 +72,7 @@
                   <i class="fas fa-plus-circle"></i>
                   Thêm đặc điểm
                 </button> --}}
-                <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
+                <a class="btn btn-outline-warning mt-2 ml-3" href="{{route('dacdiem.index')}}"> Trang đặc điểm</a>
           
                 {{-- <form action="{{route('dacdiem.them')}}" enctype="multipart/form-data" method="post" class="needs-validation" novalidate>
                   @csrf
@@ -108,34 +108,6 @@
                 </form> --}}
               
               </div>
-              <form action="{{ route('dacdiem.nhap') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="modal fade" id="modal-secondary">
-                  <div class="modal-dialog">
-                    <div class="modal-content bg-secondary">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Nhập đặc điểm file Excel</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="mb-0">
-                          <label for="file_excel" class="form-label">Chọn tập tin Excel</label>
-                          <input type="file" class="form-control" id="file_excel" name="file_excel" required />
-                          <a href="{{url('public/uploads/file_nhap')}}/danh-sach-dac-diem.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
-                        </div>
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-outline-success">Upload file Excel</button>
-                      </div>
-                    </div>
-                    <!-- /.modal-content -->
-                  </div>
-                  <!-- /.modal-dialog -->
-                </div>
-              </form>
               <tr>
                 <th class="text-center" scope="col">STT</th>
                 <th class="text-center" scope="col">Tên đặc điểm</th>
@@ -183,36 +155,8 @@
 
                 <a href="{{route('tinhnang.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm tính năng</a> 
                 
-                <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary1" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
+                <a class="btn btn-outline-warning mt-2 ml-3" href="{{route('tinhnang.index')}}"> Trang tính năng</a>
               </div>
-              <form action="{{ route('tinhnang.nhap') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="modal fade" id="modal-secondary1">
-                  <div class="modal-dialog">
-                    <div class="modal-content bg-secondary">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Nhập tính năng file Excel</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="mb-0">
-                          <label for="file_excel" class="form-label">Chọn tập tin Excel</label>
-                          <input type="file" class="form-control" id="file_excel" name="file_excel" required />
-                          <a href="{{url('public/uploads/file_nhap')}}/danh-sach-tinh-nang.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
-                        </div>
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-outline-success">Upload file Excel</button>
-                      </div>
-                    </div>
-                    <!-- /.modal-content -->
-                  </div>
-                  <!-- /.modal-dialog -->
-                </div>
-              </form>
               <tr>
                 <th class="text-center" scope="col">STT</th>
                 <th class="text-center" scope="col">Tên tính năng</th>
@@ -260,37 +204,9 @@
               <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
                 <a href="{{route('loiich.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm lợi ích</a> 
-                <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary2" href="#nhap"> <i class="fas fa-file-upload"></i> Nhập Excel</button>
+                <a class="btn btn-outline-warning mt-2 ml-3" href="{{route('loiich.index')}}"> Trang lợi ích</a>
                
               </div>
-              <form action="{{ route('loiich.nhap') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="modal fade" id="modal-secondary2">
-                  <div class="modal-dialog">
-                    <div class="modal-content bg-secondary">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Nhập lợi ích file Excel</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="mb-0">
-                          <label for="file_excel" class="form-label">Chọn tập tin Excel</label>
-                          <input type="file" class="form-control" id="file_excel" name="file_excel" required />
-                          <a href="{{url('public/uploads/file_nhap')}}/danh-sach-loi-ich.xlsx" class="btn btn-outline-info mt-3">Download file Excel</a>
-                        </div>
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-outline-success">Upload file Excel</button>
-                      </div>
-                    </div>
-                    <!-- /.modal-content -->
-                  </div>
-                  <!-- /.modal-dialog -->
-                </div>
-              </form>
               <tr>
                 <th class="text-center" scope="col">STT</th>
                 <th class="text-center" scope="col">Tên lợi ích</th>

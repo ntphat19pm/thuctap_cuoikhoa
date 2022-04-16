@@ -6,7 +6,7 @@
             @csrf  @method('PUT')
             <div class="form-group">
                 <a href="{{route('thuchien_chitieu.index')}}" class="btn btn-sm btn-danger mb-3">
-                    <i class="fas fa-sign-out-alt"> Quay về bảng khuyến mãi</i>     
+                    <i class="fas fa-sign-out-alt"> Quay về bảng thực hiện chỉ tiêu</i>     
                 </a>
     
                 <a>

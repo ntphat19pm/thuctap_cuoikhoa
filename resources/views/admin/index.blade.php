@@ -456,7 +456,7 @@
               <thead>
                   <tr>
                   <th scope="col">Tổng tháng trước</th>
-                  <th scope="col">Tổng tháng này (Tháng {{$thang_hientai}})</th>
+                  <th scope="col">Tổng tháng này </th>
                   <th scope="col">Tổng một năm</th>
                   <th scope="col">Tổng truy cập</th>
                   </tr>

@@ -7,8 +7,13 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
-                <i class="fas fa-chart-bar mr-1"></i>
-                KHÁCH HÀNG {{$item->id}}
+                @if($item->trangthai_id==0)
+                    <i style="color: red" class="far fa-times-circle fa-lg"></i> KHÁCH HÀNG {{$item->id}}
+                @elseif($item->trangthai_id==1)
+                    <i style="color:rgb(8, 253, 0)" class="far fa-check-circle fa-lg"></i> KHÁCH HÀNG {{$item->id}}
+                @endif
+                
+                
                 </h3>
                 <div class="card-tools">
                 <button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#collapseExample{{$item->id}}" aria-expanded="false" aria-controls="collapseExample">

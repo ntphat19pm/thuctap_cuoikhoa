@@ -50,6 +50,7 @@
               <div class="portfolio-info">
                 <h4>{{$item->tenbai}}</h4>
                 <p>Tin công nghệ - {{date("l, d-m-Y",strtotime($item->create_at))}}</p>
+                <p style="text-align: right"><i class="fa fa-eye"></i> {{$item->view}} lượt xem</p>
               </div>
             </a>
           </div>

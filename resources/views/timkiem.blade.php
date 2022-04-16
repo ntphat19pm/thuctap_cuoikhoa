@@ -20,7 +20,9 @@
       </section>
 
     <section id="portfolio" class="portfolio mt-5">
-      @if(!empty($tim_sp) && !empty($tim_bv))
+      @if($tim_sp->isEmpty() && $tim_bv->isEmpty())
+        <p class="text-center">Không có sản phẩm và bài viết cần tìm cần tìm</p>
+      @elseif(!empty($tim_sp) && !empty($tim_bv))
         <div class="container" data-aos="fade-up">
           <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <li data-filter=".filter-app">Giải pháp</li>
@@ -32,12 +34,16 @@
             @foreach ($tim_sp as $item)
             <div class="row">
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                @if($tim_sp->count()==0)
+                Không có giải pháp cần tìm
+                @else
                 <a href="{{route('home.chitiet',$item->id)}}">
                   <div class="portfolio-img"><img src="{{url('public/uploads/sanpham/avatar')}}/{{$item->anh}}" class="img-fluid" alt=""></div>
                   <div class="portfolio-info">
                     <a href="{{route('home.chitiet',$item->id)}}"><h4>{{$item->tensp}}</h4></a>
                   </div>
                 </a>
+                @endif
               </div>
             </div>
            
@@ -56,8 +62,6 @@
             @endforeach
           </div>
         </div>
-      @else
-      Không có giải pháp và tin tức cần tìm
       @endif
     </section>
 </main><!-- End #main -->

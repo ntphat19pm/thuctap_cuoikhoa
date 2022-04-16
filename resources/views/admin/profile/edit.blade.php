@@ -72,24 +72,21 @@
                       <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
                   </div>
               </div>
-              <div class="col-lg-2">
-                  <div class="form-group">
-                      <label for="chucvu_id">Chức vụ<span class="text-danger font-weight-bold">*</span></label>
-                      <select id="chucvu_id" class="form-control custom-select @error('chucvu_id') is-invalid @enderror" name="chucvu_id" required autofocus>
-                          @foreach($chucvu as $value)
-                          <option value="{{ $value->id }}" {{(Auth::user()->chucvu_id== $value->id)?'selected':'' }}>{{$value->tenchucvu}}</option>
-                          @endforeach
-                      </select>
-                  </div>
+              <div class="col-lg-2" hidden>
+                <div class="mb-3">
+                    <label for="chucvu_id" class="form-label">Chức vụ</label>
+                    <input type="text"value="{{Auth::user()->chucvu_id}}" class="form-control" id="chucvu_id" name="chucvu_id" required>
+                    <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
+                </div>
               </div>
-              <div class="col-lg-2">   
+              <div class="col-lg-4">   
                     <div class="mb-3">
                 <label for="tendangnhap" class="form-label">Tên đăng nhập</label>
                 <input type="text" value="{{Auth::user()->tendangnhap}}" class="form-control" id="tendangnhap" name="tendangnhap" required>
                 <div class="invalid-feedback">Tên đăng nhập không được bỏ trống.</div>
               </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-3" hidden>
                   <div class="mb-3">
                     <label for="matkhau" class="form-label">Mật khẩu</label>
                     <input type="password" class="form-control" id="password" name="password">

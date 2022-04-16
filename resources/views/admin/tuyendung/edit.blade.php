@@ -77,26 +77,8 @@
                       <label for="cmnd" class="form-label">CMND</label>
                       <input type="text" value="{{$data->cmnd}}" class="form-control" id="cmnd" name="cmnd" required>
                   </div>
-              </div>
-              <div class="col-lg-3" hidden>
-                  <div class="mb-3">
-                    <label for="matkhau" class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control" value="123456aA@" id="password" name="password">
-                  </div>
-
-                  <div class="form-check mb-3">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input" onchange="SHPassword(this)">
-                      Hiện mật khẩu
-                    </label>
-                  </div>
-              </div>            
+              </div> 
             </div>
-            <i>
-                Lưu ý:
-                <br>- Tên đăng nhập sẽ là tiền tố trước @gmail.com
-                <br>- Mật khẩu mặc định sẽ là: 123456aA@
-            </i>
         </form>
     </div>
 </div>

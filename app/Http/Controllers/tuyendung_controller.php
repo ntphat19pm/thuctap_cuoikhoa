@@ -7,6 +7,7 @@ use App\Models\gioitinh;
 use App\Models\nhanvien;
 use App\Models\vitri_ungtuyen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Toastr;
 use File;
 use App\Models\User;
@@ -104,6 +105,7 @@ class tuyendung_controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $random= Str::random();
         $data=new nhanvien;
         $data->hovaten=$request->hovaten;
         $data->gioitinh_id=$request->gioitinh_id;
@@ -114,7 +116,7 @@ class tuyendung_controller extends Controller
         $data->chucvu_id=3;
         $sub_link=substr($request->email,0,-10);
         $data->tendangnhap=$sub_link;
-        $data->password=bcrypt($request->password);
+        $data->password=bcrypt($random);
         //$data->password=$request->password;
         $data->email=$request->email;
 
@@ -125,7 +127,7 @@ class tuyendung_controller extends Controller
             'hoten' => $request->hovaten,
             'ngay' => $ngay,
             'tendangnhap' => $sub_link,
-            'password' => $request->password,
+            'password' => $random,
             'vitri' => $vitri->tenvitri
         );
         

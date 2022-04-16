@@ -52,7 +52,6 @@ Route::get('/dangky','home_controller@get_dangky')->name('home.getdangky');
 Route::post('/thongtin','home_controller@post_thongtin')->name('home.postthongtin');
 Route::post('/tuyendung','home_controller@post_tuyendung')->name('home.posttuyendung');
 Route::post('/lienhe_chuyendoi','home_controller@post_lienhe_chuyendoi')->name('home.postlienhe_chuyendoi');
-Route::post('/binhluan','home_controller@post_binhluan')->name('home.postbinhluan');
 Route::post('/cauhoi','home_controller@post_cauhoi')->name('home.postcauhoi');
 Route::get('/chitiet/{slug}','home_controller@chitiet')->name('home.chitiet');
 
@@ -93,6 +92,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::get('/chitieu/xuat', 'chitieu_controller@getXuat')->name('chitieu.xuat');
 
     Route::post('/chuongtrinh/nhap', 'chuongtrinh_controller@postNhap')->name('chuongtrinh.nhap');
+    Route::get('/chuongtrinh/xuat', 'chuongtrinh_controller@getXuat')->name('chuongtrinh.xuat');
     
     Route::get('/baiviet_canhan', 'profile_controller@baiviet_canhan')->name('profile.baiviet_canhan');
     Route::post('/baiviet_canhan','profile_controller@post_baiviet_canhan')->name('home.postbaiviet');
@@ -108,8 +108,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::post('/profile/sua/{id}', 'profile_controller@postSua')->name('profile.sua');
 
     Route::get('/thaydoi/matkhau/{id}', 'nhanvien_controller@reset_matkhau')->name('nhanvien.reset');
-    
-    
+
+    Route::get('/xoa/chuongtrinh', 'chuongtrinh_controller@getXoa')->name('chuongtrinh.xoa');
 
     Route::get('/nhanvien/active/{id}', 'nhanvien_controller@active')->name('nhanvien.active');
     Route::get('/nhanvien/unactive/{id}', 'nhanvien_controller@unactive')->name('nhanvien.unactive');
@@ -119,8 +119,6 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::get('/slider/unactive/{id}', 'slider_controller@unactive')->name('slider.unactive');
     Route::get('/giaoviec/active/{id}', 'giaoviec_controller@active')->name('giaoviec.active');
     Route::get('/giaoviec/unactive/{id}', 'giaoviec_controller@unactive')->name('giaoviec.unactive');
-    Route::get('/binhluan/active/{id}', 'binhluan_controller@active')->name('binhluan.active');
-    Route::get('/binhluan/unactive/{id}', 'binhluan_controller@unactive')->name('binhluan.unactive');
     Route::get('/cauhoi/active/{id}', 'cauhoi_controller@active')->name('cauhoi.active');
     Route::get('/cauhoi/unactive/{id}', 'cauhoi_controller@unactive')->name('cauhoi.unactive');
     Route::get('/video/active/{id}', 'video_controller@active')->name('video.active');
@@ -149,7 +147,6 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         'review'=>'review_controller',
         'baiviet'=>'baiviet_controller',
         'profile'=>'profile_controller',
-        'binhluan'=>'binhluan_controller',
         'nhanvien'=>'nhanvien_controller',
         'gioithieu'=>'gioithieu_controller',
         'mangluoi'=>'mangluoi_controller',

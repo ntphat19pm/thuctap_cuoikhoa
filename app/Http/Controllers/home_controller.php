@@ -12,7 +12,6 @@ use App\Models\thongtin;
 use App\Models\tinhnang;
 use App\Models\loiich;
 use App\Models\nhanvien;
-use App\Models\binhluan;
 use App\Models\gioitinh;
 use App\Models\giaithuong;
 use App\Models\chitieu;
@@ -88,8 +87,9 @@ class home_controller extends Controller
         $nhanvien=nhanvien::all();
         $data->view=$data->view + 1;
         $data->save();
-        $binhluan=binhluan::where('baiviet_id',$id)->where('trangthai',1)->get();
-        return view('chitietbai',compact('data','binhluan','nhanvien'));
+
+        $bv_lienquan=baiviet::where('trangthai',0)->where('phanloai_id',$data->phanloai_id)->whereNotIn('id',[$data->id])->get();
+        return view('chitietbai',compact('data','nhanvien','bv_lienquan'));
     }
     public function shop(){
         return view('shop');
@@ -289,21 +289,6 @@ class home_controller extends Controller
 
         if($data->save()){
             return view('completed');
-        }
-  
-    }
-
-    public function post_binhluan(Request $request)
-    {
-       
-        $data=new binhluan;
-        $data->hoten=$request->hoten;
-        $data->avatar_id=$request->avatar_id;
-        $data->noidung=$request->noidung;
-        $data->baiviet_id=$request->baiviet_id;
-
-        if($data->save()){
-            return redirect()->route('home.chitietbai', ['id'=>$request->baiviet_id]);
         }
   
     }

@@ -73,7 +73,7 @@
 </head>
 
 <body>
-  <form action="{{ route('home.timkiem') }}" method="get" enctype="multipart/form-data">
+  <form action="{{ route('home.timkiem') }}" method="get" enctype="multipart/form-data" class="needs-validation" novalidate>
     <div class="modal fade" id="exampleModal1111" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -82,16 +82,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" class="form-inline mb-3" autocomplete="off">
+            <form action="" class="form-inline mb-3">
     
               <div class="input-group mb-3">
-                <input type="text" class="form-control" name="timkiem" aria-describedby="button-addon2" placeholder="Search..."> 
+                <input type="text" class="form-control" name="timkiem" autocomplete="off" aria-describedby="button-addon2" placeholder="Search..." required> 
                 {{-- <input type="text" name="tukhoa" id="tukhoa" class="form-control typeahead" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"> --}}
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
               </div>
             </form> 
-          </div>
-          <div class="modal-footer">
-
           </div>
         </div>
       </div>
@@ -135,7 +133,7 @@
               <li class="dropdown"><a href="#"><span>Dịch vụ</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   @foreach ($dichvu as $item)
-                    <li><a href="{{route('home.showlinhvuc',$item->id)}}">{{$item->tendanhmuc}}</a></li>
+                    <li><a href="{{route('home.showlinhvuc',$item->slug)}}">{{$item->tendanhmuc}}</a></li>
                   @endforeach
                 </ul>
               </li>
@@ -206,7 +204,7 @@
             <h4>Hạ tầng số</h4>
             <ul>
               @foreach ($dichvu as $item)
-                <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.showlinhvuc',$item->id)}}">{{$item->tendanhmuc}}</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.showlinhvuc',$item->slug)}}">{{$item->tendanhmuc}}</a></li>
               @endforeach
             </ul>
           </div>
@@ -215,7 +213,7 @@
             <h4>Giải pháp số</h4>
             <ul>
               @foreach ($linhvuc as $item)
-                <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.showlinhvuc',$item->id)}}">{{$item->tendanhmuc}}</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.showlinhvuc',$item->slug)}}">{{$item->tendanhmuc}}</a></li>
               @endforeach
             </ul>
           </div>
@@ -230,9 +228,11 @@
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('home.tuyendung')}}">Tuyển dụng</a></li>
             </ul>
             <div class="social-links mt-3">
-              <a href="https://www.facebook.com/ViettelBusinessSolutionsCorporation" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+              @foreach ($lienhe as $item)
+              <a href="{!!$item->facebook!!}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="https://www.youtube.com/channel/UCfs8bzO6K8IwBXsdgcHEm3g" target="_blank" class="google-plus"><i class="bx bxl-youtube"></i></a>
               <a href="https://www.linkedin.com/company/viettel-business-solutions" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              @endforeach
             </div>
           </div>
 
@@ -496,6 +496,7 @@
     })
 })()
 </script>
+
 
 
   @foreach ($lienhe as $item)

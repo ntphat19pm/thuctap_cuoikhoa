@@ -6,10 +6,12 @@ use App\Models\chuongtrinh;
 use App\Models\thang;
 use App\Models\nhanvien;
 use App\Imports\chuongtrinh_import;
+use App\Exports\chuongtrinh_export;
 use Illuminate\Http\Request;
 use Toastr;
 use Excel;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class chuongtrinh_controller extends Controller
@@ -22,8 +24,9 @@ class chuongtrinh_controller extends Controller
     public function index()
     {
         $data=chuongtrinh::all();
-        $thang=thang::all();  
-        return view('admin.chuongtrinh.index',compact('data','thang'));
+        $thang=thang::all();
+        $thang_id=Carbon::now()->month;  
+        return view('admin.chuongtrinh.index',compact('data','thang','thang_id'));
     }
 
     /**
@@ -123,13 +126,31 @@ class chuongtrinh_controller extends Controller
      * @param  \App\Models\chuongtrinh  $chuongtrinh
      * @return \Illuminate\Http\Response
      */
-    public function destroy(chuongtrinh $chuongtrinh)
+    public function destroy($id)
     {
-        //
+        $data=chuongtrinh::find($id)->delete();
+        if($data){
+            Toastr::success('Xóa chương trình thành công','Xóa chương trình');
+            return redirect('admin/chuongtrinh');
+        }
     }
     public function postNhap(Request $request)
     {
         Excel::import(new chuongtrinh_import, $request->file('file_excel'));
         return redirect('admin/chuongtrinh');
+    }
+
+    public function getXuat() 
+    {
+        return Excel::download(new chuongtrinh_export, 'danh-sach-chuong-trinh.xlsx');
+    }
+
+    public function getXoa()
+    {
+        $data=chuongtrinh::truncate();
+        if($data){
+            Toastr::success('Xóa tất cả chương trình thành công','Xóa tất cả chương trình');
+            return redirect('admin/chuongtrinh');
+        }
     }
 }

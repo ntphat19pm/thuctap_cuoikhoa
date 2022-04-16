@@ -31,14 +31,12 @@
         [
             'label'=>'Quản lý tuyển dụng',
             'route'=>'tuyendung.index',
-            'icon'=>'fa-user-tie'
-
+            'icon'=>'fa-id-badge'
         ],
         [
             'label'=>'Quản lý đối tác',
             'route'=>'doitac.index',
-            'icon'=>'fa-user-tie'
-
+            'icon'=>'fa-address-card'
         ],
         [
             'label'=>' Quản lý công việc',
@@ -142,23 +140,13 @@
                 ]
                
             ]
-        ],   
-        [
-            'label'=>' Quản lý nhân viên',
-            'route'=>'admin.index',
-            'icon'=>'fa-users-cog',
-            'item' =>[
-                [
-                    'label'=>'Nhân viên',
-                    'route'=>'nhanvien.index'
-                ],
-                [
-                    'label'=>'Chức vụ',
-                    'route'=>'chucvu.index'
-                ]
-            ]
-
         ],
+        [
+            'label'=>'Quản lý nhân viên',
+            'route'=>'nhanvien.index',
+            'icon'=>'fa-users-cog'
+
+        ],   
         [
             'label'=>' Cài đặt',
             'route'=>'admin.index',
@@ -219,10 +207,6 @@
                 [
                     'label'=>'Bài viết',
                     'route'=>'baiviet.index'
-                ],
-                [
-                    'label'=>'Bình luận bài viết',
-                    'route'=>'binhluan.index'
                 ]
             ]
 

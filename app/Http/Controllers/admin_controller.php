@@ -16,8 +16,8 @@ use App\Models\User;
 class admin_controller extends Controller
 {
    public function index(Request $request){
-    $KH = chitieu::select('thang_id','doanhthu_dichvu','tytrong_dichvu','doanhthu_tong','tytrong_tong','kenhtruyen','tytrong_kenhtruyen','duan','tytrong_duan','giaoduc','tytrong_giaoduc','yte','tytrong_yte')->first();
-    $TH = thuchien_chitieu::select('doanhthu_dichvu','doanhthu_tong','kenhtruyen','duan','giaoduc','yte')->first();
+    $KH = chitieu::select('id','thang_id','doanhthu_dichvu','tytrong_dichvu','doanhthu_tong','tytrong_tong','kenhtruyen','tytrong_kenhtruyen','duan','tytrong_duan','giaoduc','tytrong_giaoduc','yte','tytrong_yte')->orderby('id','DESC')->first();
+    $TH = thuchien_chitieu::select('chitieu_id','doanhthu_dichvu','doanhthu_tong','kenhtruyen','duan','giaoduc','yte')->where('chitieu_id',$KH->id)->first();
     
     $ptTH_dv = $TH->doanhthu_dichvu/$KH->doanhthu_dichvu ;
     $ptTH_tong = $TH->doanhthu_tong/$KH->doanhthu_tong ;

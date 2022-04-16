@@ -117,6 +117,7 @@ class dacdiem_controller extends Controller
     public function postNhap(Request $request)
     {
         Excel::import(new dacdiem_import, $request->file('file_excel'));
+        Toastr::success('Nhập file excel thành công','Nhập file excel');
         return redirect('admin/dacdiem');
     }
     
@@ -124,5 +125,6 @@ class dacdiem_controller extends Controller
     public function getXuat()
     {
         return Excel::download(new dacdiem_export, 'danh-sach-dac-diem.xlsx');
+        Toastr::success('Xuất file excel thành công','Xuất file excel');
     }
 }

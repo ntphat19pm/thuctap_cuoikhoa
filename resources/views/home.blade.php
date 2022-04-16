@@ -125,7 +125,7 @@
                       <img src="{{url('public/uploads/linhvuc')}}/{{$item->avatar}}" alt="" height="300px">
                       <div class="hover-content">
                         <div class="inner-content">
-                          <a href="{{route('home.showlinhvuc',$item->id)}}"><h4>{{$item->tendanhmuc}}</h4></a>
+                          <a href="{{route('home.showlinhvuc',$item->slug)}}"><h4>{{$item->tendanhmuc}}</h4></a>
                           <span>CHUYÊN MỤC SỐ</span>
                         </div>
                       </div>

@@ -2,7 +2,7 @@
 @section('main')
 <div class="card" >
     <div class="card-body">
-        <form action="{{route('nop_file.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('nop_file.store')}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
 
             <div class="form-group">
@@ -10,7 +10,7 @@
                   <button type="submit" class="btn btn-sm btn-primary float-right mb-3">Thêm</button>
               </a>
               <a href="{{route('nop_file.index')}}" class="btn btn-sm btn-danger mb-3">
-                  <i class="fas fa-sign-out-alt"> Quay về bảng khuyến mãi</i>     
+                  <i class="fas fa-sign-out-alt"> Quay về bảng nộp file</i>     
               </a>
             </div>
 

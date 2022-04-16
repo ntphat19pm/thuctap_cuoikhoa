@@ -6,6 +6,7 @@ use App\Models\thuchien_chitieu;
 use App\Models\thang;
 use App\Models\chitieu;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Toastr;
 
 
@@ -20,7 +21,8 @@ class thuchien_chitieu_controller extends Controller
     {
         $data=thuchien_chitieu::orderby('id','DESC')->get(); 
         $thang=thang::all(); 
-        return view('admin.thuchien_chitieu.index',compact('data','thang'));
+        $thang_id=Carbon::now()->month;
+        return view('admin.thuchien_chitieu.index',compact('data','thang','thang_id'));
     }
 
     /**
