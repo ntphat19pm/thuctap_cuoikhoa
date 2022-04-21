@@ -10,7 +10,10 @@
         <h1>{!!$data->chitiet!!}</h1>
         <div class="d-flex justify-content-center justify-content-lg-start">
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
+          @if($data->link_video=="")
+          @else
           <a href="https://www.youtube.com/embed/{{$data->link_video}}" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+          @endif
         </div>
       </div>
       <div class="col-lg-7 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">

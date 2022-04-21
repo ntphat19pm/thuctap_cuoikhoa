@@ -1,5 +1,6 @@
 <?php
   $menu=config('menu');
+  $menu_nv=config('menu_nv');
 
 ?>
 <!DOCTYPE html>
@@ -226,36 +227,61 @@
                with font-awesome or any other icon font library -->
          
               
-          
-          @foreach ($menu as $m)
-          <li class="nav-item">
-            <a href="{{route($m['route'])}}" class="nav-link">
-              <i class="nav-icon fas {{$m['icon']}}"></i>
-              <p>
-                {{$m['label']}}
-                @if (isset($m['item']))
-                     <i class="right fas fa-angle-left"></i>           
-                @endif
-               
-              </p>
-            </a>
-            @if (isset($m['item']))
-              <ul class="nav nav-treeview">
-                @foreach($m['item'] as $mit)
-                  <li class="nav-item">
-                    <a href="{{route($mit['route'])}}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>{{$mit['label']}}</p>
-                    </a>
-                  </li>
-                @endforeach
-              </ul>
-            @endif
-          </li>
-         
-         
-          @endforeach
-    
+          @if(Auth::user()->chucvu_id==1)
+            @foreach ($menu as $m)
+            <li class="nav-item">
+              <a href="{{route($m['route'])}}" class="nav-link">
+                <i class="nav-icon fas {{$m['icon']}}"></i>
+                <p>
+                  {{$m['label']}}
+                  @if (isset($m['item']))
+                      <i class="right fas fa-angle-left"></i>           
+                  @endif
+                
+                </p>
+              </a>
+              @if (isset($m['item']))
+                <ul class="nav nav-treeview">
+                  @foreach($m['item'] as $mit)
+                    <li class="nav-item">
+                      <a href="{{route($mit['route'])}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>{{$mit['label']}}</p>
+                      </a>
+                    </li>
+                  @endforeach
+                </ul>
+              @endif
+            </li>
+            @endforeach
+          @elseif(Auth::user()->chucvu_id==3)
+            @foreach ($menu_nv as $m)
+            <li class="nav-item">
+              <a href="{{route($m['route'])}}" class="nav-link">
+                <i class="nav-icon fas {{$m['icon']}}"></i>
+                <p>
+                  {{$m['label']}}
+                  @if (isset($m['item']))
+                      <i class="right fas fa-angle-left"></i>           
+                  @endif
+                
+                </p>
+              </a>
+              @if (isset($m['item']))
+                <ul class="nav nav-treeview">
+                  @foreach($m['item'] as $mit)
+                    <li class="nav-item">
+                      <a href="{{route($mit['route'])}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>{{$mit['label']}}</p>
+                      </a>
+                    </li>
+                  @endforeach
+                </ul>
+              @endif
+            </li>
+            @endforeach
+          @endif
         </ul>
       </nav>
       @elseif(Auth::user()->trangthai==1)

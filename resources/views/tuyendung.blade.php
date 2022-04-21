@@ -44,15 +44,15 @@
               <div class="col-lg-6">
                 <div class="form-group invalid mt-3">
                   <label for="hoten_ungvien" class="form-label">Họ và tên</label>
-                  <input type="text" class="form-control" name="hoten_ungvien" id="hoten_ungvien" required >
+                  <input type="text" class="form-control" name="hoten_ungvien" id="hoten_ungvien" required autocomplete="off" >
                 </div>
                 <div class="form-group invalid mt-3">
                   <label for="sdt" class="form-label">Số điện thoại</label>
-                  <input type="text" class="form-control" name="sdt" id="sdt" required >
+                  <input type="text" class="form-control" name="sdt" id="sdt" required autocomplete="off" >
                 </div>
                 <div class="form-group invalid mt-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required >
+                  <input type="email" class="form-control" name="email" id="email" required autocomplete="off">
                 </div>
                 <div class="form-group mt-3">
                   <label for="vitri_id">Vị trí ứng tuyển<span class="text-danger font-weight-bold">*</span></label>
@@ -76,22 +76,22 @@
                 </div>
                 <div class="form-group invalid mt-3">
                   <label for="ngaysinh" class="form-label">Ngày sinh</label>
-                  <input type="date" class="form-control" name="ngaysinh" id="ngaysinh" required >
+                  <input type="date" class="form-control" name="ngaysinh" id="ngaysinh" required autocomplete="off">
                 </div>
                 <div class="form-group invalid mt-3">
                   <label for="diachi" class="form-label">Địa chỉ</label>
-                  <input type="text" class="form-control" name="diachi" id="diachi" required >
+                  <input type="text" class="form-control" name="diachi" id="diachi" required autocomplete="off">
                 </div>
                 <div class="form-group invalid mt-2">
                   <label for="cmnd" class="form-label">CMND/CCCD</label>
-                  <input type="text" class="form-control" name="cmnd" id="cmnd" required >
+                  <input type="text" class="form-control" name="cmnd" id="cmnd" required autocomplete="off">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group mt-3">
-                  <label for="file_cv">File tài liệu <span class="text-danger font-weight-bold">*</span></label>
+                  <label for="file_cv">File CV <span class="text-danger font-weight-bold">*</span></label>
                   <input id="file_uploads" type="file" class="form-control @error('file_cv') is-invalid @enderror" name="file_uploads" value="{{ old('file_uploads') }}" required autocomplete="file_uploads" />
                 </div>
               </div>

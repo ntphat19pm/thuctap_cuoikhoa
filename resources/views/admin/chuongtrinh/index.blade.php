@@ -26,7 +26,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
               </div>
               <div class="modal-body">
-                Bạn muốn xoá tất cả {{$data->count()}} chương trình ?
+                Bạn muốn xoá tất cả {{$data->count()}} chương trình hành động ?
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-danger">Xoá tất cả</button>
