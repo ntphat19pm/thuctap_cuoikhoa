@@ -37,10 +37,10 @@
                 @if($tim_sp->count()==0)
                 Không có giải pháp cần tìm
                 @else
-                <a href="{{route('home.chitiet',$item->id)}}">
+                <a href="{{route('home.chitiet',$item->slug)}}">
                   <div class="portfolio-img"><img src="{{url('public/uploads/sanpham/avatar')}}/{{$item->anh}}" class="img-fluid" alt=""></div>
                   <div class="portfolio-info">
-                    <a href="{{route('home.chitiet',$item->id)}}"><h4>{{$item->tensp}}</h4></a>
+                    <a href="{{route('home.chitiet',$item->slug)}}"><h4>{{$item->tensp}}</h4></a>
                   </div>
                 </a>
                 @endif

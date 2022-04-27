@@ -58,7 +58,7 @@
               <th class="text-center" scope="col">Ngày nộp</th>
               <th class="text-center" scope="col">Trạng thái</th>
               <th class="text-center" scope="col">Số lượng file</th>
-              <th class="text-right" scope="col">Action</th>
+              <th class="text-right" width="12%" scope="col">Action</th>
             </tr>
           </thead>
           <tbody>

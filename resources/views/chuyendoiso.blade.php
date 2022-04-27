@@ -103,6 +103,9 @@
                             <div class="inner-content">
                               <h4>{{$item->ten_danhmuc}}</h4>
                               {{-- <a class="btn btn-danger" title="{!!$item->chitiet!!}" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Chi tiết</a> --}}
+                              <button type="button" class="btn btn-outline-danger btn-lg float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$item->id}}">
+                                <i class="fas fa-plus-circle"></i>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -129,6 +132,9 @@
                             <div class="inner-content">
                               <h4>{{$item->ten_danhmuc}}</h4>
                               {{-- <a class="btn btn-danger" title="{!!$item->chitiet!!}" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Chi tiết</a> --}}
+                              <button type="button" class="btn btn-outline-danger btn-lg float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$item->id}}">
+                                <i class="fas fa-plus-circle"></i>
+                              </button> 
                             </div>
                           </div>
                         </div>
@@ -147,6 +153,43 @@
   </div>
 </section>
 
+@foreach($chuyendoi_linhvuc as $item)
+<div class="modal fade" id="staticBackdrop{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">LĨNH VỰC - {{$item->ten_danhmuc}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {!!$item->chitiet!!}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+@foreach($chuyendoi_chucnang as $item)
+<div class="modal fade" id="staticBackdrop{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">LĨNH VỰC - {{$item->ten_danhmuc}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {!!$item->chitiet!!}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+
 <section id="" class="d-flex align-items-center mt-5">
   <div class="container">
     <div class="row">
@@ -158,7 +201,7 @@
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item active" aria-hidden="true">
             <div class="row">
               <div class="col-lg-4">
                   <img src="{{url('public/uploads/review')}}/127.jpeg" width="100%">
@@ -166,17 +209,12 @@
               <div class="col-lg-7">
                   <b style="font-size:50px">KHÁCH HÀNG NÓI GÌ ?</b>
                   <div class="card-body">
-                    <h5 class="card-title placeholder-glow">
-                      <span class="placeholder col-6"></span>
-                    </h5>
-                    <p class="card-text placeholder-glow">
-                      <span class="placeholder col-7"></span>
-                      <span class="placeholder col-4"></span>
-                      <span class="placeholder col-4"></span>
-                      <span class="placeholder col-6"></span>
-                      <span class="placeholder col-8"></span>
-                    </p>
                     <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                    <br><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+                    <br><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-8"></a>
+                    <br><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-3"></a>
+                    <br><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4"></a>
+                    <br><a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-10"></a>
                   </div>
               </div>
               <div class="col-lg-1">
@@ -285,7 +323,7 @@
                       </div>
                       <div class="col-lg-3">
                           <fieldset>
-                          <input type="sdt_lienhe" name="sdt_lienhe" id="sdt_lienhe" class="form-control" placeholder="Số điện thoại" autocomplete="off" required>
+                          <input type="number" name="sdt_lienhe" id="sdt_lienhe" class="form-control" placeholder="Số điện thoại" autocomplete="off" required>
                           </fieldset>
                       </div>
                       <div class="col-lg-3">

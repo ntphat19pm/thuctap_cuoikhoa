@@ -60,8 +60,8 @@
                             </p>
                         </fieldset>
                         <div class="zalo-share-button" data-href="" data-oaid="3623842424356090488" data-layout="1" data-color="blue" data-customize="false"></div>
-                        <div class="fb-like" data-href="" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
-                        <div class="fb-share-button" data-href="" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                        <div class="fb-like" data-href="{{$currentUrl}}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
+                        <div class="fb-share-button" data-href="{{$currentUrl}}" data-layout="button_count" data-size="small"><a target="_blank" href="{{$currentUrl}}" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                         
                     </div>
                     <div class="col-lg-2">
@@ -83,7 +83,7 @@
                 <b style="color: red">{{$data->tenbai}}</b>
             </div>
             @if($data->binhluan_id==1)
-                <div class="fb-comments" data-href="https://www.facebook.com/plugins/{{$data->id}}" data-width="100%" data-numposts="5"></div>
+                <div class="fb-comments" data-href="{{$currentUrl}}" data-width="100%" data-numposts="5"></div>
             @elseif($data->binhluan_id==0)
                 <p class="text-center">Hiện tại bài viết này đã tắt tính năng bình luận. </p>
             @endif

@@ -112,6 +112,8 @@ class danhmuc_controller extends Controller
             $data=danhmuc::find($id);
             File::delete('public/puloads/linhvuc/'.$data->avatar);
             $request->merge(['avatar'=>$file_name]); 
+            $sub_link=substr($request->link_video,17);
+            $request->merge(['link_video'=>$sub_link]);
         } 
         if($request->has('file_uploads1')){
             $file1=$request->file_uploads1;
@@ -121,7 +123,9 @@ class danhmuc_controller extends Controller
 
             $data=danhmuc::find($id);
             File::delete('public/uploads/linhvuc/'.$data->anhbia);
-            $request->merge(['anhbia'=>$file_name1]);  
+            $request->merge(['anhbia'=>$file_name1]); 
+            $sub_link=substr($request->link_video,17);
+            $request->merge(['link_video'=>$sub_link]); 
         }
         else
         {

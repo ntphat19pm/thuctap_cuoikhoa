@@ -69,7 +69,7 @@
           <div class="portfolio-info">
             <h4>{{$item->tendacdiem}}</h4>
             <p>Đặc điểm</p>
-            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="ĐẶC ĐIỂM <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="ĐẶC ĐIỂM - {{$item->tendacdiem}} <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
           </div>
         </div>
         @endforeach
@@ -79,7 +79,7 @@
           <div class="portfolio-info">
             <h4>{{$item->tenloiich}}</h4>
             <p>Lợi ích</p>
-            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="LỢI ÍCH <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="LỢI ÍCH - {{$item->tenloiich}}<br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
           </div>
         </div>
         @endforeach
@@ -89,7 +89,7 @@
           <div class="portfolio-info">
             <h4>{{$item->tentinhnang}}</h4>
             <p>Tính năng</p>
-            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="TÍNH NĂNG <br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
+            <a href="{{url('public/uploads')}}/viettel1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="TÍNH NĂNG - {{$item->tentinhnang}}<br>{!!$item->chitiet!!}"><i class="bx bx-plus"></i></a>
           </div>
         </div>
         @endforeach

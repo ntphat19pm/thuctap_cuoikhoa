@@ -96,7 +96,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-outline-success">Upload file Excel</button>
+                            <button type="submit" class="btn btn-outline-success">Thêm bài viết</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -197,7 +197,7 @@
                                     <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="mota" class="form-label">Mô tả</label>
-                                        <textarea class="form-control" name="mota" id="mota" cols="10" rows="1"></textarea>
+                                        <textarea class="form-control" name="mota" id="mota" cols="10" rows="5"></textarea>
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     </div>
@@ -207,7 +207,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-outline-success">Upload file Excel</button>
+                            <button type="submit" class="btn btn-outline-success">Thêm video</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->

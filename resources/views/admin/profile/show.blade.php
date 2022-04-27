@@ -84,7 +84,6 @@
                       <i class="fas fa-paperclip"></i> Upload file
                       <input type="file" name="file_uploads">
                     </div>
-                    <p class="help-block">Max. 32MB</p>
                   </div>
                 </div>
                 <div class="modal-footer justify-content-between">

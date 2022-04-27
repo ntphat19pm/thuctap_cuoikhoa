@@ -35,16 +35,26 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Mail\tuyendung_email;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use Session;
 
 class home_controller extends Controller
 {
     public function index(Request $request){
         $user_ip_address=$request->ip();
-        $visitor_curent= visitor::where('ip_address',$user_ip_address)->get();
-        $visitor_count= $visitor_curent->count();
-        // $visitor_id=Auth::user()->id;
-        if($visitor_count<1)
-        {
+        // $visitor_curent= visitor::where('ip_address',$user_ip_address)->get();
+        // $visitor_count= $visitor_curent->count();
+        // // $visitor_id=Auth::user()->id;
+        // if($visitor_count<1)
+        // {
+        //     $visitor=new visitor;
+        //     $visitor->ip_address= $user_ip_address;
+        //     $visitor->date_visitor=Carbon::now('Asia/Ho_Chi_Minh');
+        //     $visitor->save();
+        // }
+        $sessionKey = 'post_' . $user_ip_address;
+        $sessionView = Session::get($sessionKey);
+        if (!$sessionView) { // nếu chưa có session
+            Session::put($sessionKey, 1); //set giá trị cho session
             $visitor=new visitor;
             $visitor->ip_address= $user_ip_address;
             $visitor->date_visitor=Carbon::now('Asia/Ho_Chi_Minh');
@@ -56,11 +66,20 @@ class home_controller extends Controller
 
     public function home(Request $request){
         $user_ip_address=$request->ip();
-        $visitor_curent= visitor::where('ip_address',$user_ip_address)->get();
-        $visitor_count= $visitor_curent->count();
-        // $visitor_id=Auth::user()->id;
-        if($visitor_count<1)
-        {
+        // $visitor_curent= visitor::where('ip_address',$user_ip_address)->get();
+        // $visitor_count= $visitor_curent->count();
+        // // $visitor_id=Auth::user()->id;
+        // if($visitor_count<1)
+        // {
+        //     $visitor=new visitor;
+        //     $visitor->ip_address= $user_ip_address;
+        //     $visitor->date_visitor=Carbon::now('Asia/Ho_Chi_Minh');
+        //     $visitor->save();
+        // }
+        $sessionKey = 'post_' . $user_ip_address;
+        $sessionView = Session::get($sessionKey);
+        if (!$sessionView) { // nếu chưa có session
+            Session::put($sessionKey, 1); //set giá trị cho session
             $visitor=new visitor;
             $visitor->ip_address= $user_ip_address;
             $visitor->date_visitor=Carbon::now('Asia/Ho_Chi_Minh');
@@ -82,14 +101,21 @@ class home_controller extends Controller
         $showlinhvuc=sanpham::where('danhmuc_id',$data->id)->orderby('danhmuc_id','DESC')->paginate(9);
         return view('showlinhvuc',compact('data','showlinhvuc'));
     }
-    public function chitietbai($id){
+    public function chitietbai(Request $request, $id){
         $data=baiviet::find($id);
         $nhanvien=nhanvien::all();
-        $data->view=$data->view + 1;
-        $data->save();
-
+        // $data->view=$data->view + 1;
+        // $data->save();
+        $sessionKey = 'post_' . $id;
+        $sessionView = Session::get($sessionKey);
+        $post = baiviet::findOrFail($id);
+        if (!$sessionView) { //nếu chưa có session
+            Session::put($sessionKey, 1); //set giá trị cho session
+            $post->increment('view');
+        }
+        $currentUrl = $request->fullUrl();
         $bv_lienquan=baiviet::where('trangthai',0)->where('phanloai_id',$data->phanloai_id)->whereNotIn('id',[$data->id])->get();
-        return view('chitietbai',compact('data','nhanvien','bv_lienquan'));
+        return view('chitietbai',compact('data','nhanvien','bv_lienquan','currentUrl'));
     }
     public function shop(){
         return view('shop');
@@ -221,8 +247,7 @@ class home_controller extends Controller
   
     }
     public function post_tuyendung(Request $request)
-    {
-       
+    {      
         if($request->has('file_uploads')){
             
             $slug=str_slug($request->hoten_ungvien);

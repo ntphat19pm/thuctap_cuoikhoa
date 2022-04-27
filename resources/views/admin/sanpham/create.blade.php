@@ -70,7 +70,7 @@
                 <div class="col-lg-4">
     
                     <div class="form-group">
-                        <label for="anh1">Hình ảnh kèm theo <span class="text-danger font-weight-bold">*</span></label>
+                        <label for="anh1">Hình ảnh bìa <span class="text-danger font-weight-bold">*</span></label>
                         <input id="file_uploads1" type="file" class="form-control @error('anh1') is-invalid @enderror" name="file_uploads1" value="{{ old('file_uploads1') }}" required autocomplete="file_uploads1" />
                         @error('file_uploads1')
                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>

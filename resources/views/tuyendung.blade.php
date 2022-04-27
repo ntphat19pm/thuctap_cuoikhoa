@@ -1,6 +1,5 @@
 @extends('layouts.site')
 @section('main')
- 
 
 <section id="hero" class="d-flex align-items-center" style="background-image: url('{{url('public/uploads')}}/banner_tuyendung.png'); background-size:1520px; height: 950px">
 
@@ -48,7 +47,7 @@
                 </div>
                 <div class="form-group invalid mt-3">
                   <label for="sdt" class="form-label">Số điện thoại</label>
-                  <input type="text" class="form-control" name="sdt" id="sdt" required autocomplete="off" >
+                  <input type="number" class="form-control" name="sdt" id="sdt" required autocomplete="off" >
                 </div>
                 <div class="form-group invalid mt-3">
                   <label for="email" class="form-label">Email</label>
@@ -84,7 +83,7 @@
                 </div>
                 <div class="form-group invalid mt-2">
                   <label for="cmnd" class="form-label">CMND/CCCD</label>
-                  <input type="text" class="form-control" name="cmnd" id="cmnd" required autocomplete="off">
+                  <input type="number" class="form-control" name="cmnd" id="cmnd" required autocomplete="off">
                 </div>
               </div>
             </div>
